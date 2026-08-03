@@ -48,6 +48,25 @@
   "sameAs": ["https://instagram.com/pdtreskavica","https://facebook.com/pdtreskavica"]
 }
 </script>
+<style>
+
+  .hero-zoom {
+  animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.20);
+  }}
+
+
+ 
+
+
+</style>
 </head>
 <body class="bg-beige text-charcoal font-sans supports-dark">
 <a href="#glavni-sadrzaj" class="skip-link">Preskoči na sadržaj</a>
@@ -105,7 +124,10 @@
 
 <!-- ============================= HERO ============================= -->
 <section class="relative h-[100svh] min-h-[560px] overflow-hidden">
-  <img src="https://picsum.photos/seed/prenj-sunrise/1920/1200" alt="" role="presentation"
+  <img src="https://picsum.photos/seed/prenj-sunrise/1920/1200" 
+     alt="" 
+     role="presentation"
+     class="hero-zoom absolute inset-0 w-full h-full object-cover">
        class="parallax-img absolute inset-0 w-full h-full object-cover scale-[1.01S]">
   <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/90 via-forestdeep/25 to-forestdeep/50"></div>
 
@@ -123,9 +145,9 @@
     </div>
   </div>
 
-  <a href="#nadolazece" class="scroll-indicator absolute bottom-7 left-1/2 -translate-x-1/2 text-beige/80" aria-label="Pomjeri se prema dolje">
+  <!-- <a href="#nadolazece" class="scroll-indicator absolute bottom-7 left-1/2 -translate-x-1/2 text-beige/80" aria-label="Pomjeri se prema dolje">
     <svg width="22" height="34" viewBox="0 0 22 34" fill="none" aria-hidden="true"><rect x="1" y="1" width="20" height="32" rx="10" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="10" r="2.4" fill="currentColor"/></svg>
-  </a>
+  </a> -->
 </section>
 
 
@@ -458,7 +480,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
         <circle cx="12" cy="11" r="3"/>
       </svg>
-      <span>Sarajevo, Bosna i Hercegovina</span>
+      <span>Patriotske lige br. 4, Tuzla, Bosna i Hercegovina</span>
     </div>
 
     <div class="flex items-center gap-3">
@@ -466,7 +488,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M5 5v14h14V5M5 7l7 5 7-5"/>
       </svg>
       <a href="mailto:info@pdkonjuh.ba" class="hover:text-beige transition-colors">
-        info@pdkonjuh.ba
+        pdkonjuh1951@gmail.com
       </a>
     </div>
 
@@ -475,7 +497,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.3a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.25 1.02L8.9 9.6a16 16 0 006.5 6.5l1.3-1.3a1 1 0 011.02-.25l3.6 1.2a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.3 21 3 14.7 3 7V5z"/>
       </svg>
       <a href="tel:+38761123456" class="hover:text-beige transition-colors">
-        +387 61 123 456
+        +387 61 562 277
       </a>
     </div>
   </div>
@@ -495,8 +517,7 @@
     </div>
 
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-beige/15 text-xs text-beige/45">
-      <p>© 2026 Planinarsko društvo Konjuh, Tuzla. Sva prava zadržana.</p>
-      <p>Registrovano udruženje · ID 4200-XXXX-XX</p>
+      <p>© 2026 PD Konjuh, Tuzla. Sva prava zadržana.</p>
     </div>
   </div>
 </footer>
