@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Planinarsko društvo Treskavica — shared stylesheet
-   Design tokens: Forest #184D3B / Moss #557A46 / Beige #F6F3EE / Stone #E7E5E2
-   Functional accents: Alpenglow #C97B3D (moderate) / Rust #8B3A2B (hard)
-   Type: Fraunces (display) · Inter (body/UI) · IBM Plex Mono (data)
-   Signature motif: topographic contour lines
+   PLANINARSKO DRUŠTVO TRESKAVICA — SHARED STYLESHEET
+   DESIGN TOKENS: FOREST #184D3B / MOSS #557A46 / BEIGE #F6F3EE / STONE #E7E5E2
+   FUNCTIONAL ACCENTS: ALPENGLOW #C97B3D (MODERATE) / RUST #8B3A2B (HARD)
+   TYPE: FRAUNCES (DISPLAY) · INTER (BODY/UI) · IBM PLEX MONO (DATA)
+   SIGNATURE MOTIF: TOPOGRAPHIC CONTOUR LINES
    ========================================================================== */
 
 :root{
@@ -45,7 +45,7 @@ h1,h2,h3,h4,.font-display{
   text-transform:uppercase;
 }
 
-/* Focus visibility for accessibility */
+/* FOCUS VISIBILITY FOR ACCESSIBILITY */
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
   outline:2px solid var(--alpenglow);
   outline-offset:3px;
@@ -54,7 +54,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 ::selection{background:var(--moss);color:var(--white);}
 
-/* ---- Topographic contour motif ---------------------------------------- */
+/* ---- TOPOGRAPHIC CONTOUR MOTIF ---------------------------------------- */
 .topo-bg{
   background-image:
     repeating-radial-gradient(circle at 18% 30%, transparent 0, transparent 26px, rgba(24,77,59,.05) 27px, rgba(24,77,59,.05) 28px, transparent 29px),
@@ -69,23 +69,60 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .elevation-divider{display:block;width:100%;height:auto;}
 
-/* ---- Header (floating rounded pill nav, per reference design) ----------- */
+/* ---- HEADER (FLOATING ROUNDED PILL NAV, PER REFERENCE DESIGN) ----------- */
 .site-header{
-  position:fixed;top:16px;left:50%;z-index:50;
+  position:fixed;
+  top:16px;
+  left:50%;
+  z-index:50;
+
   transform:translateX(-50%);
   width:calc(100% - 2rem);
   max-width:1180px;
-  transition:box-shadow .4s var(--ease);
+
+  transition:
+    box-shadow .4s var(--ease),
+    background .4s ease;
+
+  /* STALNI GLASS EFEKAT */
   background:
-    radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.16) 0%, transparent 45%),
-    linear-gradient(180deg, rgba(14,25,20,.97) 0%, rgba(10,18,15,.97) 100%);
-  border:1px solid rgba(246,243,238,.14);
+    radial-gradient(
+      120% 140% at 6% 100%,
+      rgba(201,123,61,.18),
+      transparent 45%
+    ),
+    rgba(10,18,15,.45);
+
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+
+  border:1px solid rgba(246,243,238,.16);
   border-radius:999px;
-  box-shadow:0 10px 30px -16px rgba(0,0,0,.35);
+
+  box-shadow:
+    0 12px 35px -18px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.08);
 }
-@media(min-width:1024px){.site-header{width:calc(100% - 3.5rem);}}
+
+@media(min-width:1024px){
+  .site-header{
+    width:calc(100% - 3.5rem);
+  }
+}
+
+/* OSTAJE ISTI BLUR NAKON SCROLLA */
 .site-header.is-solid{
-  box-shadow:0 16px 40px -14px rgba(0,0,0,.55);
+  background:
+    radial-gradient(
+      120% 140% at 6% 100%,
+      rgba(201,123,61,.22),
+      transparent 45%
+    ),
+    rgba(10,18,15,.65);
+
+  box-shadow:
+    0 18px 45px -18px rgba(0,0,0,.65),
+    inset 0 1px 0 rgba(255,255,255,.1);
 }
 .site-header .brand-mark{color:var(--beige);}
 .site-header .nav-link{color:var(--beige);}
@@ -96,7 +133,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .nav-link:hover::after,.nav-link[aria-current="page"]::after{width:100%;}
 
-/* Header CTA pill, matching the reference "Contact Us" button */
+/* HEADER CTA PILL, MATCHING THE REFERENCE "CONTACT US" BUTTON */
 .nav-cta{
   background:var(--beige);color:var(--charcoal);
   border-radius:999px;padding:.6rem 1.35rem;font-weight:600;font-size:.9rem;
@@ -104,7 +141,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(0,0,0,.4);}
 
-/* Mega menu */
+/* MEGA MENU */
 .mega-panel{
   opacity:0;visibility:hidden;transform:translateY(8px);
   transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
@@ -114,7 +151,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   opacity:1;visibility:visible;transform:translateY(0);
 }
 
-/* ---- Buttons ------------------------------------------------------------ */
+/* ---- BUTTONS ------------------------------------------------------------ */
 .btn{
   display:inline-flex;align-items:center;gap:.55rem;
   padding:.85rem 1.6rem;border-radius:999px;
@@ -126,54 +163,50 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .btn-primary:hover{background:var(--forest-deep);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(14,51,42,.5);}
 .btn-outline{background:transparent;color:var(--beige);border:1px solid rgba(246,243,238,.55);}
 .btn-outline:hover{background:rgba(246,243,238,.12);transform:translateY(-2px);}
-.btn-outline-dark{background:transparent;color:var(--forest);border:1px solid rgba(24,77,59,.35);}
-.btn-outline-dark:hover{background:rgba(24,77,59,.06);transform:translateY(-2px);}
+.btnOutlineDark{background:transparent;color:var(--forest);border:1px solid rgba(24,77,59,.35);}
+.btnOutlineDark:hover{background:rgba(24,77,59,.06);transform:translateY(-2px);}
 
-/* ---- Hike cards (upcoming hikes) — fully static, no hover animation ----- */
+/* ---- HIKE CARDS (UPCOMING HIKES) — FULLY STATIC, NO HOVER ANIMATION ----- */
 .hike-card{
   border:1px solid var(--stone);
 }
 .hike-card .img-zoom img{transition:none;}
 .hike-card .img-zoom:hover img{transform:none;}
 
-/* ---- Feature cards — dark, accent bar + tinted icon, minimal hover focus */
+/* ---- FEATURE CARDS — DARK, ACCENT BAR + TINTED ICON, STATIC (NO TRANSITION) ---- */
 .feature-card{
   position:relative;overflow:hidden;
   background:var(--forest-deep);
-  border:1px solid rgba(246,243,238,.1);
+  border:1px solid rgba(246,243,238,.18);
   border-radius:1.1rem;
   padding:2.1rem 1.6rem 1.9rem;
-  transition:border-color .15s linear;
 }
 .feature-card::before{
   content:"";position:absolute;top:0;left:0;right:0;height:3px;
   background:var(--accent);
 }
-.feature-card:hover{
-  border-color:rgba(246,243,238,.32);
-}
-.feature-card-topo{
+.featureCardTopo{
   position:absolute;right:-4px;bottom:-2px;width:120px;height:40px;
   stroke:rgba(246,243,238,.16);stroke-width:1.4;fill:none;pointer-events:none;
 }
-.feature-card-icon{
+.featureCardIcon{
   position:relative;z-index:1;
   width:46px;height:46px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   background:var(--accent-soft);color:var(--beige);
   margin-bottom:1.35rem;
 }
-.feature-card-title{
+.featureCardTitle{
   position:relative;z-index:1;
   font-family:'Fraunces',Georgia,serif;font-size:1.08rem;font-weight:600;
   margin-bottom:.5rem;color:var(--beige);
 }
-.feature-card-text{
+.featureCardText{
   position:relative;z-index:1;
   font-size:.9rem;line-height:1.65;color:rgba(246,243,238,.65);
 }
 
-/* ---- Cards / hover lift -------------------------------------------------- */
+/* ---- CARDS / HOVER LIFT -------------------------------------------------- */
 .lift{transition:transform .45s var(--ease), box-shadow .45s var(--ease);}
 .lift:hover{transform:translateY(-6px);box-shadow:0 24px 48px -22px rgba(14,51,42,.35);}
 
@@ -181,22 +214,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .img-zoom img{transition:transform 1.1s var(--ease);}
 .img-zoom:hover img{transform:scale(1.07);}
 
-/* ---- Scroll reveal -------------------------------------------------------- */
+/* ---- SCROLL REVEAL -------------------------------------------------------- */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
 .reveal.is-visible{opacity:1;transform:translateY(0);}
-.reveal-delay-1{transition-delay:.08s;}
-.reveal-delay-2{transition-delay:.16s;}
-.reveal-delay-3{transition-delay:.24s;}
-.reveal-delay-4{transition-delay:.32s;}
+.revealDelay1{transition-delay:.08s;}
+.revealDelay2{transition-delay:.16s;}
+.revealDelay3{transition-delay:.24s;}
+.revealDelay4{transition-delay:.32s;}
 
-/* ---- Hero text: slow left-to-right entrance ------------------------------- */
+/* ---- HERO TEXT: SLOW LEFT-TO-RIGHT ENTRANCE ------------------------------- */
 .reveal-left{
   opacity:0;transform:translateX(-70px);
   transition:opacity 1.3s var(--ease), transform 1.3s var(--ease);
 }
 .reveal-left.is-visible{opacity:1;transform:translateX(0);}
 
-/* ---- Glass (used sparingly: floating badges over photography) ------------ */
+/* ---- GLASS (USED SPARINGLY: FLOATING BADGES OVER PHOTOGRAPHY) ------------ */
 .glass{
   background:rgba(246,243,238,.16);
   backdrop-filter:blur(14px) saturate(140%);
@@ -208,26 +241,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   border:1px solid rgba(246,243,238,.16);
 }
 
-/* ---- Difficulty badges ----------------------------------------------------- */
+/* ---- DIFFICULTY BADGES ----------------------------------------------------- */
 .badge{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px;display:inline-flex;align-items:center;gap:.4rem;}
 .badge::before{content:"";width:6px;height:6px;border-radius:999px;background:currentColor;}
 .badge-easy{background:rgba(85,122,70,.12);color:var(--moss);}
 .badge-moderate{background:rgba(201,123,61,.14);color:var(--alpenglow);}
 .badge-hard{background:rgba(139,58,43,.13);color:var(--rust);}
 
-/* ---- Scroll indicator ------------------------------------------------------ */
+/* ---- SCROLL INDICATOR ------------------------------------------------------ */
 .scroll-indicator{animation:driftDown 2.4s var(--ease) infinite;}
 @keyframes driftDown{
   0%,100%{transform:translateY(0);opacity:.55;}
   50%{transform:translateY(10px);opacity:1;}
 }
 
-/* ---- Animated counters ------------------------------------------------------ */
+/* ---- ANIMATED COUNTERS ------------------------------------------------------ */
 .counter{font-variant-numeric:tabular-nums;}
 
-/* ---- Accordion (FAQ) ------------------------------------------------------ */
+/* ---- ACCORDION (FAQ) ------------------------------------------------------ */
 .accordion-list{
-  background:var(--white);
+  background:#F6F3EE;
   border:1px solid var(--stone);
   border-radius:1.5rem;
   padding:.25rem 1.75rem;
@@ -243,29 +276,29 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .accordion-trigger:hover{color:var(--forest);}
 .accordion-trigger[aria-expanded="true"]{color:var(--forest);}
-.accordion-icon-wrap{
+.accordionIconWrap{
   flex:none;width:30px;height:30px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   background:rgba(85,122,70,.12);color:var(--moss);
   transition:background-color .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
 }
-.accordion-trigger[aria-expanded="true"] .accordion-icon-wrap{
+.accordion-trigger[aria-expanded="true"] .accordionIconWrap{
   background:var(--forest);color:var(--beige);transform:rotate(45deg);
 }
 .accordion-panel{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
-.accordion-panel-inner{padding:0 .25rem 1.5rem;max-width:34rem;}
-.accordion-panel-inner p{color:rgba(30,30,30,.68);line-height:1.7;font-size:.95rem;}
+.accordionPanelInner{padding:0 .25rem 1.5rem;max-width:34rem;}
+.accordionPanelInner p{color:rgba(30,30,30,.68);line-height:1.7;font-size:.95rem;}
 
-/* ---- Testimonial marks -------------------------------------------------- */
+/* ---- TESTIMONIAL MARKS -------------------------------------------------- */
 .quote-mark{font-family:'Fraunces',serif;font-size:3.5rem;line-height:1;color:var(--moss);opacity:.35;}
 
-/* ---- Masonry gallery ------------------------------------------------------ */
+/* ---- MASONRY GALLERY ------------------------------------------------------ */
 .masonry{columns:1;column-gap:1rem;}
 @media(min-width:640px){.masonry{columns:2;}}
 @media(min-width:1024px){.masonry{columns:3;}}
 .masonry > *{break-inside:avoid;margin-bottom:1rem;}
 
-/* ---- Lightbox ---------------------------------------------------------- */
+/* ---- LIGHTBOX ---------------------------------------------------------- */
 #lightbox{
   position:fixed;inset:0;z-index:100;background:rgba(14,20,17,.94);
   display:flex;align-items:center;justify-content:center;padding:4vh 4vw;
@@ -279,22 +312,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   #lightbox,#lightbox img{transition:none;}
 }
 
-/* ---- Range/slider (hikes filter) ---------------------------------------- */
+/* ---- RANGE/SLIDER (HIKES FILTER) ---------------------------------------- */
 input[type="range"]{-webkit-appearance:none;background:transparent;}
 input[type="range"]::-webkit-slider-runnable-track{height:3px;background:var(--stone);border-radius:2px;}
 input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6px;width:15px;height:15px;border-radius:50%;background:var(--forest);border:2px solid var(--beige);box-shadow:0 0 0 1px rgba(24,77,59,.3);}
 
-/* ---- Parallax hero image -------------------------------------------------- */
+/* ---- PARALLAX HERO IMAGE -------------------------------------------------- */
 .parallax-img{will-change:transform;}
 
-/* ---- Utility: eyebrow label ------------------------------------------------ */
+/* ---- UTILITY: EYEBROW LABEL ------------------------------------------------ */
 .eyebrow{
   font-family:'IBM Plex Mono',monospace;
   font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--moss);
 }
 
-/* ---- Dark mode (prefers-color-scheme) -------------------------------------- */
+/* ---- DARK MODE (PREFERS-COLOR-SCHEME) -------------------------------------- */
 @media (prefers-color-scheme: dark){
   body.supports-dark{background:#12201B;color:var(--beige);}
   body.supports-dark .bg-beige{background:#12201B !important;}
@@ -306,19 +339,19 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   body.supports-dark .site-header.is-solid{background:rgba(14,25,20,.9) !important;box-shadow:0 1px 0 rgba(246,243,238,.08) !important;}
   body.supports-dark .site-header.is-solid .nav-link,
   body.supports-dark .site-header.is-solid .brand-mark{color:var(--beige) !important;}
-  body.supports-dark .btn-outline-dark{color:var(--beige) !important;border-color:rgba(246,243,238,.32) !important;}
-  body.supports-dark .btn-outline-dark:hover{background:rgba(246,243,238,.08) !important;}
+  body.supports-dark .btnOutlineDark{color:var(--beige) !important;border-color:rgba(246,243,238,.32) !important;}
+  body.supports-dark .btnOutlineDark:hover{background:rgba(246,243,238,.08) !important;}
   body.supports-dark input,body.supports-dark select,body.supports-dark textarea{
     background:#182B23 !important;color:var(--beige) !important;border-color:rgba(246,243,238,.18) !important;
   }
 }
 
-/* Skip link */
+/* SKIP LINK */
 .skip-link{position:absolute;left:-999px;top:0;background:var(--forest);color:var(--beige);padding:.75rem 1.25rem;z-index:200;border-radius:0 0 6px 0;}
 .skip-link:focus{left:0;}
 
-/* ---- Back to top button ---------------------------------------------------- */
-.back-to-top{
+/* ---- BACK TO TOP BUTTON ---------------------------------------------------- */
+.backToTop{
   position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;
   width:46px;height:46px;border-radius:999px;
   background:var(--forest);color:var(--beige);
@@ -327,75 +360,99 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   opacity:0;visibility:hidden;transform:translateY(10px);
   transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s,background-color .3s var(--ease);
 }
-.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0);}
-.back-to-top:hover{background:var(--forest-deep);}
+.backToTop.is-visible{opacity:1;visibility:visible;transform:translateY(0);}
+.backToTop:hover{background:var(--forest-deep);}
 
-/* ---- Mobile menu icon morph ------------------------------------------------- */
-.menu-icon-morph svg{transition:transform .3s var(--ease);}
+/* ---- MOBILE MENU ICON MORPH ------------------------------------------------- */
+.menuIconMorph svg{transition:transform .3s var(--ease);}
 
-/* ---- Mobile menu: full-screen overlay, slides down from the top ----------- */
+/* ---- MOBILE MENU: COMPACT DROPDOWN UNDER THE HEADER, SIZED TO ITS LINKS, OPENS TOP-DOWN ---------- */
 #mobileMenu{
-  position:fixed;inset:0;z-index:45;
-  background:var(--forest-deep);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:.25rem;
-  transform:translateY(-100%);
+  position:fixed;z-index:45;
+  top:76px;right:1rem;
+  width:max-content;
+  min-width:200px;
+  max-width:calc(100% - 2rem);
+
+  background:
+    radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.18), transparent 45%),
+    rgba(10,18,15,.92);
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border:1px solid rgba(246,243,238,.16);
+  border-radius:1.25rem;
+  box-shadow:0 24px 50px -18px rgba(0,0,0,.55);
+
+  display:flex;flex-direction:column;
+  padding:.5rem;
+
+  transform-origin:top center;
+  transform:scaleY(.4) translateY(-8px);
   opacity:0;
-  transition:transform .55s var(--ease), opacity .4s var(--ease);
+  visibility:hidden;
+  transition:transform .38s var(--ease), opacity .28s var(--ease), visibility .38s;
   pointer-events:none;
 }
 #mobileMenu.is-open{
-  transform:translateY(0);
+  transform:scaleY(1) translateY(0);
   opacity:1;
+  visibility:visible;
   pointer-events:auto;
 }
 #mobileMenu a{
   width:100%;text-align:center;
-  padding:1rem 1.5rem;
-  border-bottom:1px solid rgba(246,243,238,.12);
-  opacity:0;transform:translateY(-16px);
-  transition:opacity .45s var(--ease), transform .45s var(--ease);
+  font-size:1.05rem;
+  padding:.85rem 1.5rem;
+  border-radius:.85rem;
+  opacity:0;transform:translateY(-10px);
+  transition:opacity .35s var(--ease), transform .35s var(--ease), background-color .2s var(--ease);
 }
+#mobileMenu a:hover,#mobileMenu a:focus-visible{background:rgba(246,243,238,.08);}
 #mobileMenu.is-open a{opacity:1;transform:translateY(0);}
-#mobileMenu.is-open a:nth-child(1){transition-delay:.10s;}
-#mobileMenu.is-open a:nth-child(2){transition-delay:.16s;}
-#mobileMenu.is-open a:nth-child(3){transition-delay:.22s;}
-#mobileMenu.is-open a:nth-child(4){transition-delay:.28s;}
-#mobileMenu.is-open a:nth-child(5){transition-delay:.34s;}
-#mobileMenu.is-open a:nth-child(6){transition-delay:.40s;}
-#mobileMenu.is-open a:nth-child(7){transition-delay:.46s;}
+#mobileMenu.is-open a:nth-child(1){transition-delay:.08s;}
+#mobileMenu.is-open a:nth-child(2){transition-delay:.12s;}
+#mobileMenu.is-open a:nth-child(3){transition-delay:.16s;}
+#mobileMenu.is-open a:nth-child(4){transition-delay:.20s;}
+#mobileMenu.is-open a:nth-child(5){transition-delay:.24s;}
+#mobileMenu.is-open a:nth-child(6){transition-delay:.28s;}
+#mobileMenu.is-open a:nth-child(7){transition-delay:.32s;}
 @media (prefers-reduced-motion: reduce){
   #mobileMenu,#mobileMenu a{transition:none;}
 }
 
-/* ---- Wave dividers (soft, per reference) — cut into the stats band -------- */
+/* ---- WAVE DIVIDERS (SOFT, PER REFERENCE) — CUT INTO THE STATS BAND -------- */
+/* MOBILE: TOP WAVE STAYS AS-IS, BOTTOM WAVE IS REMOVED (FLAT EDGE) */
 .wave-divider{position:absolute;left:0;width:100%;line-height:0;z-index:1;pointer-events:none;}
 .wave-divider svg{display:block;width:100%;height:60px;}
-@media(min-width:1024px){.wave-divider svg{height:96px;}}
-.wave-divider-top{top:0;}
-.wave-divider-bottom{bottom:0;}
+.waveDividerTop{top:0;}
+.waveDividerBottom{display:none;}
 
-/* ---- Footer topographic divider: overlaps upward onto the CTA video ------- */
-.footer-topo-divider{
+/* DESKTOP: BOTH EDGES BECOME STRAIGHT/FLAT — NO WAVE CUT */
+@media(min-width:1024px){
+  .wave-divider{display:none;}
+}
+
+/* ---- FOOTER TOPOGRAPHIC DIVIDER: OVERLAPS UPWARD ONTO THE CTA VIDEO ------- */
+.footerTopoDivider{
   position:absolute;left:0;right:0;top:-58px;height:58px;
   line-height:0;pointer-events:none;z-index:3;
 }
-@media(min-width:1024px){.footer-topo-divider{top:-90px;height:90px;}}
-.footer-topo-divider svg{display:block;width:100%;height:100%;}
-.footer-topo-divider path{fill:var(--forest-deep);}
+@media(min-width:1024px){.footerTopoDivider{top:-90px;height:90px;}}
+.footerTopoDivider svg{display:block;width:100%;height:100%;}
+.footerTopoDivider path{fill:var(--forest-deep);}
 
-/* ---- Magnetic buttons -------------------------------------------------------- */
+/* ---- MAGNETIC BUTTONS -------------------------------------------------------- */
 .btn.magnetic{transition:transform .25s var(--ease), background-color .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);}
 
-/* ---- Card tilt ---------------------------------------------------------------- */
+/* ---- CARD TILT ---------------------------------------------------------------- */
 .lift.tilt{transition:transform .35s var(--ease), box-shadow .45s var(--ease);}
 
-/* ---- Footer giant wordmark (textured, per reference) ----------------------- */
-.footer-giant-mark{
+/* ---- FOOTER GIANT WORDMARK (TEXTURED, PER REFERENCE) ----------------------- */
+.footerGiantMark{
   position:relative;width:100%;overflow:hidden;line-height:.82;
   padding:.7rem 0 0;
 }
-.footer-giant-mark span{
+.footerGiantMark span{
   display:block;width:100%;text-align:center;
   font-family:'Fraunces',Georgia,serif;font-weight:700;
   font-size:clamp(3.4rem,14vw,14rem);letter-spacing:-0.02em;
@@ -407,11 +464,11 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   white-space:nowrap;
 }
 
-/* ---- Footer curved top edge ------------------------------------------------- */
+/* ---- FOOTER CURVED TOP EDGE ------------------------------------------------- */
 .footer-curve{display:block;line-height:0;background:var(--beige);}
 .footer-curve svg{display:block;width:100%;height:auto;}
 
-/* ---- Footer starfield (used on the main/large footer) ----------------------- */
+/* ---- FOOTER STARFIELD (USED ON THE MAIN/LARGE FOOTER) ----------------------- */
 .footer-stars{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
 .footer-stars span{
   position:absolute;width:2px;height:2px;border-radius:50%;
@@ -467,15 +524,15 @@ body.loading{overflow:hidden;}
 .loader-cloud::before,.loader-cloud::after{
   content:"";position:absolute;background:inherit;border-radius:inherit;
 }
-.loader-cloud-1{width:120px;height:30px;top:16%;left:-20%;animation:driftCloud 22s linear infinite;}
-.loader-cloud-1::before{width:60px;height:44px;top:-20px;left:14px;}
-.loader-cloud-1::after{width:44px;height:34px;top:-12px;left:60px;}
-.loader-cloud-2{width:90px;height:24px;top:30%;left:-30%;animation:driftCloud 28s linear infinite;animation-delay:-8s;opacity:.8;}
-.loader-cloud-2::before{width:44px;height:32px;top:-16px;left:10px;}
-.loader-cloud-2::after{width:34px;height:26px;top:-10px;left:44px;}
-.loader-cloud-3{width:150px;height:34px;top:9%;left:-25%;animation:driftCloud 34s linear infinite;animation-delay:-18s;opacity:.6;}
-.loader-cloud-3::before{width:70px;height:50px;top:-24px;left:20px;}
-.loader-cloud-3::after{width:50px;height:38px;top:-14px;left:80px;}
+.loaderCloud1{width:120px;height:30px;top:16%;left:-20%;animation:driftCloud 22s linear infinite;}
+.loaderCloud1::before{width:60px;height:44px;top:-20px;left:14px;}
+.loaderCloud1::after{width:44px;height:34px;top:-12px;left:60px;}
+.loaderCloud2{width:90px;height:24px;top:30%;left:-30%;animation:driftCloud 28s linear infinite;animation-delay:-8s;opacity:.8;}
+.loaderCloud2::before{width:44px;height:32px;top:-16px;left:10px;}
+.loaderCloud2::after{width:34px;height:26px;top:-10px;left:44px;}
+.loaderCloud3{width:150px;height:34px;top:9%;left:-25%;animation:driftCloud 34s linear infinite;animation-delay:-18s;opacity:.6;}
+.loaderCloud3::before{width:70px;height:50px;top:-24px;left:20px;}
+.loaderCloud3::after{width:50px;height:38px;top:-14px;left:80px;}
 @keyframes driftCloud{
   from{transform:translateX(0);}
   to{transform:translateX(180vw);}
@@ -500,16 +557,16 @@ body.loading{overflow:hidden;}
 }
 
 .loader-scene{position:relative;width:100%;max-width:900px;height:58vh;max-height:420px;}
-.loader-mountain-back{fill:#123A2C;}
-.loader-mountain-front{fill:#0E332A;}
+.loaderMountainBack{fill:#123A2C;}
+.loaderMountainFront{fill:#0E332A;}
 .loader-fog{fill:rgba(246,243,238,.06);animation:fogDrift 6s ease-in-out infinite;}
-.loader-fog-2{fill:rgba(246,243,238,.045);animation:fogDrift 8s ease-in-out infinite reverse;}
+.loaderFog2{fill:rgba(246,243,238,.045);animation:fogDrift 8s ease-in-out infinite reverse;}
 @keyframes fogDrift{
   0%,100%{transform:translateX(0);}
   50%{transform:translateX(14px);}
 }
 
-.loader-trail-track{stroke:rgba(246,243,238,.28);stroke-width:1.5;stroke-dasharray:3 4;}
+.loaderTrailTrack{stroke:rgba(246,243,238,.28);stroke-width:1.5;stroke-dasharray:3 4;}
 
 .loader-hiker{
   fill:var(--beige);
@@ -521,12 +578,12 @@ body.loading{overflow:hidden;}
 }
 
 .loader-content{position:relative;width:100%;max-width:320px;text-align:center;padding-bottom:14vh;}
-.loader-progress-track{width:100%;height:3px;border-radius:999px;background:rgba(246,243,238,.18);overflow:hidden;margin-bottom:.9rem;}
-.loader-progress-bar{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--moss),var(--alpenglow));transition:width .35s var(--ease);}
+.loaderProgressTrack{width:100%;height:3px;border-radius:999px;background:rgba(246,243,238,.18);overflow:hidden;margin-bottom:.9rem;}
+.loaderProgressBar{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--moss),var(--alpenglow));transition:width .35s var(--ease);}
 .loader-text{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:rgba(246,243,238,.75);min-height:1.2em;}
 
 @media (prefers-reduced-motion: reduce){
-  .loader-cloud,.loader-bird,.loader-fog,.loader-fog-2{animation:none;}
+  .loader-cloud,.loader-bird,.loader-fog,.loaderFog2{animation:none;}
 }
 @media (max-width:640px){
   .loader-scene{height:48vh;}
