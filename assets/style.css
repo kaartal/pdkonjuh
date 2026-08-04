@@ -69,26 +69,36 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .elevation-divider{display:block;width:100%;height:auto;}
 
-/* ---- Header ------------------------------------------------------------ */
+/* ---- Header (always-dark floating bar, per reference design) ----------- */
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:50;
-  transition:background-color .4s var(--ease),box-shadow .4s var(--ease),padding .3s var(--ease);
-  background:transparent;
+  transition:box-shadow .4s var(--ease);
+  background:
+    radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.16) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(14,25,20,.97) 0%, rgba(10,18,15,.97) 100%);
+  border-bottom:1px solid rgba(246,243,238,.08);
+  border-radius:0 0 22px 22px;
+  box-shadow:0 1px 0 rgba(0,0,0,.15);
 }
 .site-header.is-solid{
-  background:rgba(246,243,238,.92);
-  backdrop-filter:blur(10px);
-  box-shadow:0 1px 0 rgba(30,30,30,.06);
+  box-shadow:0 12px 32px -16px rgba(0,0,0,.55);
 }
-.site-header .brand-mark{transition:color .3s var(--ease);}
-.site-header.is-solid .nav-link,
-.site-header.is-solid .brand-mark{color:var(--charcoal);}
+.site-header .brand-mark{color:var(--beige);}
+.site-header .nav-link{color:var(--beige);}
 .nav-link{position:relative;padding-bottom:4px;}
 .nav-link::after{
   content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
   background:currentColor;transition:width .3s var(--ease);
 }
 .nav-link:hover::after,.nav-link[aria-current="page"]::after{width:100%;}
+
+/* Header CTA pill, matching the reference "Contact Us" button */
+.nav-cta{
+  background:var(--beige);color:var(--charcoal);
+  border-radius:999px;padding:.6rem 1.35rem;font-weight:600;font-size:.9rem;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(0,0,0,.4);}
 
 /* Mega menu */
 .mega-panel{
@@ -130,6 +140,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .reveal-delay-2{transition-delay:.16s;}
 .reveal-delay-3{transition-delay:.24s;}
 .reveal-delay-4{transition-delay:.32s;}
+
+/* ---- Hero text: slow left-to-right entrance ------------------------------- */
+.reveal-left{
+  opacity:0;transform:translateX(-70px);
+  transition:opacity 1.3s var(--ease), transform 1.3s var(--ease);
+}
+.reveal-left.is-visible{opacity:1;transform:translateX(0);}
 
 /* ---- Glass (used sparingly: floating badges over photography) ------------ */
 .glass{
@@ -243,6 +260,57 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 
 /* ---- Mobile menu icon morph ------------------------------------------------- */
 .menu-icon-morph svg{transition:transform .3s var(--ease);}
+
+/* ---- Mobile menu: full-screen overlay, slides down from the top ----------- */
+#mobileMenu{
+  position:fixed;inset:0;z-index:45;
+  background:var(--forest-deep);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.25rem;
+  transform:translateY(-100%);
+  opacity:0;
+  transition:transform .55s var(--ease), opacity .4s var(--ease);
+  pointer-events:none;
+}
+#mobileMenu.is-open{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+#mobileMenu a{
+  width:100%;text-align:center;
+  padding:1rem 1.5rem;
+  border-bottom:1px solid rgba(246,243,238,.12);
+  opacity:0;transform:translateY(-16px);
+  transition:opacity .45s var(--ease), transform .45s var(--ease);
+}
+#mobileMenu.is-open a{opacity:1;transform:translateY(0);}
+#mobileMenu.is-open a:nth-child(1){transition-delay:.10s;}
+#mobileMenu.is-open a:nth-child(2){transition-delay:.16s;}
+#mobileMenu.is-open a:nth-child(3){transition-delay:.22s;}
+#mobileMenu.is-open a:nth-child(4){transition-delay:.28s;}
+#mobileMenu.is-open a:nth-child(5){transition-delay:.34s;}
+#mobileMenu.is-open a:nth-child(6){transition-delay:.40s;}
+#mobileMenu.is-open a:nth-child(7){transition-delay:.46s;}
+@media (prefers-reduced-motion: reduce){
+  #mobileMenu,#mobileMenu a{transition:none;}
+}
+
+/* ---- Wave dividers (soft, per reference) — cut into the stats band -------- */
+.wave-divider{position:absolute;left:0;width:100%;line-height:0;z-index:1;pointer-events:none;}
+.wave-divider svg{display:block;width:100%;height:56px;}
+@media(min-width:1024px){.wave-divider svg{height:88px;}}
+.wave-divider-top{top:0;}
+.wave-divider-bottom{bottom:0;}
+
+/* ---- Footer topographic divider: overlaps upward onto the CTA video ------- */
+.footer-topo-divider{
+  position:absolute;left:0;right:0;top:-58px;height:58px;
+  line-height:0;pointer-events:none;z-index:3;
+}
+@media(min-width:1024px){.footer-topo-divider{top:-90px;height:90px;}}
+.footer-topo-divider svg{display:block;width:100%;height:100%;}
+.footer-topo-divider path{fill:var(--forest-deep);}
 
 /* ---- Magnetic buttons -------------------------------------------------------- */
 .btn.magnetic{transition:transform .25s var(--ease), background-color .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);}

@@ -4,19 +4,18 @@
 (function(){
   "use strict";
 
-  /* ---------- Sticky / transparent header ---------- */
+  /* ---------- Header shadow-on-scroll (header itself is always dark) ------ */
   const header = document.querySelector(".site-header");
   const onScrollHeader = () => {
     if(!header) return;
-    if(window.scrollY > 40){ header.classList.add("is-solid"); }
-    else if(header.dataset.transparent === "true"){ header.classList.remove("is-solid"); }
+    header.classList.toggle("is-solid", window.scrollY > 40);
   };
   if(header){
     onScrollHeader();
     window.addEventListener("scroll", onScrollHeader, {passive:true});
   }
 
-  /* ---------- Mobile menu (with icon morph hamburger <-> close) ---------- */
+  /* ---------- Mobile menu (full-screen overlay, icon morph hamburger <-> close) ---------- */
   const menuBtn = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const HAMBURGER_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
@@ -24,21 +23,21 @@
   if(menuBtn && mobileMenu){
     menuBtn.classList.add("menu-icon-morph");
     const setMenuState = (open)=>{
-      mobileMenu.classList.toggle("flex", open);
-      mobileMenu.classList.toggle("hidden", !open);
+      mobileMenu.classList.toggle("is-open", open);
+      mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
       menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
       menuBtn.innerHTML = open ? CLOSE_ICON : HAMBURGER_ICON;
       document.body.classList.toggle("overflow-hidden", open);
     };
     menuBtn.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("flex");
+      const isOpen = mobileMenu.classList.contains("is-open");
       setMenuState(!isOpen);
     });
     mobileMenu.querySelectorAll("a").forEach(a=>{
       a.addEventListener("click", ()=> setMenuState(false));
     });
     document.addEventListener("keydown", (e)=>{
-      if(e.key === "Escape" && mobileMenu.classList.contains("flex")) setMenuState(false);
+      if(e.key === "Escape" && mobileMenu.classList.contains("is-open")) setMenuState(false);
     });
   }
 
@@ -97,7 +96,7 @@
   }
 
   /* ---------- Scroll reveal ---------- */
-  const revealEls = document.querySelectorAll(".reveal");
+  const revealEls = document.querySelectorAll(".reveal, .reveal-left");
   if("IntersectionObserver" in window && revealEls.length){
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
