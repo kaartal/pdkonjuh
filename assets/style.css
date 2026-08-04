@@ -16,6 +16,12 @@
   --charcoal:#1E1E1E;
   --alpenglow:#C97B3D;
   --rust:#8B3A2B;
+  /* BRAND PALETTE — HARMONIZED WITH THE PD KONJUH LOGO (NAVY MOUNTAIN, RED RING, ICE-BLUE ACCENT) */
+  --navy:#0F5875;
+  --navy-deep:#02445E;
+  --brand-red:#DC292B;
+  --brand-red-deep:#A81F21;
+  --iceblue:#51B1DB;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 
@@ -57,19 +63,36 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* ---- TOPOGRAPHIC CONTOUR MOTIF ---------------------------------------- */
 .topo-bg{
   background-image:
-    repeating-radial-gradient(circle at 18% 30%, transparent 0, transparent 26px, rgba(24,77,59,.05) 27px, rgba(24,77,59,.05) 28px, transparent 29px),
-    repeating-radial-gradient(circle at 82% 70%, transparent 0, transparent 34px, rgba(24,77,59,.045) 35px, rgba(24,77,59,.045) 36px, transparent 37px);
+    repeating-radial-gradient(circle at 18% 30%, transparent 0, transparent 26px, rgba(246,243,238,.055) 27px, rgba(246,243,238,.055) 28px, transparent 29px),
+    repeating-radial-gradient(circle at 82% 70%, transparent 0, transparent 34px, rgba(246,243,238,.045) 35px, rgba(246,243,238,.045) 36px, transparent 37px);
   background-size:100% 100%;
 }
+/* ---- ELEVATION DIVIDER — LAYERED, MORE VISIBLE, MODERN RIDGE-LINE MOTIF -------- */
+.elevation-divider-wrap{padding:1.3rem 0;}
+.elevation-divider{display:block;width:100%;height:80px;filter:drop-shadow(0 4px 5px rgba(2,68,94,.14));}
 .topo-line{
-  stroke:currentColor;
   fill:none;
-  stroke-width:1.2;
-  opacity:.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
-.elevation-divider{display:block;width:100%;height:auto;}
+.topo-line-back{
+  stroke:var(--navy);
+  stroke-width:2.5;
+  opacity:.28;
+}
+.topo-line-front{
+  stroke:var(--navy-deep);
+  stroke-width:3;
+  opacity:.8;
+}
+.topo-line-dot-red{fill:var(--brand-red);opacity:.95;}
+.topo-line-dot-ice{fill:var(--iceblue);opacity:.9;}
+@media(min-width:1024px){
+  .elevation-divider{height:100px;}
+}
 
 /* ---- HEADER (FLOATING ROUNDED PILL NAV, PER REFERENCE DESIGN) ----------- */
+/* HEADER KEEPS THE SAME BLURRED GLASS LOOK AT ALL TIMES — IT DOES NOT CHANGE ON SCROLL */
 .site-header{
   position:fixed;
   top:16px;
@@ -80,18 +103,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   width:calc(100% - 2rem);
   max-width:1180px;
 
-  transition:
-    box-shadow .4s var(--ease),
-    background .4s ease;
-
-  /* STALNI GLASS EFEKAT */
+  /* STALNI GLASS EFEKAT, USKLAĐEN S NAVY/RED PALETOM LOGOTIPA */
   background:
     radial-gradient(
       120% 140% at 6% 100%,
-      rgba(201,123,61,.18),
+      rgba(220,41,43,.18),
       transparent 45%
     ),
-    rgba(10,18,15,.45);
+    rgba(2,12,17,.55);
 
   backdrop-filter:blur(24px) saturate(160%);
   -webkit-backdrop-filter:blur(24px) saturate(160%);
@@ -110,20 +129,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 
-/* OSTAJE ISTI BLUR NAKON SCROLLA */
-.site-header.is-solid{
-  background:
-    radial-gradient(
-      120% 140% at 6% 100%,
-      rgba(201,123,61,.22),
-      transparent 45%
-    ),
-    rgba(10,18,15,.65);
-
-  box-shadow:
-    0 18px 45px -18px rgba(0,0,0,.65),
-    inset 0 1px 0 rgba(255,255,255,.1);
-}
 .site-header .brand-mark{color:var(--beige);}
 .site-header .nav-link{color:var(--beige);}
 .nav-link{position:relative;padding-bottom:4px;}
@@ -232,7 +237,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* ---- GLASS (USED SPARINGLY: FLOATING BADGES OVER PHOTOGRAPHY) ------------ */
 .glass{
   background:rgba(246,243,238,.16);
-  backdrop-filter:blur(14px) saturate(140%);
+  backdrop-filter:blur(24px) saturate(140%);
   border:1px solid rgba(246,243,238,.28);
 }
 .glass-dark{
@@ -245,8 +250,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .badge{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px;display:inline-flex;align-items:center;gap:.4rem;}
 .badge::before{content:"";width:6px;height:6px;border-radius:999px;background:currentColor;}
 .badge-easy{background:rgba(85,122,70,.12);color:var(--moss);}
-.badge-moderate{background:rgba(201,123,61,.14);color:var(--alpenglow);}
-.badge-hard{background:rgba(139,58,43,.13);color:var(--rust);}
+.badge-moderate{background:rgba(81,177,219,.14);color:var(--iceblue);}
+.badge-hard{background:rgba(220,41,43,.13);color:var(--brand-red);}
 
 /* ---- SCROLL INDICATOR ------------------------------------------------------ */
 .scroll-indicator{animation:driftDown 2.4s var(--ease) infinite;}
@@ -336,9 +341,9 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   body.supports-dark [class*="text-charcoal/"]{color:rgba(246,243,238,.72) !important;}
   body.supports-dark [class*="bg-stone"]{background-color:#182B23 !important;}
   body.supports-dark [class*="border-stone"]{border-color:rgba(246,243,238,.14) !important;}
-  body.supports-dark .site-header.is-solid{background:rgba(14,25,20,.9) !important;box-shadow:0 1px 0 rgba(246,243,238,.08) !important;}
-  body.supports-dark .site-header.is-solid .nav-link,
-  body.supports-dark .site-header.is-solid .brand-mark{color:var(--beige) !important;}
+  body.supports-dark .site-header{background:rgba(2,10,14,.85) !important;box-shadow:0 1px 0 rgba(246,243,238,.08) !important;}
+  body.supports-dark .site-header .nav-link,
+  body.supports-dark .site-header .brand-mark{color:var(--beige) !important;}
   body.supports-dark .btnOutlineDark{color:var(--beige) !important;border-color:rgba(246,243,238,.32) !important;}
   body.supports-dark .btnOutlineDark:hover{background:rgba(246,243,238,.08) !important;}
   body.supports-dark input,body.supports-dark select,body.supports-dark textarea{
@@ -420,17 +425,12 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   #mobileMenu,#mobileMenu a{transition:none;}
 }
 
-/* ---- WAVE DIVIDERS (SOFT, PER REFERENCE) — CUT INTO THE STATS BAND -------- */
-/* MOBILE: TOP WAVE STAYS AS-IS, BOTTOM WAVE IS REMOVED (FLAT EDGE) */
+/* ---- WAVE DIVIDERS — SOFT, MODERN CURVE CUT INTO THE STATS BAND ---------- */
 .wave-divider{position:absolute;left:0;width:100%;line-height:0;z-index:1;pointer-events:none;}
-.wave-divider svg{display:block;width:100%;height:60px;}
+.wave-divider svg{display:block;width:100%;height:64px;}
+@media(min-width:1024px){.wave-divider svg{height:104px;}}
 .waveDividerTop{top:0;}
-.waveDividerBottom{display:none;}
-
-/* DESKTOP: BOTH EDGES BECOME STRAIGHT/FLAT — NO WAVE CUT */
-@media(min-width:1024px){
-  .wave-divider{display:none;}
-}
+.waveDividerBottom{bottom:0;}
 
 /* ---- FOOTER TOPOGRAPHIC DIVIDER: OVERLAPS UPWARD ONTO THE CTA VIDEO ------- */
 .footerTopoDivider{
@@ -439,7 +439,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 }
 @media(min-width:1024px){.footerTopoDivider{top:-90px;height:90px;}}
 .footerTopoDivider svg{display:block;width:100%;height:100%;}
-.footerTopoDivider path{fill:var(--forest-deep);}
+.footerTopoDivider path{fill:var(--navy-deep);}
 
 /* ---- MAGNETIC BUTTONS -------------------------------------------------------- */
 .btn.magnetic{transition:transform .25s var(--ease), background-color .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);}
@@ -509,7 +509,7 @@ body.loading{overflow:hidden;}
 
 .loader{
   position:fixed;inset:0;z-index:300;
-  background:linear-gradient(180deg,#0B2119 0%, var(--forest-deep) 55%, #081912 100%);
+  background:linear-gradient(180deg,#071A24 0%, var(--navy-deep) 55%, #041019 100%);
   display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
   overflow:hidden;
   transition:opacity .7s var(--ease), visibility .7s;
@@ -557,8 +557,8 @@ body.loading{overflow:hidden;}
 }
 
 .loader-scene{position:relative;width:100%;max-width:900px;height:58vh;max-height:420px;}
-.loaderMountainBack{fill:#123A2C;}
-.loaderMountainFront{fill:#0E332A;}
+.loaderMountainBack{fill:#0D3547;}
+.loaderMountainFront{fill:#02445E;}
 .loader-fog{fill:rgba(246,243,238,.06);animation:fogDrift 6s ease-in-out infinite;}
 .loaderFog2{fill:rgba(246,243,238,.045);animation:fogDrift 8s ease-in-out infinite reverse;}
 @keyframes fogDrift{
@@ -579,7 +579,7 @@ body.loading{overflow:hidden;}
 
 .loader-content{position:relative;width:100%;max-width:320px;text-align:center;padding-bottom:14vh;}
 .loaderProgressTrack{width:100%;height:3px;border-radius:999px;background:rgba(246,243,238,.18);overflow:hidden;margin-bottom:.9rem;}
-.loaderProgressBar{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--moss),var(--alpenglow));transition:width .35s var(--ease);}
+.loaderProgressBar{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--iceblue),var(--brand-red));transition:width .35s var(--ease);}
 .loader-text{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:rgba(246,243,238,.75);min-height:1.2em;}
 
 @media (prefers-reduced-motion: reduce){

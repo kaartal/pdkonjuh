@@ -1,27 +1,19 @@
 // ============================================================================
-// Planinarsko društvo Treskavica — shared behaviour
+// PLANINARSKO DRUŠTVO TRESKAVICA — SHARED BEHAVIOUR
 // ============================================================================
 (function(){
   "use strict";
 
-  /* ---------- Header shadow-on-scroll (header itself is always dark) ------ */
-  const header = document.querySelector(".site-header");
-  const onScrollHeader = () => {
-    if(!header) return;
-    header.classList.toggle("is-solid", window.scrollY > 40);
-  };
-  if(header){
-    onScrollHeader();
-    window.addEventListener("scroll", onScrollHeader, {passive:true});
-  }
+  /* ---------- HEADER: ALWAYS THE SAME BLURRED GLASS LOOK, NEVER CHANGES ON SCROLL ------ */
+  // (intentionally no scroll listener here — the header keeps its opening appearance)
 
-  /* ---------- Mobile menu (full-screen overlay, icon morph hamburger <-> close) ---------- */
+  /* ---------- MOBILE MENU (FULL-SCREEN OVERLAY, ICON MORPH HAMBURGER <-> CLOSE) ---------- */
   const menuBtn = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const HAMBURGER_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   const CLOSE_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   if(menuBtn && mobileMenu){
-    menuBtn.classList.add("menu-icon-morph");
+    menuBtn.classList.add("menuIconMorph");
     const setMenuState = (open)=>{
       mobileMenu.classList.toggle("is-open", open);
       mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
@@ -41,9 +33,9 @@
     });
   }
 
-  /* ---------- Back to top button ---------- */
+  /* ---------- BACK TO TOP BUTTON ---------- */
   const backToTop = document.createElement("button");
-  backToTop.className = "back-to-top";
+  backToTop.className = "backToTop";
   backToTop.setAttribute("aria-label", "Nazad na vrh stranice");
   backToTop.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   document.body.appendChild(backToTop);
@@ -54,7 +46,7 @@
     window.scrollTo({top:0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
   });
 
-  /* ---------- Magnetic buttons ---------- */
+  /* ---------- MAGNETIC BUTTONS ---------- */
   if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(hover: hover)").matches){
     document.querySelectorAll(".btn").forEach(btn=>{
       btn.classList.add("magnetic");
@@ -67,7 +59,7 @@
       btn.addEventListener("mouseleave", ()=>{ btn.style.transform = ""; });
     });
 
-    /* ---------- Card tilt ---------- */
+    /* ---------- CARD TILT ---------- */
     document.querySelectorAll(".lift").forEach(card=>{
       card.classList.add("tilt");
       card.addEventListener("mousemove", (e)=>{
@@ -80,7 +72,7 @@
     });
   }
 
-  /* ---------- Scroll reveal ---------- */
+  /* ---------- SCROLL REVEAL ---------- */
   const revealEls = document.querySelectorAll(".reveal, .reveal-left");
   if("IntersectionObserver" in window && revealEls.length){
     const io = new IntersectionObserver((entries)=>{
@@ -96,7 +88,7 @@
     revealEls.forEach(el=>el.classList.add("is-visible"));
   }
 
-  /* ---------- Animated counters ---------- */
+  /* ---------- ANIMATED COUNTERS ---------- */
   const counters = document.querySelectorAll(".counter");
   if("IntersectionObserver" in window && counters.length){
     const countIO = new IntersectionObserver((entries)=>{
@@ -105,7 +97,7 @@
         const el = entry.target;
         const target = parseInt(el.dataset.target, 10) || 0;
         const suffix = el.dataset.suffix || "";
-        const duration = 1400;
+        const duration = 2400;
         const start = performance.now();
         const step = (now)=>{
           const p = Math.min((now-start)/duration, 1);
@@ -120,7 +112,7 @@
     counters.forEach(el=>countIO.observe(el));
   }
 
-  /* ---------- Gentle parallax on hero image ---------- */
+  /* ---------- GENTLE PARALLAX ON HERO IMAGE ---------- */
   const parallax = document.querySelector(".parallax-img");
   if(parallax && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
     window.addEventListener("scroll", ()=>{
@@ -131,7 +123,7 @@
     }, {passive:true});
   }
 
-  /* ---------- Lightbox (gallery) ---------- */
+  /* ---------- LIGHTBOX (GALLERY) ---------- */
   const lightbox = document.getElementById("lightbox");
   if(lightbox){
     const lbImg = lightbox.querySelector("img");
@@ -157,7 +149,7 @@
     document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeLb(); });
   }
 
-  /* ---------- Hike filters (hikes.html) ---------- */
+  /* ---------- HIKE FILTERS (HIKES.HTML) ---------- */
   const filterForm = document.getElementById("hikeFilters");
   const hikeCards = document.querySelectorAll("[data-hike]");
   if(filterForm && hikeCards.length){
@@ -181,7 +173,7 @@
     filterForm.addEventListener("change", applyFilters);
   }
 
-  /* ---------- Newsletter / contact form feedback (no backend) ---------- */
+  /* ---------- NEWSLETTER / CONTACT FORM FEEDBACK (NO BACKEND) ---------- */
   document.querySelectorAll("form[data-noop]").forEach(form=>{
     form.addEventListener("submit", (e)=>{
       e.preventDefault();
@@ -194,7 +186,7 @@
     });
   });
 
-  /* ---------- GPX download placeholder ---------- */
+  /* ---------- GPX DOWNLOAD PLACEHOLDER ---------- */
   document.querySelectorAll("[data-gpx]").forEach(btn=>{
     btn.addEventListener("click", ()=>{
       const name = btn.dataset.gpx || "ruta";
@@ -208,7 +200,7 @@
     });
   });
 
-  /* ---------- Accordion (FAQ) ---------- */
+  /* ---------- ACCORDION (FAQ) ---------- */
   document.querySelectorAll("[data-accordion-trigger]").forEach(trigger=>{
     trigger.addEventListener("click", ()=>{
       const panel = document.getElementById(trigger.getAttribute("aria-controls"));
@@ -220,7 +212,7 @@
     });
   });
 
-  /* ---------- Membership pricing toggle (annual/monthly) ---------- */
+  /* ---------- MEMBERSHIP PRICING TOGGLE (ANNUAL/MONTHLY) ---------- */
   const planToggle = document.getElementById("planToggle");
   if(planToggle){
     planToggle.addEventListener("change", ()=>{

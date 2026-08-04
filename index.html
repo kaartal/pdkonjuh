@@ -26,7 +26,11 @@
         colors: {
           forest:'#184D3B', forestdeep:'#0E332A', moss:'#557A46',
           beige:'#F6F3EE', stone:'#E7E5E2', charcoal:'#1E1E1E',
-          alpenglow:'#C97B3D', rust:'#8B3A2B'
+          alpenglow:'#C97B3D', rust:'#8B3A2B',
+          /* BRAND PALETTE — HARMONIZED WITH THE PD KONJUH LOGO */
+          navy:'#0F5875', navydeep:'#02445E',
+          brandred:'#DC292B', brandreddeep:'#A81F21',
+          iceblue:'#51B1DB'
         },
         fontFamily: {
           display:['Fraunces','serif'], sans:['Inter','system-ui','sans-serif'], mono:['IBM Plex Mono','monospace']
@@ -75,7 +79,7 @@
 <header class="site-header">
   <div class="px-5 lg:px-7 flex items-center justify-between h-16">
     <a href="index.html" class="brand-mark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M2 26L11 9L16 17L20 11L30 26" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <img src="assets/pictures/konjuh-logo.png" alt="" aria-hidden="true" class="w-8 h-8 object-contain">
       PD Konjuh
     </a>
 
@@ -154,7 +158,9 @@
 <section class="py-24 lg:py-32 px-6 lg:px-10 bg-beige">
   <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
     <div class="reveal order-2 lg:order-1 relative">
-      <img src="https://picsum.photos/seed/druzina-kolibra/900/1100" alt="Grupa planinara odmara ispred planinarske kolibe na Treskavici" class="rounded-3xl w-full h-[520px] object-cover">
+      <div class="rounded-3xl w-full h-[520px] flex items-center justify-center p-10">
+        <img src="assets/pictures/konjuh-logo.png" alt="Grb i logotip Planinarskog društva Konjuh, osnovanog 1951. godine" class="max-h-full w-auto object-contain drop-shadow-2xl">
+      </div>
       <div class="glass-dark absolute -bottom-6 -right-6 rounded-2xl px-6 py-4 hidden sm:block">
         <p class="text-beige font-display text-2xl font-semibold">1962<span class="text-beige/50">.</span></p>
         <p class="text-beige/70 text-xs font-mono-label mt-1">prvi zapisani izlazak</p>
@@ -182,206 +188,66 @@
 
 
 
-<!-- ============================= STATS ============================= -->
-<section class="relative overflow-hidden bg-forest text-beige py-24 lg:py-32 px-6 lg:px-10 topo-bg">
-
-  <!-- WAVE CUT AT THE TOP, BEIGE BLEEDING DOWN INTO THE FOREST BAND -->
-  <div class="wave-divider waveDividerTop" aria-hidden="true">
-    <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
-      <path fill="#F6F3EE" d="M0,35 C200,75 400,0 600,40 C800,80 1000,10 1200,35 L1200,0 L0,0 Z"/>
-    </svg>
-  </div>
-
-  <div class="relative z-10 max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 text-center">
-    <div class="reveal">
-      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="250" data-suffix="+">0</p>
-      <p class="eyebrow text-beige/60 mt-3">Članova</p>
-    </div>
-    <div class="reveal revealDelay1">
-      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="140" data-suffix="">0</p>
-      <p class="eyebrow text-beige/60 mt-3">Organizovanih tura</p>
-    </div>
-    <div class="reveal revealDelay2">
-      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="35" data-suffix="">0</p>
-      <p class="eyebrow text-beige/60 mt-3">Osvojenih vrhova</p>
-    </div>
-    <div class="reveal revealDelay3">
-      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="18" data-suffix="">0</p>
-      <p class="eyebrow text-beige/60 mt-3">Godina tradicije</p>
-    </div>
-  </div>
-
-  <!-- WAVE CUT AT THE BOTTOM, BEIGE BLEEDING UP INTO THE FOREST BAND -->
-  <div class="wave-divider waveDividerBottom" aria-hidden="true">
-    <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
-      <path fill="#F6F3EE" d="M0,65 C200,25 400,100 600,60 C800,20 1000,90 1200,65 L1200,100 L0,100 Z"/>
-    </svg>
-  </div>
-</section>
-
-
-<!-- ============================= UPCOMING HIKES ============================= -->
-<section id="nadolazece" class="py-24 lg:py-32 px-6 lg:px-10 bg-beige">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-14 reveal">
-      <div>
-        <h2 class="font-display text-4xl lg:text-5xl font-semibold max-w-xl">Sljedeći termini na rasporedu</h2>
-      </div>
-      <a href="hikes.html" class="btn btnOutlineDark">Cijeli raspored</a>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-7">
-
-      <article class="reveal bg-white rounded-3xl overflow-hidden hike-card">
-        <div class="img-zoom relative h-56">
-          <img src="https://picsum.photos/seed/prenj-ridge/700/500" alt="Planinari na grebenu Prenja u ranu jutarnju svjetlost" class="w-full h-full object-cover">
-          <span class="badge badge-moderate absolute top-4 left-4 bg-white/95">Srednje zahtjevno</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-semibold mb-1">Prenj — Otiš (2094 m)</h3>
-          <p class="text-sm text-charcoal/60 mb-4">Vodi: Amar Halilović</p>
-          <div class="grid grid-cols-3 gap-2 font-mono-label text-[0.65rem] text-charcoal/55 border-t border-stone pt-4">
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">+1180 m</span>Uspon</div>
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">7h 30min</span>Trajanje</div>
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">4 mjesta</span>Slobodno</div>
-          </div>
-          <a href="hike-detail.html" class="btn btn-primary w-full justify-center mt-6">Prijavi se</a>
-        </div>
-      </article>
-
-      <article class="reveal revealDelay1 bg-white rounded-3xl overflow-hidden hike-card">
-        <div class="img-zoom relative h-56">
-          <img src="https://picsum.photos/seed/bjelasnica-fog/700/500" alt="Magla se diže iznad platoa Bjelašnice" class="w-full h-full object-cover">
-          <span class="badge badge-easy absolute top-4 left-4 bg-white/95">Lako</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-semibold mb-1">Bjelašnica — Olimpijski krug</h3>
-          <p class="text-sm text-charcoal/60 mb-4">Vodi: Lejla Mušinbegović</p>
-          <div class="grid grid-cols-3 gap-2 font-mono-label text-[0.65rem] text-charcoal/55 border-t border-stone pt-4">
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">+540 m</span>Uspon</div>
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">4h 15min</span>Trajanje</div>
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">11 mjesta</span>Slobodno</div>
-          </div>
-          <a href="hike-detail.html" class="btn btn-primary w-full justify-center mt-6">Prijavi se</a>
-        </div>
-      </article>
-
-      <article class="reveal revealDelay2 bg-white rounded-3xl overflow-hidden hike-card">
-        <div class="img-zoom relative h-56">
-          <img src="https://picsum.photos/seed/cvrsnica-peaks/700/500" alt="Vrhovi Čvrsnice pod snijegom u kasno proljeće" class="w-full h-full object-cover">
-          <span class="badge badge-hard absolute top-4 left-4 bg-white/95">Zahtjevno</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display text-xl font-semibold mb-1">Čvrsnica — Pločno (2228 m)</h3>
-          <p class="text-sm text-charcoal/60 mb-4">Vodi: Haris Duraković</p>
-          <div class="grid grid-cols-3 gap-2 font-mono-label text-[0.65rem] text-charcoal/55 border-t border-stone pt-4">
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">+1420 m</span>Uspon</div>
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">9h</span>Trajanje</div>
-            <div><span class="block text-charcoal font-medium text-sm normal-case font-sans">2 mjesta</span>Slobodno</div>
-          </div>
-          <a href="hike-detail.html" class="btn btn-primary w-full justify-center mt-6">Prijavi se</a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
 
 
 
-<!-- ============================= ELEVATION DIVIDER ============================= -->
-<div class="text-forest/25 bg-beige overflow-hidden leading-none">
-  <svg class="elevation-divider" viewBox="0 0 1200 60" preserveAspectRatio="none"><path class="topo-line" d="M0 45 L80 45 L130 15 L190 38 L260 20 L330 44 L410 8 L480 40 L560 24 L640 42 L720 12 L800 40 L880 18 L960 44 L1040 22 L1120 40 L1200 30"/></svg>
-</div>
 
 
-
-<!-- ============================= FEATURE CARDS ============================= -->
-<section class="py-10 lg:py-16 px-6 lg:px-10 bg-beige">
-  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
-    <div class="reveal feature-card" style="--accent:#4A9779;--accent-soft:rgba(74,151,121,.22);">
-      <svg class="featureCardTopo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
-      <div class="featureCardIcon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 20H4L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 15h6" stroke="currentColor" stroke-width="1.6"/></svg>
-      </div>
-      <h3 class="featureCardTitle">Licencirani vodiči</h3>
-      <p class="featureCardText">Svaku turu vodi neko ko poznaje teren napamet, uključujući i alternativne rute kad vrijeme okrene.</p>
-    </div>
-
-    <div class="reveal revealDelay1 feature-card" style="--accent:#8FB579;--accent-soft:rgba(143,181,121,.22);">
-      <svg class="featureCardTopo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
-      <div class="featureCardIcon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-6.5 8-12.5A8 8 0 0 0 4 9.5C4 15.5 12 22 12 22z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
-      </div>
-      <h3 class="featureCardTitle">Provjerena organizacija</h3>
-      <p class="featureCardText">Prijava, plan puta i kontakt osoba na terenu poznati su unaprijed — nema improvizacije na dan izlaska.</p>
-    </div>
-
-    <div class="reveal revealDelay2 feature-card" style="--accent:#E0995C;--accent-soft:rgba(224,153,92,.22);">
-      <svg class="featureCardTopo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
-      <div class="featureCardIcon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="1.6"/></svg>
-      </div>
-      <h3 class="featureCardTitle">Planinarska škola</h3>
-      <p class="featureCardText">Zimski kurs kretanja po snijegu, osnove orijentacije i first-aid radionica — svakog marta.</p>
-    </div>
-
-    <div class="reveal revealDelay3 feature-card" style="--accent:#C97A66;--accent-soft:rgba(201,122,102,.22);">
-      <svg class="featureCardTopo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
-      <div class="featureCardIcon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 20c.6-3.4 3-5.4 5.7-5.4S13.5 16.6 14 20" stroke="currentColor" stroke-width="1.6"/><path d="M14.5 14.9c2 0 3.7 1.8 4.2 4.6" stroke="currentColor" stroke-width="1.6"/></svg>
-      </div>
-      <h3 class="featureCardTitle">Zajednica koja ostaje</h3>
-      <p class="featureCardText">Većina članova ostaje godinama — susjedne kolibe znaju naša imena bolje nego mi njihova.</p>
-    </div>
-
-  </div>
-</section>
+<!-- ============================= ELEVATION DIVIDER =============================
+<div class="bg-beige overflow-hidden leading-none elevation-divider-wrap">
+  <svg class="elevation-divider" viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <path class="topo-line topo-line-back" d="M0 72 L60 72 L100 34 L140 64 L180 24 L220 60 L260 18 L300 58 L340 14 L380 54 L420 26 L460 62 L500 20 L540 58 L580 16 L620 56 L660 28 L700 64 L740 18 L780 52 L820 22 L860 60 L900 14 L940 56 L980 26 L1020 62 L1060 20 L1100 54 L1140 30 L1200 46"/>
+    <path class="topo-line topo-line-front" d="M0 80 L50 80 L90 42 L130 72 L170 30 L210 68 L250 24 L290 64 L330 20 L370 62 L410 32 L450 70 L490 26 L530 66 L570 22 L610 64 L650 34 L690 72 L730 24 L770 60 L810 28 L850 68 L890 20 L930 64 L970 32 L1010 70 L1050 26 L1090 62 L1130 36 L1200 52"/>
+    <circle class="topo-line-dot topo-line-dot-red" cx="410" cy="32" r="5"/>
+    <circle class="topo-line-dot topo-line-dot-ice" cx="890" cy="20" r="4"/>
+  </svg>
+</div> -->
 
 <!-- ============================= POPULAR DESTINATIONS (MASONRY) ============================= -->
 <section class="py-24 lg:py-32 px-6 lg:px-10 bg-beige">
   <div class="max-w-7xl mx-auto">
     <div class="mb-14 reveal">
       <h2 class="font-display text-4xl lg:text-5xl font-semibold max-w-xl">
-        Šest planina, jedna sezona
+        Šest planina kroz jednu nezaboravnu sezonu
       </h2>
     </div>
 
     <div class="masonry">
 
-      <div class="reveal relative rounded-2xl overflow-hidden img-zoom group">
-        <img src="https://picsum.photos/seed/dest-prenj/700/900" alt="Vrh Otiš na Prenju u zoru" class="w-full h-[420px] object-cover">
+      <div class="reveal-left relative rounded-2xl overflow-hidden img-zoom group">
+        <img src="assets/pictures/prenj.jpg" alt="Vrh Otiš na Prenju u zoru" class="w-full h-[420px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Prenj</p>
       </div>
 
-      <div class="reveal revealDelay1 relative rounded-2xl overflow-hidden img-zoom group">
-        <img src="https://picsum.photos/seed/dest-velez/700/560" alt="Zeleni pašnjaci Veleža iznad Mostara" class="w-full h-[280px] object-cover">
+      <div class="reveal-left revealDelay1 relative rounded-2xl overflow-hidden img-zoom group">
+        <img src="assets/pictures/velez.webp" alt="Zeleni pašnjaci Veleža iznad Mostara" class="w-full h-[280px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Velež</p>
       </div>
 
-      <div class="reveal revealDelay2 relative rounded-2xl overflow-hidden img-zoom group">
-        <img src="https://picsum.photos/seed/dest-cvrsnica/700/760" alt="Kameni stupovi Hajdučkih vrata na Čvrsnici" class="w-full h-[360px] object-cover">
+      <div class="reveal-left revealDelay2 relative rounded-2xl overflow-hidden img-zoom group">
+        <img src="assets/pictures/crvrsnica.jpg" alt="Kameni stupovi Hajdučkih vrata na Čvrsnici" class="w-full h-[360px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Čvrsnica</p>
       </div>
 
-      <div class="reveal relative rounded-2xl overflow-hidden img-zoom group">
-        <img src="https://picsum.photos/seed/dest-bjelasnica/700/700" alt="Olimpijska staza na Bjelašnici pod snijegom" class="w-full h-[320px] object-cover">
+      <div class="reveal-left relative rounded-2xl overflow-hidden img-zoom group">
+        <img src="assets/pictures/bjelasnica.jpg"
+     alt="Olimpijska staza na Bjelašnici pod snijegom"
+     class="w-full h-[320px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Bjelašnica</p>
       </div>
 
-      <div class="reveal revealDelay1 relative rounded-2xl overflow-hidden img-zoom group">
-        <img src="https://picsum.photos/seed/dest-maglic/700/900" alt="Najviši vrh BiH — Maglić iznad Trnovačkog jezera" class="w-full h-[420px] object-cover">
+      <div class="reveal-left revealDelay1 relative rounded-2xl overflow-hidden img-zoom group">
+        <img src="assets/pictures/maglic.jpg" alt="Najviši vrh BiH — Maglić iznad Trnovačkog jezera" class="w-full h-[420px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Maglić</p>
       </div>
 
-      <div class="reveal revealDelay2 relative rounded-2xl overflow-hidden img-zoom group">
-        <img src="https://picsum.photos/seed/dest-treskavica/700/600" alt="Visoravan Treskavice u kasno ljeto" class="w-full h-[300px] object-cover">
+      <div class="reveal-left revealDelay2 relative rounded-2xl overflow-hidden img-zoom group">
+        <img src="assets/pictures/konjuh.webp" alt="Visoravan Treskavice u kasno ljeto" class="w-full h-[300px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Konjuh</p>
       </div>
@@ -472,13 +338,39 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
   </div>
 </section>
 
+
+<!-- ============================= STATS ============================= -->
+<section class="relative overflow-hidden bg-navy text-beige py-24 lg:py-32 px-6 lg:px-10 topo-bg">
+
+
+  <div class="relative z-10 max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 text-center">
+    <div class="reveal">
+      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="250" data-suffix="+">0</p>
+      <p class="eyebrow text-beige/60 mt-3">Članova</p>
+    </div>
+    <div class="reveal revealDelay1">
+      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="140" data-suffix="">0</p>
+      <p class="eyebrow text-beige/60 mt-3">Organizovanih tura</p>
+    </div>
+    <div class="reveal revealDelay2">
+      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="35" data-suffix="">0</p>
+      <p class="eyebrow text-beige/60 mt-3">Osvojenih vrhova</p>
+    </div>
+    <div class="reveal revealDelay3">
+      <p class="counter font-display text-5xl lg:text-6xl font-semibold" data-target="18" data-suffix="">0</p>
+      <p class="eyebrow text-beige/60 mt-3">Godina tradicije</p>
+    </div>
+  </div>
+
+</section>
+
 <!-- ============================= TESTIMONIALS ============================= -->
 <section class="py-24 lg:py-32 px-6 lg:px-10 bg-stone/60">
   <div class="max-w-6xl mx-auto">
     <h2 class="font-display text-4xl lg:text-5xl font-semibold max-w-xl mb-14 reveal">Šta kažu oni koji su već hodali s nama</h2>
 
     <div class="grid md:grid-cols-3 gap-8">
-      <figure class="reveal bg-white rounded-2xl p-8">
+      <figure class="reveal-left bg-white rounded-2xl p-8">
         <span class="quote-mark">"</span>
         <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
           Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
@@ -492,7 +384,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
           </div>
         </figcaption>
       </figure>
-      <figure class="reveal revealDelay1 bg-white rounded-2xl p-8">
+      <figure class="reveal-left revealDelay1 bg-white rounded-2xl p-8">
         <span class="quote-mark">"</span>
         <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
           Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
@@ -506,7 +398,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
           </div>
         </figcaption>
       </figure>
-      <figure class="reveal revealDelay2 bg-white rounded-2xl p-8">
+      <figure class="reveal-left revealDelay2 bg-white rounded-2xl p-8">
         <span class="quote-mark">"</span>
         <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
           Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
@@ -525,7 +417,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
 </section>
 
 <!-- ============================= CTA ============================= -->
-<section class="relative min-h-[80vh] lg:min-h-[80vh] px-6 lg:px-10 overflow-hidden flex items-center">
+<section class="relative min-h-[90vh] lg:min-h-[90vh] px-6 lg:px-10 overflow-hidden flex items-center">
 
   <video
     class="absolute inset-0 w-full h-full object-cover"
@@ -536,7 +428,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
     <source src="https://www.pexels.com/download/video/5677389/" type="video/mp4">
   </video>
 
-  <div class="absolute inset-0 bg-forestdeep/40"></div>
+  <div class="absolute inset-0 bg-navydeep/40"></div>
 
   <div class="relative max-w-2xl mx-auto text-center reveal">
     <h2 class="font-display text-beige text-4xl lg:text-5xl font-semibold mb-6">
@@ -557,7 +449,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
 </main>
 
 <!-- ============================= FOOTER ============================= -->
-<footer class="relative bg-forestdeep text-beige">
+<footer class="relative bg-navydeep text-beige">
   <div class="footerTopoDivider" aria-hidden="true">
     <svg viewBox="0 0 1200 90" preserveAspectRatio="none">
       <path d="M0,55 C40,20 70,15 110,32 C150,49 175,10 215,22 C255,34 280,58 320,40 C360,22 390,5 430,18 C470,31 500,55 540,45 C580,35 610,12 650,25 C690,38 720,60 760,48 C800,36 830,15 870,28 C910,41 940,58 980,44 C1020,30 1050,10 1090,24 C1130,38 1160,55 1200,42 L1200,90 L0,90 Z"/>
@@ -630,22 +522,35 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
     <div class="pt-4 mb-10">
       <p class="eyebrow text-beige/50 mb-4">Iz naše galerije</p>
       <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
-        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kolona planinara na stazi" class="rounded-lg aspect-square object-cover">
-        <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logorska vatra uveče na planinarskom domu" class="rounded-lg aspect-square object-cover">
-        <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Šumska staza obasjana suncem" class="rounded-lg aspect-square object-cover">
-        <img src="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pogled sa vrha Maglića na Trnovačko jezero" class="rounded-lg aspect-square object-cover">
-        <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom na Treskavici u magli" class="rounded-lg aspect-square object-cover">
-        <img src="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Detalj planinarske opreme i mape" class="rounded-lg aspect-square object-cover">
+        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Kolona planinara na stazi" class="footerGalleryItem" aria-label="Otvori sliku: Kolona planinara na stazi">
+          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kolona planinara na stazi" class="rounded-lg aspect-square object-cover">
+        </button>
+        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Logorska vatra uveče na planinarskom domu" class="footerGalleryItem" aria-label="Otvori sliku: Logorska vatra uveče na planinarskom domu">
+          <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logorska vatra uveče na planinarskom domu" class="rounded-lg aspect-square object-cover">
+        </button>
+        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Šumska staza obasjana suncem" class="footerGalleryItem" aria-label="Otvori sliku: Šumska staza obasjana suncem">
+          <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Šumska staza obasjana suncem" class="rounded-lg aspect-square object-cover">
+        </button>
+        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Pogled sa vrha Maglića na Trnovačko jezero" class="footerGalleryItem" aria-label="Otvori sliku: Pogled sa vrha Maglića na Trnovačko jezero">
+          <img src="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pogled sa vrha Maglića na Trnovačko jezero" class="rounded-lg aspect-square object-cover">
+        </button>
+        <button type="button" data-lightbox data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Planinarski dom na Treskavici u magli" class="footerGalleryItem" aria-label="Otvori sliku: Planinarski dom na Treskavici u magli">
+          <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom na Treskavici u magli" class="rounded-lg aspect-square object-cover">
+        </button>
+        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Detalj planinarske opreme i mape" class="footerGalleryItem" aria-label="Otvori sliku: Detalj planinarske opreme i mape">
+          <img src="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Detalj planinarske opreme i mape" class="rounded-lg aspect-square object-cover">
+        </button>
       </div>
     </div>
 
   </div>
 
-  <div class="footerGiantMark" aria-hidden="true"><span>PD Konjuh</span></div>
+  <div class="footerGiantMark reveal" aria-hidden="true"><span>PD Konjuh</span></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-10">
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-beige/15 text-xs text-beige/45">
+    <div class="footerBottomRow flex flex-col sm:flex-row justify-between items-center gap-3 pt-2 text-xs text-beige/45">
       <p>© 2026 PD Konjuh, Tuzla. Sva prava zadržana.</p>
+      <p class="footerCredit">Developed by <span>Kartal</span></p>
     </div>
   </div>
 </footer>
