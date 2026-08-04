@@ -73,13 +73,13 @@
 
 <!-- ============================= HEADER ============================= -->
 <header class="site-header">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+  <div class="px-5 lg:px-7 flex items-center justify-between h-16">
     <a href="index.html" class="brand-mark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight">
-      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M2 26L11 9L16 17L20 11L30 26" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M2 26L11 9L16 17L20 11L30 26" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
       PD Konjuh
     </a>
 
-    <nav class="hidden lg:flex items-center gap-9 text-[0.93rem]" aria-label="Glavna navigacija">
+    <nav class="hidden lg:flex items-center gap-8 text-[0.9rem]" aria-label="Glavna navigacija">
       <a href="index.html" class="nav-link" aria-current="page">Početna</a>
       <a href="about.html" class="nav-link">O nama</a>
       <div class="mega-trigger relative">
@@ -188,7 +188,7 @@
   <!-- wave cut at the top, beige bleeding down into the forest band -->
   <div class="wave-divider wave-divider-top" aria-hidden="true">
     <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
-      <path fill="#F6F3EE" d="M0,0 L0,25 C160,70 320,0 500,26 C680,52 760,88 960,55 C1080,35 1140,18 1200,32 L1200,0 Z"/>
+      <path fill="#F6F3EE" d="M0,35 C200,75 400,0 600,40 C800,80 1000,10 1200,35 L1200,0 L0,0 Z"/>
     </svg>
   </div>
 
@@ -214,7 +214,7 @@
   <!-- wave cut at the bottom, beige bleeding up into the forest band -->
   <div class="wave-divider wave-divider-bottom" aria-hidden="true">
     <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
-      <path fill="#F6F3EE" d="M0,100 L0,60 C160,20 320,95 500,64 C680,35 760,10 960,45 C1080,65 1140,80 1200,58 L1200,100 Z"/>
+      <path fill="#F6F3EE" d="M0,65 C200,25 400,100 600,60 C800,20 1000,90 1200,65 L1200,100 L0,100 Z"/>
     </svg>
   </div>
 </section>
@@ -232,7 +232,7 @@
 
     <div class="grid md:grid-cols-3 gap-7">
 
-      <article class="reveal bg-white rounded-3xl overflow-hidden lift">
+      <article class="reveal bg-white rounded-3xl overflow-hidden hike-card">
         <div class="img-zoom relative h-56">
           <img src="https://picsum.photos/seed/prenj-ridge/700/500" alt="Planinari na grebenu Prenja u ranu jutarnju svjetlost" class="w-full h-full object-cover">
           <span class="badge badge-moderate absolute top-4 left-4 bg-white/95">Srednje zahtjevno</span>
@@ -249,7 +249,7 @@
         </div>
       </article>
 
-      <article class="reveal reveal-delay-1 bg-white rounded-3xl overflow-hidden lift">
+      <article class="reveal reveal-delay-1 bg-white rounded-3xl overflow-hidden hike-card">
         <div class="img-zoom relative h-56">
           <img src="https://picsum.photos/seed/bjelasnica-fog/700/500" alt="Magla se diže iznad platoa Bjelašnice" class="w-full h-full object-cover">
           <span class="badge badge-easy absolute top-4 left-4 bg-white/95">Lako</span>
@@ -266,7 +266,7 @@
         </div>
       </article>
 
-      <article class="reveal reveal-delay-2 bg-white rounded-3xl overflow-hidden lift">
+      <article class="reveal reveal-delay-2 bg-white rounded-3xl overflow-hidden hike-card">
         <div class="img-zoom relative h-56">
           <img src="https://picsum.photos/seed/cvrsnica-peaks/700/500" alt="Vrhovi Čvrsnice pod snijegom u kasno proljeće" class="w-full h-full object-cover">
           <span class="badge badge-hard absolute top-4 left-4 bg-white/95">Zahtjevno</span>
@@ -297,28 +297,45 @@
 
 
 <!-- ============================= FEATURE CARDS ============================= -->
-<section class="py-4 lg:py-10 px-6 lg:px-10 bg-beige">
+<section class="py-10 lg:py-16 px-6 lg:px-10 bg-beige">
   <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-    <div class="reveal bg-white rounded-2xl p-7 lift border border-stone/60">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" class="text-forest mb-5" aria-hidden="true"><path d="M12 2l8 20H4L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 15h6" stroke="currentColor" stroke-width="1.6"/></svg>
-      <h3 class="font-display text-lg font-semibold mb-2">Licencirani vodiči</h3>
-      <p class="text-sm text-charcoal/65 leading-relaxed">Svaku turu vodi neko ko poznaje teren napamet, uključujući i alternativne rute kad vrijeme okrene.</p>
+
+    <div class="reveal feature-card" style="--accent:#4A9779;--accent-soft:rgba(74,151,121,.22);">
+      <svg class="feature-card-topo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
+      <div class="feature-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 20H4L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 15h6" stroke="currentColor" stroke-width="1.6"/></svg>
+      </div>
+      <h3 class="feature-card-title">Licencirani vodiči</h3>
+      <p class="feature-card-text">Svaku turu vodi neko ko poznaje teren napamet, uključujući i alternativne rute kad vrijeme okrene.</p>
     </div>
-    <div class="reveal reveal-delay-1 bg-white rounded-2xl p-7 lift border border-stone/60">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" class="text-forest mb-5" aria-hidden="true"><path d="M12 22s8-6.5 8-12.5A8 8 0 0 0 4 9.5C4 15.5 12 22 12 22z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
-      <h3 class="font-display text-lg font-semibold mb-2">Provjerena organizacija</h3>
-      <p class="text-sm text-charcoal/65 leading-relaxed">Prijava, plan puta i kontakt osoba na terenu poznati su unaprijed — nema improvizacije na dan izlaska.</p>
+
+    <div class="reveal reveal-delay-1 feature-card" style="--accent:#8FB579;--accent-soft:rgba(143,181,121,.22);">
+      <svg class="feature-card-topo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
+      <div class="feature-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-6.5 8-12.5A8 8 0 0 0 4 9.5C4 15.5 12 22 12 22z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+      </div>
+      <h3 class="feature-card-title">Provjerena organizacija</h3>
+      <p class="feature-card-text">Prijava, plan puta i kontakt osoba na terenu poznati su unaprijed — nema improvizacije na dan izlaska.</p>
     </div>
-    <div class="reveal reveal-delay-2 bg-white rounded-2xl p-7 lift border border-stone/60">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" class="text-forest mb-5" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="1.6"/></svg>
-      <h3 class="font-display text-lg font-semibold mb-2">Planinarska škola</h3>
-      <p class="text-sm text-charcoal/65 leading-relaxed">Zimski kurs kretanja po snijegu, osnove orijentacije i first-aid radionica — svakog marta.</p>
+
+    <div class="reveal reveal-delay-2 feature-card" style="--accent:#E0995C;--accent-soft:rgba(224,153,92,.22);">
+      <svg class="feature-card-topo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
+      <div class="feature-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="1.6"/></svg>
+      </div>
+      <h3 class="feature-card-title">Planinarska škola</h3>
+      <p class="feature-card-text">Zimski kurs kretanja po snijegu, osnove orijentacije i first-aid radionica — svakog marta.</p>
     </div>
-    <div class="reveal reveal-delay-3 bg-white rounded-2xl p-7 lift border border-stone/60">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" class="text-forest mb-5" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 20c.6-3.4 3-5.4 5.7-5.4S13.5 16.6 14 20" stroke="currentColor" stroke-width="1.6"/><path d="M14.5 14.9c2 0 3.7 1.8 4.2 4.6" stroke="currentColor" stroke-width="1.6"/></svg>
-      <h3 class="font-display text-lg font-semibold mb-2">Zajednica koja ostaje</h3>
-      <p class="text-sm text-charcoal/65 leading-relaxed">Većina članova ostaje godinama — susjedne kolibe znaju naša imena bolje nego mi njihova.</p>
+
+    <div class="reveal reveal-delay-3 feature-card" style="--accent:#C97A66;--accent-soft:rgba(201,122,102,.22);">
+      <svg class="feature-card-topo" viewBox="0 0 120 40" aria-hidden="true"><path d="M0 30 L20 30 L30 15 L45 27 L60 10 L75 25 L90 8 L105 22 L120 15"/></svg>
+      <div class="feature-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 20c.6-3.4 3-5.4 5.7-5.4S13.5 16.6 14 20" stroke="currentColor" stroke-width="1.6"/><path d="M14.5 14.9c2 0 3.7 1.8 4.2 4.6" stroke="currentColor" stroke-width="1.6"/></svg>
+      </div>
+      <h3 class="feature-card-title">Zajednica koja ostaje</h3>
+      <p class="feature-card-text">Većina članova ostaje godinama — susjedne kolibe znaju naša imena bolje nego mi njihova.</p>
     </div>
+
   </div>
 </section>
 
@@ -326,40 +343,131 @@
 <section class="py-24 lg:py-32 px-6 lg:px-10 bg-beige">
   <div class="max-w-7xl mx-auto">
     <div class="mb-14 reveal">
-      <h2 class="font-display text-4xl lg:text-5xl font-semibold max-w-xl">Šest planina, jedna sezona</h2>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold max-w-xl">
+        Šest planina, jedna sezona
+      </h2>
     </div>
 
     <div class="masonry">
-      <a href="hikes.html#prenj" class="reveal block relative rounded-2xl overflow-hidden img-zoom group">
+
+      <div class="reveal relative rounded-2xl overflow-hidden img-zoom group">
         <img src="https://picsum.photos/seed/dest-prenj/700/900" alt="Vrh Otiš na Prenju u zoru" class="w-full h-[420px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Prenj</p>
-      </a>
-      <a href="hikes.html#velez" class="reveal reveal-delay-1 block relative rounded-2xl overflow-hidden img-zoom group">
+      </div>
+
+      <div class="reveal reveal-delay-1 relative rounded-2xl overflow-hidden img-zoom group">
         <img src="https://picsum.photos/seed/dest-velez/700/560" alt="Zeleni pašnjaci Veleža iznad Mostara" class="w-full h-[280px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Velež</p>
-      </a>
-      <a href="hikes.html#cvrsnica" class="reveal reveal-delay-2 block relative rounded-2xl overflow-hidden img-zoom group">
+      </div>
+
+      <div class="reveal reveal-delay-2 relative rounded-2xl overflow-hidden img-zoom group">
         <img src="https://picsum.photos/seed/dest-cvrsnica/700/760" alt="Kameni stupovi Hajdučkih vrata na Čvrsnici" class="w-full h-[360px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Čvrsnica</p>
-      </a>
-      <a href="hikes.html#bjelasnica" class="reveal block relative rounded-2xl overflow-hidden img-zoom group">
+      </div>
+
+      <div class="reveal relative rounded-2xl overflow-hidden img-zoom group">
         <img src="https://picsum.photos/seed/dest-bjelasnica/700/700" alt="Olimpijska staza na Bjelašnici pod snijegom" class="w-full h-[320px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Bjelašnica</p>
-      </a>
-      <a href="hikes.html#maglic" class="reveal reveal-delay-1 block relative rounded-2xl overflow-hidden img-zoom group">
+      </div>
+
+      <div class="reveal reveal-delay-1 relative rounded-2xl overflow-hidden img-zoom group">
         <img src="https://picsum.photos/seed/dest-maglic/700/900" alt="Najviši vrh BiH — Maglić iznad Trnovačkog jezera" class="w-full h-[420px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Maglić</p>
-      </a>
-      <a href="hikes.html#treskavica" class="reveal reveal-delay-2 block relative rounded-2xl overflow-hidden img-zoom group">
+      </div>
+
+      <div class="reveal reveal-delay-2 relative rounded-2xl overflow-hidden img-zoom group">
         <img src="https://picsum.photos/seed/dest-treskavica/700/600" alt="Visoravan Treskavice u kasno ljeto" class="w-full h-[300px] object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/80 via-transparent to-transparent"></div>
         <p class="absolute bottom-5 left-5 text-beige font-display text-2xl font-semibold">Konjuh</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FAQ ============================= -->
+<section class="py-24 lg:py-32 px-6 lg:px-10 bg-beige">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-[0.85fr_1.3fr] gap-14 lg:gap-16">
+
+    <div class="reveal lg:sticky lg:top-28 self-start">
+      <p class="eyebrow text-moss mb-4">Prije nego krenete</p>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold leading-tight mb-6">Najčešća pitanja</h2>
+      <p class="text-charcoal/65 leading-relaxed max-w-sm mb-7">
+        Ono što nas ljudi najčešće pitaju prije prve ture. Ako ne nađete odgovor ovdje, pišite nam direktno.
+      </p>
+      <a href="contact.html" class="inline-flex items-center gap-2 text-forest font-semibold group">
+        Postavite pitanje
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="transition-transform group-hover:translate-x-1"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+    </div>
+
+    <div class="accordion-list reveal reveal-delay-1">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion-trigger aria-expanded="true" aria-controls="faq-1" id="faq-1-trigger">
+          <span>Moram li imati iskustvo da bih se pridružio turi?</span>
+          <span class="accordion-icon-wrap"><svg class="accordion-icon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="accordion-panel" id="faq-1" role="region" aria-labelledby="faq-1-trigger" style="max-height:500px;">
+          <div class="accordion-panel-inner">
+            <p>Ne. Svaka tura ima oznaku zahtjevnosti, a vodič prilagođava tempo grupi. Za lakše ture nije potrebna prethodna iskustvo — samo osnovna kondicija i odgovarajuća obuća.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion-trigger aria-expanded="false" aria-controls="faq-2" id="faq-2-trigger">
+          <span>Šta ako nemam svu opremu?</span>
+          <span class="accordion-icon-wrap"><svg class="accordion-icon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="accordion-panel" id="faq-2" role="region" aria-labelledby="faq-2-trigger">
+          <div class="accordion-panel-inner">
+            <p>Za prvu turu je dovoljna udobna odjeća po slojevima i planinarske cipele. Ostatak opreme (štapovi, dereze, ranac) možete iznajmiti preko društva ili dogovoriti pozajmicu od iskusnijih članova.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion-trigger aria-expanded="false" aria-controls="faq-3" id="faq-3-trigger">
+          <span>Kako izgleda prijava i plaćanje za turu?</span>
+          <span class="accordion-icon-wrap"><svg class="accordion-icon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="accordion-panel" id="faq-3" role="region" aria-labelledby="faq-3-trigger">
+          <div class="accordion-panel-inner">
+            <p>Prijava ide preko stranice svake ture, a broj mjesta je ograničen brojem sjedišta u kombiju. Cijena pokriva prevoz i osiguranje; članovi društva imaju popust na svaku turu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion-trigger aria-expanded="false" aria-controls="faq-4" id="faq-4-trigger">
+          <span>Šta se dešava ako se vrijeme pokvari?</span>
+          <span class="accordion-icon-wrap"><svg class="accordion-icon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="accordion-panel" id="faq-4" role="region" aria-labelledby="faq-4-trigger">
+          <div class="accordion-panel-inner">
+            <p>Vodič prati prognozu do zadnjeg trenutka i ima spremnu alternativnu, laganiju rutu. Ako uslovi postanu opasni, tura se otkazuje ili premješta na drugi termin — sigurnost je uvijek iznad plana.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion-trigger aria-expanded="false" aria-controls="faq-5" id="faq-5-trigger">
+          <span>Kako da postanem član društva?</span>
+          <span class="accordion-icon-wrap"><svg class="accordion-icon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="accordion-panel" id="faq-5" role="region" aria-labelledby="faq-5-trigger">
+          <div class="accordion-panel-inner">
+            <p>Popunite prijavu na stranici <a href="membership.html" class="text-forest underline">Članstvo</a>, odaberite plan i prisustvujte jednom uvodnom izlasku. Nakon toga dobijate pristup rasporedu, mega-popustima na ture i planinarskoj školi.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -417,7 +525,7 @@
 </section>
 
 <!-- ============================= CTA ============================= -->
-<section class="relative min-h-[75vh] lg:min-h-[75vh] px-6 lg:px-10 overflow-hidden flex items-center">
+<section class="relative min-h-[80vh] lg:min-h-[80vh] px-6 lg:px-10 overflow-hidden flex items-center">
 
   <video
     class="absolute inset-0 w-full h-full object-cover"
@@ -432,11 +540,11 @@
 
   <div class="relative max-w-2xl mx-auto text-center reveal">
     <h2 class="font-display text-beige text-4xl lg:text-5xl font-semibold mb-6">
-      Iduća subota je slobodna. Popuni je nekim vrhom.
+      Neka sljedeći vikend bude dan za novi vrh i nezaboravne poglede.
     </h2>
 
     <p class="text-beige/75 mb-9">
-      Bez obzira jeste li nekad bili na planini ili tek razmišljate — prva tura je uvijek uz mentora.
+      Bez obzira jeste li već planinarili ili tek razmišljate o prvom usponu, na prvoj turi bit ćete u pratnji iskusnih vodiča.
     </p>
 
     <a href="membership.html" class="btn btn-primary">
@@ -452,14 +560,14 @@
 <footer class="relative bg-forestdeep text-beige">
   <div class="footer-topo-divider" aria-hidden="true">
     <svg viewBox="0 0 1200 90" preserveAspectRatio="none">
-      <path d="M0 45 L80 45 L130 15 L190 38 L260 20 L330 44 L410 8 L480 40 L560 24 L640 42 L720 12 L800 40 L880 18 L960 44 L1040 22 L1120 40 L1200 30 L1200 90 L0 90 Z"/>
+      <path d="M0,55 C40,20 70,15 110,32 C150,49 175,10 215,22 C255,34 280,58 320,40 C360,22 390,5 430,18 C470,31 500,55 540,45 C580,35 610,12 650,25 C690,38 720,60 760,48 C800,36 830,15 870,28 C910,41 940,58 980,44 C1020,30 1050,10 1090,24 C1130,38 1160,55 1200,42 L1200,90 L0,90 Z"/>
     </svg>
   </div>
   <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-10">
     <div class="grid lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] gap-12 mb-16">
       <div>
         <p class="font-display text-2xl font-semibold mb-4">PD Konjuh</p>
-        <p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Sarajeva. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine od 2008. godine.</p>
+        <p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Tuzle. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine od 1951. godine.</p>
         <div class="flex gap-4">
           <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
           <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
@@ -531,7 +639,12 @@
       </div>
     </div>
 
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-beige/15 text-xs text-beige/45">
+  </div>
+
+  <div class="footer-giant-mark" aria-hidden="true"><span>PD Konjuh</span></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-10">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-beige/15 text-xs text-beige/45">
       <p>© 2026 PD Konjuh, Tuzla. Sva prava zadržana.</p>
     </div>
   </div>

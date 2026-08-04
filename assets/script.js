@@ -41,21 +41,6 @@
     });
   }
 
-  /* ---------- Scroll progress bar ---------- */
-  const progressBar = document.createElement("div");
-  progressBar.className = "scroll-progress";
-  progressBar.setAttribute("aria-hidden", "true");
-  document.body.appendChild(progressBar);
-  const updateProgress = ()=>{
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = pct + "%";
-  };
-  updateProgress();
-  window.addEventListener("scroll", updateProgress, {passive:true});
-  window.addEventListener("resize", updateProgress);
-
   /* ---------- Back to top button ---------- */
   const backToTop = document.createElement("button");
   backToTop.className = "back-to-top";
