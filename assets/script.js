@@ -7,6 +7,22 @@
   /* ---------- HEADER: ALWAYS THE SAME BLURRED GLASS LOOK, NEVER CHANGES ON SCROLL ------ */
   // (intentionally no scroll listener here — the header keeps its opening appearance)
 
+  /* ---------- HEADER HIDES FROM THE MOMENT THE CTA VIDEO SECTION IS REACHED, AND STAYS
+     HIDDEN THROUGH THE REST OF THE PAGE (INCLUDING THE FOOTER) — DESKTOP + MOBILE ---------- */
+  const siteHeader = document.querySelector(".site-header");
+  const ctaVideoSection = document.getElementById("ctaVideoSection");
+  if(siteHeader && ctaVideoSection){
+    siteHeader.classList.add("headerAutoHide");
+    const updateHeaderVisibility = ()=>{
+      const rectTop = ctaVideoSection.getBoundingClientRect().top;
+      // ČIM VRH VIDEO SEKCIJE DOĐE DO VRHA EKRANA (ILI GA PRIJEĐE), NAVBAR OSTAJE SKLONJEN
+      siteHeader.classList.toggle("is-hidden", rectTop <= 0);
+    };
+    updateHeaderVisibility();
+    window.addEventListener("scroll", updateHeaderVisibility, {passive:true});
+    window.addEventListener("resize", updateHeaderVisibility);
+  }
+
   /* ---------- MOBILE MENU (FULL-SCREEN OVERLAY, ICON MORPH HAMBURGER <-> CLOSE) ---------- */
   const menuBtn = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
@@ -14,11 +30,23 @@
   const CLOSE_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   if(menuBtn && mobileMenu){
     menuBtn.classList.add("menuIconMorph");
+    let savedScrollY = 0;
     const setMenuState = (open)=>{
       mobileMenu.classList.toggle("is-open", open);
       mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
       menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
       menuBtn.innerHTML = open ? CLOSE_ICON : HAMBURGER_ICON;
+      if(open){
+        savedScrollY = window.scrollY;
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${savedScrollY}px`;
+        document.body.style.width = "100%";
+      } else {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, savedScrollY);
+      }
       document.body.classList.toggle("overflow-hidden", open);
     };
     menuBtn.addEventListener("click", () => {

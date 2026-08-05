@@ -27,6 +27,9 @@
 
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+/* SPRIJEČI DA BILO KOJI ELEMENT (VELIKI FOOTER NATPIS, MENI, TRAKA S RECENZIJAMA...)
+   NAPRAVI STRANICU ŠIROM OD EKRANA I TIME OMOGUĆI VUČENJE/POMJERANJE LIJEVO-DESNO NA MOBITELU */
+html,body{overflow-x:hidden;width:100%;max-width:100%;}
 [id]{scroll-margin-top:100px;}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
@@ -129,6 +132,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 
+/* ---- NAVBAR SE SKLANJA ČIM SE DOĐE DO CTA VIDEO SEKCIJE (DESKTOP I MOBITEL) ---------- */
+.site-header.headerAutoHide{
+  transition:opacity .4s var(--ease), transform .4s var(--ease), visibility .4s;
+}
+.site-header.headerAutoHide.is-hidden{
+  opacity:0;
+  transform:translate(-50%, -18px);
+  visibility:hidden;
+  pointer-events:none;
+}
+@media (prefers-reduced-motion: reduce){
+  .site-header.headerAutoHide{transition:none;}
+}
+
 .site-header .brand-mark{color:var(--beige);}
 .site-header .nav-link{color:var(--beige);}
 .nav-link{position:relative;padding-bottom:4px;}
@@ -226,6 +243,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .revealDelay2{transition-delay:.16s;}
 .revealDelay3{transition-delay:.24s;}
 .revealDelay4{transition-delay:.32s;}
+.revealDelay5{transition-delay:.4s;}
+
+/* ---- FOOTER GALERIJA: SPORIJE, MEKŠE POJAVLJIVANJE SLIKA ------------------ */
+.footerGalleryItem.reveal{
+  transition-duration:1.3s, 1.3s;
+  transition-timing-function:var(--ease), var(--ease);
+}
 
 /* ---- HERO TEXT: SLOW LEFT-TO-RIGHT ENTRANCE ------------------------------- */
 .reveal-left{
@@ -423,8 +447,8 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   background:
     radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.22), transparent 45%),
     rgba(10,18,15,.96);
-  backdrop-filter:blur(38px) saturate(170%);
-  -webkit-backdrop-filter:blur(38px) saturate(170%);
+  backdrop-filter:blur(52px) saturate(180%);
+  -webkit-backdrop-filter:blur(52px) saturate(180%);
   border:none;
   border-radius:0;
   box-shadow:none;
@@ -453,21 +477,13 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 }
 #mobileMenu a{
   width:100%;
-  display:flex;align-items:center;gap:1.1rem;
+  display:flex;align-items:center;
   text-align:left;
   font-size:1.7rem;
   line-height:1.2;
   padding:1.15rem .25rem;
-  border-bottom:1px solid rgba(246,243,238,.14);
   opacity:0;transform:translateY(-14px);
   transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .3s var(--ease), color .3s var(--ease);
-}
-.mobileMenuList a:first-child{border-top:1px solid rgba(246,243,238,.14);}
-.mobileMenuIndex{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:.75rem;letter-spacing:.08em;
-  color:var(--iceblue);opacity:.75;
-  flex:none;
 }
 .mobileMenuLabel{flex:1;}
 #mobileMenu a:hover,#mobileMenu a:focus-visible{background:rgba(246,243,238,.06);padding-left:.85rem;color:var(--iceblue);}
@@ -494,6 +510,10 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 .footerTopoDivider{
   position:absolute;left:0;right:0;top:-58px;height:58px;
   line-height:0;pointer-events:none;z-index:3;
+}
+/* MANJE IZRAŽENA NERAVNINA NA MOBITELU (RAČUNAR OSTAJE NEPROMIJENJEN) */
+@media(max-width:639px){
+  .footerTopoDivider{top:-32px;height:32px;}
 }
 @media(min-width:1024px){.footerTopoDivider{top:-90px;height:90px;}}
 .footerTopoDivider svg{display:block;width:100%;height:100%;}
