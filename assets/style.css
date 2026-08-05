@@ -446,15 +446,31 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   visibility:visible;
   pointer-events:auto;
 }
-#mobileMenu a{
-  width:100%;max-width:340px;text-align:center;
-  font-size:1.5rem;
-  padding:.85rem 1.5rem;
-  border-radius:.85rem;
-  opacity:0;transform:translateY(-14px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease), background-color .2s var(--ease);
+.mobileMenuList{
+  width:100%;
+  max-width:520px;
+  display:flex;flex-direction:column;
 }
-#mobileMenu a:hover,#mobileMenu a:focus-visible{background:rgba(246,243,238,.08);}
+#mobileMenu a{
+  width:100%;
+  display:flex;align-items:center;gap:1.1rem;
+  text-align:left;
+  font-size:1.7rem;
+  line-height:1.2;
+  padding:1.15rem .25rem;
+  border-bottom:1px solid rgba(246,243,238,.14);
+  opacity:0;transform:translateY(-14px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .3s var(--ease), color .3s var(--ease);
+}
+.mobileMenuList a:first-child{border-top:1px solid rgba(246,243,238,.14);}
+.mobileMenuIndex{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.75rem;letter-spacing:.08em;
+  color:var(--iceblue);opacity:.75;
+  flex:none;
+}
+.mobileMenuLabel{flex:1;}
+#mobileMenu a:hover,#mobileMenu a:focus-visible{background:rgba(246,243,238,.06);padding-left:.85rem;color:var(--iceblue);}
 #mobileMenu.is-open a{opacity:1;transform:translateY(0);}
 #mobileMenu.is-open a:nth-child(1){transition-delay:.1s;}
 #mobileMenu.is-open a:nth-child(2){transition-delay:.15s;}

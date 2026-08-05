@@ -139,16 +139,22 @@
     </div>
   </div>
 
-  <div id="mobileMenu" class="lg:hidden text-beige font-display" aria-hidden="true">
-    <a href="index.html">Početna</a>
-    <a href="about.html">O nama</a>
-    <a href="hikes.html">Ture</a>
-    <a href="plan.html">Plan i program</a>
-    <a href="gallery.html">Galerija</a>
-    <a href="membership.html">Članstvo</a>
-    <a href="contact.html">Kontakt</a>
-  </div>
+
 </header>
+
+<!-- MOBILE MENU — NAMJERNO IZVAN <HEADER> (KOJI IMA TRANSFORM) DA SE FIKSNO POZICIONIRANJE
+     RAČUNA PREMA CIJELOM EKRANU, A NE PREMA TRANSFORMISANOM HEADERU (UZROK "ŠIRENJA"/POMJERANJA) -->
+<div id="mobileMenu" class="lg:hidden text-beige font-display" aria-hidden="true">
+  <nav class="mobileMenuList" aria-label="Mobilna navigacija">
+    <a href="index.html"><span class="mobileMenuIndex">01</span><span class="mobileMenuLabel">Početna</span></a>
+    <a href="about.html"><span class="mobileMenuIndex">02</span><span class="mobileMenuLabel">O nama</span></a>
+    <a href="hikes.html"><span class="mobileMenuIndex">03</span><span class="mobileMenuLabel">Ture</span></a>
+    <a href="plan.html"><span class="mobileMenuIndex">04</span><span class="mobileMenuLabel">Plan i program</span></a>
+    <a href="gallery.html"><span class="mobileMenuIndex">05</span><span class="mobileMenuLabel">Galerija</span></a>
+    <a href="membership.html"><span class="mobileMenuIndex">06</span><span class="mobileMenuLabel">Članstvo</span></a>
+    <a href="contact.html"><span class="mobileMenuIndex">07</span><span class="mobileMenuLabel">Kontakt</span></a>
+  </nav>
+</div>
 
 <main id="glavni-sadrzaj">
 
@@ -183,7 +189,7 @@
 <!-- ============================= ABOUT ============================= -->
 <section class="py-24 lg:py-32 px-6 lg:px-10 bg-beige">
   <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
-    <div class="reveal order-2 lg:order-1">
+    <div class="reveal order-2 lg:order-1 hidden lg:block">
       <div class="rounded-3xl w-full h-[640px] flex items-center justify-center p-10">
         <div class="relative inline-block">
           <img src="assets/pictures/konjuh-logo.png" alt="Grb i logotip Planinarskog društva Konjuh, osnovanog 1951. godine" class="w-auto object-contain drop-shadow-2xl" style="max-height:560px;">
