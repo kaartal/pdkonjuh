@@ -183,13 +183,15 @@
 <!-- ============================= ABOUT ============================= -->
 <section class="py-24 lg:py-32 px-6 lg:px-10 bg-beige">
   <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
-    <div class="reveal order-2 lg:order-1 relative">
+    <div class="reveal order-2 lg:order-1">
       <div class="rounded-3xl w-full h-[640px] flex items-center justify-center p-10">
-        <img src="assets/pictures/konjuh-logo.png" alt="Grb i logotip Planinarskog društva Konjuh, osnovanog 1951. godine" class="max-h-full w-auto object-contain drop-shadow-2xl">
-      </div>
-      <div class="glass-dark absolute -bottom-6 -right-6 rounded-2xl px-6 py-4 hidden sm:block">
-        <p class="text-beige font-display text-2xl font-semibold">1962<span class="text-beige/50">.</span></p>
-        <p class="text-beige/70 text-xs font-mono-label mt-1">prvi zapisani izlazak</p>
+        <div class="relative inline-block">
+          <img src="assets/pictures/konjuh-logo.png" alt="Grb i logotip Planinarskog društva Konjuh, osnovanog 1951. godine" class="w-auto object-contain drop-shadow-2xl" style="max-height:560px;">
+          <div class="glass-dark absolute -bottom-6 -right-6 rounded-2xl px-6 py-4 hidden sm:block">
+            <p class="text-beige font-display text-2xl font-semibold">1962<span class="text-beige/50">.</span></p>
+            <p class="text-beige/70 text-xs font-mono-label mt-1">prvi zapisani izlazak</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="reveal revealDelay1 order-1 lg:order-2">
@@ -204,9 +206,9 @@ Osnivačka skupština Planinarskog društva "Konjuh" održana je u zgradi današ
 
 Za prvog predsjednika Društva izabran je Halid Čokić, a među prvim članovima Upravnog odbora bili su Vasilije Skripta, Eduard Pavlović, Čoko Jakov, Galib Kabadaić, Paša Abidinović, Mustafa Kapidžić i drugi istaknuti ljubitelji prirode. Njihov entuzijazam postavio je temelje društva koje će u narednim decenijama okupljati generacije planinara i promovisati planinarsku kulturu u Bosni i Hercegovini.
       </p>
-      <a href="about.html" class="inline-flex items-center gap-2 text-forest font-semibold group">
+      <a href="about.html" class="inline-flex items-center gap-2 font-semibold group">
         Cijela priča društva
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="transition-transform group-hover:translate-x-1"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" class="transition-transform group-hover:translate-x-1"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </div>
@@ -368,12 +370,16 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
 
 
 <!-- ============================= TESTIMONIALS ============================= -->
-<section class="py-24 lg:py-32 px-6 lg:px-10 bg-stone/60">
-  <div class="max-w-6xl mx-auto">
+<section class="py-24 lg:py-32 lg:px-10 bg-stone/60 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 lg:px-0">
     <h2 class="font-display text-4xl lg:text-5xl font-semibold max-w-xl mb-14 reveal">Šta kažu oni koji su već hodali s nama</h2>
+  </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <figure class="reveal-left bg-white rounded-2xl p-8">
+  <div class="testimonialMarquee">
+    <div class="testimonialTrack">
+
+      <!-- SET 1 -->
+      <figure class="testimonialCard bg-white rounded-2xl p-8">
         <span class="quote-mark">"</span>
         <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
           Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
@@ -387,7 +393,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
           </div>
         </figcaption>
       </figure>
-      <figure class="reveal-left revealDelay1 bg-white rounded-2xl p-8">
+      <figure class="testimonialCard bg-white rounded-2xl p-8">
         <span class="quote-mark">"</span>
         <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
           Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
@@ -401,7 +407,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
           </div>
         </figcaption>
       </figure>
-      <figure class="reveal-left revealDelay2 bg-white rounded-2xl p-8">
+      <figure class="testimonialCard bg-white rounded-2xl p-8">
         <span class="quote-mark">"</span>
         <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
           Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
@@ -415,6 +421,51 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
           </div>
         </figcaption>
       </figure>
+
+      <!-- SET 2 (DUPLIKAT ZA BEŠAVNU PETLJU — SAKRIVEN OD ČITAČA EKRANA) -->
+      <figure class="testimonialCard bg-white rounded-2xl p-8" aria-hidden="true">
+        <span class="quote-mark">"</span>
+        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+          Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
+          niko nije ostao pozadi, a vodič je stalno provjeravao kako se osjećamo.
+        </blockquote>
+        <figcaption class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+          <div>
+            <p class="font-semibold text-sm">Amina K.</p>
+            <p class="text-xs text-charcoal/50">članica od 2021.</p>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="testimonialCard bg-white rounded-2xl p-8" aria-hidden="true">
+        <span class="quote-mark">"</span>
+        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+          Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
+          a sad vodim jedan dio kursa iduće sezone.
+        </blockquote>
+        <figcaption class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+          <div>
+            <p class="font-semibold text-sm">Haris D.</p>
+            <p class="text-xs text-charcoal/50">član od 2019.</p>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="testimonialCard bg-white rounded-2xl p-8" aria-hidden="true">
+        <span class="quote-mark">"</span>
+        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+          Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
+          kad neko pita "jesi li siguran za rutu" umjesto da samo ćuti.
+        </blockquote>
+        <figcaption class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/lejla-m/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+          <div>
+            <p class="font-semibold text-sm">Lejla M.</p>
+            <p class="text-xs text-charcoal/50">članica od 2023.</p>
+          </div>
+        </figcaption>
+      </figure>
+
     </div>
   </div>
 </section>

@@ -112,8 +112,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     ),
     rgba(2,12,17,.55);
 
-  backdrop-filter:blur(24px) saturate(160%);
-  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  backdrop-filter:blur(38px) saturate(170%);
+  -webkit-backdrop-filter:blur(38px) saturate(170%);
 
   border:1px solid rgba(246,243,238,.16);
   border-radius:999px;
@@ -136,7 +136,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
   background:currentColor;transition:width .3s var(--ease);
 }
-.nav-link:hover::after,.nav-link[aria-current="page"]::after{width:100%;}
+.nav-link:hover::after{width:100%;}
 
 /* HEADER CTA PILL, MATCHING THE REFERENCE "CONTACT US" BUTTON */
 .nav-cta{
@@ -216,8 +216,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .lift:hover{transform:translateY(-6px);box-shadow:0 24px 48px -22px rgba(14,51,42,.35);}
 
 .img-zoom{overflow:hidden;}
-.img-zoom img{transition:transform 1.1s var(--ease);}
-.img-zoom:hover img{transform:scale(1.07);}
+.img-zoom img{transition:transform 1.4s var(--ease);}
+.img-zoom:hover img{transform:scale(1.14);}
 
 /* ---- SCROLL REVEAL -------------------------------------------------------- */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
@@ -233,6 +233,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   transition:opacity 1.3s var(--ease), transform 1.3s var(--ease);
 }
 .reveal-left.is-visible{opacity:1;transform:translateX(0);}
+
+/* ---- MASONRY (PLANINE) NA MOBITELU: NAIZMJENIČNO SA DESNE I LIJEVE STRANE ---------- */
+@media(max-width:639px){
+  .masonry > *:nth-child(even).reveal-left{
+    transform:translateX(70px);
+  }
+  .masonry > *:nth-child(even).reveal-left.is-visible{
+    transform:translateX(0);
+  }
+}
 
 /* ---- GLASS (USED SPARINGLY: FLOATING BADGES OVER PHOTOGRAPHY) ------------ */
 .glass{
@@ -296,6 +306,38 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* ---- TESTIMONIAL MARKS -------------------------------------------------- */
 .quote-mark{font-family:'Fraunces',serif;font-size:3.5rem;line-height:1;color:var(--moss);opacity:.35;}
+
+/* ---- TESTIMONIAL MARQUEE — CONTINUOUS RIGHT-TO-LEFT SCROLL, NEVER STOPS --- */
+.testimonialMarquee{
+  width:100%;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+  mask-image:linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+}
+.testimonialTrack{
+  display:flex;
+  width:max-content;
+  gap:2rem;
+  padding:0 6px; /* SPRIJEČI SJENU KARTICE DA SE ODSJEČE */
+  animation:testimonialScroll 42s linear infinite;
+}
+.testimonialCard{
+  flex:none;
+  width:min(86vw, 380px);
+}
+@media(min-width:768px){
+  .testimonialCard{
+    /* TRI KARTICE VIDLJIVE ODJEDNOM NA RAČUNARU, DOK SE TRAKA KREĆE */
+    width:calc((min(1152px, 100vw - 5rem) - 4rem) / 3);
+  }
+}
+@keyframes testimonialScroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion: reduce){
+  .testimonialTrack{animation:none;}
+}
 
 /* ---- MASONRY GALLERY ------------------------------------------------------ */
 .masonry{columns:1;column-gap:1rem;}
@@ -371,56 +413,56 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 /* ---- MOBILE MENU ICON MORPH ------------------------------------------------- */
 .menuIconMorph svg{transition:transform .3s var(--ease);}
 
-/* ---- MOBILE MENU: COMPACT DROPDOWN UNDER THE HEADER, SIZED TO ITS LINKS, OPENS TOP-DOWN ---------- */
+/* ---- MOBILE MENU: FULL-SCREEN OVERLAY (SAME SECTION-STYLE ANIMATION AS THE NAV) ---------- */
 #mobileMenu{
   position:fixed;z-index:45;
-  top:76px;right:1rem;
-  width:max-content;
-  min-width:200px;
-  max-width:calc(100% - 2rem);
+  inset:0;
+  width:100%;
+  max-width:none;
 
   background:
-    radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.18), transparent 45%),
-    rgba(10,18,15,.92);
-  backdrop-filter:blur(24px) saturate(160%);
-  -webkit-backdrop-filter:blur(24px) saturate(160%);
-  border:1px solid rgba(246,243,238,.16);
-  border-radius:1.25rem;
-  box-shadow:0 24px 50px -18px rgba(0,0,0,.55);
+    radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.22), transparent 45%),
+    rgba(10,18,15,.96);
+  backdrop-filter:blur(38px) saturate(170%);
+  -webkit-backdrop-filter:blur(38px) saturate(170%);
+  border:none;
+  border-radius:0;
+  box-shadow:none;
 
-  display:flex;flex-direction:column;
-  padding:.5rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.5rem;
+  padding:2rem;
 
-  transform-origin:top center;
-  transform:scaleY(.4) translateY(-8px);
+  transform-origin:center center;
+  transform:scale(1.04);
   opacity:0;
   visibility:hidden;
-  transition:transform .38s var(--ease), opacity .28s var(--ease), visibility .38s;
+  transition:transform .45s var(--ease), opacity .38s var(--ease), visibility .45s;
   pointer-events:none;
 }
 #mobileMenu.is-open{
-  transform:scaleY(1) translateY(0);
+  transform:scale(1);
   opacity:1;
   visibility:visible;
   pointer-events:auto;
 }
 #mobileMenu a{
-  width:100%;text-align:center;
-  font-size:1.05rem;
+  width:100%;max-width:340px;text-align:center;
+  font-size:1.5rem;
   padding:.85rem 1.5rem;
   border-radius:.85rem;
-  opacity:0;transform:translateY(-10px);
-  transition:opacity .35s var(--ease), transform .35s var(--ease), background-color .2s var(--ease);
+  opacity:0;transform:translateY(-14px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease), background-color .2s var(--ease);
 }
 #mobileMenu a:hover,#mobileMenu a:focus-visible{background:rgba(246,243,238,.08);}
 #mobileMenu.is-open a{opacity:1;transform:translateY(0);}
-#mobileMenu.is-open a:nth-child(1){transition-delay:.08s;}
-#mobileMenu.is-open a:nth-child(2){transition-delay:.12s;}
-#mobileMenu.is-open a:nth-child(3){transition-delay:.16s;}
-#mobileMenu.is-open a:nth-child(4){transition-delay:.20s;}
-#mobileMenu.is-open a:nth-child(5){transition-delay:.24s;}
-#mobileMenu.is-open a:nth-child(6){transition-delay:.28s;}
-#mobileMenu.is-open a:nth-child(7){transition-delay:.32s;}
+#mobileMenu.is-open a:nth-child(1){transition-delay:.1s;}
+#mobileMenu.is-open a:nth-child(2){transition-delay:.15s;}
+#mobileMenu.is-open a:nth-child(3){transition-delay:.2s;}
+#mobileMenu.is-open a:nth-child(4){transition-delay:.25s;}
+#mobileMenu.is-open a:nth-child(5){transition-delay:.3s;}
+#mobileMenu.is-open a:nth-child(6){transition-delay:.35s;}
+#mobileMenu.is-open a:nth-child(7){transition-delay:.4s;}
 @media (prefers-reduced-motion: reduce){
   #mobileMenu,#mobileMenu a{transition:none;}
 }
