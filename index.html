@@ -76,7 +76,7 @@
 <!-- ============================= HEADER ============================= -->
 <header class="site-header">
   <div class="px-5 lg:px-7 flex items-center justify-between h-16">
-   <a href="index.html" class="brand-mark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight">
+   <a href="index.html" aria-current="page" class="brand-mark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight">
   <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
     <!-- Zelena planina -->
     <path
@@ -110,7 +110,7 @@
 </a>
 
     <nav class="hidden lg:flex items-center gap-8 text-[1.05rem]" aria-label="Glavna navigacija">
-      <a href="index.html" class="nav-link" aria-current="page">Početna</a>
+      <a href="index.html" aria-current="page" class="nav-link">Početna</a>
       <a href="about.html" class="nav-link">O nama</a>
       <div class="mega-trigger relative">
         <a href="hikes.html" class="nav-link">Ture</a>
@@ -128,6 +128,7 @@
       </div>
       <a href="plan.html" class="nav-link">Plan i program</a>
       <a href="gallery.html" class="nav-link">Galerija</a>
+      <a href="vijesti.html" class="nav-link">Vijesti</a>
       <a href="contact.html" class="nav-link">Kontakt</a>
     </nav>
 
@@ -146,15 +147,17 @@
      RAČUNA PREMA CIJELOM EKRANU, A NE PREMA TRANSFORMISANOM HEADERU (UZROK "ŠIRENJA"/POMJERANJA) -->
 <div id="mobileMenu" class="lg:hidden text-beige font-display" aria-hidden="true">
   <nav class="mobileMenuList" aria-label="Mobilna navigacija">
-    <a href="index.html"><span class="mobileMenuLabel">Početna</span></a>
+    <a href="index.html" aria-current="page"><span class="mobileMenuLabel">Početna</span></a>
     <a href="about.html"><span class="mobileMenuLabel">O nama</span></a>
     <a href="hikes.html"><span class="mobileMenuLabel">Ture</span></a>
     <a href="plan.html"><span class="mobileMenuLabel">Plan i program</span></a>
     <a href="gallery.html"><span class="mobileMenuLabel">Galerija</span></a>
+    <a href="vijesti.html"><span class="mobileMenuLabel">Vijesti</span></a>
     <a href="membership.html"><span class="mobileMenuLabel">Članstvo</span></a>
     <a href="contact.html"><span class="mobileMenuLabel">Kontakt</span></a>
   </nav>
 </div>
+
 
 <main id="glavni-sadrzaj">
 
@@ -506,8 +509,10 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
 
 </section>
 
+
 </main>
 
+<!-- ============================= FOOTER ============================= -->
 <!-- ============================= FOOTER ============================= -->
 <footer class="relative bg-navydeep text-beige">
   <div class="footerTopoDivider" aria-hidden="true">
@@ -534,6 +539,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
           <li><a href="hikes.html" class="hover:text-beige">Ture</a></li>
           <li><a href="plan.html" class="hover:text-beige">Plan i program</a></li>
           <li><a href="gallery.html" class="hover:text-beige">Galerija</a></li>
+          <li><a href="vijesti.html" class="hover:text-beige">Vijesti</a></li>
         </ul>
       </div>
 
@@ -624,6 +630,8 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
     <figcaption class="text-beige/70 text-sm mt-4"></figcaption>
   </figure>
 </div>
+
+
 
 <script src="assets/script.js"></script>
 </body>
