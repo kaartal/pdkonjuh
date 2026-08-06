@@ -37,591 +37,7 @@
     }
   }
 </script>
-<style>
-/* ==========================================================================
-   PLANINARSKO DRUŠTVO TRESKAVICA — SHARED STYLESHEET
-   DESIGN TOKENS: FOREST #184D3B / MOSS #557A46 / BEIGE #F6F3EE / STONE #E7E5E2
-   FUNCTIONAL ACCENTS: ALPENGLOW #C97B3D (MODERATE) / RUST #8B3A2B (HARD)
-   TYPE: FRAUNCES (DISPLAY) · INTER (BODY/UI) · IBM PLEX MONO (DATA)
-   SIGNATURE MOTIF: TOPOGRAPHIC CONTOUR LINES
-   ========================================================================== */
-
-:root{
-  --forest:#184D3B;
-  --forestDeep:#0E332A;
-  --moss:#557A46;
-  --beige:#F6F3EE;
-  --stone:#E7E5E2;
-  --white:#FFFFFF;
-  --charcoal:#1E1E1E;
-  --alpenglow:#C97B3D;
-  --rust:#8B3A2B;
-  /* BRAND PALETTE — HARMONIZED WITH THE PD KONJUH LOGO (NAVY MOUNTAIN, RED RING, ICE-BLUE ACCENT) */
-  --navy:#0F5875;
-  --navyDeep:#02445E;
-  --brandRed:#DC292B;
-  --brandRedDeep:#A81F21;
-  --iceblue:#51B1DB;
-  --ease:cubic-bezier(.22,.61,.36,1);
-}
-
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-/* PREVENT ANY ELEMENT (LARGE FOOTER WORDMARK, MENU, REVIEW STRIP...) FROM MAKING
-   THE PAGE WIDER THAN THE VIEWPORT, WHICH WOULD ALLOW LEFT-RIGHT DRAG/SCROLL ON MOBILE */
-html,body{overflow-x:hidden;width:100%;max-width:100%;}
-[id]{scroll-margin-top:100px;}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
-}
-
-body{
-  font-family:'Inter',system-ui,sans-serif;
-  color:var(--charcoal);
-  background:var(--beige);
-  -webkit-font-smoothing:antialiased;
-}
-
-h1,h2,h3,h4,.font-display{
-  font-family:'Fraunces',Georgia,serif;
-  letter-spacing:-0.01em;
-}
-
-.fontMonoLabel{
-  font-family:'IBM Plex Mono',monospace;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-}
-
-/* FOCUS VISIBILITY FOR ACCESSIBILITY */
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
-  outline:2px solid var(--alpenglow);
-  outline-offset:3px;
-  border-radius:2px;
-}
-
-::selection{background:var(--moss);color:var(--white);}
-
-/* ---- TOPOGRAPHIC CONTOUR MOTIF ---------------------------------------- */
-.topoBg{
-  background-image:
-    repeating-radial-gradient(circle at 18% 30%, transparent 0, transparent 26px, rgba(246,243,238,.055) 27px, rgba(246,243,238,.055) 28px, transparent 29px),
-    repeating-radial-gradient(circle at 82% 70%, transparent 0, transparent 34px, rgba(246,243,238,.045) 35px, rgba(246,243,238,.045) 36px, transparent 37px);
-  background-size:100% 100%;
-}
-/* ---- ELEVATION DIVIDER — LAYERED, MORE VISIBLE, MODERN RIDGE-LINE MOTIF -------- */
-.elevationDividerWrap{padding:1.3rem 0;}
-.elevationDivider{display:block;width:100%;height:80px;filter:drop-shadow(0 4px 5px rgba(2,68,94,.14));}
-.topoLine{
-  fill:none;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.topoLineBack{
-  stroke:var(--navy);
-  stroke-width:2.5;
-  opacity:.28;
-}
-.topoLineFront{
-  stroke:var(--navyDeep);
-  stroke-width:3;
-  opacity:.8;
-}
-.topoLineDotRed{fill:var(--brandRed);opacity:.95;}
-.topoLineDotIce{fill:var(--iceblue);opacity:.9;}
-@media(min-width:1024px){
-  .elevationDivider{height:100px;}
-}
-
-/* ---- HEADER (FLOATING ROUNDED PILL NAV, PER REFERENCE DESIGN) ----------- */
-/* HEADER KEEPS THE SAME BLURRED GLASS LOOK AT ALL TIMES — IT DOES NOT CHANGE ON SCROLL */
-.siteHeader{
-  position:fixed;
-  top:16px;
-  left:50%;
-  z-index:50;
-
-  transform:translateX(-50%);
-  width:calc(100% - 2rem);
-  max-width:1180px;
-
-  /* PERSISTENT GLASS EFFECT, MATCHED TO THE NAVY/RED PALETTE OF THE LOGO */
-  background:
-    radial-gradient(
-      120% 140% at 6% 100%,
-      rgba(220,41,43,.18),
-      transparent 45%
-    ),
-    rgba(2,12,17,.55);
-
-  backdrop-filter:blur(38px) saturate(170%);
-  -webkit-backdrop-filter:blur(38px) saturate(170%);
-
-  border:1px solid rgba(246,243,238,.16);
-  border-radius:999px;
-
-  box-shadow:
-    0 12px 35px -18px rgba(0,0,0,.55),
-    inset 0 1px 0 rgba(255,255,255,.08);
-}
-
-@media(min-width:1024px){
-  .siteHeader{
-    width:calc(100% - 3.5rem);
-  }
-}
-
-/* ---- NAVBAR HIDES AS SOON AS THE CTA VIDEO SECTION IS REACHED (DESKTOP AND MOBILE) ---------- */
-.siteHeader.headerAutoHide{
-  transition:opacity .4s var(--ease), transform .4s var(--ease), visibility .4s;
-}
-.siteHeader.headerAutoHide.isHidden{
-  opacity:0;
-  transform:translate(-50%, -18px);
-  visibility:hidden;
-  pointer-events:none;
-}
-@media (prefers-reduced-motion: reduce){
-  .siteHeader.headerAutoHide{transition:none;}
-}
-
-.siteHeader .brandMark{color:var(--beige);}
-.siteHeader .navLink{color:var(--beige);}
-.navLink{position:relative;padding-bottom:4px;}
-.navLink::after{
-  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
-  background:currentColor;transition:width .3s var(--ease);
-}
-.navLink:hover::after{width:100%;}
-
-/* HEADER CTA PILL, MATCHING THE REFERENCE "CONTACT US" BUTTON */
-.navCta{
-  background:var(--beige);color:var(--charcoal);
-  border-radius:999px;padding:.6rem 1.35rem;font-weight:600;font-size:.9rem;
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-.navCta:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(0,0,0,.4);}
-
-/* MEGA MENU */
-.megaPanel{
-  opacity:0;visibility:hidden;transform:translateY(8px);
-  transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
-}
-.megaTrigger:hover .megaPanel,
-.megaTrigger:focus-within .megaPanel{
-  opacity:1;visibility:visible;transform:translateY(0);
-}
-
-/* ---- BUTTONS ------------------------------------------------------------ */
-.btn{
-  display:inline-flex;align-items:center;gap:.55rem;
-  padding:.85rem 1.6rem;border-radius:999px;
-  font-size:.92rem;font-weight:600;letter-spacing:.01em;
-  transition:transform .35s var(--ease), background-color .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);
-  white-space:nowrap;
-}
-.btnPrimary{background:var(--navy);color:var(--beige);}
-.btnPrimary:hover{background:var(--navyDeep);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(14,51,42,.5);}
-.btnOutline{background:transparent;color:var(--beige);border:1px solid rgba(246,243,238,.55);}
-.btnOutline:hover{background:rgba(246,243,238,.12);transform:translateY(-2px);}
-.btnOutlineDark{background:transparent;color:var(--forest);border:1px solid rgba(24,77,59,.35);}
-.btnOutlineDark:hover{background:rgba(24,77,59,.06);transform:translateY(-2px);}
-
-/* ---- HIKE CARDS (UPCOMING HIKES) — FULLY STATIC, NO HOVER ANIMATION ----- */
-.hikeCard{
-  border:1px solid var(--stone);
-}
-.hikeCard .imgZoom img{transition:none;}
-.hikeCard .imgZoom:hover img{transform:none;}
-
-/* ---- FEATURE CARDS — DARK, ACCENT BAR + TINTED ICON, STATIC (NO TRANSITION) ---- */
-.featureCard{
-  position:relative;overflow:hidden;
-  background:var(--forestDeep);
-  border:1px solid rgba(246,243,238,.18);
-  border-radius:1.1rem;
-  padding:2.1rem 1.6rem 1.9rem;
-}
-.featureCard::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--accent);
-}
-.featureCardTopo{
-  position:absolute;right:-4px;bottom:-2px;width:120px;height:40px;
-  stroke:rgba(246,243,238,.16);stroke-width:1.4;fill:none;pointer-events:none;
-}
-.featureCardIcon{
-  position:relative;z-index:1;
-  width:46px;height:46px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--accentSoft);color:var(--beige);
-  margin-bottom:1.35rem;
-}
-.featureCardTitle{
-  position:relative;z-index:1;
-  font-family:'Fraunces',Georgia,serif;font-size:1.08rem;font-weight:600;
-  margin-bottom:.5rem;color:var(--beige);
-}
-.featureCardText{
-  position:relative;z-index:1;
-  font-size:.9rem;line-height:1.65;color:rgba(246,243,238,.65);
-}
-
-/* ---- CARDS / HOVER LIFT -------------------------------------------------- */
-.lift{transition:transform .45s var(--ease), box-shadow .45s var(--ease);}
-.lift:hover{transform:translateY(-6px);box-shadow:0 24px 48px -22px rgba(14,51,42,.35);}
-
-.imgZoom{overflow:hidden;}
-.imgZoom img{transition:transform 1.4s var(--ease);}
-.imgZoom:hover img{transform:scale(1.14);}
-
-/* ---- SCROLL REVEAL -------------------------------------------------------- */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
-.reveal.isVisible{opacity:1;transform:translateY(0);}
-.revealDelay1{transition-delay:.08s;}
-.revealDelay2{transition-delay:.16s;}
-.revealDelay3{transition-delay:.24s;}
-.revealDelay4{transition-delay:.32s;}
-.revealDelay5{transition-delay:.4s;}
-
-/* ---- FOOTER GALLERY: SLOWER, SOFTER IMAGE REVEAL ------------------ */
-.footerGalleryItem.reveal{
-  transition-duration:1.3s, 1.3s;
-  transition-timing-function:var(--ease), var(--ease);
-}
-
-/* ---- HERO TEXT: SLOW LEFT-TO-RIGHT ENTRANCE ------------------------------- */
-.revealLeft{
-  opacity:0;transform:translateX(-70px);
-  transition:opacity 1.3s var(--ease), transform 1.3s var(--ease);
-}
-.revealLeft.isVisible{opacity:1;transform:translateX(0);}
-
-/* ---- MASONRY (MOUNTAINS) ON MOBILE: ALTERNATING FROM THE RIGHT AND LEFT SIDE ---------- */
-@media(max-width:639px){
-  .masonry > *:nth-child(even).revealLeft{
-    transform:translateX(70px);
-  }
-  .masonry > *:nth-child(even).revealLeft.isVisible{
-    transform:translateX(0);
-  }
-}
-
-/* ---- GLASS (USED SPARINGLY: FLOATING BADGES OVER PHOTOGRAPHY) ------------ */
-.glass{
-  background:rgba(246,243,238,.16);
-  backdrop-filter:blur(24px) saturate(140%);
-  border:1px solid rgba(246,243,238,.28);
-}
-.glassDark{
-  background:rgba(14,51,42,.42);
-  backdrop-filter:blur(14px) saturate(140%);
-  border:1px solid rgba(246,243,238,.16);
-}
-
-/* ---- DIFFICULTY BADGES ----------------------------------------------------- */
-.badge{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px;display:inline-flex;align-items:center;gap:.4rem;}
-.badge::before{content:"";width:6px;height:6px;border-radius:999px;background:currentColor;}
-.badgeEasy{background:rgba(85,122,70,.12);color:var(--moss);}
-.badgeModerate{background:rgba(81,177,219,.14);color:var(--iceblue);}
-.badgeHard{background:rgba(220,41,43,.13);color:var(--brandRed);}
-
-/* ---- SCROLL INDICATOR ------------------------------------------------------ */
-.scrollIndicator{animation:driftDown 2.4s var(--ease) infinite;}
-@keyframes driftDown{
-  0%,100%{transform:translateY(0);opacity:.55;}
-  50%{transform:translateY(10px);opacity:1;}
-}
-
-/* ---- ANIMATED COUNTERS ------------------------------------------------------ */
-.counter{font-variant-numeric:tabular-nums;}
-
-/* ---- ACCORDION (FAQ) ------------------------------------------------------ */
-.accordionList{
-  background:#F6F3EE;
-  border:1px solid var(--stone);
-  border-radius:1.5rem;
-  padding:.25rem 1.75rem;
-  box-shadow:0 24px 60px -34px rgba(14,51,42,.22);
-}
-.accordionItem{border-bottom:1px solid var(--stone);}
-.accordionItem:last-child{border-bottom:none;}
-.accordionTrigger{
-  width:100%;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;
-  padding:1.35rem .25rem;background:none;border:none;text-align:left;cursor:pointer;
-  font-family:'Fraunces',Georgia,serif;font-size:1.05rem;font-weight:500;
-  color:var(--charcoal);transition:color .25s var(--ease);
-}
-.accordionTrigger:hover{color:var(--forest);}
-.accordionTrigger[aria-expanded="true"]{color:var(--forest);}
-.accordionIconWrap{
-  flex:none;width:30px;height:30px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(85,122,70,.12);color:var(--moss);
-  transition:background-color .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
-}
-.accordionTrigger[aria-expanded="true"] .accordionIconWrap{
-  background:var(--forest);color:var();transform:rotate(45deg);
-}
-.accordionPanel{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
-.accordionPanelInner{padding:0 .25rem 1.5rem;max-width:34rem;}
-.accordionPanelInner p{color:rgba(30,30,30,.68);line-height:1.7;font-size:.95rem;}
-
-/* ---- TESTIMONIAL MARKS -------------------------------------------------- */
-.quoteMark{font-family:'Fraunces',serif;font-size:3.5rem;line-height:1;color:var(--moss);opacity:.35;}
-
-/* ---- TESTIMONIAL MARQUEE — CONTINUOUS RIGHT-TO-LEFT SCROLL, NEVER STOPS --- */
-.testimonialMarquee{
-  width:100%;
-  overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-  mask-image:linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-}
-.testimonialTrack{
-  display:flex;
-  width:max-content;
-  gap:2rem;
-  padding:0 6px; /* PREVENT THE CARD SHADOW FROM BEING CLIPPED */
-  animation:testimonialScroll 42s linear infinite;
-}
-.testimonialCard{
-  flex:none;
-  width:min(86vw, 380px);
-}
-@media(min-width:768px){
-  .testimonialCard{
-    /* THREE CARDS VISIBLE AT ONCE ON DESKTOP, WHILE THE TRACK KEEPS MOVING */
-    width:calc((min(1152px, 100vw - 5rem) - 4rem) / 3);
-  }
-}
-@keyframes testimonialScroll{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-@media (prefers-reduced-motion: reduce){
-  .testimonialTrack{animation:none;}
-}
-
-/* ---- MASONRY GALLERY ------------------------------------------------------ */
-.masonry{columns:1;column-gap:1rem;}
-@media(min-width:640px){.masonry{columns:2;}}
-@media(min-width:1024px){.masonry{columns:3;}}
-.masonry > *{break-inside:avoid;margin-bottom:1rem;}
-
-/* ---- LIGHTBOX ---------------------------------------------------------- */
-#lightbox{
-  position:fixed;inset:0;z-index:100;background:rgba(14,20,17,.94);
-  display:flex;align-items:center;justify-content:center;padding:4vh 4vw;
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity .35s var(--ease),visibility .35s;
-}
-#lightbox.open{opacity:1;visibility:visible;pointer-events:auto;}
-#lightbox img{max-height:88vh;max-width:88vw;border-radius:4px;transform:scale(.94);transition:transform .4s var(--ease);}
-#lightbox.open img{transform:scale(1);}
-@media (prefers-reduced-motion: reduce){
-  #lightbox,#lightbox img{transition:none;}
-}
-
-/* ---- RANGE/SLIDER (HIKES FILTER) ---------------------------------------- */
-input[type="range"]{-webkit-appearance:none;background:transparent;}
-input[type="range"]::-webkit-slider-runnable-track{height:3px;background:var(--stone);border-radius:2px;}
-input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6px;width:15px;height:15px;border-radius:50%;background:var(--forest);border:2px solid var(--beige);box-shadow:0 0 0 1px rgba(24,77,59,.3);}
-
-/* ---- PARALLAX HERO IMAGE -------------------------------------------------- */
-.parallaxImg{will-change:transform;}
-
-/* ---- UTILITY: EYEBROW LABEL ------------------------------------------------ */
-.eyebrow{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--moss);
-}
-
-/* ---- DARK MODE (PREFERS-COLOR-SCHEME) -------------------------------------- */
-@media (prefers-color-scheme: dark){
-  body.supportsDark{background:#12201B;color:var(--beige);}
-  body.supportsDark .bg-beige{background:#12201B !important;}
-  body.supportsDark .bg-white{background:#16261F !important;}
-  body.supportsDark .text-charcoal{color:var(--beige) !important;}
-  body.supportsDark [class*="text-charcoal/"]{color:rgba(246,243,238,.72) !important;}
-  body.supportsDark [class*="bg-stone"]{background-color:#182B23 !important;}
-  body.supportsDark [class*="border-stone"]{border-color:rgba(246,243,238,.14) !important;}
-  body.supportsDark .siteHeader{background:rgba(2,10,14,.85) !important;box-shadow:0 1px 0 rgba(246,243,238,.08) !important;}
-  body.supportsDark .siteHeader .navLink,
-  body.supportsDark .siteHeader .brandMark{color:var(--beige) !important;}
-  body.supportsDark .btnOutlineDark{color:var(--beige) !important;border-color:rgba(246,243,238,.32) !important;}
-  body.supportsDark .btnOutlineDark:hover{background:rgba(246,243,238,.08) !important;}
-  body.supportsDark input,body.supportsDark select,body.supportsDark textarea{
-    background:#182B23 !important;color:var(--beige) !important;border-color:rgba(246,243,238,.18) !important;
-  }
-}
-
-/* SKIP LINK */
-.skipLink{position:absolute;left:-999px;top:0;background:var(--forest);color:var(--beige);padding:.75rem 1.25rem;z-index:200;border-radius:0 0 6px 0;}
-.skipLink:focus{left:0;}
-
-/* ---- BACK TO TOP BUTTON ---------------------------------------------------- */
-.backToTop{
-  position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;
-  width:46px;height:46px;border-radius:999px;
-  background:var(--forest);color:var(--beige);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 24px -8px rgba(14,51,42,.5);
-  opacity:0;visibility:hidden;transform:translateY(10px);
-  transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s,background-color .3s var(--ease);
-}
-.backToTop.isVisible{opacity:1;visibility:visible;transform:translateY(0);}
-.backToTop:hover{background:var(--forestDeep);}
-
-/* ---- MOBILE MENU ICON MORPH ------------------------------------------------- */
-.menuIconMorph svg{transition:transform .3s var(--ease);}
-
-/* ---- MOBILE MENU: FULL-SCREEN OVERLAY (SAME SECTION-STYLE ANIMATION AS THE NAV) ---------- */
-#mobileMenu{
-  position:fixed;z-index:45;
-  inset:0;
-  width:100%;
-  max-width:none;
-
-  background:
-    radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.22), transparent 45%),
-    rgba(10,18,15,.96);
-  backdrop-filter:blur(52px) saturate(180%);
-  -webkit-backdrop-filter:blur(52px) saturate(180%);
-  border:none;
-  border-radius:0;
-  box-shadow:none;
-
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:.5rem;
-  padding:2rem;
-
-  transform-origin:center center;
-  transform:scale(1.04);
-  opacity:0;
-  visibility:hidden;
-  transition:transform .45s var(--ease), opacity .38s var(--ease), visibility .45s;
-  pointer-events:none;
-}
-#mobileMenu.isOpen{
-  transform:scale(1);
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-}
-.mobileMenuList{
-  width:100%;
-  max-width:520px;
-  display:flex;flex-direction:column;
-}
-#mobileMenu a{
-  width:100%;
-  display:flex;align-items:center;
-  text-align:left;
-  font-size:1.7rem;
-  line-height:1.2;
-  padding:1.15rem .25rem;
-  opacity:0;transform:translateY(-14px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .3s var(--ease), color .3s var(--ease);
-}
-.mobileMenuLabel{flex:1;}
-#mobileMenu a:hover,#mobileMenu a:focus-visible{background:rgba(246,243,238,.06);padding-left:.85rem;color:var(--iceblue);}
-#mobileMenu.isOpen a{opacity:1;transform:translateY(0);}
-#mobileMenu.isOpen a:nth-child(1){transition-delay:.1s;}
-#mobileMenu.isOpen a:nth-child(2){transition-delay:.15s;}
-#mobileMenu.isOpen a:nth-child(3){transition-delay:.2s;}
-#mobileMenu.isOpen a:nth-child(4){transition-delay:.25s;}
-#mobileMenu.isOpen a:nth-child(5){transition-delay:.3s;}
-#mobileMenu.isOpen a:nth-child(6){transition-delay:.35s;}
-#mobileMenu.isOpen a:nth-child(7){transition-delay:.4s;}
-@media (prefers-reduced-motion: reduce){
-  #mobileMenu,#mobileMenu a{transition:none;}
-}
-
-/* ---- WAVE DIVIDERS — SOFT, MODERN CURVE CUT INTO THE STATS BAND ---------- */
-.waveDivider{position:absolute;left:0;width:100%;line-height:0;z-index:1;pointer-events:none;}
-.waveDivider svg{display:block;width:100%;height:64px;}
-@media(min-width:1024px){.waveDivider svg{height:104px;}}
-.waveDividerTop{top:0;}
-.waveDividerBottom{bottom:0;}
-
-/* ---- FOOTER TOPOGRAPHIC DIVIDER: OVERLAPS UPWARD ONTO THE CTA VIDEO ------- */
-.footerTopoDivider{
-  position:absolute;left:0;right:0;top:-58px;height:58px;
-  line-height:0;pointer-events:none;z-index:3;
-}
-/* LESS PRONOUNCED RIDGE ON MOBILE (DESKTOP STAYS UNCHANGED) */
-@media(max-width:639px){
-  .footerTopoDivider{top:-32px;height:32px;}
-}
-@media(min-width:1024px){.footerTopoDivider{top:-90px;height:90px;}}
-.footerTopoDivider svg{display:block;width:100%;height:100%;}
-.footerTopoDivider path{fill:var(--navyDeep);}
-
-/* ---- MAGNETIC BUTTONS -------------------------------------------------------- */
-.btn.magnetic{transition:transform .25s var(--ease), background-color .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);}
-
-/* ---- CARD TILT ---------------------------------------------------------------- */
-.lift.tilt{transition:transform .35s var(--ease), box-shadow .45s var(--ease);}
-
-/* ---- FOOTER GIANT WORDMARK (TEXTURED, PER REFERENCE) ----------------------- */
-.footerGiantMark{
-  position:relative;width:100%;overflow:hidden;line-height:.82;
-  padding:.7rem 0 0;
-}
-.footerGiantMark span{
-  display:block;width:100%;text-align:center;
-  font-family:'Fraunces',Georgia,serif;font-weight:700;
-  font-size:clamp(3.4rem,14vw,15rem);letter-spacing:-0.02em;
-  background-image:
-    linear-gradient(180deg, rgba(246,243,238,.16), rgba(246,243,238,.045)),
-    url('https://picsum.photos/seed/konjuh-ridge/1600/460');
-  background-size:cover;background-position:center 35%;background-blend-mode:soft-light;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  white-space:nowrap;
-}
-
-/* ---- FOOTER CURVED TOP EDGE ------------------------------------------------- */
-.footerCurve{display:block;line-height:0;background:var(--beige);}
-.footerCurve svg{display:block;width:100%;height:auto;}
-
-/* ---- FOOTER STARFIELD (USED ON THE MAIN/LARGE FOOTER) ----------------------- */
-.footerStars{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
-.footerStars span{
-  position:absolute;width:2px;height:2px;border-radius:50%;
-  background:var(--beige);opacity:.5;
-  animation:twinkle 3.6s ease-in-out infinite;
-}
-@keyframes twinkle{
-  0%,100%{opacity:.15;}
-  50%{opacity:.75;}
-}
-.shootingStar{
-  position:absolute;top:12%;left:-10%;width:2px;height:2px;border-radius:50%;
-  background:var(--beige);
-  box-shadow:0 0 0 1px rgba(246,243,238,.4);
-  filter:drop-shadow(0 0 6px rgba(246,243,238,.8));
-  animation:shoot 9s linear infinite;
-  animation-delay:4s;
-}
-.shootingStar::before{
-  content:"";position:absolute;top:50%;right:0;width:80px;height:1px;
-  background:linear-gradient(90deg, transparent, rgba(246,243,238,.7));
-  transform:translateY(-50%);
-}
-@keyframes shoot{
-  0%{transform:translate(0,0);opacity:0;}
-  3%{opacity:1;}
-  16%{transform:translate(60vw,28vh);opacity:0;}
-  100%{transform:translate(60vw,28vh);opacity:0;}
-}
-@media (prefers-reduced-motion: reduce){
-  .footerStars span,.shootingStar{animation:none;}
-}
-
-
-</style>
+<link rel="stylesheet" href="assets/style.css">
 
 <script type="application/ld+json">
 {
@@ -649,9 +65,141 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   }}
 
 
- 
 
+  /* ==========================================================================
+     ISPOD JE CSS SAMO ZA INDEX.HTML (NE DIJELI SE S OSTALIM STRANICAMA):
+     REDIZAJNIRANI FAQ (faqCard/faqBadge/faqEdge...) I TESTIMONIALSET DODATAK
+     ZA MARQUEE PETLJU BEZ PRESKOKA. OPĆA .testimonialTrack/.testimonialCard
+     PRAVILA SU U assets/style.css. ---------------------------------------- */
+/* ---- FAQ — REDIZAJNIRANO: ČISTE, RAVNE KARTICE BEZ KRUŽNIH DEKORACIJA -------- */
+/* Gornji rub zadržava topografski (ridge) oblik; donji rub je potpuno ravan. */
+.faqSection{
+  background:linear-gradient(195deg, var(--navyDeep) 0%, var(--navy) 145%);
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+}
 
+/* ---- ZUPČASTA (RIDGE) IVICA — SAMO GORE. DONJI RUB SEKCIJE JE RAVNA LINIJA. ---- */
+.faqEdge{position:absolute;left:0;right:0;line-height:0;pointer-events:none;z-index:2;}
+.faqEdge svg{display:block;width:100%;height:100%;}
+.faqEdgeTop{top:-38px;height:38px;}
+@media(min-width:640px){
+  .faqEdgeTop{top:-56px;height:56px;}
+}
+@media(min-width:1024px){
+  .faqEdgeTop{top:-84px;height:84px;}
+}
+.faqEdgeTop path{fill:var(--navyDeep);}
+
+.faqInner{position:relative;z-index:1;}
+.faqBadge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  color:var(--iceblue);
+  background:rgba(81,177,219,.1);
+  border:1px solid rgba(81,177,219,.3);
+  border-radius:999px;
+  padding:.45rem 1rem;
+  margin-bottom:1.25rem;
+}
+.faqBadge::before{
+  content:"";width:6px;height:6px;border-radius:999px;background:var(--alpenglow);
+  box-shadow:0 0 0 3px rgba(201,123,61,.25);
+}
+.faqHeading{color:var(--beige);}
+.faqLede{color:rgba(246,243,238,.62);}
+
+.faqLink{
+  display:inline-flex;align-items:center;gap:.6rem;
+  color:var(--beige);font-weight:600;font-size:.9rem;
+  background:rgba(246,243,238,.06);
+  border:1px solid rgba(246,243,238,.2);
+  border-radius:999px;
+  padding:.75rem 1.35rem;
+  transition:background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease);
+}
+.faqLink:hover{background:var(--alpenglow);border-color:var(--alpenglow);color:var(--beige);transform:translateY(-2px);}
+
+/* ---- LISTA / STACK KARTICA ---- */
+.faqList{display:flex;flex-direction:column;gap:.85rem;}
+
+.faqItem{position:relative;}
+
+.faqCard{
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+  background:rgba(246,243,238,.045);
+  border:1px solid rgba(246,243,238,.12);
+  transition:background .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease), transform .35s var(--ease);
+}
+.faqItem:hover .faqCard{transform:translateY(-2px);border-color:rgba(246,243,238,.22);background:rgba(246,243,238,.065);}
+.faqItem.isOpen .faqCard{
+  background:rgba(246,243,238,.075);
+  border-color:rgba(81,177,219,.4);
+  box-shadow:0 18px 40px -24px rgba(0,0,0,.55);
+}
+
+/* ACCENT BAR — RASTE KAD JE PITANJE OTVORENO, U BOJAMA POSTOJEĆE PALETE */
+.faqCard::before{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(to bottom, var(--iceblue), var(--alpenglow));
+  opacity:0;
+  transition:opacity .35s var(--ease);
+  z-index:1;
+}
+.faqItem.isOpen .faqCard::before{opacity:1;}
+
+.faqQ{
+  position:relative;z-index:1;
+  width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:1.25rem;
+  text-align:left;
+  padding:1.3rem 1.5rem;
+  color:var(--beige);
+  font-weight:600;
+  font-size:1.02rem;
+  line-height:1.4;
+}
+@media(min-width:640px){.faqQ{font-size:1.1rem;padding:1.5rem 1.85rem;}}
+.faqQ:hover .faqQText{color:var(--iceblue);}
+.faqQText{transition:color .3s var(--ease);}
+
+.faqPlus{
+  flex:none;
+  width:32px;height:32px;
+  border-radius:10px;
+  border:1px solid rgba(246,243,238,.25);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  transition:transform .4s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
+}
+.faqPlus::before,.faqPlus::after{
+  content:"";position:absolute;background:var(--beige);border-radius:2px;
+  transition:transform .35s var(--ease), opacity .35s var(--ease);
+}
+.faqPlus::before{width:12px;height:1.5px;}
+.faqPlus::after{width:1.5px;height:12px;}
+.faqItem.isOpen .faqPlus{border-color:var(--iceblue);background:var(--iceblue);transform:rotate(135deg);}
+.faqItem.isOpen .faqPlus::after{opacity:0;}
+
+.faqA{position:relative;z-index:1;max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.faqAInner{padding:0 1.5rem 1.5rem 1.5rem;max-width:38rem;}
+@media(min-width:640px){.faqAInner{padding:0 2rem 1.85rem 2rem;}}
+.faqAInner p{color:rgba(246,243,238,.68);line-height:1.7;font-size:.95rem;}
+.faqAInner a{color:var(--iceblue);text-decoration:underline;}
+/* EACH SET IS ITS OWN SELF-CONTAINED REPEATING UNIT (CARDS + GAPS + ITS OWN
+   TRAILING GAP TO THE NEXT SET). THIS MAKES THE TWO SETS EXACTLY EQUAL IN
+   WIDTH, SO translateX(-50%) LANDS PRECISELY ON THE SET BOUNDARY WITH NO
+   GAP OR JUMP AT THE LOOP POINT. */
+.testimonialSet{
+  display:flex;
+  flex:none;
+  gap:2rem;
+  padding-right:2rem;
+}
 </style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
@@ -711,6 +259,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
         </div>
       </div>
       <a href="plan.html" class="navLink">Plan i program</a>
+      <a href="domovi.html" class="navLink">Domovi</a>
       <a href="gallery.html" class="navLink">Galerija</a>
       <a href="vijesti.html" class="navLink">Vijesti</a>
       <a href="contact.html" class="navLink">Kontakt</a>
@@ -735,6 +284,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
     <a href="about.html"><span class="mobileMenuLabel">O nama</span></a>
     <a href="hikes.html"><span class="mobileMenuLabel">Ture</span></a>
     <a href="plan.html"><span class="mobileMenuLabel">Plan i program</span></a>
+    <a href="domovi.html"><span class="mobileMenuLabel">Domovi</span></a>
     <a href="gallery.html"><span class="mobileMenuLabel">Galerija</span></a>
     <a href="vijesti.html"><span class="mobileMenuLabel">Vijesti</span></a>
     <a href="membership.html"><span class="mobileMenuLabel">Članstvo</span></a>
@@ -877,86 +427,107 @@ Za prvog predsjednika Društva izabran je Halid Čokić, a među prvim članovim
   </div>
 </section>
 
-<!-- ============================= FAQ ============================= -->
-<section class="py-14 sm:py-20 lg:py-32 px-6 lg:px-10 bg-beige">
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-[0.85fr_1.3fr] gap-14 lg:gap-16">
+<!-- ============================= FAQ — TRAIL WAYPOINTS ============================= -->
+<section class="faqSection py-14 sm:py-20 lg:py-32 px-6 lg:px-10">
+
+  <!-- ZUPČASTA (TOPOGRAFSKA) IVICA — GORNJA -->
+  <div class="faqEdge faqEdgeTop" aria-hidden="true">
+    <svg viewBox="0 0 1200 84" preserveAspectRatio="none">
+      <path d="M0,84 L0,40 C50,10 90,52 140,26 C190,0 230,46 280,20 C330,-6 370,40 420,16 C470,-8 510,36 560,14 C610,-8 650,38 700,18 C750,-4 790,42 840,22 C890,-2 930,40 980,20 C1030,0 1070,44 1120,24 C1150,12 1180,28 1200,20 L1200,84 Z"/>
+    </svg>
+  </div>
+
+  <div class="faqInner max-w-7xl mx-auto grid lg:grid-cols-[0.85fr_1.3fr] gap-14 lg:gap-16">
 
     <div class="reveal lg:sticky lg:top-28 self-start">
-      <h2 class="font-display text-4xl lg:text-5xl font-semibold leading-tight mb-6">Najčešća pitanja</h2>
-      <p class="text-charcoal/65 leading-relaxed max-w-sm mb-7">
-        Najčešća pitanja koja nam planinari postavljaju prije prve ture.
-Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado ćemo vam pomoći.
+      <span class="faqBadge fontMonoLabel text-xs">Prije nego krenete &middot; km 0</span>
+      <h2 class="faqHeading font-display text-4xl lg:text-5xl font-semibold leading-tight mb-6">Najčešća pitanja</h2>
+      <p class="faqLede leading-relaxed max-w-sm mb-7">
+        Pet stanica na koje planinari najčešće naiđu prije prve ture.
+        Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado ćemo vam pomoći.
       </p>
-      <!-- <A HREF="CONTACT.HTML" CLASS="INLINE-FLEX ITEMS-CENTER GAP-2 TEXT-FOREST FONT-SEMIBOLD GROUP">
-        POSTAVITE PITANJE
-        <SVG WIDTH="16" HEIGHT="16" VIEWBOX="0 0 16 16" FILL="NONE" CLASS="TRANSITION-TRANSFORM GROUP-HOVER:TRANSLATE-X-1"><PATH D="M2 8H12M9 3L5 5-5 5" STROKE="CURRENTCOLOR" STROKE-WIDTH="1.6" STROKE-LINECAP="ROUND" STROKE-LINEJOIN="ROUND"/></SVG>
-      </A> -->
+      <a href="contact.html" class="faqLink">
+        Postavite pitanje
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
 
-    <div class="accordionList reveal revealDelay1">
+    <div class="faqList reveal revealDelay1">
 
-      <div class="accordionItem">
-        <button class="accordionTrigger" data-accordion-trigger aria-expanded="true" aria-controls="faq1" id="faq1Trigger">
-          <span>Moram li imati iskustvo da bih se pridružio turi?</span>
-          <span class="accordionIconWrap"><svg class="accordionIcon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="accordionPanel" id="faq1" role="region" aria-labelledby="faq1Trigger" style="max-height:500px;">
-          <div class="accordionPanelInner">
-            <p>Ne. Svaka tura ima oznaku zahtjevnosti, a vodič prilagođava tempo grupi. Za lakše ture nije potrebna prethodna iskustvo — samo osnovna kondicija i odgovarajuća obuća.</p>
+      <div class="faqItem isOpen" data-faq-waypoint>
+        <div class="faqCard">
+          <button class="faqQ" data-accordion-trigger aria-expanded="true" aria-controls="faq1" id="faq1Trigger">
+            <span class="faqQText">Moram li imati iskustvo da bih se pridružio turi?</span>
+            <span class="faqPlus" aria-hidden="true"></span>
+          </button>
+          <div class="faqA" id="faq1" role="region" aria-labelledby="faq1Trigger" style="max-height:500px;">
+            <div class="faqAInner">
+              <p>Ne. Svaka tura ima oznaku zahtjevnosti, a vodič prilagođava tempo grupi. Za lakše ture nije potrebna prethodna iskustvo — samo osnovna kondicija i odgovarajuća obuća.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="accordionItem">
-        <button class="accordionTrigger" data-accordion-trigger aria-expanded="false" aria-controls="faq2" id="faq2Trigger">
-          <span>Šta ako nemam svu opremu?</span>
-          <span class="accordionIconWrap"><svg class="accordionIcon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="accordionPanel" id="faq2" role="region" aria-labelledby="faq2Trigger">
-          <div class="accordionPanelInner">
-            <p>Za prvu turu je dovoljna udobna odjeća po slojevima i planinarske cipele. Ostatak opreme (štapovi, dereze, ranac) možete iznajmiti preko društva ili dogovoriti pozajmicu od iskusnijih članova.</p>
+      <div class="faqItem" data-faq-waypoint>
+        <div class="faqCard">
+          <button class="faqQ" data-accordion-trigger aria-expanded="false" aria-controls="faq2" id="faq2Trigger">
+            <span class="faqQText">Šta ako nemam svu opremu?</span>
+            <span class="faqPlus" aria-hidden="true"></span>
+          </button>
+          <div class="faqA" id="faq2" role="region" aria-labelledby="faq2Trigger">
+            <div class="faqAInner">
+              <p>Za prvu turu je dovoljna udobna odjeća po slojevima i planinarske cipele. Ostatak opreme (štapovi, dereze, ranac) možete iznajmiti preko društva ili dogovoriti pozajmicu od iskusnijih članova.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="accordionItem">
-        <button class="accordionTrigger" data-accordion-trigger aria-expanded="false" aria-controls="faq3" id="faq3Trigger">
-          <span>Kako izgleda prijava i plaćanje za turu?</span>
-          <span class="accordionIconWrap"><svg class="accordionIcon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="accordionPanel" id="faq3" role="region" aria-labelledby="faq3Trigger">
-          <div class="accordionPanelInner">
-            <p>Prijava ide preko stranice svake ture, a broj mjesta je ograničen brojem sjedišta u kombiju. Cijena pokriva prevoz i osiguranje; članovi društva imaju popust na svaku turu.</p>
+      <div class="faqItem" data-faq-waypoint>
+        <div class="faqCard">
+          <button class="faqQ" data-accordion-trigger aria-expanded="false" aria-controls="faq3" id="faq3Trigger">
+            <span class="faqQText">Kako izgleda prijava i plaćanje za turu?</span>
+            <span class="faqPlus" aria-hidden="true"></span>
+          </button>
+          <div class="faqA" id="faq3" role="region" aria-labelledby="faq3Trigger">
+            <div class="faqAInner">
+              <p>Prijava ide preko stranice svake ture, a broj mjesta je ograničen brojem sjedišta u kombiju. Cijena pokriva prevoz i osiguranje; članovi društva imaju popust na svaku turu.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="accordionItem">
-        <button class="accordionTrigger" data-accordion-trigger aria-expanded="false" aria-controls="faq4" id="faq4Trigger">
-          <span>Šta se dešava ako se vrijeme pokvari?</span>
-          <span class="accordionIconWrap"><svg class="accordionIcon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="accordionPanel" id="faq4" role="region" aria-labelledby="faq4Trigger">
-          <div class="accordionPanelInner">
-            <p>Vodič prati prognozu do zadnjeg trenutka i ima spremnu alternativnu, laganiju rutu. Ako uslovi postanu opasni, tura se otkazuje ili premješta na drugi termin — sigurnost je uvijek iznad plana.</p>
+      <div class="faqItem" data-faq-waypoint>
+        <div class="faqCard">
+          <button class="faqQ" data-accordion-trigger aria-expanded="false" aria-controls="faq4" id="faq4Trigger">
+            <span class="faqQText">Šta se dešava ako se vrijeme pokvari?</span>
+            <span class="faqPlus" aria-hidden="true"></span>
+          </button>
+          <div class="faqA" id="faq4" role="region" aria-labelledby="faq4Trigger">
+            <div class="faqAInner">
+              <p>Vodič prati prognozu do zadnjeg trenutka i ima spremnu alternativnu, laganiju rutu. Ako uslovi postanu opasni, tura se otkazuje ili premješta na drugi termin — sigurnost je uvijek iznad plana.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="accordionItem">
-        <button class="accordionTrigger" data-accordion-trigger aria-expanded="false" aria-controls="faq5" id="faq5Trigger">
-          <span>Kako da postanem član društva?</span>
-          <span class="accordionIconWrap"><svg class="accordionIcon" width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M9 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        </button>
-        <div class="accordionPanel" id="faq5" role="region" aria-labelledby="faq5Trigger">
-          <div class="accordionPanelInner">
-            <p>Popunite prijavu na stranici <a href="membership.html" class="text-forest underline">Članstvo</a>, odaberite plan i prisustvujte jednom uvodnom izlasku. Nakon toga dobijate pristup rasporedu, mega-popustima na ture i planinarskoj školi.</p>
+      <div class="faqItem" data-faq-waypoint>
+        <div class="faqCard">
+          <button class="faqQ" data-accordion-trigger aria-expanded="false" aria-controls="faq5" id="faq5Trigger">
+            <span class="faqQText">Kako da postanem član društva?</span>
+            <span class="faqPlus" aria-hidden="true"></span>
+          </button>
+          <div class="faqA" id="faq5" role="region" aria-labelledby="faq5Trigger">
+            <div class="faqAInner">
+              <p>Popunite prijavu na stranici <a href="membership.html">Članstvo</a>, odaberite plan i prisustvujte jednom uvodnom izlasku. Nakon toga dobijate pristup rasporedu, mega-popustima na ture i planinarskoj školi.</p>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
   </div>
+
+  <!-- DONJI RUB SEKCIJE JE NAMJERNO RAVAN — BEZ DEKORATIVNE IVICE -->
 </section>
 
 
@@ -972,92 +543,96 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
     <div class="testimonialTrack">
 
       <!-- SET 1 -->
-      <figure class="testimonialCard bg-white rounded-2xl p-8">
-        <span class="quoteMark">"</span>
-        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-          Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
-          niko nije ostao pozadi, a vodič je stalno provjeravao kako se osjećamo.
-        </blockquote>
-        <figcaption class="flex items-center gap-3">
-          <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-          <div>
-            <p class="font-semibold text-sm">Amina K.</p>
-            <p class="text-xs text-charcoal/50">članica od 2021.</p>
-          </div>
-        </figcaption>
-      </figure>
-      <figure class="testimonialCard bg-white rounded-2xl p-8">
-        <span class="quoteMark">"</span>
-        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-          Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
-          a sad vodim jedan dio kursa iduće sezone.
-        </blockquote>
-        <figcaption class="flex items-center gap-3">
-          <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-          <div>
-            <p class="font-semibold text-sm">Haris D.</p>
-            <p class="text-xs text-charcoal/50">član od 2019.</p>
-          </div>
-        </figcaption>
-      </figure>
-      <figure class="testimonialCard bg-white rounded-2xl p-8">
-        <span class="quoteMark">"</span>
-        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-          Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
-          kad neko pita "jesi li siguran za rutu" umjesto da samo ćuti.
-        </blockquote>
-        <figcaption class="flex items-center gap-3">
-          <img src="https://picsum.photos/seed/lejla-m/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-          <div>
-            <p class="font-semibold text-sm">Lejla M.</p>
-            <p class="text-xs text-charcoal/50">članica od 2023.</p>
-          </div>
-        </figcaption>
-      </figure>
+      <div class="testimonialSet">
+        <figure class="testimonialCard bg-white rounded-2xl p-8">
+          <span class="quoteMark">"</span>
+          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+            Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
+            niko nije ostao pozadi, a vodič je stalno provjeravao kako se osjećamo.
+          </blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-semibold text-sm">Amina K.</p>
+              <p class="text-xs text-charcoal/50">članica od 2021.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="testimonialCard bg-white rounded-2xl p-8">
+          <span class="quoteMark">"</span>
+          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+            Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
+            a sad vodim jedan dio kursa iduće sezone.
+          </blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-semibold text-sm">Haris D.</p>
+              <p class="text-xs text-charcoal/50">član od 2019.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="testimonialCard bg-white rounded-2xl p-8">
+          <span class="quoteMark">"</span>
+          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+            Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
+            kad neko pita "jesi li siguran za rutu" umjesto da samo ćuti.
+          </blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://picsum.photos/seed/lejla-m/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-semibold text-sm">Lejla M.</p>
+              <p class="text-xs text-charcoal/50">članica od 2023.</p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
 
       <!-- SET 2 (DUPLICATE FOR SEAMLESS LOOP — HIDDEN FROM SCREEN READERS) -->
-      <figure class="testimonialCard bg-white rounded-2xl p-8" aria-hidden="true">
-        <span class="quoteMark">"</span>
-        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-          Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
-          niko nije ostao pozadi, a vodič je stalno provjeravao kako se osjećamo.
-        </blockquote>
-        <figcaption class="flex items-center gap-3">
-          <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-          <div>
-            <p class="font-semibold text-sm">Amina K.</p>
-            <p class="text-xs text-charcoal/50">članica od 2021.</p>
-          </div>
-        </figcaption>
-      </figure>
-      <figure class="testimonialCard bg-white rounded-2xl p-8" aria-hidden="true">
-        <span class="quoteMark">"</span>
-        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-          Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
-          a sad vodim jedan dio kursa iduće sezone.
-        </blockquote>
-        <figcaption class="flex items-center gap-3">
-          <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-          <div>
-            <p class="font-semibold text-sm">Haris D.</p>
-            <p class="text-xs text-charcoal/50">član od 2019.</p>
-          </div>
-        </figcaption>
-      </figure>
-      <figure class="testimonialCard bg-white rounded-2xl p-8" aria-hidden="true">
-        <span class="quoteMark">"</span>
-        <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-          Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
-          kad neko pita "jesi li siguran za rutu" umjesto da samo ćuti.
-        </blockquote>
-        <figcaption class="flex items-center gap-3">
-          <img src="https://picsum.photos/seed/lejla-m/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-          <div>
-            <p class="font-semibold text-sm">Lejla M.</p>
-            <p class="text-xs text-charcoal/50">članica od 2023.</p>
-          </div>
-        </figcaption>
-      </figure>
+      <div class="testimonialSet" aria-hidden="true">
+        <figure class="testimonialCard bg-white rounded-2xl p-8">
+          <span class="quoteMark">"</span>
+          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+            Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
+            niko nije ostao pozadi, a vodič je stalno provjeravao kako se osjećamo.
+          </blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-semibold text-sm">Amina K.</p>
+              <p class="text-xs text-charcoal/50">članica od 2021.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="testimonialCard bg-white rounded-2xl p-8">
+          <span class="quoteMark">"</span>
+          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+            Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
+            a sad vodim jedan dio kursa iduće sezone.
+          </blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-semibold text-sm">Haris D.</p>
+              <p class="text-xs text-charcoal/50">član od 2019.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="testimonialCard bg-white rounded-2xl p-8">
+          <span class="quoteMark">"</span>
+          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
+            Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
+            kad neko pita "jesi li siguran za rutu" umjesto da samo ćuti.
+          </blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://picsum.photos/seed/lejla-m/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-semibold text-sm">Lejla M.</p>
+              <p class="text-xs text-charcoal/50">članica od 2023.</p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
 
     </div>
   </div>
@@ -1121,6 +696,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
           <li><a href="about.html" class="hover:text-beige">O nama</a></li>
           <li><a href="hikes.html" class="hover:text-beige">Ture</a></li>
           <li><a href="plan.html" class="hover:text-beige">Plan i program</a></li>
+          <li><a href="domovi.html" class="hover:text-beige">Domovi</a></li>
           <li><a href="gallery.html" class="hover:text-beige">Galerija</a></li>
           <li><a href="vijesti.html" class="hover:text-beige">Vijesti</a></li>
         </ul>
@@ -1447,7 +1023,7 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
     });
   });
 
-  /* ---------- ACCORDION (FAQ) ---------- */
+  /* ---------- ACCORDION (FAQ WAYPOINTS) ---------- */
   document.querySelectorAll("[data-accordion-trigger]").forEach(trigger=>{
     trigger.addEventListener("click", ()=>{
       const panel = document.getElementById(trigger.getAttribute("aria-controls"));
@@ -1456,6 +1032,8 @@ Ako ne pronađete odgovor koji tražite, slobodno nam se obratite direktno, rado
       if(panel){
         panel.style.maxHeight = expanded ? null : panel.scrollHeight + "px";
       }
+      const waypoint = trigger.closest("[data-faq-waypoint]");
+      if(waypoint) waypoint.classList.toggle("isOpen", !expanded);
     });
   });
 
