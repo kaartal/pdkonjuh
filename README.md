@@ -1,197 +1,275 @@
-PD Konjuh — Mountaineering Club Website
+# 🏔️ PD Konjuh — Mountaineering Club Website
 
-A modern, fully responsive static website for Planinarsko društvo Konjuh, a mountaineering club based in Tuzla, Bosnia and Herzegovina, founded in 1951.
+A modern, fully responsive website for **Planinarsko društvo Konjuh**, a mountaineering club based in **Tuzla, Bosnia and Herzegovina**, founded in **1951**.
 
-The project is built entirely with HTML5, Tailwind CSS (CDN) and vanilla JavaScript, with no build step, no framework, and no dependencies. Every page is completely self-contained, meaning each .html file includes its own CSS and JavaScript.
+Built entirely with **HTML5**, **Tailwind CSS (CDN)**, and **vanilla JavaScript**, the project requires **no build process**, **no frameworks**, and **no dependencies**. Every page is completely self-contained, meaning each `.html` file includes its own CSS and JavaScript.
 
-Simply open a page in your browser or deploy the repository to any static hosting provider such as GitHub Pages, Netlify, Vercel, or Amazon S3.
+Simply open any page in your browser or deploy the repository to **GitHub Pages**, **Netlify**, **Vercel**, or any other static hosting provider.
 
-🔎 About
+---
 
-Static, single-file mountaineering club website built with HTML, Tailwind CSS (CDN), and vanilla JavaScript — no build process required, ready for GitHub Pages.
+## 🔎 About
 
-📄 Pages
-File	Description
-index.html	Homepage featuring a full-screen hero, parallax background, about preview, popular hiking destinations, FAQ accordion, testimonial marquee, and a cinematic CTA video section.
-about.html	Club overview with an introduction, mission & values, animated statistics, historical timeline (1951–2026), and a closing call-to-action section.
-gallery.html	Responsive masonry gallery with a "Show More" feature and a fullscreen lightbox for image viewing.
+> **Static, single-file mountaineering club website built with HTML, Tailwind CSS (CDN), and vanilla JavaScript — no build process required, ready for GitHub Pages.**
 
-All pages share the same:
+---
 
-Floating glass navigation bar
-Mega menu for hikes
-Fullscreen mobile navigation
-Footer with social links, photo strip, and oversized textured wordmark
+## ✨ Features
 
-Note: Navigation already includes links for hikes.html, plan.html, vijesti.html, membership.html, and contact.html. These pages reuse the same design system but are not included in this repository yet.
+- 📱 Fully responsive, mobile-first layout
+- 🍔 Fullscreen mobile navigation
+- 🪟 Floating glass navigation bar
+- 🎥 Auto-hiding header
+- 🖼️ Fullscreen image lightbox
+- ❓ Animated FAQ accordion
+- 📊 Scroll-triggered count-up statistics
+- ✨ Scroll reveal animations
+- 🧲 Magnetic buttons (desktop)
+- 🎴 Interactive 3D card tilt
+- 🏔️ Hero parallax effect
+- 💬 Infinite testimonial marquee
+- 🌙 Automatic dark mode support
+- 🥾 Hike filtering interface
+- 📩 Client-side contact/newsletter feedback
+- 📍 GPX download placeholder
+- ♿ Accessibility-friendly interactions
+- 🔍 SEO-ready metadata
+- 📄 Schema.org JSON-LD markup
 
-✨ Features
-📱 Fully responsive, mobile-first layout
-🍔 Fullscreen mobile navigation with animated hamburger icon
-🪟 Floating glass navigation bar
-🎥 Auto-hiding header while the CTA video section is visible
-🖼️ Fullscreen image lightbox with captions
-❓ Accessible FAQ accordion with smooth animations
-📊 Animated count-up statistics using IntersectionObserver
-✨ Scroll reveal animations with staggered timing
-🧲 Magnetic buttons (desktop)
-🎴 Interactive 3D card tilt effect
-🏔️ Hero parallax effect
-💬 Infinite testimonial marquee
-🌙 Automatic dark mode support
-🥾 Hike filtering UI (prepared for future pages)
-📩 Client-side contact/newsletter feedback
-📍 Client-generated GPX download placeholder
-♿ Accessibility-friendly interactions
-🔍 SEO-ready metadata and Open Graph tags
-📄 JSON-LD (SportsOrganization) structured data
-🛠️ Tech Stack
-HTML5
-Tailwind CSS (CDN)
-Vanilla JavaScript (ES6)
-Google Fonts
-Fraunces
-Inter
-IBM Plex Mono
-Poppins
-Open Sans
-Schema.org JSON-LD
+---
 
-No frameworks, bundlers, package managers, or build tools are required.
+## 📄 Pages
 
-📁 Project Structure
+| Page | Description |
+|------|-------------|
+| **index.html** | Homepage featuring a cinematic hero section, parallax image, about preview, hiking destinations, FAQ, testimonial marquee, and CTA video section. |
+| **about.html** | About page with club history, mission, values, animated statistics, timeline, and CTA banner. |
+| **gallery.html** | Responsive masonry gallery with fullscreen lightbox and "Show More" functionality. |
 
-Each page is completely self-contained.
+All pages share the same design system, including:
 
+- Floating navigation bar
+- Mega menu
+- Fullscreen mobile menu
+- Shared footer
+- Shared animations
+- Shared JavaScript functionality
+
+> **Note:** Navigation already includes links for `hikes.html`, `plan.html`, `membership.html`, `vijesti.html`, and `contact.html`. These pages are planned but not yet included in this repository.
+
+---
+
+## 🛠️ Tech Stack
+
+- HTML5
+- Tailwind CSS (CDN)
+- Vanilla JavaScript (ES6)
+- Google Fonts
+  - Fraunces
+  - Inter
+  - IBM Plex Mono
+  - Poppins
+  - Open Sans
+- Schema.org JSON-LD
+
+No frameworks.
+
+No package manager.
+
+No bundler.
+
+No build step.
+
+---
+
+## 📁 Project Structure
+
+Every page is completely self-contained.
+
+```html
 <head>
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { ... },
-                    fontFamily: { ... }
+                    colors: {...},
+                    fontFamily: {...}
                 }
             }
-        }
+        };
     </script>
 
     <style>
         /* Entire stylesheet */
     </style>
+
 </head>
 
 <body>
 
-    <!-- Page Content -->
+    <!-- Page content -->
 
     <script>
         /* Entire JavaScript */
     </script>
 
 </body>
+```
 
+---
 
-📝 Naming Conventions
+## 📝 Naming Conventions
 
-The project follows a consistent naming style:
+Custom code follows a consistent naming style.
 
-Custom CSS classes → lowerCamelCase
-Element IDs → lowerCamelCase
-CSS variables → --forestDeep
-JavaScript variables/functions → lowerCamelCase
+### CSS Classes
 
-Examples:
-
+```css
 .siteHeader
-.mobileMenu
-.navLink
 .heroSection
+.navLink
+.mobileMenu
+.galleryGrid
+```
+
+### JavaScript
+
+```javascript
+openMobileNavigation()
+closeLightboxViewer()
+initializeAccordion()
+```
+
+### CSS Variables
+
+```css
 --forestDeep
+--brandRed
+--iceBlue
+```
 
-Tailwind utility classes remain unchanged:
+Tailwind utility classes remain unchanged.
 
+```html
 bg-beige
 text-charcoal
 px-6
 hover:text-forest
+```
 
-data-* attributes also keep the standard HTML convention:
+HTML `data-*` attributes also keep their standard format.
 
+```html
 data-lightbox
 data-gallery-item
 data-accordion-trigger
+```
 
-JavaScript accesses them through the native dataset API.
+All comments inside the source code are written in **English** using **uppercase section headers**.
 
-All source code comments are written in English using uppercase section headers for consistency throughout the project.
+---
 
-🚀 Getting Started
-Option 1 — Open Directly
+## 🚀 Getting Started
 
-Simply open any .html file in your preferred browser.
+### Option 1 — Open Directly
 
-Option 2 — Run a Local Server
+Simply open any `.html` file in your browser.
 
-Python
+---
 
+### Option 2 — Local Server
+
+#### Python
+
+```bash
 python3 -m http.server 8000
+```
 
-Node.js
+#### Node.js
 
+```bash
 npx serve .
+```
 
-Open:
+Visit:
 
+```
 http://localhost:8000
-Option 3 — GitHub Pages
-Push the repository to GitHub.
-Open Settings → Pages.
-Under Build and deployment, choose Deploy from a branch.
-Select the main branch and the repository root (/).
-Save.
+```
+
+---
+
+### Option 3 — GitHub Pages
+
+1. Push the repository to GitHub.
+2. Open **Settings → Pages**.
+3. Choose **Deploy from a branch**.
+4. Select the **main** branch.
+5. Choose the repository root (`/`).
 
 Your website will be available at:
 
+```
 https://username.github.io/repository-name/
-🎨 Brand Palette
-Color	Hex	Purpose
-Forest	#184D3B	Primary brand color
-Forest Deep	#0E332A	Dark backgrounds & hover states
-Moss	#557A46	Secondary accent
-Beige	#F6F3EE	Main page background
-Stone	#E7E5E2	Borders & dividers
-Charcoal	#1E1E1E	Body text
-Navy	#0F5875	Primary buttons
-Navy Deep	#02445E	Footer background
-Brand Red	#DC292B	Logo accent
-Ice Blue	#51B1DB	Logo accent
-Alpenglow	#C97B3D	Moderate difficulty
-Rust	#8B3A2B	Hard difficulty
-🔤 Typography
-Font	Usage
-Fraunces	Display headings
-Inter	Body text & UI
-IBM Plex Mono	Labels & metadata
-Poppins	About page headings
-Open Sans	About page body text
-♿ Accessibility & Performance
-Keyboard-friendly navigation
-Proper ARIA attributes
-Visible :focus-visible states
-Skip-to-content link
-Full support for prefers-reduced-motion
-Motion effects automatically disabled when appropriate
-Lazy-loaded images
-Optimized hero image loading
-Semantic HTML throughout
-📜 License
+```
+
+---
+
+## 🎨 Brand Palette
+
+| Color | Hex |
+|--------|-----|
+| Forest | `#184D3B` |
+| Forest Deep | `#0E332A` |
+| Moss | `#557A46` |
+| Beige | `#F6F3EE` |
+| Stone | `#E7E5E2` |
+| Charcoal | `#1E1E1E` |
+| Navy | `#0F5875` |
+| Navy Deep | `#02445E` |
+| Brand Red | `#DC292B` |
+| Ice Blue | `#51B1DB` |
+| Alpenglow | `#C97B3D` |
+| Rust | `#8B3A2B` |
+
+---
+
+## 🔤 Typography
+
+| Font | Purpose |
+|------|---------|
+| Fraunces | Display headings |
+| Inter | Body text |
+| IBM Plex Mono | Labels & metadata |
+| Poppins | About page headings |
+| Open Sans | About page content |
+
+---
+
+## ♿ Accessibility
+
+- Keyboard accessible
+- Proper ARIA attributes
+- Visible focus states
+- Skip-to-content link
+- Supports `prefers-reduced-motion`
+- Semantic HTML
+- Lazy-loaded images
+- Optimized hero loading
+
+---
+
+## 📜 License
 
 This repository currently does not include a license.
 
-If you plan to publish or share the project publicly, consider adding an MIT License or another open-source license of your choice.
+If you plan to publish the project publicly, consider adding an **MIT License**.
 
-👨‍💻 Author
+---
 
-Developed by Jusuf and Halid
+## 👨‍💻 Author
+
+Developed with ❤️ by **Halid Kartal, Jusuf Salkanovic**
