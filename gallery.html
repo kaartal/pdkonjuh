@@ -93,8 +93,7 @@
     filter:blur(0);
   }
   /* SUBTLE CONTINUOUS HOVER LIFT ON TOP OF THE REVEAL (DOESN'T FIGHT THE REVEAL TRANSFORM) */
-  .galleryItem{transition:transform .5s var(--ease), box-shadow .5s var(--ease);}
-  .galleryItem.galleryReveal.isVisible:hover{transform:scale(1) translateY(-4px);box-shadow:0 20px 40px -20px rgba(14,51,42,.4);}
+  .galleryItem{transition:box-shadow .5s var(--ease);}
   @media (prefers-reduced-motion: reduce){
     .galleryReveal{opacity:1;transform:none;filter:none;transition:none;}
   }
@@ -121,7 +120,7 @@
 
     <div class="heroContent">
       <h1>Galerija</h1>
-      <p class="heroSub">Trenuci sa staza, vrhova i noćenja pod zvijezdama.</p>
+      <p class="heroSub">Momenti sa staza, vrhova i noćenja pod zvijezdama.</p>
     </div>
     <div class="scrollCue" aria-hidden="true">
       <svg class="scrollArrow" viewBox="0 0 24 24" fill="none"><path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -136,313 +135,308 @@
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Kolona planinara na stazi"
+        data-full="assets/pictures/Gallery/gallery1.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kolona planinara na stazi">
-        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kolona planinara na stazi" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery1.jpg" alt="Kolona planinara na stazi" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-sm">Kolona planinara</span>
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Logorska vatra uveče na planinarskom domu"
+        data-full="assets/pictures/Gallery/gallery2.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Logorska vatra uveče na planinarskom domu">
-        <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logorska vatra uveče na planinarskom domu" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery2.jpg" alt="Logorska vatra uveče na planinarskom domu" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Logorska vatra</span>
+          <!-- <span class="block font-medium text-xs">Logorska vatra</span> -->
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Šumska staza obasjana suncem"
+        data-full="assets/pictures/Gallery/gallery5.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Šumska staza obasjana suncem">
-        <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Šumska staza obasjana suncem" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery5.jpg" alt="Šumska staza obasjana suncem" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Šumska staza</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Pogled sa vrha Maglića na Trnovačko jezero"
+        data-full="assets/pictures/Gallery/gallery8.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled sa vrha Maglića na Trnovačko jezero">
-        <img src="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pogled sa vrha Maglića na Trnovačko jezero" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery8.jpg" alt="Pogled sa vrha Maglića na Trnovačko jezero" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Pogled sa vrha Maglića</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Planinarski dom na Treskavici u magli"
+        data-full="assets/pictures/Gallery/gallery4.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski dom na Treskavici u magli">
-        <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom na Treskavici u magli" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery4.jpg" alt="Planinarski dom na Treskavici u magli" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Dom na Treskavici</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Detalj planinarske opreme i mape"
+        data-full="assets/pictures/Gallery/gallery3.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Detalj planinarske opreme i mape">
-        <img src="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Detalj planinarske opreme i mape" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery3.jpg" alt="Detalj planinarske opreme i mape" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Planinarska oprema</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Panorama planinskih vrhova pri izlasku sunca"
+        data-full="assets/pictures/Gallery/gallery6.jpg"
+
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama planinskih vrhova pri izlasku sunca">
-        <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Panorama planinskih vrhova pri izlasku sunca" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery6.jpg" alt="Panorama planinskih vrhova pri izlasku sunca" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-sm">Panorama pri izlasku sunca</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Planinski pejzaž u smiraj dana"
+        data-full="assets/pictures/Gallery/gallery12.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinski pejzaž u smiraj dana">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinski pejzaž u smiraj dana" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery12.jpg" alt="Planinski pejzaž u smiraj dana" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Smiraj dana na planini</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Uspon prema vrhu kroz kamenjar"
+        data-full="assets/pictures/Gallery/gallery11.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Uspon prema vrhu kroz kamenjar">
-        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Uspon prema vrhu kroz kamenjar" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery11.jpg" alt="Uspon prema vrhu kroz kamenjar" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Uspon kroz kamenjar</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Odmor uz izvor planinske vode"
+        data-full="assets/pictures/Gallery/gallery13.jpg"
+
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Odmor uz izvor planinske vode">
-        <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Odmor uz izvor planinske vode" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery13.jpg" alt="Odmor uz izvor planinske vode" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Izvor planinske vode</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Pogled na dolinu s vrha"
+        data-full="assets/pictures/Gallery/gallery9.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na dolinu s vrha">
-        <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pogled na dolinu s vrha" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery9.jpg" alt="Pogled na dolinu s vrha" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Pogled na dolinu</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Grupa planinara na markiranoj stazi"
+        data-full="assets/pictures/Gallery/gallery10.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Grupa planinara na markiranoj stazi">
-        <img src="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Grupa planinara na markiranoj stazi" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery10.jpg" alt="Grupa planinara na markiranoj stazi" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Markirana staza</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Jutarnja magla iznad šume"
+        data-full="assets/pictures/Gallery/gallery14.jpg"
+
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Jutarnja magla iznad šume">
-        <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jutarnja magla iznad šume" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery14.jpg" alt="Jutarnja magla iznad šume" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-sm">Jutarnja magla</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Zalazak sunca iznad planinskog lanca"
+        data-full="assets/pictures/Gallery/gallery15.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Zalazak sunca iznad planinskog lanca">
-        <img src="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Zalazak sunca iznad planinskog lanca" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery15.jpg" alt="Zalazak sunca iznad planinskog lanca" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Zalazak sunca</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Priprema opreme prije polaska"
+        data-full="assets/pictures/Gallery/gallery16.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Priprema opreme prije polaska">
-        <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Priprema opreme prije polaska" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery16.jpg" alt="Priprema opreme prije polaska" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Priprema opreme</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Snijeg na vrhu kasno u proljeće"
+        data-full="assets/pictures/Gallery/gallery17.jpg"
+
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Snijeg na vrhu kasno u proljeće">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Snijeg na vrhu kasno u proljeće" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery17.jpg" alt="Snijeg na vrhu kasno u proljeće" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Snijeg na vrhu</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Cvjetna livada na planinskom platou"
+        data-full="assets/pictures/Gallery/gallery18.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Cvjetna livada na planinskom platou">
-        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cvjetna livada na planinskom platou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery18.jpg" alt="Cvjetna livada na planinskom platou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Cvjetna livada</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Kamp na proplanku uz vatru"
+        data-full="assets/pictures/Gallery/gallery25.jpg"
+
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kamp na proplanku uz vatru">
-        <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kamp na proplanku uz vatru" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery25.jpg" alt="Kamp na proplanku uz vatru" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Kamp uz vatru</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Pogled na jezero s vidikovca"
+        data-full="assets/pictures/Gallery/gallery19.jpg"
+
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na jezero s vidikovca">
-        <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pogled na jezero s vidikovca" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery19.jpg" alt="Pogled na jezero s vidikovca" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-sm">Pogled s vidikovca</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Strma staza kroz borovu šumu"
+        data-full="assets/pictures/Gallery/gallery20.jpg"
+
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Strma staza kroz borovu šumu">
-        <img src="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Strma staza kroz borovu šumu" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery20.jpg" alt="Strma staza kroz borovu šumu" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Borova šuma</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Planinarski štap i mapa na stijeni"
+        data-full="assets/pictures/Gallery/gallery21.jpg"
+
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski štap i mapa na stijeni">
-        <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski štap i mapa na stijeni" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery21.jpg" alt="Planinarski štap i mapa na stijeni" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Štap i mapa</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Rosa na travi u ranu zoru"
+        data-full="assets/pictures/Gallery/gallery22.jpg"
+
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Rosa na travi u ranu zoru">
-        <img src="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rosa na travi u ranu zoru" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery22.jpg" alt="Rosa na travi u ranu zoru" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Rosa u zoru</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Skupina na odmorištu uz stazu"
+        data-full="assets/pictures/Gallery/gallery23.jpg"
+
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Skupina na odmorištu uz stazu">
-        <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Skupina na odmorištu uz stazu" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery23.jpg" alt="Skupina na odmorištu uz stazu" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Odmorište na stazi</span>
+
         </span>
       </button>
 
       <button type="button"
         data-lightbox
-        data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        data-caption="Panorama vrhova u sumrak"
+        data-full="assets/pictures/Gallery/gallery24.jpg"
+
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama vrhova u sumrak">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Panorama vrhova u sumrak" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/Gallery/gallery24.jpg" alt="Panorama vrhova u sumrak" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="block font-medium text-xs">Panorama u sumrak</span>
+
         </span>
       </button>
     </div>
