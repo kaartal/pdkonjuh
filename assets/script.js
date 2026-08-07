@@ -16,9 +16,9 @@
   var NAV_ITEMS = [
     { key: "index", href: "index.html", label: "Početna" },
     { key: "about", href: "about.html", label: "O nama" },
-    { key: "hikes", href: "hikes.html", label: "Ture", mega: true },
+    { key: "hikes", href: "hikes.html", label: "Ture" },
     { key: "plan", href: "plan.html", label: "Plan i program" },
-    { key: "domovi", href: "domovi.html", label: "Domovi" },
+    { key: "domovi", href: "domovi.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Galerija" },
     { key: "vijesti", href: "vijesti.html", label: "Vijesti" },
     { key: "contact", href: "contact.html", label: "Kontakt" }
@@ -113,7 +113,7 @@
 
   function buildCtaVideo() {
     return (
-      '<section id="ctaVideoSection" class="relative min-h-[90vh] px-6 lg:px-10 overflow-hidden flex items-center">' +
+      '<section id="ctaVideoSection" class="relative min-h-[110vh] px-6 lg:px-10 overflow-hidden flex items-center">' +
       '<video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>' +
       '<source src="https://www.pexels.com/download/video/5677389/" type="video/mp4">' +
       "</video>" +
@@ -624,7 +624,36 @@
   }
 
   /* ==========================================================================
-     18. GALLERY "SHOW MORE" (GALLERY.HTML)
+     18. MAIN GALLERY GRID: STAGGERED SCALE + BLUR REVEAL ON SCROLL (GALLERY.HTML)
+     ========================================================================== */
+
+  function initGalleryReveal() {
+    var galleryRevealEls = document.querySelectorAll("#galleryGrid .galleryReveal:not(.galleryItemExtra)");
+    if (!galleryRevealEls.length) return;
+
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      var galleryIO = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var i = Array.prototype.indexOf.call(galleryRevealEls, el);
+              el.style.transitionDelay = Math.min(i, 8) * 70 + "ms";
+              el.classList.add("isVisible");
+              galleryIO.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+      galleryRevealEls.forEach(function (el) { galleryIO.observe(el); });
+    } else {
+      galleryRevealEls.forEach(function (el) { el.classList.add("isVisible"); });
+    }
+  }
+
+  /* ==========================================================================
+     19. GALLERY "SHOW MORE" (GALLERY.HTML)
      ========================================================================== */
 
   function initGalleryShowMore() {
@@ -645,7 +674,7 @@
   }
 
   /* ==========================================================================
-     19. ABOUT PAGE — REVEAL, COUNT-UP AND SCOPED LIGHTBOX (ABOUT.HTML)
+     20. ABOUT PAGE — REVEAL, COUNT-UP AND SCOPED LIGHTBOX (ABOUT.HTML)
      ========================================================================== */
 
   function initAboutSection() {
@@ -729,7 +758,7 @@
   }
 
   /* ==========================================================================
-     20. BOOTSTRAP
+     21. BOOTSTRAP
      ========================================================================== */
 
   function init() {
@@ -750,6 +779,7 @@
     initGpxDownloads();
     initAccordion();
     initPlanToggle();
+    initGalleryReveal();
     initGalleryShowMore();
     initAboutSection();
   }
