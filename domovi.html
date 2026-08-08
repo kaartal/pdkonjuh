@@ -79,148 +79,73 @@
   .aboutHero .scrollCue{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;color:rgba(255,255,255,.5);animation:onBob 2.6s ease-in-out infinite;}
   .aboutHero .scrollArrow{width:22px;height:28px;stroke:currentColor;}
 
-  /* ---- PLANINARSKI DOMOVI (STRANICA-SPECIFIČNO, NE DIJELI SE) ---------------- */
-/* ---- PLANINARSKI DOMOVI — NUMERISANI TERENSKI UNOSI ------------------------------- */
-/* TOPLIJA, ŽIVLJA VARIJANTA: PUNA KRUŽNA OZNAKA BROJA (ALPENGLOW / NAVY NAIZMJENIČNO),
-   NASLOVI I OZNAKE U POPPINSU (RAZLIČITO OD FRAUNCESA KOJI SE KORISTI U OSTATKU SAJTA),
-   FOTOGRAFIJA U PUNOJ BOJI S TANKOM OBOJENOM LINIJOM PRI VRHU UMJESTO CRNO-BIJELOG FILTERA */
-.domEntryList{border-top:1px solid var(--stone);}
-.domEntry{padding:3rem 0;border-bottom:1px solid var(--stone);}
-.domEntry{--domAccent:var(--alpenglow);--domAccentDeep:var(--rust);}
-.domEntryReverse{--domAccent:var(--navy);--domAccentDeep:var(--navyDeep);}
+  /* ---- PLANINARSKI DOMOVI — HOME (STRANICA-SPECIFIČNO, NE DIJELI SE) ---------------- */
 
-.domEntryHead{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
-.domEntryIndex{
-  flex:none;display:flex;align-items:center;justify-content:center;
-  width:2.75rem;height:2.75rem;border-radius:50%;
-  background:var(--domAccent);color:var(--white);
-  font-family:'Poppins',sans-serif;font-weight:600;
-  font-size:.95rem;letter-spacing:.02em;
-}
-@media(min-width:640px){.domEntryIndex{width:3.25rem;height:3.25rem;font-size:1.05rem;}}
-
-.domEntryHead h3{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
-
-.domEntryBody{display:flex;flex-direction:column;gap:1.75rem;}
+/* intro: label+heading beside the lede, stacked on small screens */
+.domIntro{display:flex;flex-direction:column;gap:1.75rem;margin-bottom:3.5rem;}
 @media(min-width:1024px){
-  .domEntryBody{flex-direction:row;gap:3.25rem;align-items:flex-start;}
-  .domEntryReverse .domEntryBody{flex-direction:row-reverse;}
+  .domIntro{flex-direction:row;gap:4.5rem;align-items:flex-start;}
+  .domIntroHead{flex:0 0 300px;position:sticky;top:7.5rem;}
+  .domIntroBody{flex:1;max-width:640px;}
+}
+.domIntroMark{display:block;width:34px;height:2px;background:var(--amb);margin-bottom:1.15rem;}
+
+.domGrid{display:grid;grid-template-columns:1fr;gap:2.5rem;max-width:760px;margin:0 auto;}
+
+.domCard{background:#fff;border-radius:1.375rem;overflow:hidden;border:1px solid var(--stone);box-shadow:0 1px 2px rgba(14,51,42,.04);transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.domCard:hover{transform:translateY(-5px);box-shadow:0 24px 48px -26px rgba(14,51,42,.32);}
+@media(min-width:700px){
+  .domCard{display:flex;flex-direction:row;align-items:stretch;}
+  .domCard .domCardImgWrap{flex:0 0 40%;aspect-ratio:auto;}
+  .domCard .domCardBody{flex:1;display:flex;flex-direction:column;justify-content:center;}
 }
 
-.domEntryImg{
-  display:block;position:relative;flex:none;
-  width:100%;padding:0;cursor:pointer;overflow:hidden;
-  border-top:4px solid var(--domAccent);
-  box-shadow:0 18px 40px -28px rgba(14,51,42,.35);
-}
-@media(min-width:1024px){.domEntryImg{width:38%;}}
-.domEntryImg img{
-  width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5;
-  transform:scale(1.001);
-  transition:transform .6s var(--ease);
-}
-.domEntryImg:hover img,.domEntryImg:focus-visible img{transform:scale(1.045);}
+.domCardImgWrap{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer;display:block;width:100%;}
+.domCardImgWrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease);}
+.domCardImgWrap:hover img,.domCardImgWrap:focus-visible img{transform:scale(1.05);}
+.domCardImgGrad{position:absolute;inset:0;background:linear-gradient(to top, rgba(14,51,42,.9) 0%, rgba(14,51,42,.22) 48%, transparent 72%);pointer-events:none;}
+.domCardImgTitle{position:absolute;left:0;right:0;bottom:0;padding:1.35rem 1.5rem;color:#fff;pointer-events:none;text-align:left;}
+.domCardImgTitle .eyebrow{color:rgba(255,255,255,.75);}
+.domCardImgTitle h3{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;margin-top:.3rem;letter-spacing:-.01em;}
 
-.domEntryText{flex:1;min-width:0;}
+.domCardBody{padding:1.6rem 1.6rem 1.85rem;}
+.domCardDesc{color:var(--charcoal);opacity:.72;font-size:.95rem;line-height:1.7;margin-bottom:1.5rem;}
 
-.domEntryFacts{display:flex;flex-direction:column;margin:1.6rem 0;}
-@media(min-width:560px){.domEntryFacts{flex-direction:row;}}
-.domEntryFact{padding:.8rem 0;border-top:1px solid var(--stone);}
-@media(min-width:560px){
-  .domEntryFact{flex:1;padding:0 1.35rem;border-top:none;border-left:2px solid var(--stone);}
-  .domEntryFact:first-child{padding-left:0;border-left:none;}
-}
-.domEntryFactLabel{display:block;font-family:'Poppins',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.02em;color:var(--domAccentDeep);margin-bottom:.3rem;}
-.domEntryFactValue{display:block;font-family:'Inter',sans-serif;font-size:1.02rem;font-weight:600;color:var(--charcoal);}
+/* facts as icon-badge rows instead of a boxed 3-column grid */
+.domCardFacts{display:flex;gap:1.25rem;margin:0 0 1.5rem;padding-top:1.25rem;border-top:1px solid var(--stone);}
+.domCardFact{flex:1;min-width:0;display:flex;align-items:center;gap:.6rem;}
+.domCardFactIcon{flex:none;width:32px;height:32px;border-radius:999px;background:var(--beige);display:flex;align-items:center;justify-content:center;color:var(--moss);}
+.domCardFactText{min-width:0;display:flex;flex-direction:column;}
+.domCardFactValue{font-family:'Inter',sans-serif;font-weight:700;font-size:.86rem;color:var(--charcoal);line-height:1.2;white-space:nowrap;}
+.domCardFactLabel{font-family:'Poppins',sans-serif;font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--charcoal);opacity:.5;}
 
-.domEntryTags{
-  font-family:'Poppins',sans-serif;font-weight:500;font-size:.78rem;
-  color:var(--charcoal);opacity:.6;margin-bottom:1.85rem;line-height:1.7;
-}
+.domCardTags{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1.6rem;}
+.domCardTags span{font-family:'Poppins',sans-serif;font-weight:500;font-size:.72rem;color:var(--forest);background:transparent;border:1px solid var(--stone);border-radius:999px;padding:.32rem .75rem;transition:border-color .3s var(--ease);}
+.domCard:hover .domCardTags span{border-color:var(--moss);}
 
-.domEntryLink{
-  position:relative;display:inline-flex;align-items:center;gap:.55rem;
-  font-family:'Poppins',sans-serif;font-weight:600;font-size:.92rem;
-  color:var(--domAccentDeep);padding-bottom:4px;
-  border-bottom:2px solid var(--domAccent);
-  transition:color .3s var(--ease);
-}
-.domEntryLink:hover,.domEntryLink:focus-visible{color:var(--domAccentDeep);border-color:var(--domAccentDeep);}
-.domEntryLink svg{transition:transform .3s var(--ease);}
-.domEntryLink:hover svg,.domEntryLink:focus-visible svg{transform:translateX(4px);}
+.domCardCta{position:relative;display:inline-flex;align-items:center;gap:.7rem;background:#fff;color:var(--forest);padding:.8rem 1.5rem .8rem 1rem;border-radius:999px;border:1.5px solid var(--forest);font-family:'Poppins',sans-serif;font-weight:600;font-size:.85rem;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);}
+.domCardCta .domCardCtaIcon{flex:none;width:30px;height:30px;border-radius:999px;background:var(--forest);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .25s var(--ease);}
+.domCardCta:hover,.domCardCta:focus-visible{background:var(--forest);color:#fff;transform:translateY(-2px);}
+.domCardCta:hover .domCardCtaIcon,.domCardCta:focus-visible .domCardCtaIcon{background:#fff;color:var(--forest);}
 
-.domCallout{
-  display:flex;flex-direction:column;gap:1.5rem;
-  background:var(--forestDeep);color:var(--beige);
-  border-radius:1.75rem;
-  padding:2.25rem 1.75rem;
-  margin-top:1rem;
-}
-@media(min-width:768px){
-  .domCallout{flex-direction:row;align-items:center;justify-content:space-between;gap:2rem;padding:2.5rem 3rem;}
-}
+.domCardCtaRow{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;}
 </style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
-<a href="#mainContent" class="skipLink">Preskoči na sadržaj</a>
+<div id="pageLoader" class="pageLoader" role="status" aria-live="polite" aria-label="Ucitavanje stranice">
 
-<header class="siteHeader">
-  <div class="px-5 lg:px-7 flex items-center justify-between h-16">
-   <a href="index.html" class="brandMark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight">
-  <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-    <path d="M2 26L11 9L16 17" stroke="#2E8B57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M11 9L16 17L20 11" stroke="#C0392B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M20 11L30 26" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg>
-  <span>PD Konjuh</span>
-</a>
+<circle class="peakSun" cx="150" cy="46" r="15"></circle>
+<path class="peakLine peakLineBack" d="M0 122 L52 60 L88 96 L128 34 L172 92 L208 58 L240 104" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+<path class="peakLine peakLineFront" d="M0 132 L40 82 L72 108 L112 50 L150 104 L190 70 L240 122" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle class="peakClimber" cx="0" cy="132" r="4.5"></circle>
+</svg>
 
-    <nav class="hidden lg:flex items-center gap-8 text-[1.05rem]" aria-label="Glavna navigacija">
-      <a href="index.html" class="navLink">Početna</a>
-      <a href="about.html" class="navLink">O nama</a>
-      <div class="megaTrigger relative">
-        <a href="hikes.html" class="navLink">Ture</a>
-        <div class="megaPanel absolute left-1/2 -translate-x-1/2 top-full pt-5 w-[520px]">
-          <div class="bg-white rounded-2xl shadow-2xl border border-stone/60 p-6 grid grid-cols-2 gap-x-8 gap-y-3">
-            <a href="hikes.html#prenj" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Prenj</a>
-            <a href="hikes.html#cvrsnica" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Čvrsnica</a>
-            <a href="hikes.html#velez" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Velež</a>
-            <a href="hikes.html#maglic" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Maglić</a>
-            <a href="hikes.html#bjelasnica" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Bjelašnica</a>
-            <a href="hikes.html#treskavica" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Treskavica</a>
-            <a href="hikes.html" class="col-span-2 mt-1 text-forest text-sm font-semibold">Sve ture →</a>
-          </div>
-        </div>
-      </div>
-      <a href="plan.html" class="navLink">Plan i program</a>
-      <a href="domovi.html" aria-current="page" class="navLink">Domovi</a>
-      <a href="gallery.html" class="navLink">Galerija</a>
-      <a href="vijesti.html" class="navLink">Vijesti</a>
-      <a href="contact.html" class="navLink">Kontakt</a>
-    </nav>
-
-    <div class="flex items-center gap-3">
-      <a href="membership.html" class="hidden sm:inline-flex navCta">Postani član</a>
-      <button id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden text-beige p-2 relative z-50" aria-label="Otvori meni">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-  </div>
-</header>
-
-<div id="mobileMenu" class="lg:hidden text-beige font-display" aria-hidden="true">
-  <nav class="mobileMenuList" aria-label="Mobilna navigacija">
-    <a href="index.html"><span class="mobileMenuLabel">Početna</span></a>
-    <a href="about.html"><span class="mobileMenuLabel">O nama</span></a>
-    <a href="hikes.html"><span class="mobileMenuLabel">Ture</span></a>
-    <a href="plan.html"><span class="mobileMenuLabel">Plan i program</span></a>
-    <a href="domovi.html" aria-current="page"><span class="mobileMenuLabel">Domovi</span></a>
-    <a href="gallery.html"><span class="mobileMenuLabel">Galerija</span></a>
-    <a href="vijesti.html"><span class="mobileMenuLabel">Vijesti</span></a>
-    <a href="membership.html"><span class="mobileMenuLabel">Članstvo</span></a>
-    <a href="contact.html"><span class="mobileMenuLabel">Kontakt</span></a>
-  </nav>
+<div class="pageLoaderBar"><span></span></div>
 </div>
+</div>
+<a href="#mainContent" class="skipLink">Preskoči na sadržaj</a>
+<div id="siteHeaderRoot"></div>
+<div id="mobileMenuRoot"></div>
 
 <main id="mainContent">
 
@@ -246,133 +171,126 @@
   </section>
 </div>
 
-<section id="domoviSection" class="pt-24 pb-10 px-6">
+<section id="domoviSection" class="pt-24 pb-10 px-6 lg:px-10">
   <div class="max-w-6xl mx-auto">
 
     <!-- INTRO -->
-    <div class="max-w-2xl mb-16 reveal">
-      <span class="eyebrow">Naši objekti &middot; Konjuh</span>
-      <h2 class="font-display text-3xl sm:text-4xl font-semibold mt-3 mb-5 leading-tight">Dva doma na Konjuhu</h2>
-      <p class="text-charcoal/70 leading-relaxed">
-        Društvo održava dva planinarska doma na obroncima Konjuha — polazne tačke, prenoćišta i utočišta za sve koji krenu na stazu.
-        Oba su otvorena za članove i goste, uz prethodnu najavu.
-      </p>
-    </div>
+    <div class="domIntro">
+      <div class="domIntroHead">
+        <span class="domIntroMark" aria-hidden="true"></span>
+        <p class="eyebrow text-moss mb-3">Smještaj na Konjuhu</p>
+        <h2 class="font-display text-[2.05rem] sm:text-4xl font-semibold leading-[1.1] tracking-tight">Dva doma na Konjuhu</h2>
+      </div>
 
-    <!-- QUICK FACTS STRIP -->
-    <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mb-16 reveal revealDelay1">
-      <div>
-        <p class="font-display text-3xl sm:text-4xl font-semibold text-forest"><span class="counter" data-target="2">0</span></p>
-        <p class="text-xs sm:text-sm text-charcoal/55 mt-1">doma na Konjuhu</p>
-      </div>
-      <div>
-        <p class="font-display text-3xl sm:text-4xl font-semibold text-forest"><span class="counter" data-target="50" data-suffix="+">0</span></p>
-        <p class="text-xs sm:text-sm text-charcoal/55 mt-1">ležaja ukupno</p>
-      </div>
-      <div>
-        <p class="font-display text-3xl sm:text-4xl font-semibold text-forest"><span class="counter" data-target="1002">0</span></p>
-        <p class="text-xs sm:text-sm text-charcoal/55 mt-1">m nadmorske visine (Javorje)</p>
+      <div class="domIntroBody">
+        <p class="text-charcoal/70 leading-relaxed text-[1.02rem]">
+          Društvo održava dva planinarska doma na obroncima Konjuha — polazne tačke, prenoćišta i utočišta za sve koji krenu na stazu.
+          Oba su otvorena za članove i goste, uz prethodnu najavu.
+        </p>
       </div>
     </div>
 
-    <!-- DOMOVI — NUMERISANA LISTA -->
-    <div class="domEntryList">
+    <!-- MOUNTAIN HOMES — CARDS SIDE BY SIDE -->
+    <div class="domGrid">
 
     <!-- DOM 1 — JAVORJE -->
-    <article class="domEntry reveal">
-      <div class="domEntryHead">
-        <span class="domEntryIndex" aria-hidden="true">01</span>
-        <div>
-          <span class="eyebrow">Planinarski dom &middot; zapadni obronci Konjuha</span>
-          <h3 class="font-display text-2xl sm:text-3xl font-semibold mt-2">Javorje</h3>
-        </div>
-      </div>
-      <div class="domEntryBody">
-        <button type="button"
-          data-lightbox
-          data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          data-caption="Planinarski dom Javorje na zapadnim obroncima Konjuha"
-          class="domEntryImg imgZoom"
-          aria-label="Otvori sliku doma Javorje">
-          <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom Javorje na zapadnim obroncima Konjuha" loading="lazy">
-        </button>
-        <div class="domEntryText">
-          <p class="text-charcoal/70 leading-relaxed">
-            Dom je dobio ime po grebenu koji se uzdiže odmah iznad njega, s najvišim vrhom Banderom na 1207 metara.
-            Čine ga glavni dom sa zajedničkom spavaonicom i dva bungalova, smješteni u miru zapadnih padina Konjuha —
-            idealno mjesto za predah prije ili poslije uspona, kao i za višednevni boravak grupe.
-          </p>
+    <article class="domCard">
+      <button type="button"
+        data-lightbox
+        data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        data-caption="Planinarski dom Javorje na zapadnim obroncima Konjuha"
+        class="domCardImgWrap"
+        aria-label="Otvori sliku doma Javorje">
+        <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom Javorje na zapadnim obroncima Konjuha" loading="lazy">
+        <span class="domCardImgGrad" aria-hidden="true"></span>
+        <span class="domCardImgTitle">
+          <span class="eyebrow">Zapadni obronci Konjuha</span>
+          <h3>Javorje</h3>
+        </span>
+      </button>
+      <div class="domCardBody">
+        <p class="domCardDesc">
+          Dom je dobio ime po grebenu koji se uzdiže odmah iznad njega, s najvišim vrhom Banderom na 1207 m.
+          Glavni dom sa zajedničkom spavaonicom i dva bungalova — mjesto za predah i za višednevni boravak grupe.
+        </p>
 
-          <div class="domEntryFacts">
-            <div class="domEntryFact">
-              <span class="domEntryFactLabel">Nadmorska visina</span>
-              <span class="domEntryFactValue">1002 mnv</span>
-            </div>
-            <div class="domEntryFact">
-              <span class="domEntryFactLabel">Kapacitet</span>
-              <span class="domEntryFactValue">~30 ležaja</span>
-            </div>
-            <div class="domEntryFact">
-              <span class="domEntryFactLabel">Pristup</span>
-              <span class="domEntryFactValue">Staza iz Stuparija (2–4h)</span>
-            </div>
+        <div class="domCardFacts">
+          <div class="domCardFact">
+            <span class="domCardFactIcon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20l6-11 4 6 3-5 5 10H3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <span class="domCardFactText"><span class="domCardFactValue">1002 mnv</span><span class="domCardFactLabel">Visina</span></span>
           </div>
+          <div class="domCardFact">
+            <span class="domCardFactIcon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 18v-7a2 2 0 012-2h4a2 2 0 012 2v2M3 18v3M3 18h18v3M13 13h6a2 2 0 012 2v3M7 11a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="domCardFactText"><span class="domCardFactValue">~30</span><span class="domCardFactLabel">Ležaja</span></span>
+          </div>
+          <div class="domCardFact">
+            <span class="domCardFactIcon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <span class="domCardFactText"><span class="domCardFactValue">2–4h</span><span class="domCardFactLabel">Od Stuparija</span></span>
+          </div>
+        </div>
 
-          <p class="domEntryTags">Pitka voda &middot; Zajednička kuhinja &middot; Bungalovi &middot; Pogodno za grupe</p>
+        <p class="domCardTags">
+          <span>Pitka voda</span>
+          <span>Zajednička kuhinja</span>
+          <span>Bungalovi</span>
+          <span>Pogodno za grupe</span>
+        </p>
 
-          <a href="contact.html" class="domEntryLink">
-            Pitajte za noćenje
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="domCardCtaRow">
+          <a href="https://www.google.com/maps/search/?api=1&query=Planinarski+dom+Javorje+Konjuh+Tuzla" target="_blank" rel="noopener" class="domCardCta">
+            <span class="domCardCtaIcon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            Odvedi me do planinarskog doma
           </a>
         </div>
       </div>
     </article>
 
     <!-- DOM 2 — ZOBIK -->
-    <article class="domEntry domEntryReverse reveal">
-      <div class="domEntryHead">
-        <span class="domEntryIndex" aria-hidden="true">02</span>
-        <div>
-          <span class="eyebrow">Planinarski dom &middot; sjeverozapadni dio Konjuha</span>
-          <h3 class="font-display text-2xl sm:text-3xl font-semibold mt-2">Zobik</h3>
-        </div>
-      </div>
-      <div class="domEntryBody">
-        <button type="button"
-          data-lightbox
-          data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          data-caption="Planinarski dom Zobik, polazna tačka za Veliki Konjuh"
-          class="domEntryImg imgZoom"
-          aria-label="Otvori sliku doma Zobik">
-          <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom Zobik, polazna tačka za Veliki Konjuh" loading="lazy">
-        </button>
-        <div class="domEntryText">
-          <p class="text-charcoal/70 leading-relaxed">
-            Manji, domaćinski dom uz stari željezni most, uobičajena polazna tačka za ture prema vrhu Vardi,
-            Velikom Konjuhu i Zidinama. Jednostavan i uvijek dobrodošao predah — mjesto gdje se napuni čutura
-            i skine ranac prije ili poslije duge staze.
-          </p>
+    <article class="domCard">
+      <button type="button"
+        data-lightbox
+        data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        data-caption="Planinarski dom Zobik, polazna tačka za Veliki Konjuh"
+        class="domCardImgWrap"
+        aria-label="Otvori sliku doma Zobik">
+        <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom Zobik, polazna tačka za Veliki Konjuh" loading="lazy">
+        <span class="domCardImgGrad" aria-hidden="true"></span>
+        <span class="domCardImgTitle">
+          <span class="eyebrow">Sjeverozapadni dio Konjuha</span>
+          <h3>Zobik</h3>
+        </span>
+      </button>
+      <div class="domCardBody">
+        <p class="domCardDesc">
+          Manji, domaćinski dom uz stari željezni most, uobičajena polazna tačka za ture prema vrhu Vardi,
+          Velikom Konjuhu i Zidinama. Mjesto gdje se napuni čutura i skine ranac prije ili poslije duge staze.
+        </p>
 
-          <div class="domEntryFacts">
-            <div class="domEntryFact">
-              <span class="domEntryFactLabel">Nadmorska visina</span>
-              <span class="domEntryFactValue">540 mnv</span>
-            </div>
-            <div class="domEntryFact">
-              <span class="domEntryFactLabel">Kapacitet</span>
-              <span class="domEntryFactValue">20 ležaja</span>
-            </div>
-            <div class="domEntryFact">
-              <span class="domEntryFactLabel">Pristup</span>
-              <span class="domEntryFactValue">Pješice od željeznog mosta</span>
-            </div>
+        <div class="domCardFacts">
+          <div class="domCardFact">
+            <span class="domCardFactIcon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20l6-11 4 6 3-5 5 10H3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <span class="domCardFactText"><span class="domCardFactValue">540 mnv</span><span class="domCardFactLabel">Visina</span></span>
           </div>
+          <div class="domCardFact">
+            <span class="domCardFactIcon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 18v-7a2 2 0 012-2h4a2 2 0 012 2v2M3 18v3M3 18h18v3M13 13h6a2 2 0 012 2v3M7 11a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="domCardFactText"><span class="domCardFactValue">20</span><span class="domCardFactLabel">Ležaja</span></span>
+          </div>
+          <div class="domCardFact">
+            <span class="domCardFactIcon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <span class="domCardFactText"><span class="domCardFactValue">Pješice</span><span class="domCardFactLabel">Od mosta</span></span>
+          </div>
+        </div>
 
-          <p class="domEntryTags">Polazna tačka za Veliki Konjuh &middot; Izvor vode u blizini &middot; Kraći prilaz</p>
+        <p class="domCardTags">
+          <span>Polazna tačka za Veliki Konjuh</span>
+          <span>Izvor vode u blizini</span>
+          <span>Kraći prilaz</span>
+        </p>
 
-          <a href="contact.html" class="domEntryLink">
-            Pitajte za noćenje
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="domCardCtaRow">
+          <a href="https://www.google.com/maps/search/?api=1&query=Planinarski+dom+Zobik+Konjuh+Tuzla" target="_blank" rel="noopener" class="domCardCta">
+            <span class="domCardCtaIcon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            Odvedi me do planinarskog doma
           </a>
         </div>
       </div>
@@ -380,452 +298,17 @@
 
     </div>
 
-    <!-- RESERVATION CALLOUT -->
-    <div class="domCallout reveal">
-      <div>
-        <p class="font-display text-xl sm:text-2xl font-semibold mb-2">Planirate noćenje ili grupnu posjetu?</p>
-        <p class="text-beige/70 max-w-lg leading-relaxed">
-          Oba doma su u vlasništvu i na brizi PD Konjuh. Javite nam se za dostupnost, trenutno stanje staza
-          ili dogovor oko boravka veće grupe — rado ćemo pomoći da isplanirate boravak.
-        </p>
-      </div>
-      <a href="contact.html" class="btn btnPrimary flex-none">Kontaktirajte nas</a>
-    </div>
-
   </div>
 </section>
 
 
-<section id="ctaVideoSection" class="relative min-h-[90vh] lg:min-h-[90vh] px-6 lg:px-10 overflow-hidden flex items-center">
-
-  <video
-    class="absolute inset-0 w-full h-full object-cover"
-    autoplay
-    muted
-    loop
-    playsinline>
-    <source src="https://www.pexels.com/download/video/5677389/" type="video/mp4">
-  </video>
-
-  <div class="absolute inset-0 bg-navydeep/40"></div>
-
-  <div class="relative max-w-2xl mx-auto text-center reveal">
-    <h2 class="font-display text-beige text-4xl lg:text-5xl font-semibold mb-6">
-      Neka sljedeći vikend bude dan za novi vrh i nezaboravne poglede.
-    </h2>
-
-    <p class="text-beige/75 mb-9">
-      Bez obzira jeste li već planinarili ili tek razmišljate o prvom usponu, na prvoj turi bit ćete u pratnji iskusnih vodiča.
-    </p>
-
-    <a href="membership.html" class="btn btnPrimary">
-      Pridruži se društvu
-    </a>
-  </div>
-
-</section>
-
+<div id="ctaVideoRoot"></div>
 
 </main>
 
-<footer class="relative bg-navydeep text-beige">
-  <div class="footerTopoDivider" aria-hidden="true">
-    <svg viewBox="0 0 1200 90" preserveAspectRatio="none">
-      <path d="M0,55 C40,20 70,15 110,32 C150,49 175,10 215,22 C255,34 280,58 320,40 C360,22 390,5 430,18 C470,31 500,55 540,45 C580,35 610,12 650,25 C690,38 720,60 760,48 C800,36 830,15 870,28 C910,41 940,58 980,44 C1020,30 1050,10 1090,24 C1130,38 1160,55 1200,42 L1200,90 L0,90 Z"/>
-    </svg>
-  </div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-10">
-    <div class="grid lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] gap-12 mb-16">
-      <div>
-        <p class="font-display text-2xl font-semibold mb-4">PD Konjuh</p>
-        <p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Tuzle. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine od 1951. godine.</p>
-        <div class="flex gap-4">
-          <a href="#" aria-label="Instagram" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="Facebook" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
-          <a href="#" aria-label="Strava" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M10 3l6 12h-4l-2 6-2-6H4l6-12z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
+<div id="siteFooterRoot"></div>
 
-      <div>
-        <p class="eyebrow text-beige/70 mb-5">Istraži</p>
-        <ul class="space-y-3 text-sm text-beige/75">
-          <li><a href="about.html" class="hover:text-beige">O nama</a></li>
-          <li><a href="hikes.html" class="hover:text-beige">Ture</a></li>
-          <li><a href="plan.html" class="hover:text-beige">Plan i program</a></li>
-          <li><a href="domovi.html" class="hover:text-beige">Domovi</a></li>
-          <li><a href="gallery.html" class="hover:text-beige">Galerija</a></li>
-          <li><a href="vijesti.html" class="hover:text-beige">Vijesti</a></li>
-        </ul>
-      </div>
 
-      <div>
-        <p class="eyebrow text-beige/50 mb-5">Društvo</p>
-        <ul class="space-y-3 text-sm text-beige/75">
-          <li><a href="membership.html" class="hover:text-beige">Članstvo</a></li>
-          <li><a href="contact.html" class="hover:text-beige">Kontakt</a></li>
-          <li><a href="contact.html#hitni-brojevi" class="hover:text-beige">Hitni brojevi</a></li>
-        </ul>
-      </div>
-
-     <div>
-  <p class="eyebrow text-beige/50 mb-5">Kontakt</p>
-
-  <div class="space-y-4 text-sm text-beige/75">
-    <div class="flex items-start gap-3">
-      <svg class="w-5 h-5 mt-0.5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
-        <circle cx="12" cy="11" r="3"/>
-      </svg>
-      <span>Patriotske lige br. 4, Tuzla, Bosna i Hercegovina</span>
-    </div>
-
-    <div class="flex items-center gap-3">
-      <svg class="w-5 h-5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M5 5v14h14V5M5 7l7 5 7-5"/>
-      </svg>
-      <a href="mailto:info@pdkonjuh.ba" class="hover:text-beige transition-colors">
-        pdkonjuh1951@gmail.com
-      </a>
-    </div>
-
-    <div class="flex items-center gap-3">
-      <svg class="w-5 h-5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.3a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.25 1.02L8.9 9.6a16 16 0 006.5 6.5l1.3-1.3a1 1 0 011.02-.25l3.6 1.2a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.3 21 3 14.7 3 7V5z"/>
-      </svg>
-      <a href="tel:+38761123456" class="hover:text-beige transition-colors">
-        +387 61 562 277
-      </a>
-    </div>
-  </div>
-</div>
-    </div>
-
-    <div class="pt-4 mb-10">
-      <p class="eyebrow text-beige/50 mb-4">Iz naše galerije</p>
-      <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
-        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Kolona planinara na stazi" class="footerGalleryItem reveal" aria-label="Otvori sliku: Kolona planinara na stazi">
-          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kolona planinara na stazi" class="rounded-lg aspect-square object-cover">
-        </button>
-        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Logorska vatra uveče na planinarskom domu" class="footerGalleryItem reveal revealDelay1" aria-label="Otvori sliku: Logorska vatra uveče na planinarskom domu">
-          <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logorska vatra uveče na planinarskom domu" class="rounded-lg aspect-square object-cover">
-        </button>
-        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Šumska staza obasjana suncem" class="footerGalleryItem reveal revealDelay2" aria-label="Otvori sliku: Šumska staza obasjana suncem">
-          <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Šumska staza obasjana suncem" class="rounded-lg aspect-square object-cover">
-        </button>
-        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Pogled sa vrha Maglića na Trnovačko jezero" class="footerGalleryItem reveal revealDelay3" aria-label="Otvori sliku: Pogled sa vrha Maglića na Trnovačko jezero">
-          <img src="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pogled sa vrha Maglića na Trnovačko jezero" class="rounded-lg aspect-square object-cover">
-        </button>
-        <button type="button" data-lightbox data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Planinarski dom na Treskavici u magli" class="footerGalleryItem reveal revealDelay4" aria-label="Otvori sliku: Planinarski dom na Treskavici u magli">
-          <img src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Planinarski dom na Treskavici u magli" class="rounded-lg aspect-square object-cover">
-        </button>
-        <button type="button" data-lightbox data-full="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-caption="Detalj planinarske opreme i mape" class="footerGalleryItem reveal revealDelay5" aria-label="Otvori sliku: Detalj planinarske opreme i mape">
-          <img src="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Detalj planinarske opreme i mape" class="rounded-lg aspect-square object-cover">
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="footerGiantMark reveal" aria-hidden="true"><span>PD Konjuh</span></div>
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-10">
-    <div class="footerBottomRow flex flex-col sm:flex-row justify-between items-center gap-3 pt-2 text-xs text-beige/45">
-      <p>© 2026 PD Konjuh, Tuzla. Sva prava zadržana.</p>
-      <p class="footerCredit">Developed by <span>Kartal</span></p>
-    </div>
-  </div>
-</footer>
-
-<div id="lightbox" aria-hidden="true">
-  <button data-close aria-label="Zatvori" class="absolute top-6 right-6 text-beige/80 hover:text-beige">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-  </button>
-  <figure class="text-center">
-    <img src="" alt="">
-    <figcaption class="text-beige/70 text-sm mt-4"></figcaption>
-  </figure>
-</div>
-
-<script>
-// ============================================================================
-// PLANINARSKO DRUŠTVO TRESKAVICA — SHARED BEHAVIOUR
-// ============================================================================
-(function(){
-  "use strict";
-
-  /* ---------- HEADER: ALWAYS THE SAME BLURRED GLASS LOOK, NEVER CHANGES ON SCROLL ------ */
-  // (intentionally no scroll listener here — the header keeps its opening appearance)
-
-  /* ---------- HEADER HIDES FROM THE MOMENT THE CTA VIDEO SECTION IS REACHED, AND STAYS
-     HIDDEN THROUGH THE REST OF THE PAGE (INCLUDING THE FOOTER) — DESKTOP + MOBILE ---------- */
-  const siteHeader = document.querySelector(".siteHeader");
-  const ctaVideoSection = document.getElementById("ctaVideoSection");
-  if(siteHeader && ctaVideoSection){
-    siteHeader.classList.add("headerAutoHide");
-    const updateHeaderVisibility = ()=>{
-      const rectTop = ctaVideoSection.getBoundingClientRect().top;
-      // THE MOMENT THE TOP OF THE VIDEO SECTION REACHES THE TOP OF THE VIEWPORT (OR PASSES IT), THE NAVBAR STAYS HIDDEN
-      siteHeader.classList.toggle("isHidden", rectTop <= 0);
-    };
-    updateHeaderVisibility();
-    window.addEventListener("scroll", updateHeaderVisibility, {passive:true});
-    window.addEventListener("resize", updateHeaderVisibility);
-  }
-
-  /* ---------- MOBILE MENU (FULL-SCREEN OVERLAY, ICON MORPH HAMBURGER <-> CLOSE) ---------- */
-  const menuBtn = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-  const HAMBURGER_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
-  const CLOSE_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
-  if(menuBtn && mobileMenu){
-    menuBtn.classList.add("menuIconMorph");
-    let savedScrollY = 0;
-    const setMenuState = (open)=>{
-      mobileMenu.classList.toggle("isOpen", open);
-      mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
-      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-      menuBtn.innerHTML = open ? CLOSE_ICON : HAMBURGER_ICON;
-      if(open){
-        savedScrollY = window.scrollY;
-        document.body.style.position = "fixed";
-        document.body.style.top = `-${savedScrollY}px`;
-        document.body.style.width = "100%";
-      } else {
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
-        window.scrollTo(0, savedScrollY);
-      }
-      document.body.classList.toggle("overflow-hidden", open);
-    };
-    menuBtn.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("isOpen");
-      setMenuState(!isOpen);
-    });
-    mobileMenu.querySelectorAll("a").forEach(a=>{
-      a.addEventListener("click", ()=> setMenuState(false));
-    });
-    document.addEventListener("keydown", (e)=>{
-      if(e.key === "Escape" && mobileMenu.classList.contains("isOpen")) setMenuState(false);
-    });
-  }
-
-  /* ---------- BACK TO TOP BUTTON ---------- */
-  const backToTop = document.createElement("button");
-  backToTop.className = "backToTop";
-  backToTop.setAttribute("aria-label", "Nazad na vrh stranice");
-  backToTop.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  document.body.appendChild(backToTop);
-  const toggleBackToTop = ()=> backToTop.classList.toggle("isVisible", window.scrollY > 600);
-  toggleBackToTop();
-  window.addEventListener("scroll", toggleBackToTop, {passive:true});
-  backToTop.addEventListener("click", ()=>{
-    window.scrollTo({top:0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
-  });
-
-  /* ---------- MAGNETIC BUTTONS ---------- */
-  if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(hover: hover)").matches){
-    document.querySelectorAll(".btn").forEach(btn=>{
-      btn.classList.add("magnetic");
-      btn.addEventListener("mousemove", (e)=>{
-        const r = btn.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width/2;
-        const y = e.clientY - r.top - r.height/2;
-        btn.style.transform = `translate(${x*0.18}px, ${y*0.35}px)`;
-      });
-      btn.addEventListener("mouseleave", ()=>{ btn.style.transform = ""; });
-    });
-
-    /* ---------- CARD TILT ---------- */
-    document.querySelectorAll(".lift").forEach(card=>{
-      card.classList.add("tilt");
-      card.addEventListener("mousemove", (e)=>{
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `perspective(900px) rotateX(${py*-5}deg) rotateY(${px*7}deg) translateY(-6px)`;
-      });
-      card.addEventListener("mouseleave", ()=>{ card.style.transform = ""; });
-    });
-  }
-
-  /* ---------- MAIN GALLERY: STAGGERED SCALE + BLUR REVEAL ON SCROLL ---------- */
-  const galleryRevealEls = document.querySelectorAll("#galleryGrid .galleryReveal:not(.galleryItemExtra)");
-  if(galleryRevealEls.length){
-    if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-      const galleryIO = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            const el = entry.target;
-            const i = Array.prototype.indexOf.call(galleryRevealEls, el);
-            el.style.transitionDelay = Math.min(i, 8) * 70 + "ms";
-            el.classList.add("isVisible");
-            galleryIO.unobserve(el);
-          }
-        });
-      }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
-      galleryRevealEls.forEach(el=>galleryIO.observe(el));
-    } else {
-      galleryRevealEls.forEach(el=>el.classList.add("isVisible"));
-    }
-  }
-
-  /* ---------- SCROLL REVEAL ---------- */
-  const revealEls = document.querySelectorAll(".reveal, .revealLeft");
-  if("IntersectionObserver" in window && revealEls.length){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add("isVisible");
-          io.unobserve(entry.target);
-        }
-      });
-    }, {threshold:.15, rootMargin:"0px 0px -60px 0px"});
-    revealEls.forEach(el=>io.observe(el));
-  } else {
-    revealEls.forEach(el=>el.classList.add("isVisible"));
-  }
-
-  /* ---------- ANIMATED COUNTERS ---------- */
-  const counters = document.querySelectorAll(".counter");
-  if("IntersectionObserver" in window && counters.length){
-    const countIO = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.dataset.target, 10) || 0;
-        const suffix = el.dataset.suffix || "";
-        const duration = 2400;
-        const start = performance.now();
-        const step = (now)=>{
-          const p = Math.min((now-start)/duration, 1);
-          const eased = 1 - Math.pow(1-p, 3);
-          el.textContent = Math.round(eased*target) + suffix;
-          if(p<1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        countIO.unobserve(el);
-      });
-    }, {threshold:.6});
-    counters.forEach(el=>countIO.observe(el));
-  }
-
-  /* ---------- GENTLE PARALLAX ON HERO IMAGE ---------- */
-  const parallax = document.querySelector(".parallaxImg");
-  if(parallax && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-    window.addEventListener("scroll", ()=>{
-      const y = window.scrollY;
-      if(y < window.innerHeight){
-        parallax.style.transform = `translate3d(0, ${y*0.18}px, 0) scale(1.06)`;
-      }
-    }, {passive:true});
-  }
-
-  /* ---------- LIGHTBOX (GALLERY) ---------- */
-  const lightbox = document.getElementById("lightbox");
-  if(lightbox){
-    const lbImg = lightbox.querySelector("img");
-    const lbCaption = lightbox.querySelector("figcaption");
-    document.querySelectorAll("[data-lightbox]").forEach(trigger=>{
-      trigger.addEventListener("click", ()=>{
-        const src = trigger.getAttribute("data-full") || trigger.querySelector("img")?.src;
-        const caption = trigger.getAttribute("data-caption") || "";
-        if(lbImg) lbImg.src = src;
-        if(lbCaption) lbCaption.textContent = caption;
-        lightbox.classList.add("open");
-        lightbox.setAttribute("aria-hidden","false");
-        document.body.classList.add("overflow-hidden");
-      });
-    });
-    const closeLb = ()=>{
-      lightbox.classList.remove("open");
-      lightbox.setAttribute("aria-hidden","true");
-      document.body.classList.remove("overflow-hidden");
-    };
-    lightbox.addEventListener("click", (e)=>{ if(e.target === lightbox) closeLb(); });
-    lightbox.querySelector("[data-close]")?.addEventListener("click", closeLb);
-    document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeLb(); });
-  }
-
-  /* ---------- HIKE FILTERS (HIKES.HTML) ---------- */
-  const filterForm = document.getElementById("hikeFilters");
-  const hikeCards = document.querySelectorAll("[data-hike]");
-  if(filterForm && hikeCards.length){
-    const applyFilters = ()=>{
-      const difficulty = filterForm.querySelector('[name="difficulty"]').value;
-      const season = filterForm.querySelector('[name="season"]').value;
-      const duration = filterForm.querySelector('[name="duration"]').value;
-      let visible = 0;
-      hikeCards.forEach(card=>{
-        const d = card.dataset.difficulty, s = card.dataset.season, du = card.dataset.duration;
-        const match =
-          (difficulty === "all" || d === difficulty) &&
-          (season === "all" || s === season) &&
-          (duration === "all" || du === duration);
-        card.style.display = match ? "" : "none";
-        if(match) visible++;
-      });
-      const emptyState = document.getElementById("hikesEmpty");
-      if(emptyState) emptyState.classList.toggle("hidden", visible !== 0);
-    };
-    filterForm.addEventListener("change", applyFilters);
-  }
-
-  /* ---------- NEWSLETTER / CONTACT FORM FEEDBACK (NO BACKEND) ---------- */
-  document.querySelectorAll("form[data-noop]").forEach(form=>{
-    form.addEventListener("submit", (e)=>{
-      e.preventDefault();
-      const note = form.querySelector("[data-form-note]");
-      if(note){
-        note.textContent = form.dataset.successMessage || "Hvala! Javit ćemo vam se uskoro.";
-        note.classList.remove("hidden");
-      }
-      form.reset();
-    });
-  });
-
-  /* ---------- GPX DOWNLOAD PLACEHOLDER ---------- */
-  document.querySelectorAll("[data-gpx]").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const name = btn.dataset.gpx || "ruta";
-      const gpxContent = `<?xml version="1.0"?>\n<gpx version="1.1" creator="PD Treskavica"><trk><name>${name}</name><trkseg></trkseg></trk></gpx>`;
-      const blob = new Blob([gpxContent], {type:"application/gpx+xml"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = `${name}.gpx`;
-      document.body.appendChild(a); a.click(); a.remove();
-      URL.revokeObjectURL(url);
-    });
-  });
-
-  /* ---------- ACCORDION (FAQ) ---------- */
-  document.querySelectorAll("[data-accordion-trigger]").forEach(trigger=>{
-    trigger.addEventListener("click", ()=>{
-      const panel = document.getElementById(trigger.getAttribute("aria-controls"));
-      const expanded = trigger.getAttribute("aria-expanded") === "true";
-      trigger.setAttribute("aria-expanded", String(!expanded));
-      if(panel){
-        panel.style.maxHeight = expanded ? null : panel.scrollHeight + "px";
-      }
-    });
-  });
-
-  /* ---------- MEMBERSHIP PRICING TOGGLE (ANNUAL/MONTHLY) ---------- */
-  const planToggle = document.getElementById("planToggle");
-  if(planToggle){
-    planToggle.addEventListener("change", ()=>{
-      const annual = planToggle.checked;
-      document.querySelectorAll("[data-price-monthly]").forEach(el=>{
-        el.textContent = annual ? el.dataset.priceAnnual : el.dataset.priceMonthlyVal;
-      });
-      document.querySelectorAll("[data-period]").forEach(el=>{
-        el.textContent = annual ? "/god." : "/mj.";
-      });
-    });
-  }
-
-})();
-
-</script>
+<script src="assets/script.js" defer></script>
 </body>
 </html>
