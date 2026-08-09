@@ -418,602 +418,221 @@
       }
     }
 
-/* ============================================================
-   BAZNI PANEL — tekst, dugme, tamna varijanta, carousel
-   ============================================================ */
-
-.aboutSection .aboutPanel{
-  position:relative;
-  padding:clamp(90px,11vw,140px) 0;
-  overflow:hidden;
-}
-
-.aboutSection .aboutPanel.isDark{
-  background:var(--ink);
-  color:#fff;
-}
-
-.aboutSection .aboutPanel.isDark::before{
-  content:"";
-  position:absolute;
-  top:-8%;
-  right:-6%;
-  width:56%;
-  height:70%;
-  z-index:0;
-  pointer-events:none;
-  background:radial-gradient(
-    58% 58% at 78% 20%,
-    rgba(157,190,90,.10),
-    transparent 64%
-  );
-}
-
-
-/* ============================================================
-   GLAVNI GRID
-   ============================================================ */
-
-.aboutSection .aboutPanel .panelGrid{
-  position:relative;
-  z-index:1;
-
-  max-width:1180px;
-  margin:0 auto;
-  padding:0 24px;
-
-  display:grid;
-  grid-template-columns:minmax(0,1fr) clamp(440px,50vw,720px);
-
-  gap:clamp(48px,5vw,88px);
-  align-items:start;
-}
-
-
-/* ============================================================
-   LIJEVA KOLONA — TEKST
-   ============================================================ */
-
-.aboutSection .aboutPanel .panelText{
-  min-width:0;
-}
-
-.aboutSection .aboutPanel .panelTitle{
-  font-family:'Fraunces',serif;
-  color:var(--g);
-  font-weight:500;
-  letter-spacing:-.025em;
-  line-height:1.06;
-
-  font-size:clamp(2.1rem,4.6vw,3.6rem);
-
-  max-width:14ch;
-
-  margin:18px 0 clamp(28px,3.5vw,36px);
-}
-
-.aboutSection .aboutPanel .panelTitle em{
-  font-style:italic;
-  color:var(--ol);
-}
-
-
-/* ============================================================
-   TEKST
-   ============================================================ */
-
-.aboutSection .aboutPanel .panelBody p{
-  color:#5c6960;
-  font-size:1.02rem;
-  line-height:1.8;
-
-  max-width:46ch;
-
-  margin-bottom:16px;
-}
-
-.aboutSection .aboutPanel .panelBody p:last-of-type{
-  margin-bottom:0;
-}
-
-
-/* ============================================================
-   CTA DUGME
-   ============================================================ */
-
-.aboutSection .aboutPanel .panelCta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:11px;
-
-  margin-top:clamp(28px,3.5vw,38px);
-
-  background:var(--g);
-  color:#fff;
-
-  font-family:'Poppins',sans-serif;
-  font-weight:600;
-  font-size:.95rem;
-
-  padding:15px 28px;
-
-  border-radius:999px;
-
-  transition:
-    background .3s,
-    transform .3s var(--ease),
-    box-shadow .3s;
-
-  text-decoration:none;
-}
-
-.aboutSection .aboutPanel .panelCta svg{
-  transition:transform .3s var(--ease);
-}
-
-.aboutSection .aboutPanel .panelCta:hover{
-  background:#26483d;
-  transform:translateY(-2px);
-  box-shadow:0 16px 34px -18px rgba(29,61,52,.7);
-}
-
-.aboutSection .aboutPanel .panelCta:hover svg{
-  transform:translateX(4px);
-}
-
-
-/* ============================================================
-   TAMNA VARIJANTA
-   ============================================================ */
-
-.aboutSection .aboutPanel.isDark .eyebrow{
-  color:#B4D06E;
-}
-
-.aboutSection .aboutPanel.isDark .eyebrowLine{
-  background:#B4D06E;
-}
-
-.aboutSection .aboutPanel.isDark .panelTitle{
-  color:#fff;
-}
-
-.aboutSection .aboutPanel.isDark .panelTitle em{
-  color:#B4D06E;
-}
-
-.aboutSection .aboutPanel.isDark .panelBody p{
-  color:rgba(255,255,255,.72);
-}
-
-.aboutSection .aboutPanel.isDark .panelCta{
-  background:linear-gradient(
-    180deg,
-    #5f7f38,
-    #4a6b2e
-  );
-
-  box-shadow:
-    0 18px 38px -18px
-    rgba(122,163,54,.8);
-}
-
-.aboutSection .aboutPanel.isDark .panelCta:hover{
-  background:linear-gradient(
-    180deg,
-    #6b8d40,
-    #547a34
-  );
-
-  box-shadow:
-    0 24px 46px -18px
-    rgba(122,163,54,.9);
-}
-
-
-/* ============================================================
-   TOPOGRAFSKA POZADINA
-   ============================================================ */
-
-.aboutSection .aboutPanel .panelTopo{
-  position:absolute;
-  inset:0;
-  z-index:0;
-
-  opacity:.55;
-
-  pointer-events:none;
-}
-
-.aboutSection .aboutPanel .panelTopo path{
-  fill:none;
-  stroke:rgba(47,93,80,.08);
-  stroke-width:1;
-}
-
-
-/* ============================================================
-   CAROUSEL
-   ============================================================ */
-
-.aboutSection .aboutPanel .carousel{
-  position:relative;
-
-  height:clamp(520px,62vh,660px);
-
-  border-radius:28px;
-  overflow:hidden;
-
-  background:#dfe4dc;
-
-  box-shadow:
-    0 40px 80px -46px
-    rgba(29,61,52,.5);
-
-  cursor:pointer;
-}
-
-.aboutSection .aboutPanel.isDark .carousel{
-  background:#0a1712;
-
-  box-shadow:
-    0 50px 90px -50px
-    rgba(0,0,0,.85);
-}
-
-
-/* ============================================================
-   SLIDES
-   ============================================================ */
-
-.aboutSection .aboutPanel .cSlide{
-  position:absolute;
-  inset:0;
-
-  opacity:0;
-
-  transition:
-    opacity .6s var(--ease);
-}
-
-.aboutSection .aboutPanel .cSlide.isActive{
-  opacity:1;
-}
-
-.aboutSection .aboutPanel .cSlide img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  display:block;
-}
-
-.aboutSection .aboutPanel .cSlide::after{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  pointer-events:none;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 42%,
-      rgba(9,22,15,.75)
-    );
-}
-
-
-/* ============================================================
-   CAROUSEL CAPTION
-   ============================================================ */
-
-.aboutSection .aboutPanel .cCap{
-  position:absolute;
-
-  left:clamp(24px,3vw,40px);
-  right:clamp(24px,3vw,40px);
-
-  bottom:clamp(58px,7vw,72px);
-
-  z-index:2;
-
-  color:#fff;
-}
-
-.aboutSection .aboutPanel .cCap h3{
-  font-family:'Fraunces',serif;
-  font-weight:600;
-
-  letter-spacing:-.02em;
-  line-height:1.2;
-
-  font-size:clamp(1.5rem,2.6vw,2rem);
-
-  text-shadow:
-    0 2px 20px
-    rgba(0,0,0,.4);
-}
-
-.aboutSection .aboutPanel .cCap h3 em{
-  font-style:italic;
-  color:#c9dd93;
-}
-
-.aboutSection .aboutPanel .cCap p{
-  margin-top:10px;
-
-  color:rgba(255,255,255,.85);
-
-  font-size:.95rem;
-  line-height:1.55;
-
-  max-width:38ch;
-}
-
-
-/* ============================================================
-   CAROUSEL DOTS
-   ============================================================ */
-
-.aboutSection .aboutPanel .cDots{
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:clamp(20px,2.4vw,28px);
-
-  z-index:3;
-
-  display:flex;
-  justify-content:center;
-
-  gap:9px;
-
-  pointer-events:none;
-}
-
-.aboutSection .aboutPanel .cDot{
-  width:8px;
-  height:8px;
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,.5);
-
-  transition:
-    width .35s var(--ease),
-    background .35s;
-}
-
-.aboutSection .aboutPanel .cDot.isActive{
-  width:22px;
-  background:#B4D06E;
-}
-
-
-/* ============================================================
-   STATIC IMAGE
-   ============================================================ */
-
-.aboutSection .aboutPanel .panelMedia{
-  position:relative;
-}
-
-.aboutSection .aboutPanel .panelMedia img{
-  width:100%;
-  height:clamp(520px,62vh,660px);
-
-  object-fit:cover;
-
-  border-radius:28px;
-
-  box-shadow:
-    0 40px 80px -46px
-    rgba(29,61,52,.5);
-
-  display:block;
-}
-
-
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
-
-@media (prefers-reduced-motion:reduce){
-
-  .aboutSection .aboutPanel .cSlide{
-    transition:opacity .01s;
+:root{
+    --g:#2F5D50; --g2:#1D3D34; --ol:#6B8E23; --ol2:#5a7a1c; --bg:#F5F1E8; --amb:#C97B3D;
+    --ink:#11201B; --ease:cubic-bezier(.22,.61,.36,1);
   }
+  @keyframes onBob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(10px);}}
 
-}
+  /* WRAPPER + baza */
+  .aboutSection{font-family:'Open Sans',system-ui,sans-serif;background:var(--bg);color:#2a2a2a;line-height:1.75;}
+  .aboutSection img{display:block;max-width:100%;}
+  .aboutSection a{text-decoration:none;color:inherit;}
+  .aboutSection .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .aboutSection .section{padding:clamp(80px,10vw,112px) 24px;}
+  .aboutSection .section.pt0{padding-top:0;}
 
+  /* REVEAL */
+  .aboutSection .onReveal{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+  .aboutSection .onReveal.visible{opacity:1;transform:none;}
+  .aboutSection .onReveal.d1{transition-delay:.08s;}
+  .aboutSection .onReveal.d2{transition-delay:.16s;}
+  .aboutSection .onReveal.d3{transition-delay:.24s;}
+  @media (prefers-reduced-motion: reduce){.aboutSection .onReveal{opacity:1;transform:none;transition:none;}}
 
-/* ============================================================
-   TABLET / MOBITEL
-   ============================================================ */
-
-@media (max-width:900px){
-
-  .aboutSection .aboutPanel{
-    padding:clamp(70px,12vw,100px) 0;
-  }
-
-
-  /* -----------------------------------------
-     Jedna kolona
-     ----------------------------------------- */
-
-  .aboutSection .aboutPanel .panelGrid{
-    grid-template-columns:1fr;
-    gap:20px;
-
-    padding:0 20px;
-  }
-
-
-  /* -----------------------------------------
-     Tekst
-     ----------------------------------------- */
-
-  .aboutSection .aboutPanel .panelText{
-    display:flex;
-    flex-direction:column;
-  }
-
-  .aboutSection .aboutPanel .panelTitle{
-    max-width:none;
-
-    margin:
-      14px
-      0
-      18px;
-  }
-
-  .aboutSection .aboutPanel .panelBody p{
-    max-width:none;
-  }
-
-
-  /* -----------------------------------------
-     Carousel
-     ----------------------------------------- */
-
-  .aboutSection .aboutPanel .carousel{
-    width:100%;
-
-    height:clamp(
-      380px,
-      72vw,
-      480px
-    );
-
-    margin-top:4px;
-
-    border-radius:22px;
-  }
-
-
-  /* -----------------------------------------
-     Static image
-     ----------------------------------------- */
-
-  .aboutSection .aboutPanel .panelMedia{
-    order:-1;
-  }
-
-  .aboutSection .aboutPanel .panelMedia img{
-    width:100%;
-
-    height:clamp(
-      380px,
-      72vw,
-      480px
-    );
-
-    border-radius:22px;
-  }
-
-
-  /* -----------------------------------------
-     CTA
-     ----------------------------------------- */
-
-  .aboutSection .aboutPanel .panelCta{
-    width:100%;
-
-    box-sizing:border-box;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    margin-top:0;
-
-    padding:16px 24px;
-
-    border-radius:999px;
-  }
-
-
-  /* -----------------------------------------
-     Caption
-     ----------------------------------------- */
-
-  .aboutSection .aboutPanel .cCap{
-    bottom:clamp(
-      54px,
-      14vw,
-      64px
-    );
-  }
-
-}
-
-  
-  
-  
-
-
-
-
-/* 3. NAŠ PUT — alternating timeline */
+  /* ZAJEDNIČKI naslovi sekcija */
+  .aboutSection .sectionEyebrow{display:flex;gap:9px;align-items:center;margin-bottom:14px;}
   .aboutSection .sectionEyebrow.center{justify-content:center;}
+  .aboutSection .eyebrowLine{width:32px;height:2px;background:var(--ol);border-radius:2px;flex-shrink:0;}
+  .aboutSection .eyebrow{font-family:'Poppins',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ol);}
+
+
+
+
+  /* HERO */
+  .aboutSection .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;color:#fff;}
+  .aboutSection .heroBg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;animation:heroZoom 18s ease-out both;}
+  .aboutSection .heroOv1{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(13,26,22,.28) 0%,rgba(12,24,18,.62) 58%,rgba(10,20,15,.92) 100%);}
+  .aboutSection .heroOv2{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.42) 100%);}
+  .aboutSection .heroContour{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;opacity:.55;}
+  .aboutSection .heroContour path{fill:none;stroke:rgba(255,255,255,.2);stroke-width:1.1;stroke-dasharray:2600;stroke-dashoffset:2600;animation:heroDraw 3s var(--ease) .5s forwards;}
+  .aboutSection .heroContour path:nth-child(2){stroke:rgba(180,208,110,.32);animation-delay:.9s;}
+  .aboutSection .heroContour path:nth-child(3){stroke:rgba(255,255,255,.14);animation-delay:1.3s;}
+  .aboutSection .heroContent{position:relative;z-index:3;padding:0 28px;max-width:820px;}
+  .aboutSection .hero h1{font-family:'Fraunces',serif;font-size:clamp(3.2rem,8vw,6rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;margin-bottom:24px;text-shadow:0 4px 32px rgba(0,0,0,.35);color:#fff;animation:heroRise 1s var(--ease) .3s both;}
+  .aboutSection .heroSub{font-family:'Fraunces',serif;font-size:clamp(1.1rem,2.4vw,1.45rem);color:rgba(255,255,255,.9);font-weight:300;font-style:italic;max-width:600px;margin:0 auto;line-height:1.6;animation:heroRise 1s var(--ease) .45s both;}
+  .aboutSection .scrollCue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.6);animation:heroFade .8s var(--ease) 1s both, onBob 2.4s ease-in-out 1.8s infinite;}
+  .aboutSection .scrollLine{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.65),transparent);}
+  .aboutSection .scrollLabel{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-family:'Poppins',sans-serif;}
+  @keyframes heroRise{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+  @keyframes heroFade{from{opacity:0;}to{opacity:1;}}
+  @keyframes heroDraw{to{stroke-dashoffset:0;}}
+  @keyframes heroZoom{from{transform:scale(1.08);}to{transform:scale(1);}}
+  @media (prefers-reduced-motion: reduce){
+    .aboutSection .heroBg,.aboutSection .hero h1,.aboutSection .heroSub,.aboutSection .scrollCue{animation:none;opacity:1;transform:translateX(-50%) none;}
+    .aboutSection .scrollCue{transform:translateX(-50%);}
+    .aboutSection .heroContour path{animation:none;stroke-dashoffset:0;}
+  }
+
+/* ============================================================
+     BAZNI PANEL (tekst lijevo / medij desno) — temelj za sve
+     ============================================================ */
+  .aboutSection .aboutPanel{position:relative;padding:clamp(90px,11vw,140px) 0;overflow:hidden;}
+
+  /* SVI paneli su tamni na računaru (bez potrebe za isDark klasom) */
+  .aboutSection .aboutPanel{background:var(--ink);color:#fff;}
+  .aboutSection .aboutPanel::before{content:"";position:absolute;top:-8%;right:-6%;width:56%;height:70%;z-index:0;pointer-events:none;
+    background:radial-gradient(58% 58% at 78% 20%,rgba(157,190,90,.10),transparent 64%);}
+
+  .aboutSection .aboutPanel .panelGrid{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px;
+    display:grid;grid-template-columns:minmax(0,1fr) clamp(440px,50vw,720px);
+    grid-template-rows:auto 1fr auto;
+    gap:clamp(24px,3vw,32px) clamp(48px,5vw,88px);align-items:start;}
+  .aboutSection .aboutPanel .panelText{grid-column:1;grid-row:1;}
+
+  /* tekst — tamna varijanta (default) */
+  .aboutSection .aboutPanel .eyebrow{color:#B4D06E;}
+  .aboutSection .aboutPanel .eyebrowLine{background:#B4D06E;}
+  .aboutSection .aboutPanel .panelTitle{font-family:'Fraunces',serif;color:#fff;font-weight:500;letter-spacing:-.025em;
+    line-height:1.06;font-size:clamp(2.1rem,4.6vw,3.6rem);max-width:16ch;margin:18px 0 clamp(20px,2.6vw,28px);}
+  .aboutSection .aboutPanel .panelTitle em{font-style:italic;color:#B4D06E;}
+  .aboutSection .aboutPanel .panelBody p{color:rgba(255,255,255,.72);font-size:1.02rem;line-height:1.8;max-width:46ch;margin-bottom:16px;}
+  .aboutSection .aboutPanel .panelBody p:last-of-type{margin-bottom:0;}
+
+  /* dugme — lijevo, zadnji red, poravnato uz dno slike */
+  .aboutSection .aboutPanel .panelCta{grid-column:1;grid-row:3;justify-self:start;align-self:end;margin-top:0;
+    display:inline-flex;align-items:center;gap:11px;
+    background:linear-gradient(180deg,#5f7f38,#4a6b2e);color:#fff;box-shadow:0 18px 38px -18px rgba(122,163,54,.8);
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:.95rem;padding:15px 28px;border-radius:999px;
+    transition:background .3s,transform .3s var(--ease),box-shadow .3s;}
+  .aboutSection .aboutPanel .panelCta svg{transition:transform .3s var(--ease);}
+  .aboutSection .aboutPanel .panelCta:hover{background:linear-gradient(180deg,#6b8d40,#547a34);transform:translateY(-2px);box-shadow:0 24px 46px -18px rgba(122,163,54,.9);}
+  .aboutSection .aboutPanel .panelCta:hover svg{transform:translateX(4px);}
+
+  /* topo pozadina (Ciljevi) */
+  .aboutSection .aboutPanel .panelTopo{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none;}
+  .aboutSection .aboutPanel .panelTopo path{fill:none;stroke:rgba(255,255,255,.06);stroke-width:1;}
+
+  /* desna kolona — obična slika (Ko smo mi), preko sva tri reda */
+  .aboutSection .aboutPanel .panelMedia{position:relative;grid-column:2;grid-row:1 / span 3;}
+  .aboutSection .aboutPanel .panelMedia img{width:100%;height:clamp(520px,62vh,660px);object-fit:cover;
+    border-radius:28px;box-shadow:0 50px 90px -50px rgba(0,0,0,.85);display:block;}
+
+  /* desna kolona — CAROUSEL (jedinstven), preko sva tri reda */
+  .aboutSection .aboutPanel .carousel{position:relative;grid-column:2;grid-row:1 / span 3;height:clamp(520px,62vh,660px);
+    border-radius:28px;overflow:hidden;background:#0a1712;box-shadow:0 50px 90px -50px rgba(0,0,0,.85);cursor:pointer;}
+  .aboutSection .aboutPanel .cSlide{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease);}
+  .aboutSection .aboutPanel .cSlide.isActive{opacity:1;}
+  .aboutSection .aboutPanel .cSlide img{width:100%;height:100%;object-fit:cover;display:block;}
+  .aboutSection .aboutPanel .cSlide::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,transparent 42%,rgba(9,22,15,.75));}
+  .aboutSection .aboutPanel .cCap{position:absolute;left:clamp(24px,3vw,40px);right:clamp(24px,3vw,40px);bottom:clamp(58px,7vw,72px);z-index:2;color:#fff;}
+  .aboutSection .aboutPanel .cCap h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.02em;line-height:1.2;
+    font-size:clamp(1.5rem,2.6vw,2rem);text-shadow:0 2px 20px rgba(0,0,0,.4);}
+  .aboutSection .aboutPanel .cCap h3 em{font-style:italic;color:#c9dd93;}
+  .aboutSection .aboutPanel .cCap p{margin-top:10px;color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.55;max-width:38ch;}
+  .aboutSection .aboutPanel .cDots{position:absolute;left:0;right:0;bottom:clamp(20px,2.4vw,28px);z-index:3;display:flex;justify-content:center;gap:9px;pointer-events:none;}
+  .aboutSection .aboutPanel .cDot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.5);transition:width .35s var(--ease),background .35s;}
+  .aboutSection .aboutPanel .cDot.isActive{width:22px;background:#B4D06E;}
+  @media (prefers-reduced-motion: reduce){.aboutSection .aboutPanel .cSlide{transition:opacity .01s;}}
+
+  /* MOBILNO — naslov → tekst → slika → dugme (puna širina); SVI paneli postaju BIJELI */
+  @media(max-width:900px){
+    .aboutSection .aboutPanel{background:var(--bg);color:inherit;}
+    .aboutSection .aboutPanel::before{display:none;}
+    .aboutSection .aboutPanel .panelGrid{grid-template-columns:1fr;grid-template-rows:none;gap:24px;}
+    .aboutSection .aboutPanel .panelText{order:1;grid-column:1;grid-row:auto;}
+    .aboutSection .aboutPanel .panelMedia,
+    .aboutSection .aboutPanel .carousel{order:2;grid-column:1;grid-row:auto;height:clamp(380px,72vw,480px);border-radius:22px;}
+    .aboutSection .aboutPanel .carousel{background:#dfe4dc;box-shadow:0 40px 80px -46px rgba(29,61,52,.5);}
+    .aboutSection .aboutPanel .panelMedia img{box-shadow:0 40px 80px -46px rgba(29,61,52,.5);}
+    .aboutSection .aboutPanel .panelCta{order:3;grid-column:1;grid-row:auto;width:100%;justify-content:center;align-self:auto;
+      background:var(--g);box-shadow:none;}
+    .aboutSection .aboutPanel .panelTitle{max-width:none;color:var(--g);}
+    .aboutSection .aboutPanel .panelTitle em{color:var(--ol);}
+    .aboutSection .aboutPanel .panelBody p{color:#5c6960;}
+    .aboutSection .aboutPanel .eyebrow{color:var(--ol);}
+    .aboutSection .aboutPanel .eyebrowLine{background:var(--ol);}
+    .aboutSection .aboutPanel .panelTopo path{stroke:rgba(47,93,80,.08);}
+    .aboutSection .aboutPanel .cCap{bottom:clamp(54px,14vw,64px);}
+  }
+
+  /* ============================================================
+     NAŠ PUT — alternating timeline (tamno na desktopu, bijelo na mobitelu)
+     ============================================================ */
+  .aboutSection .sectionEyebrow.center{justify-content:center;}
+  .aboutSection .aboutTimeline{background:var(--ink);padding:clamp(90px,11vw,140px) 0;}
   .aboutSection .tlHead{text-align:center;max-width:640px;margin:0 auto clamp(52px,6vw,80px);}
-  .aboutSection .tlTitle{font-family:'Fraunces',serif;color:var(--g);font-weight:600;letter-spacing:-.025em;
+  .aboutSection .tlTitle{font-family:'Fraunces',serif;color:#fff;font-weight:600;letter-spacing:-.025em;
     line-height:1.1;font-size:clamp(2rem,4.4vw,3.1rem);margin:12px 0 16px;}
-  .aboutSection .tlLead{color:#5c6960;font-size:clamp(1rem,2vw,1.1rem);line-height:1.65;}
+  .aboutSection .tlLead{color:rgba(255,255,255,.72);font-size:clamp(1rem,2vw,1.1rem);line-height:1.65;}
 
   .aboutSection .tlTrack{list-style:none;margin:0 auto;padding:0;max-width:1040px;position:relative;}
-  /* centralna linija */
-  .aboutSection .tlTrack::before{content:"";position:absolute;top:10px;bottom:10px;left:50%;transform:translateX(-50%);
-    width:2px;background:linear-gradient(to bottom,transparent,rgba(29,61,52,.2) 6%,rgba(29,61,52,.2) 94%,transparent);}
+  .aboutSection .tlTrack::before{content:"";position:absolute;top:12px;bottom:12px;left:50%;transform:translateX(-50%);
+    width:2px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.2) 6%,rgba(255,255,255,.2) 94%,transparent);z-index:0;}
 
-  /* svaki red = relativni kontejner; kartica zauzima jednu polovinu */
-  .aboutSection .tlRow{position:relative;margin-bottom:clamp(24px,3vw,44px);}
+  .aboutSection .tlRow{position:relative;margin-bottom:clamp(28px,3.5vw,48px);}
   .aboutSection .tlRow:last-child{margin-bottom:0;}
 
-  /* kartica */
-  .aboutSection .tlCard{position:relative;width:calc(50% - 64px);padding:clamp(22px,2.6vw,30px);
-    background:linear-gradient(165deg,rgba(255,255,255,.92),rgba(255,255,255,.72));
-    border:1px solid rgba(255,255,255,.75);border-radius:20px;box-shadow:0 26px 54px -34px rgba(29,61,52,.42);
+  .aboutSection .tlCard{position:relative;z-index:1;width:calc(50% - 60px);padding:clamp(22px,2.6vw,30px);
+    background:linear-gradient(165deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.12);border-radius:20px;box-shadow:0 26px 54px -34px rgba(0,0,0,.6);
     transition:transform .5s var(--ease),box-shadow .5s var(--ease);}
-  .aboutSection .tlRow:nth-child(even) .tlCard{margin-left:auto;}   /* parne: desno */
-  .aboutSection .tlCard:hover{transform:translateY(-4px);box-shadow:0 40px 70px -38px rgba(29,61,52,.5);}
-  /* dijamant-spojnik na sredini kartice, prema liniji */
+  .aboutSection .tlRow:nth-child(even) .tlCard{margin-left:auto;}
+  .aboutSection .tlCard:hover{transform:translateY(-4px);box-shadow:0 40px 70px -38px rgba(0,0,0,.7);}
   .aboutSection .tlCard::after{content:"";position:absolute;top:50%;margin-top:-8px;width:16px;height:16px;
-    background:inherit;border:1px solid rgba(255,255,255,.75);transform:rotate(45deg);}
+    background:inherit;border:1px solid rgba(255,255,255,.12);transform:rotate(45deg);}
   .aboutSection .tlRow:nth-child(odd) .tlCard::after{right:-8px;border-left:0;border-bottom:0;}
   .aboutSection .tlRow:nth-child(even) .tlCard::after{left:-8px;border-right:0;border-top:0;}
-
   .aboutSection .tlCard h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.015em;line-height:1.2;
-    font-size:clamp(1.2rem,2.1vw,1.5rem);color:var(--g2);margin-bottom:10px;}
-  .aboutSection .tlCard p{color:#6b7770;font-size:.95rem;line-height:1.65;}
+    font-size:clamp(1.2rem,2.1vw,1.5rem);color:#fff;margin-bottom:10px;}
+  .aboutSection .tlCard p{color:rgba(255,255,255,.7);font-size:.95rem;line-height:1.65;}
 
-  /* godina-krug: centriran na liniji i na sredini SVOJE kartice */
   .aboutSection .tlNode{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
-    width:82px;height:82px;border-radius:50%;display:grid;place-items:center;background:var(--g);color:#fff;
-    font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;border:4px solid var(--bg);
-    box-shadow:0 16px 32px -14px rgba(47,93,80,.6);transition:transform .5s var(--ease),background .5s var(--ease);}
-  .aboutSection .tlRow:hover .tlNode{transform:translate(-50%,-50%) scale(1.08);background:var(--g2);}
+    width:80px;height:80px;border-radius:50%;display:grid;place-items:center;background:var(--ol);color:#fff;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;border:4px solid var(--ink);
+    box-shadow:0 16px 32px -14px rgba(0,0,0,.7);transition:transform .5s var(--ease),background .5s var(--ease);}
+  .aboutSection .tlRow:hover .tlNode{transform:translate(-50%,-50%) scale(1.08);background:#7ea23a;}
 
-  /* MOBILNO — jedna kolona: linija lijevo, kartice desno */
+  /* MOBILNO — timeline bijel: linija lijevo, krug na sredini kartice, kartica desno */
   @media(max-width:760px){
-    .aboutSection .tlTrack::before{left:34px;}
-    .aboutSection .tlRow{margin-bottom:22px;}
+    .aboutSection .aboutTimeline{background:var(--bg);}
+    .aboutSection .tlTitle{color:var(--g);}
+    .aboutSection .tlLead{color:#5c6960;}
+    .aboutSection .tlTrack{max-width:520px;}
+    .aboutSection .tlTrack::before{left:34px;top:14px;bottom:14px;
+      background:linear-gradient(to bottom,transparent,rgba(29,61,52,.22) 6%,rgba(29,61,52,.22) 94%,transparent);}
+    .aboutSection .tlRow{margin-bottom:20px;}
+
     .aboutSection .tlCard,
-    .aboutSection .tlRow:nth-child(even) .tlCard{width:auto;margin-left:88px;}
+    .aboutSection .tlRow:nth-child(even) .tlCard{width:auto;margin-left:80px;
+      background:linear-gradient(165deg,rgba(255,255,255,.94),rgba(255,255,255,.74));border-color:rgba(255,255,255,.75);}
     .aboutSection .tlCard::after,
     .aboutSection .tlRow:nth-child(odd) .tlCard::after,
-    .aboutSection .tlRow:nth-child(even) .tlCard::after{left:-8px;right:auto;top:34px;margin-top:0;
-      border:1px solid rgba(255,255,255,.75);border-right:0;border-top:0;}
-    .aboutSection .tlNode{left:34px;top:34px;transform:translate(-50%,0);width:60px;height:60px;font-size:.82rem;}
-    .aboutSection .tlRow:hover .tlNode{transform:translate(-50%,0) scale(1.06);}
+    .aboutSection .tlRow:nth-child(even) .tlCard::after{left:-8px;right:auto;top:50%;margin-top:-8px;
+      width:16px;height:16px;border:1px solid rgba(255,255,255,.75);border-right:0;border-top:0;transform:rotate(45deg);}
+    .aboutSection .tlCard h3{color:var(--g2);}
+    .aboutSection .tlCard p{color:#6b7770;}
+
+    .aboutSection .tlNode{left:34px;top:50%;transform:translate(-50%,-50%);
+      width:64px;height:64px;font-size:.86rem;border-width:4px;background:var(--g);border-color:var(--bg);}
+    .aboutSection .tlRow:hover .tlNode{transform:translate(-50%,-50%) scale(1.05);}
   }
+
+  /* CTA */
+  .aboutSection .ctaWrap{position:relative;border-radius:28px;overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;}
+  .aboutSection .ctaBg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .aboutSection .ctaOv1{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(13,26,22,.82) 0%,rgba(29,61,52,.7) 100%);}
+  .aboutSection .ctaDots{position:absolute;inset:0;z-index:2;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+  .aboutSection .ctaContent{position:relative;z-index:3;text-align:center;padding:64px 32px;max-width:720px;}
+  .aboutSection .ctaEyebrow{display:inline-block;font-family:'Poppins',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amb);margin-bottom:20px;}
+  .aboutSection .ctaContent h2{font-family:'Fraunces',serif;color:#fff;font-size:clamp(1.8rem,4vw,3rem);font-weight:600;line-height:1.15;margin-bottom:22px;letter-spacing:-.025em;}
+  .aboutSection .ctaContent p{color:rgba(255,255,255,.8);font-size:1.02rem;line-height:1.7;max-width:520px;margin:0 auto 34px;}
+  .aboutSection .ctaBtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .aboutSection .btnCtaPrimary{display:inline-flex;align-items:center;gap:10px;background:var(--ol);color:#fff;padding:15px 38px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;transition:background .25s,transform .25s var(--ease),box-shadow .25s;}
+  .aboutSection .btnCtaPrimary:hover{background:var(--ol2);transform:translateY(-3px);box-shadow:0 20px 48px rgba(0,0,0,.4);}
+  .aboutSection .btnCtaGhost{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.85);padding:15px 28px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px);transition:background .25s;}
+  .aboutSection .btnCtaGhost:hover{background:rgba(255,255,255,.1);}
   
   </style>
 </head>
@@ -1091,45 +710,45 @@
   </div>
 
 
-  <main id="mainContent">
-    <div class="aboutSection">
-
-      <!-- 1. HERO -->
-      <section class="hero">
-        <img class="heroBg"
-          src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=2000&h=1300&fit=crop&auto=format"
-          alt="Panorama planinskih vrhova pri izlasku sunca" loading="eager" fetchpriority="high">
-        <div class="heroOv1" aria-hidden="true"></div>
-        <div class="heroOv2" aria-hidden="true"></div>
-            <div class="heroContent">
-          <h1>O nama</h1>
-          <p class="heroSub">Sedam decenija zajedno osvajamo vrhove, čuvamo prirodu i stvaramo uspomene koje traju.</p>
+ <main id="mainContent">
+<div class="aboutSection">
+ 
+  <!-- 1. HERO -->
+  <section class="hero">
+    <img class="heroBg" src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=2000&h=1300&fit=crop&auto=format" alt="Panorama planinskih vrhova pri izlasku sunca" loading="eager" fetchpriority="high">
+    <div class="heroOv1" aria-hidden="true"></div>
+    <div class="heroOv2" aria-hidden="true"></div>
+    <svg class="heroContour" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M-40 620 C 240 540, 380 610, 580 545 C 800 476, 920 545, 1140 485 C 1320 436, 1420 486, 1500 455"/>
+      <path d="M-40 700 C 260 630, 440 690, 640 625 C 860 556, 1000 620, 1200 565 C 1360 520, 1460 560, 1500 536"/>
+      <path d="M-40 540 C 220 462, 340 520, 540 460 C 760 394, 880 456, 1100 398 C 1280 352, 1400 394, 1500 366"/>
+    </svg>
+    <div class="heroContent">
+      <h1>O nama</h1>
+      <p class="heroSub">Sedam decenija zajedno osvajamo vrhove, čuvamo prirodu i stvaramo uspomene koje traju.</p>
+    </div>
+    <div class="scrollCue" aria-hidden="true"><div class="scrollLine"></div><span class="scrollLabel">Skrolaj</span></div>
+  </section>
+ 
+  <!-- 2. KO SMO MI -->
+  <section class="aboutPanel" aria-labelledby="koTitle">
+    <div class="panelGrid">
+      <div class="panelText onReveal">
+        <h2 id="koTitle" class="panelTitle">Ljubav prema planini koja traje <em>od 1951.</em></h2>
+        <div class="panelBody">
+          <p>Planinarsko društvo „Konjuh" jedno je od najstarijih društava u Tuzlanskom kantonu. Rođeno iz entuzijazma nekolicine zaljubljenika u planinu, danas okuplja preko dvije stotine članova svih generacija.</p>
+          <p>Kroz decenije smo prošli hiljade kilometara staza, osnovali planinarsku školu i izgradili zajednicu u kojoj se dijele iskustva, znanje i poštovanje prema prirodi.</p>
+          <p>Kod nas ima mjesta za svakog — od onih koji prave prve korake na stazi do iskusnih planinara koji godinama osvajaju najviše vrhove Bosne i Hercegovine.</p>
         </div>
-        <div class="scrollCue" aria-hidden="true">
-          <div class="scrollLine"></div><span class="scrollLabel">Skrolaj</span>
-        </div>
-      </section>
-
-     
-<!-- 2. KO SMO MI -->
-<section class="aboutPanel" aria-labelledby="koTitle">
-  <div class="panelGrid">
-    <div class="panelText onReveal">
-      <h2 id="koTitle" class="panelTitle">Ljubav prema planini koja traje <em>od 1951.</em></h2>
-      <div class="panelBody">
-        <p>Planinarsko društvo „Konjuh" jedno je od najstarijih društava u Tuzlanskom kantonu. Rođeno iz entuzijazma nekolicine zaljubljenika u planinu, danas okuplja preko dvije stotine članova svih generacija.</p>
-        <p>Kod nas ima mjesta za svakog — od onih koji prave prve korake na stazi do iskusnih planinara koji godinama osvajaju najviše vrhove Bosne i Hercegovine.</p>
+      </div>
+      <div class="panelMedia onReveal d1">
+        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Planinari na stazi u koloni">
       </div>
     </div>
-
-    <div class="panelMedia onReveal d1">
-      <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Planinari na stazi u koloni">
-    </div>
-  </div>
-</section>
-
-<!-- 3. NAŠ PUT (alternating timeline) -->
-<section class="section container aboutTimeline" aria-labelledby="tlTitle">
+  </section>
+ 
+  <!-- 3. NAŠ PUT (timeline) -->
+<section class="section aboutTimeline" aria-labelledby="tlTitle">
   <div class="tlHead onReveal">
     <h2 class="tlTitle" id="tlTitle">Put rasta i zajedništva</h2>
     <p class="tlLead">Sedam decenija koraka, uspona i zajedništva — ispričano kroz prekretnice koje su oblikovale naše društvo.</p>
@@ -1137,674 +756,200 @@
 
   <ol class="tlTrack">
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Osnivanje društva</h3>
-        <p>Grupa entuzijasta osniva Planinarsko društvo „Konjuh" s ciljem promocije planinarstva i ljepota Konjuha.</p>
-      </div>
+      <div class="tlCard"><h3>Osnivanje društva</h3><p>Grupa entuzijasta osniva Planinarsko društvo „Konjuh" s ciljem promocije planinarstva i ljepota Konjuha.</p></div>
       <span class="tlNode">1951</span>
     </li>
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Prvi organizovani usponi</h3>
-        <p>Organizujemo prve grupne ture i izlete, gradeći temelje buduće planinarske zajednice.</p>
-      </div>
+      <div class="tlCard"><h3>Prvi organizovani usponi</h3><p>Organizujemo prve grupne ture i izlete, gradeći temelje buduće planinarske zajednice.</p></div>
       <span class="tlNode">1960</span>
     </li>
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Izgradnja planinarskog doma</h3>
-        <p>Podignut prvi planinarski dom na Konjuhu — postaje vikend okupljalište i baza za brojne avanture.</p>
-      </div>
+      <div class="tlCard"><h3>Izgradnja planinarskog doma</h3><p>Podignut prvi planinarski dom na Konjuhu — postaje vikend okupljalište i baza za brojne avanture.</p></div>
       <span class="tlNode">1975</span>
     </li>
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Uređenje staza i markacija</h3>
-        <p>Pokrećemo akciju uređenja i markiranja planinarskih staza radi sigurnijeg i ljepšeg boravka u prirodi.</p>
-      </div>
+      <div class="tlCard"><h3>Uređenje staza i markacija</h3><p>Pokrećemo akciju uređenja i markiranja planinarskih staza radi sigurnijeg i ljepšeg boravka u prirodi.</p></div>
       <span class="tlNode">1985</span>
     </li>
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Širenje članstva i aktivnosti</h3>
-        <p>Društvo bilježi rast članstva i širi aktivnosti na edukacije, škole u prirodi i ekološke akcije.</p>
-      </div>
+      <div class="tlCard"><h3>Širenje članstva i aktivnosti</h3><p>Društvo bilježi rast članstva i širi aktivnosti na edukacije, škole u prirodi i ekološke akcije.</p></div>
       <span class="tlNode">1995</span>
     </li>
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Nove staze, novi izazovi</h3>
-        <p>Otvaramo nove planinarske rute i povezujemo Konjuh s drugim planinama u Bosni i Hercegovini.</p>
-      </div>
+      <div class="tlCard"><h3>Nove staze, novi izazovi</h3><p>Otvaramo nove planinarske rute i povezujemo Konjuh s drugim planinama u Bosni i Hercegovini.</p></div>
       <span class="tlNode">2005</span>
     </li>
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Zajednica koja traje</h3>
-        <p>Kroz druženja, ture i volonterski rad jačamo zajedništvo i ljubav prema planini.</p>
-      </div>
+      <div class="tlCard"><h3>Zajednica koja traje</h3><p>Kroz druženja, ture i volonterski rad jačamo zajedništvo i ljubav prema planini.</p></div>
       <span class="tlNode">2015</span>
     </li>
     <li class="tlRow onReveal">
-      <div class="tlCard">
-        <h3>Gledamo naprijed</h3>
-        <p>Nastavljamo s novim projektima, brigom o prirodi i inspiracijom za buduće generacije planinara.</p>
-      </div>
+      <div class="tlCard"><h3>Gledamo naprijed</h3><p>Nastavljamo s novim projektima, brigom o prirodi i inspiracijom za buduće generacije planinara.</p></div>
       <span class="tlNode">2025</span>
     </li>
   </ol>
 </section>
-
-<!-- 4. NAŠE VRIJEDNOSTI -->
-<section class="aboutPanel" aria-labelledby="avTitle">
-  <div class="panelGrid">
-    <div class="panelText onReveal">
-      
-      <h2 id="avTitle" class="panelTitle">Na vrh ideš zbog pogleda, <em>a vraćaš se zbog sebe.</em></h2>
-      <div class="panelBody">
-        <p>Naše vrijednosti oblikuju svaki korak na stazi — zajedništvo, ljubav prema prirodi, sigurnost i odgovornost prema planini koju dijelimo. Kroz edukaciju i tradiciju prenosimo ih na nove generacije.</p>
+ 
+  <!-- 4. NAŠE VRIJEDNOSTI -->
+  <section class="aboutPanel" aria-labelledby="avTitle">
+    <div class="panelGrid">
+      <div class="panelText onReveal">
+        <h2 id="avTitle" class="panelTitle">Na vrh ideš zbog pogleda, <em>a vraćaš se zbog sebe.</em></h2>
+        <div class="panelBody">
+          <p>Naše vrijednosti oblikuju svaki korak na stazi — zajedništvo, ljubav prema prirodi, sigurnost i odgovornost prema planini koju dijelimo. Kroz edukaciju i tradiciju prenosimo ih na nove generacije.</p>
+        </div>
       </div>
-         </div>
-
-    <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Galerija vrijednosti">
-      <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinar na vrhu gleda dolinu"><div class="cCap"><h3>Svaki korak vodi bliže <em>slobodi</em>.</h3><p>Prenosimo ljubav prema prirodi i planinama na nove generacije.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Kolona planinara na stazi"><div class="cCap"><h3>Na vrh se ide <em>zajedno</em>.</h3><p>Grupa je uvijek jača od pojedinca, na svakoj stazi.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=1500&fit=crop&auto=format" alt="Šuma obasjana suncem"><div class="cCap"><h3>Priroda je naša <em>učionica</em>.</h3><p>Učimo da posmatramo, poštujemo i čuvamo planinu.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=1400&h=1500&fit=crop&auto=format" alt="Planinar provjerava opremu"><div class="cCap"><h3>Sigurnost je <em>iznad</em> vrha.</h3><p>Svaki uspon planiramo pažljivo i vraćamo se zajedno.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&h=1500&fit=crop&auto=format" alt="Planine u smiraj dana"><div class="cCap"><h3>Sedam decenija na <em>istoj</em> stazi.</h3><p>Tradiciju čuvamo i s ponosom nosimo dalje.</p></div></div>
-      <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
+      <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Galerija vrijednosti">
+        <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinar na vrhu gleda dolinu"><div class="cCap"><h3>Svaki korak vodi bliže <em>slobodi</em>.</h3><p>Prenosimo ljubav prema prirodi i planinama na nove generacije.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Kolona planinara na stazi"><div class="cCap"><h3>Na vrh se ide <em>zajedno</em>.</h3><p>Grupa je uvijek jača od pojedinca, na svakoj stazi.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=1500&fit=crop&auto=format" alt="Šuma obasjana suncem"><div class="cCap"><h3>Priroda je naša <em>učionica</em>.</h3><p>Učimo da posmatramo, poštujemo i čuvamo planinu.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=1400&h=1500&fit=crop&auto=format" alt="Planinar provjerava opremu"><div class="cCap"><h3>Sigurnost je <em>iznad</em> vrha.</h3><p>Svaki uspon planiramo pažljivo i vraćamo se zajedno.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&h=1500&fit=crop&auto=format" alt="Planine u smiraj dana"><div class="cCap"><h3>Sedam decenija na <em>istoj</em> stazi.</h3><p>Tradiciju čuvamo i s ponosom nosimo dalje.</p></div></div>
+        <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
+      </div>
+      <a class="panelCta" href="membership.html">Saznaj više o nama
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
-    <a class="panelCta" href="membership.html">Saznaj više o nama
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- 5. ONO ŠTO RADIMO (tamna) -->
-<section class="aboutPanel isDark" aria-labelledby="awTitle">
-  <div class="panelGrid">
-    <div class="panelText onReveal">
-       <h2 id="awTitle" class="panelTitle">Ono što radimo <em>kad drugi</em> još spavaju.</h2>
-      <div class="panelBody">
-        <p>Planina nas uči strpljenju, upornosti i zahvalnosti. Kroz naše aktivnosti — ture, školu, markaciju i ekološke akcije — gradimo zajednicu i stvaramo uspomene koje traju.</p>
+  </section>
+ 
+  <!-- 5. ONO ŠTO RADIMO (tamna → bijela na telefonu) -->
+  <section class="aboutPanel isDark" aria-labelledby="awTitle">
+    <div class="panelGrid">
+      <div class="panelText onReveal">
+        <h2 id="awTitle" class="panelTitle">Ono što radimo <em>kad drugi</em> još spavaju.</h2>
+        <div class="panelBody">
+          <p>Planina nas uči strpljenju, upornosti i zahvalnosti. Kroz naše aktivnosti — ture, školu, markaciju i ekološke akcije — gradimo zajednicu i stvaramo uspomene koje traju.</p>
+        </div>
+      </div>
+      <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Naše aktivnosti">
+        <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinari na vrhu u smiraj dana"><div class="cCap"><h3>Planinarske ture</h3><p>Organizujemo ture za sve uzraste i nivoe kondicije.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1400&h=1500&fit=crop&auto=format" alt="Planinarska obuka u prirodi"><div class="cCap"><h3>Planinarska škola</h3><p>Edukacija i obuka za sigurno kretanje i boravak u prirodi.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1400&h=1500&fit=crop&auto=format" alt="Obilježena planinska staza"><div class="cCap"><h3>Markacija staza</h3><p>Održavamo i označavamo staze kako bi planina bila dostupna svima.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&h=1500&fit=crop&auto=format" alt="Predavanje i edukacija članova"><div class="cCap"><h3>Edukacije</h3><p>Radionice i predavanja o prirodi i zaštiti okoliša.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=1400&h=1500&fit=crop&auto=format" alt="Ekološka akcija u prirodi"><div class="cCap"><h3>Ekološke akcije</h3><p>Čistimo staze i brinemo o očuvanju planinskih prostora.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=1400&h=1500&fit=crop&auto=format" alt="Druženje uz logorsku vatru"><div class="cCap"><h3>Druženja</h3><p>Okupljanja koja povezuju generacije ljubitelja prirode.</p></div></div>
+        <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
       </div>
       <a class="panelCta" href="hikes.html">Saznaj više o našim turama
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
       </a>
     </div>
-
-    <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Naše aktivnosti">
-      <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinari na vrhu u smiraj dana"><div class="cCap"><h3>Planinarske ture</h3><p>Organizujemo ture za sve uzraste i nivoe kondicije.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1400&h=1500&fit=crop&auto=format" alt="Planinarska obuka u prirodi"><div class="cCap"><h3>Planinarska škola</h3><p>Edukacija i obuka za sigurno kretanje i boravak u prirodi.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1400&h=1500&fit=crop&auto=format" alt="Obilježena planinska staza"><div class="cCap"><h3>Markacija staza</h3><p>Održavamo i označavamo staze kako bi planina bila dostupna svima.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&h=1500&fit=crop&auto=format" alt="Predavanje i edukacija članova"><div class="cCap"><h3>Edukacije</h3><p>Radionice i predavanja o prirodi i zaštiti okoliša.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=1400&h=1500&fit=crop&auto=format" alt="Ekološka akcija u prirodi"><div class="cCap"><h3>Ekološke akcije</h3><p>Čistimo staze i brinemo o očuvanju planinskih prostora.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=1400&h=1500&fit=crop&auto=format" alt="Druženje uz logorsku vatru"><div class="cCap"><h3>Druženja</h3><p>Okupljanja koja povezuju generacije ljubitelja prirode.</p></div></div>
-      <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 6. NAŠI CILJEVI -->
-<section class="aboutPanel" aria-labelledby="agTitle">
-  <svg class="panelTopo" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path d="M-40 180 C 260 130,420 220,700 170 C 980 120,1120 210,1300 160"/>
-    <path d="M-40 300 C 260 250,420 340,700 290 C 980 240,1120 330,1300 280"/>
-    <path d="M-40 440 C 300 390,460 480,760 430 C 1040 380,1180 470,1300 420"/>
-    <path d="M-40 580 C 300 530,460 620,760 570 C 1040 520,1180 610,1300 560"/>
-  </svg>
-  <div class="panelGrid">
-    <div class="panelText onReveal">
-      <h2 id="agTitle" class="panelTitle">Naši <em>ciljevi</em>.</h2>
-      <div class="panelBody">
-        <p>Vodi nas jasna namjera — razvijati planinarstvo, čuvati prirodu i graditi zajednicu koja traje. Kroz edukaciju i zajedništvo osvajamo nove vrhove i prenosimo znanje na nove generacije.</p>
-        <p>Svaki korak koji pravimo danas gradi planinarsko društvo na koje ćemo i sutra biti ponosni.</p>
+  </section>
+ 
+  <!-- 6. NAŠI CILJEVI -->
+  <section class="aboutPanel" aria-labelledby="agTitle">
+    <div class="panelGrid">
+      <div class="panelText onReveal">
+        <h2 id="agTitle" class="panelTitle">Naši <em>ciljevi</em>.</h2>
+        <div class="panelBody">
+          <p>Vodi nas jasna namjera — razvijati planinarstvo, čuvati prirodu i graditi zajednicu koja traje. Kroz edukaciju i zajedništvo osvajamo nove vrhove i prenosimo znanje na nove generacije.</p>
+          <p>Svaki korak koji pravimo danas gradi planinarsko društvo na koje ćemo i sutra biti ponosni.</p>
+        </div>
+      </div>
+      <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Naši ciljevi">
+        <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinski greben u smiraj dana"><div class="cCap"><h3>Put koji <em>gradimo</em> zajedno.</h3><p>Ciljevi koji oblikuju sve što radimo — danas i sutra.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Kolona planinara na stazi"><div class="cCap"><h3>Novi vrhovi, <em>korak</em> po korak.</h3><p>Podstičemo aktivno planinarstvo širom Bosne i Hercegovine.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=1500&fit=crop&auto=format" alt="Šuma obasjana suncem"><div class="cCap"><h3>Planinu <em>ostavljamo</em> čistijom.</h3><p>Čuvamo planinske prostore i odgovoran odnos prema okolišu.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=1400&h=1500&fit=crop&auto=format" alt="Staza kroz planinsku šumu"><div class="cCap"><h3>Znanje koje <em>čuva</em> živote.</h3><p>Ulažemo u sigurnost i vještine novih generacija planinara.</p></div></div>
+        <div class="cSlide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&h=1500&fit=crop&auto=format" alt="Planine u smiraj dana"><div class="cCap"><h3>Zajedno smo <em>jači</em>.</h3><p>Gradimo društvo u kojem se dijele iskustva i prijateljstva.</p></div></div>
+        <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
       </div>
       <a class="panelCta" href="membership.html">Pridruži nam se
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
       </a>
     </div>
-
-    <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Naši ciljevi">
-      <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinski greben u smiraj dana"><div class="cCap"><h3>Put koji <em>gradimo</em> zajedno.</h3><p>Ciljevi koji oblikuju sve što radimo — danas i sutra.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Kolona planinara na stazi"><div class="cCap"><h3>Novi vrhovi, <em>korak</em> po korak.</h3><p>Podstičemo aktivno planinarstvo širom Bosne i Hercegovine.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=1500&fit=crop&auto=format" alt="Šuma obasjana suncem"><div class="cCap"><h3>Planinu <em>ostavljamo</em> čistijom.</h3><p>Čuvamo planinske prostore i odgovoran odnos prema okolišu.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=1400&h=1500&fit=crop&auto=format" alt="Staza kroz planinsku šumu"><div class="cCap"><h3>Znanje koje <em>čuva</em> živote.</h3><p>Ulažemo u sigurnost i vještine novih generacija planinara.</p></div></div>
-      <div class="cSlide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&h=1500&fit=crop&auto=format" alt="Planine u smiraj dana"><div class="cCap"><h3>Zajedno smo <em>jači</em>.</h3><p>Gradimo društvo u kojem se dijele iskustva i prijateljstva.</p></div></div>
-      <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
+    </section>
+    
+    <div id="ctaVideoRoot"></div>
+    
     </div>
-  </div>
-</section>
-      <!-- 7. CTA -->
-     <div id="ctaVideoRoot"></div>
-
+    </main>
+    
     </div>
-  </main>
+    </main>
 
-      <!-- ============================= FOOTER (SHARED PARTIAL) ============================= -->
-      <footer class="relative bg-navydeep text-beige">
-        <div class="footerTopoDivider" aria-hidden="true">
-          <svg viewBox="0 0 1200 90" preserveAspectRatio="none">
-            <path
-              d="M0,55 C40,20 70,15 110,32 C150,49 175,10 215,22 C255,34 280,58 320,40 C360,22 390,5 430,18 C470,31 500,55 540,45 C580,35 610,12 650,25 C690,38 720,60 760,48 C800,36 830,15 870,28 C910,41 940,58 980,44 C1020,30 1050,10 1090,24 C1130,38 1160,55 1200,42 L1200,90 L0,90 Z" />
-          </svg>
-        </div>
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-10">
-          <div class="grid lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] gap-12 mb-16">
-            <div>
-              <p class="font-display text-2xl font-semibold mb-4">PD Konjuh</p>
-              <p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Tuzle. Organizujemo
-                ture, edukaciju i druženje na planinama Bosne i Hercegovine od 1951. godine.</p>
-              <div class="flex gap-4">
-                <a href="#" aria-label="Instagram"
-                  class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg
-                    width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6" />
-                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-                  </svg></a>
-                <a href="#" aria-label="Facebook"
-                  class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg
-                    width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z"
-                      stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
-                  </svg></a>
-                <a href="#" aria-label="Strava"
-                  class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg
-                    width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M10 3l6 12h-4l-2 6-2-6H4l6-12z" stroke="currentColor" stroke-width="1.4"
-                      stroke-linejoin="round" />
-                  </svg></a>
-              </div>
-            </div>
+<!-- REVEAL + COUNT-UP + BAZNI CAROUSEL za "O nama" sekciju -->
+<script>
+(function () {
+  var root = document.querySelector('.aboutSection');
+  if (!root) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            <div>
-              <p class="eyebrow text-beige/70 mb-5">Istraži</p>
-              <ul class="space-y-3 text-sm text-beige/75">
-                <li><a href="about.html" class="hover:text-beige">O nama</a></li>
-                <li><a href="hikes.html" class="hover:text-beige">Ture</a></li>
-                <li><a href="plan.html" class="hover:text-beige">Plan i program</a></li>
-                <li><a href="gallery.html" class="hover:text-beige">Galerija</a></li>
-                <li><a href="vijesti.html" class="hover:text-beige">Vijesti</a></li>
-              </ul>
-            </div>
+  /* --- REVEAL --- */
+  var rev = root.querySelectorAll('.onReveal');
+  if (reduced) {
+    rev.forEach(function (el) { el.classList.add('visible'); });
+  } else {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -4% 0px' });
+    rev.forEach(function (el) { io.observe(el); });
+  }
 
-            <div>
-              <p class="eyebrow text-beige/50 mb-5">Društvo</p>
-              <ul class="space-y-3 text-sm text-beige/75">
-                <li><a href="membership.html" class="hover:text-beige">Članstvo</a></li>
-                <li><a href="contact.html" class="hover:text-beige">Kontakt</a></li>
-                <li><a href="contact.html#hitni-brojevi" class="hover:text-beige">Hitni brojevi</a></li>
-              </ul>
-            </div>
+  /* --- COUNT-UP (za bilo koji [data-count]) --- */
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function startCount(el) {
+    var target = +el.dataset.count;
+    if (reduced) { el.textContent = target; return; }
+    var dur = 1800, t0 = performance.now();
+    (function tick(now) {
+      var p = Math.min(1, (now - t0) / dur);
+      el.textContent = Math.round(easeOutCubic(p) * target);
+      if (p < 1) requestAnimationFrame(tick);
+    })(performance.now());
+  }
+  var cio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { startCount(e.target); cio.unobserve(e.target); } });
+  }, { threshold: .4 });
+  root.querySelectorAll('[data-count]').forEach(function (el) {
+    if (reduced) { el.textContent = el.dataset.count; } else { cio.observe(el); }
+  });
 
-            <div>
-              <p class="eyebrow text-beige/50 mb-5">Kontakt</p>
-              <div class="space-y-4 text-sm text-beige/75">
-                <div class="flex items-start gap-3">
-                  <svg class="w-5 h-5 mt-0.5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
-                    <circle cx="12" cy="11" r="3" />
-                  </svg>
-                  <span>Patriotske lige br. 4, Tuzla, Bosna i Hercegovina</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <svg class="w-5 h-5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M5 5v14h14V5M5 7l7 5 7-5" />
-                  </svg>
-                  <a href="mailto:info@pdkonjuh.ba"
-                    class="hover:text-beige transition-colors">pdkonjuh1951@gmail.com</a>
-                </div>
-                <div class="flex items-center gap-3">
-                  <svg class="w-5 h-5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M3 5a2 2 0 012-2h3.3a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.25 1.02L8.9 9.6a16 16 0 006.5 6.5l1.3-1.3a1 1 0 011.02-.25l3.6 1.2a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.3 21 3 14.7 3 7V5z" />
-                  </svg>
-                  <a href="tel:+38761123456" class="hover:text-beige transition-colors">+387 61 562 277</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-4 mb-10">
-            <p class="eyebrow text-beige/50 mb-4">Iz naše galerije</p>
-            <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
-              <button type="button" data-lightbox
-                data-full="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop"
-                data-caption="Kolona planinara na stazi" class="footerGalleryItem reveal"
-                aria-label="Otvori sliku: Kolona planinara na stazi">
-                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop"
-                  alt="Kolona planinara na stazi" class="rounded-lg aspect-square object-cover">
-              </button>
-              <button type="button" data-lightbox
-                data-full="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop"
-                data-caption="Logorska vatra uveče na planinarskom domu" class="footerGalleryItem reveal revealDelay1"
-                aria-label="Otvori sliku: Logorska vatra uveče na planinarskom domu">
-                <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=687&auto=format&fit=crop"
-                  alt="Logorska vatra uveče na planinarskom domu" class="rounded-lg aspect-square object-cover">
-              </button>
-              <button type="button" data-lightbox
-                data-full="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop"
-                data-caption="Šumska staza obasjana suncem" class="footerGalleryItem reveal revealDelay2"
-                aria-label="Otvori sliku: Šumska staza obasjana suncem">
-                <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=687&auto=format&fit=crop"
-                  alt="Šumska staza obasjana suncem" class="rounded-lg aspect-square object-cover">
-              </button>
-              <button type="button" data-lightbox
-                data-full="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1600&auto=format&fit=crop"
-                data-caption="Pogled sa vrha Maglića na Trnovačko jezero" class="footerGalleryItem reveal revealDelay3"
-                aria-label="Otvori sliku: Pogled sa vrha Maglića na Trnovačko jezero">
-                <img src="https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=687&auto=format&fit=crop"
-                  alt="Pogled sa vrha Maglića na Trnovačko jezero" class="rounded-lg aspect-square object-cover">
-              </button>
-              <button type="button" data-lightbox
-                data-full="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop"
-                data-caption="Planinarski dom na Treskavici u magli" class="footerGalleryItem reveal revealDelay4"
-                aria-label="Otvori sliku: Planinarski dom na Treskavici u magli">
-                <img
-                  src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1170&auto=format&fit=crop"
-                  alt="Planinarski dom na Treskavici u magli" class="rounded-lg aspect-square object-cover">
-              </button>
-              <button type="button" data-lightbox
-                data-full="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1600&auto=format&fit=crop"
-                data-caption="Detalj planinarske opreme i mape" class="footerGalleryItem reveal revealDelay5"
-                aria-label="Otvori sliku: Detalj planinarske opreme i mape">
-                <img src="https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=765&auto=format&fit=crop"
-                  alt="Detalj planinarske opreme i mape" class="rounded-lg aspect-square object-cover">
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="footerGiantMark reveal" aria-hidden="true"><span>PD Konjuh</span></div>
-
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-10">
-          <div
-            class="footerBottomRow flex flex-col sm:flex-row justify-between items-center gap-3 pt-2 text-xs text-beige/45">
-            <p>© 2026 PD Konjuh, Tuzla. Sva prava zadržana.</p>
-            <p class="footerCredit">Developed by <span>Kartal</span></p>
-          </div>
-        </div>
-      </footer>
-
-      <div id="lightbox" aria-hidden="true">
-        <button data-close aria-label="Zatvori" class="absolute top-6 right-6 text-beige/80 hover:text-beige">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-          </svg>
-        </button>
-        <figure class="text-center">
-          <img src="" alt="">
-          <figcaption class="text-beige/70 text-sm mt-4"></figcaption>
-        </figure>
-      </div>
-
-
-
-
-      
-      <!-- ============================================================================
-     SHARED BEHAVIOUR (identično ostatku sajta — netaknuto)
-     ============================================================================ -->
-      <script>
-          (function () {
-            "use strict";
-
-            const siteHeader = document.querySelector(".siteHeader");
-            const ctaVideoSection = document.getElementById("ctaVideoSection");
-            if (siteHeader && ctaVideoSection) {
-              siteHeader.classList.add("headerAutoHide");
-              const updateHeaderVisibility = () => {
-                const rectTop = ctaVideoSection.getBoundingClientRect().top;
-                siteHeader.classList.toggle("isHidden", rectTop <= 0);
-              };
-              updateHeaderVisibility();
-              window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
-              window.addEventListener("resize", updateHeaderVisibility);
-            }
-
-            const menuBtn = document.getElementById("menuToggle");
-            const mobileMenu = document.getElementById("mobileMenu");
-            const HAMBURGER_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
-            const CLOSE_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
-            if (menuBtn && mobileMenu) {
-              menuBtn.classList.add("menuIconMorph");
-              let savedScrollY = 0;
-              const setMenuState = (open) => {
-                mobileMenu.classList.toggle("isOpen", open);
-                mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
-                menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-                menuBtn.innerHTML = open ? CLOSE_ICON : HAMBURGER_ICON;
-                if (open) {
-                  savedScrollY = window.scrollY;
-                  document.body.style.position = "fixed";
-                  document.body.style.top = `-${savedScrollY}px`;
-                  document.body.style.width = "100%";
-                } else {
-                  document.body.style.position = "";
-                  document.body.style.top = "";
-                  document.body.style.width = "";
-                  window.scrollTo(0, savedScrollY);
-                }
-                document.body.classList.toggle("overflow-hidden", open);
-              };
-              menuBtn.addEventListener("click", () => {
-                const isOpen = mobileMenu.classList.contains("isOpen");
-                setMenuState(!isOpen);
-              });
-              mobileMenu.querySelectorAll("a").forEach(a => {
-                a.addEventListener("click", () => setMenuState(false));
-              });
-              document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && mobileMenu.classList.contains("isOpen")) setMenuState(false);
-              });
-            }
-
-            const backToTop = document.createElement("button");
-            backToTop.className = "backToTop";
-            backToTop.setAttribute("aria-label", "Nazad na vrh stranice");
-            backToTop.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-            document.body.appendChild(backToTop);
-            const toggleBackToTop = () => backToTop.classList.toggle("isVisible", window.scrollY > 600);
-            toggleBackToTop();
-            window.addEventListener("scroll", toggleBackToTop, { passive: true });
-            backToTop.addEventListener("click", () => {
-              window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-            });
-
-            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(hover: hover)").matches) {
-              document.querySelectorAll(".btn").forEach(btn => {
-                btn.classList.add("magnetic");
-                btn.addEventListener("mousemove", (e) => {
-                  const r = btn.getBoundingClientRect();
-                  const x = e.clientX - r.left - r.width / 2;
-                  const y = e.clientY - r.top - r.height / 2;
-                  btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
-                });
-                btn.addEventListener("mouseleave", () => { btn.style.transform = ""; });
-              });
-
-              document.querySelectorAll(".lift").forEach(card => {
-                card.classList.add("tilt");
-                card.addEventListener("mousemove", (e) => {
-                  const r = card.getBoundingClientRect();
-                  const px = (e.clientX - r.left) / r.width - 0.5;
-                  const py = (e.clientY - r.top) / r.height - 0.5;
-                  card.style.transform = `perspective(900px) rotateX(${py * -5}deg) rotateY(${px * 7}deg) translateY(-6px)`;
-                });
-                card.addEventListener("mouseleave", () => { card.style.transform = ""; });
-              });
-            }
-
-            const revealEls = document.querySelectorAll(".reveal, .revealLeft");
-            if ("IntersectionObserver" in window && revealEls.length) {
-              const io = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                    entry.target.classList.add("isVisible");
-                    io.unobserve(entry.target);
-                  }
-                });
-              }, { threshold: .15, rootMargin: "0px 0px -60px 0px" });
-              revealEls.forEach(el => io.observe(el));
-            } else {
-              revealEls.forEach(el => el.classList.add("isVisible"));
-            }
-
-            const counters = document.querySelectorAll(".counter");
-            if ("IntersectionObserver" in window && counters.length) {
-              const countIO = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                  if (!entry.isIntersecting) return;
-                  const el = entry.target;
-                  const target = parseInt(el.dataset.target, 10) || 0;
-                  const suffix = el.dataset.suffix || "";
-                  const duration = 2400;
-                  const start = performance.now();
-                  const step = (now) => {
-                    const p = Math.min((now - start) / duration, 1);
-                    const eased = 1 - Math.pow(1 - p, 3);
-                    el.textContent = Math.round(eased * target) + suffix;
-                    if (p < 1) requestAnimationFrame(step);
-                  };
-                  requestAnimationFrame(step);
-                  countIO.unobserve(el);
-                });
-              }, { threshold: .6 });
-              counters.forEach(el => countIO.observe(el));
-            }
-
-            const parallax = document.querySelector(".parallaxImg");
-            if (parallax && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-              window.addEventListener("scroll", () => {
-                const y = window.scrollY;
-                if (y < window.innerHeight) {
-                  parallax.style.transform = `translate3d(0, ${y * 0.18}px, 0) scale(1.06)`;
-                }
-              }, { passive: true });
-            }
-
-            const lightbox = document.getElementById("lightbox");
-            if (lightbox) {
-              const lbImg = lightbox.querySelector("img");
-              const lbCaption = lightbox.querySelector("figcaption");
-              document.querySelectorAll("[data-lightbox]").forEach(trigger => {
-                trigger.addEventListener("click", () => {
-                  const src = trigger.getAttribute("data-full") || trigger.querySelector("img")?.src;
-                  const caption = trigger.getAttribute("data-caption") || "";
-                  if (lbImg) lbImg.src = src;
-                  if (lbCaption) lbCaption.textContent = caption;
-                  lightbox.classList.add("open");
-                  lightbox.setAttribute("aria-hidden", "false");
-                  document.body.classList.add("overflow-hidden");
-                });
-              });
-              const closeLb = () => {
-                lightbox.classList.remove("open");
-                lightbox.setAttribute("aria-hidden", "true");
-                document.body.classList.remove("overflow-hidden");
-              };
-              lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLb(); });
-              lightbox.querySelector("[data-close]")?.addEventListener("click", closeLb);
-              document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
-            }
-
-            document.querySelectorAll("[data-accordion-trigger]").forEach(trigger => {
-              trigger.addEventListener("click", () => {
-                const panel = document.getElementById(trigger.getAttribute("aria-controls"));
-                const expanded = trigger.getAttribute("aria-expanded") === "true";
-                trigger.setAttribute("aria-expanded", String(!expanded));
-                if (panel) {
-                  panel.style.maxHeight = expanded ? null : panel.scrollHeight + "px";
-                }
-              });
-            });
-
-          })();
-      </script>
-
-      <!-- REVEAL + COUNT-UP + INTERAKTIVNE LISTE za "O nama" sekciju -->
-      <script>
-        (function () {
-          var root = document.querySelector('.aboutSection');
-          if (!root) return;
-          var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-          /* --- REVEAL --- */
-          var rev = root.querySelectorAll('.onReveal');
-          if (reduced) {
-            rev.forEach(function (el) { el.classList.add('visible'); });
-          } else {
-            var io = new IntersectionObserver(function (es) {
-              es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-            }, { threshold: .12, rootMargin: '0px 0px -4% 0px' });
-            rev.forEach(function (el) { io.observe(el); });
-          }
-
-          /* --- COUNT-UP --- */
-          function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-          function startCount(el) {
-            var target = +el.dataset.count;
-            if (reduced) { el.textContent = target; return; }
-            var dur = 1800, t0 = performance.now();
-            function tick(now) {
-              var p = Math.min(1, (now - t0) / dur);
-              el.textContent = Math.round(easeOutCubic(p) * target);
-              if (p < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-          }
-          var cio = new IntersectionObserver(function (es) {
-            es.forEach(function (e) { if (e.isIntersecting) { startCount(e.target); cio.unobserve(e.target); } });
-          }, { threshold: .4 });
-          root.querySelectorAll('[data-count]').forEach(function (el) {
-            if (reduced) { el.textContent = el.dataset.count; } else { cio.observe(el); }
-          });
-
-          /* --- INTERAKTIVNA LISTA (vrijednosti + aktivnosti) --- */
-          function pad(n) { return (n < 10 ? '0' : '') + n; }
-          function bindActiveList(listEl, frameImgs, opts) {
-            if (!listEl) return;
-            opts = opts || {};
-            var items = Array.prototype.slice.call(listEl.children);
-            function activate(i) {
-              items.forEach(function (it, idx) {
-                var on = idx === i;
-                it.classList.toggle('isActive', on);
-                var btn = it.querySelector('button');
-                if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-              });
-              if (frameImgs && frameImgs.length) {
-                frameImgs.forEach(function (img, idx) { img.classList.toggle('isActive', idx === i); });
-              }
-              if (opts.onChange) opts.onChange(i, items[i]);
-            }
-            items.forEach(function (it, i) {
-              var btn = it.querySelector('button');
-              if (!btn) return;
-              btn.addEventListener('click', function () { activate(i); });
-              if (window.matchMedia('(hover: hover)').matches) {
-                btn.addEventListener('mouseenter', function () { activate(i); });
-              }
-              btn.addEventListener('focus', function () { activate(i); });
-            });
-          }
-
-          /* Vrijednosti — auto-carousel */
-          (function () {
-            var car = document.getElementById('avCarousel');
-            if (!car) return;
-            var slides = car.querySelectorAll('.avSlide');
-            var dots = car.querySelectorAll('.avDot');
-            if (!slides.length) return;
-            var i = 0, timer = null, DELAY = 6000;
-            function show(n) {
-              i = (n + slides.length) % slides.length;
-              slides.forEach(function (s, idx) { var on = idx === i; s.classList.toggle('isActive', on); s.setAttribute('aria-hidden', on ? 'false' : 'true'); });
-              dots.forEach(function (d, idx) { d.classList.toggle('isActive', idx === i); });
-            }
-            function stop() { if (timer) { clearInterval(timer); timer = null; } }
-            function start() { if (reduced) return; stop(); timer = setInterval(function () { show(i + 1); }, DELAY); }
-            car.addEventListener('mouseenter', stop);
-            car.addEventListener('mouseleave', start);
-            show(0); start();
-          })();
-
-          /* Univerzalni auto-carousel: klik = naprijed, skrol/swipe = listanje */
-          function makeCarousel(frameId, slideSel, dotSel) {
-            var frame = document.getElementById(frameId);
-            if (!frame) return;
-            var slides = frame.querySelectorAll(slideSel);
-            var dots = frame.querySelectorAll(dotSel);
-            if (!slides.length) return;
-            var i = 0, timer = null, DELAY = 3500;   // brže (3.5s)
-            function show(n) {
-              i = (n + slides.length) % slides.length;
-              slides.forEach(function (s, idx) { s.classList.toggle('isActive', idx === i); s.setAttribute && s.setAttribute('aria-hidden', idx === i ? 'false' : 'true'); });
-              dots.forEach(function (d, idx) { d.classList.toggle('isActive', idx === i); });
-            }
-            function stop() { if (timer) { clearInterval(timer); timer = null; } }
-            function start() { if (reduced) return; stop(); timer = setInterval(function () { show(i + 1); }, DELAY); }
-
-            /* klik na sliku → sljedeća */
-            frame.addEventListener('click', function () { show(i + 1); start(); });
-            frame.style.cursor = 'pointer';
-
-            /* skrol preko slike → listanje (vertikalni ili horizontalni) */
-            var wLock = false;
-            frame.addEventListener('wheel', function (e) {
-              var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-              if (Math.abs(d) < 8) return;
-              e.preventDefault();
-              if (wLock) return;
-              wLock = true;
-              show(i + (d > 0 ? 1 : -1)); start();
-              setTimeout(function () { wLock = false; }, 320);
-            }, { passive: false });
-
-            /* swipe na dodir */
-            var x0 = null;
-            frame.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; stop(); }, { passive: true });
-            frame.addEventListener('touchend', function (e) {
-              if (x0 === null) return;
-              var dx = e.changedTouches[0].clientX - x0;
-              if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
-              x0 = null; start();
-            }, { passive: true });
-
-            frame.addEventListener('mouseenter', stop);
-            frame.addEventListener('mouseleave', start);
-            show(0); start();
-          }
-
-          makeCarousel('avCarousel', '.avSlide', '.avDot');
-          makeCarousel('awFrame', '.awSlide', '.awDot');
-          makeCarousel('agFrame', '.agSlide', '.agDot');
-
-          /* --- JEDINSTVENI CAROUSEL: auto + klik + skrol + swipe --- */
-  function initCarousel(frame){
+  /* --- BAZNI CAROUSEL: auto + klik + skrol + swipe (za sve .carousel) --- */
+  function initCarousel(frame) {
     var slides = frame.querySelectorAll('.cSlide');
     var dots   = frame.querySelectorAll('.cDot');
-    if(!slides.length) return;
+    if (!slides.length) return;
     var i = 0, timer = null, DELAY = 3500;
-    function show(n){
+
+    function show(n) {
       i = (n + slides.length) % slides.length;
-      slides.forEach(function(s,idx){ var on=idx===i; s.classList.toggle('isActive',on); s.setAttribute('aria-hidden',on?'false':'true'); });
-      dots.forEach(function(d,idx){ d.classList.toggle('isActive', idx===i); });
+      slides.forEach(function (s, idx) { var on = idx === i; s.classList.toggle('isActive', on); s.setAttribute('aria-hidden', on ? 'false' : 'true'); });
+      dots.forEach(function (d, idx) { d.classList.toggle('isActive', idx === i); });
     }
-    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-    function start(){ if(reduced) return; stop(); timer = setInterval(function(){ show(i+1); }, DELAY); }
-    frame.addEventListener('click', function(){ show(i+1); start(); });
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() { if (reduced) return; stop(); timer = setInterval(function () { show(i + 1); }, DELAY); }
+
+    frame.addEventListener('click', function () { show(i + 1); start(); });
+
     var wLock = false;
-    frame.addEventListener('wheel', function(e){
+    frame.addEventListener('wheel', function (e) {
       var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if(Math.abs(d) < 8) return;
+      if (Math.abs(d) < 8) return;
       e.preventDefault();
-      if(wLock) return;
+      if (wLock) return;
       wLock = true;
       show(i + (d > 0 ? 1 : -1)); start();
-      setTimeout(function(){ wLock = false; }, 320);
-    }, {passive:false});
+      setTimeout(function () { wLock = false; }, 320);
+    }, { passive: false });
+
     var x0 = null;
-    frame.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; stop(); }, {passive:true});
-    frame.addEventListener('touchend', function(e){
-      if(x0 === null) return;
+    frame.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+    frame.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
       var dx = e.changedTouches[0].clientX - x0;
-      if(Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
       x0 = null; start();
-    }, {passive:true});
+    }, { passive: true });
+
     frame.addEventListener('mouseenter', stop);
     frame.addEventListener('mouseleave', start);
     show(0); start();
   }
   root.querySelectorAll('.carousel').forEach(initCarousel);
-
-        })();
+})();
+</script>
 
       </script>
   <script src="assets/script.js" defer></script>
