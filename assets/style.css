@@ -569,20 +569,24 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 
 /* ---- FOOTER GIANT WORDMARK (TEXTURED, PER REFERENCE) ----------------------- */
 .footerGiantMark{
-  position:relative;width:100%;overflow:hidden;line-height:.82;
-  padding:.7rem 0 0;
+  position:relative;width:100%;overflow:hidden;
+  line-height:1.2;
+  padding:.9rem 0 1.8rem;
 }
 .footerGiantMark span{
   display:block;width:100%;text-align:center;
   font-family:'Fraunces',Georgia,serif;font-weight:700;
-  font-size:clamp(3.4rem,14vw,15rem);letter-spacing:-0.02em;
+  font-size:clamp(2.6rem,13vw,15rem);letter-spacing:-0.02em;
   background-image:
-    linear-gradient(180deg, rgba(246,243,238,.16), rgba(246,243,238,.045)),
+    linear-gradient(180deg, rgba(246,243,238,.16), rgba(8, 8, 8, 0.045)),
     url('https://picsum.photos/seed/konjuh-ridge/1600/460');
-  background-size:cover;background-position:center 35%;background-blend-mode:soft-light;
+  background-size:cover;background-position:center 11%;background-blend-mode:soft-light;
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  white-space:nowrap;
-  
+
+}
+@media(max-width:639px){
+  .footerGiantMark{padding:.6rem 0 1.4rem;}
+  .footerGiantMark span{font-size:clamp(2.2rem,15vw,15rem);}
 }
 
 /* ---- FOOTER CURVED TOP EDGE ------------------------------------------------- */
