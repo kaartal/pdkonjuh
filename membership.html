@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Članstvo — PD Konjuh</title>
-<meta name="description" content="Test stranica za Članstvo — PD Konjuh.">
+<title>Prijava za članstvo — PD Konjuh</title>
+<meta name="description" content="Prijavite se za članstvo u Planinarsko društvo Konjuh Tuzla — popunite članski obrazac online.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -16,9 +16,9 @@
     theme: {
       extend: {
         colors: {
-          forest:'#184D3B', forestdeep:'#0E332A', moss:'#557A46',
-          beige:'#F6F3EE', stone:'#E7E5E2', charcoal:'#1E1E1E',
-          alpenglow:'#C97B3D', rust:'#8B3A2B',
+          forest:'#3A2E1F', forestdeep:'#241C12', moss:'#B4622F',
+          beige:'#F6F3EE', stone:'#E2D5C0', charcoal:'#231E19',
+          alpenglow:'#C79A3D', rust:'#8B3A2B',
           navy:'#0F5875', navydeep:'#02445E',
           brandred:'#DC292B', brandreddeep:'#A81F21',
           iceblue:'#51B1DB'
@@ -31,6 +31,77 @@
   }
 </script>
 <link rel="stylesheet" href="assets/style.css">
+
+<style>
+  :root{
+    --g:#3A2E1F; --g2:#241C12; --ol:#B4622F; --ol2:#954E24; --bg:#F1E9DC; --amb:#C79A3D;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  @keyframes onBob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(4px);}}
+
+ 
+
+  
+
+  .joinIntro{max-width:760px;margin:0 auto 2.5rem;text-align:center;}
+  .joinIntro h2{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:600;color:var(--charcoal);margin-bottom:.85rem;}
+  .joinIntro p{color:var(--charcoal);opacity:.72;font-size:1rem;line-height:1.7;}
+
+  .joinCard{max-width:820px;margin:0 auto;background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 1px 2px rgba(14,51,42,.04);}
+  @media(min-width:768px){ .joinCard{padding:2.75rem;} }
+
+  .joinForm{display:flex;flex-direction:column;gap:1.4rem;}
+
+  .joinFieldset{border:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.1rem;}
+  .joinFieldsetLegend{font-family:'Inter',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-bottom:.15rem;padding:0;}
+
+  .joinFormRow{display:grid;grid-template-columns:1fr;gap:1.1rem;}
+  @media(min-width:640px){ .joinFormRow{grid-template-columns:1fr 1fr;} }
+
+  .joinLabel{font-family:'Inter',sans-serif;font-weight:600;font-size:.86rem;color:var(--charcoal);margin-bottom:.4rem;display:block;}
+  .joinLabel .req{color:var(--rust);}
+
+  .joinField{width:100%;padding:.95rem 1.15rem;border-radius:.85rem;border:1px solid var(--stone);background:#fff;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--charcoal);transition:border-color .25s var(--ease),box-shadow .25s var(--ease);}
+  .joinField::placeholder{color:var(--charcoal);opacity:.45;}
+  .joinField:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(180,98,47,.15);}
+  textarea.joinField{resize:vertical;min-height:100px;}
+
+  .joinHint{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--charcoal);opacity:.55;margin-top:.35rem;}
+
+  .joinDivider{height:1px;background:var(--stone);border:none;margin:.25rem 0;}
+
+  .joinConsent{display:flex;flex-direction:column;gap:1rem;}
+  .joinCheckRow{display:flex;align-items:flex-start;gap:.75rem;background:var(--beige);border:1px solid var(--stone);border-radius:1rem;padding:1rem 1.1rem;}
+  .joinCheckRow input[type="checkbox"]{flex:none;width:19px;height:19px;margin-top:2px;accent-color:var(--forest);cursor:pointer;}
+  .joinCheckRow label{font-family:'Inter',sans-serif;font-size:.86rem;color:var(--charcoal);line-height:1.6;cursor:pointer;}
+  .joinCheckRow label strong{font-weight:700;}
+
+  .joinSubmit{align-self:flex-start;justify-content:center;display:inline-flex;align-items:center;gap:.6rem;background:var(--forest);color:#fff;padding:.95rem 2.3rem;border-radius:999px;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease);}
+  .joinSubmit:hover{background:var(--moss);transform:translateY(-2px);}
+  .joinSubmit:disabled{opacity:.5;cursor:not-allowed;transform:none;background:var(--forest);}
+
+  .joinLimitMsg{display:none;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--rust);background:rgba(139,58,43,.08);border:1px solid rgba(139,58,43,.25);border-radius:.75rem;padding:.85rem 1.1rem;}
+  .joinLimitMsg.isVisible{display:block;}
+
+  
+  .joinHoneypot{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;}
+
+  
+  @media (prefers-color-scheme: dark){
+    body.supportsDark .joinIntro h2{color:var(--beige);}
+    body.supportsDark .joinIntro p{color:var(--beige);opacity:.72;}
+    body.supportsDark .joinCard{background:#182B23;border-color:rgba(246,243,238,.18);}
+    body.supportsDark .joinLabel{color:var(--beige);}
+    body.supportsDark .joinField{background:#0F221B;color:var(--beige);border-color:rgba(246,243,238,.18);}
+    body.supportsDark .joinField::placeholder{color:var(--beige);opacity:.4;}
+    body.supportsDark .joinField:focus{border-color:var(--iceblue);box-shadow:0 0 0 3px rgba(81,177,219,.18);}
+    body.supportsDark .joinHint{color:var(--beige);opacity:.55;}
+    body.supportsDark .joinDivider{background:rgba(246,243,238,.14);}
+    body.supportsDark .joinCheckRow{background:#0F221B;border-color:rgba(246,243,238,.18);}
+    body.supportsDark .joinCheckRow label{color:var(--beige);}
+    body.supportsDark .joinLimitMsg{background:rgba(220,41,43,.12);border-color:rgba(220,41,43,.3);color:#ff8f85;}
+  }
+</style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
 <a href="#mainContent" class="skipLink">Preskoči na sadržaj</a>
@@ -39,14 +110,123 @@
 
 <main id="mainContent">
 
-<section class="pt-40 pb-32 px-6">
-  <div class="max-w-3xl mx-auto text-center">
-    <p class="eyebrow text-forest mb-4">Test stranica</p>
-    <h1 class="font-display text-4xl sm:text-5xl font-semibold mb-6">Članstvo</h1>
-    <p class="text-charcoal/70 text-lg leading-relaxed">Stranica „Članstvo“ — test placeholder.</p>
+<div class="aboutHero">
+  <section class="hero">
+    <img
+      class="heroBg"
+      src="assets/pictures/Gallery/gallery22.jpg"
+      alt="Pogled na Konjuh u magli"
+      loading="eager"
+      fetchpriority="high"
+    >
+    <div class="heroOv1" aria-hidden="true"></div>
+    <div class="heroOv2" aria-hidden="true"></div>
+
+    <div class="heroContent">
+      <h1>Prijava za članstvo</h1>
+      <p class="heroSub">Postani član PD Konjuh, popuni obrazac ispod i pridruži se društvu.</p>
+    </div>
+    <div class="scrollCue" aria-hidden="true">
+      <svg class="scrollArrow" viewBox="0 0 24 24" fill="none"><path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+</div>
+
+<section id="joinSection" class="pt-10 pb-16 px-5 lg:pt-16 lg:pb-28 lg:px-10">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="joinIntro reveal">
+      <h2>Članski obrazac</h2>
+      <p>Podaci koje unesete koriste se isključivo za evidentiranje članstva u Planinarskom društvu Konjuh Tuzla i za informisanje o aktivnostima društva. U slučaju dodatnih pitanja ili podataka naša administracija će vas kontaktirati</p>
+    </div>
+
+    <div class="joinCard reveal revealDelay1">
+      
+      <form id="joinFormEl" class="joinForm" method="POST" novalidate="false" autocomplete="on">
+        <input type="hidden" name="_subject" value="Nova prijava za članstvo — PD Konjuh">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_honeypot" value="_honey">
+        <input type="hidden" name="Planinarsko društvo" value="PD &quot;KONJUH&quot; TUZLA">
+
+        
+        <div class="joinHoneypot" aria-hidden="true">
+          <label for="joinWebsite">Website</label>
+          <input type="text" id="joinWebsite" name="_honey" tabindex="-1" autocomplete="off">
+        </div>
+
+        <fieldset class="joinFieldset">
+
+          <div class="joinFormRow">
+            <div>
+              <label class="joinLabel" for="joinIme">Ime i prezime <span class="req">*</span></label>
+              <input class="joinField" id="joinIme" type="text" name="Ime i prezime" placeholder="Vaše ime i prezime" required>
+            </div>
+            <div>
+              <label class="joinLabel" for="joinDatumRodjenja">Datum rođenja <span class="req">*</span></label>
+              <input class="joinField" id="joinDatumRodjenja" type="date" name="Datum rođenja" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="joinLabel" for="joinJmbg">Jedinstveni matični broj (JMBG) <span class="req">*</span></label>
+            <input class="joinField" id="joinJmbg" type="text" name="JMBG" placeholder="13 cifara" inputmode="numeric" pattern="\d{13}" maxlength="13" title="JMBG se sastoji od 13 cifara" required>
+            <div class="joinHint">Unesite tačno 13 cifara, bez razmaka i crtica.</div>
+          </div>
+
+          <div>
+            <label class="joinLabel" for="joinAdresa">Adresa stanovanja <span class="req">*</span></label>
+            <input class="joinField" id="joinAdresa" type="text" name="Adresa stanovanja" placeholder="Ulica i broj, grad" required>
+          </div>
+
+          <div class="joinFormRow">
+            <div>
+              <label class="joinLabel" for="joinEmail">E-mail <span class="req">*</span></label>
+              <input class="joinField" id="joinEmail" type="email" name="Email" placeholder="vasa.adresa@email.com" required>
+            </div>
+            <div>
+              <label class="joinLabel" for="joinMobitel">Broj mobitela <span class="req">*</span></label>
+              <input class="joinField" id="joinMobitel" type="tel" name="Broj mobitela" placeholder="+387 6x xxx xxx" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="joinLabel" for="joinZanimanje">Zanimanje/zvanje <span class="req">*</span></label>
+            <input class="joinField" id="joinZanimanje" type="text" name="Zanimanje/zvanje" placeholder="Vaše zanimanje ili zvanje" required>
+          </div>
+        </fieldset>
+
+        <fieldset class="joinFieldset">
+          <label class="joinLabel" for="joinSekcije">Sekcije za koje ste zainteresovani</label>
+          <textarea class="joinField" id="joinSekcije" name="Sekcije" placeholder="Ukoliko postoji više sekcija, navedite za koje ste zainteresovani (opcionalno)"></textarea>
+        </fieldset>
+
+        <fieldset class="joinFieldset">
+          <div class="joinConsent">
+            <div class="joinCheckRow">
+              <input type="checkbox" id="joinPunoljetnost" name="Potvrda punoljetnosti" value="Da" required>
+              <label for="joinPunoljetnost">Potvrđujem da sam punoljetna/punoljetan osoba.</label>
+            </div>
+            <div class="joinCheckRow">
+              <input type="checkbox" id="joinSaglasnost" name="Saglasnost i izjava o odgovornosti" value="Da" required>
+              <label for="joinSaglasnost">
+                Podaci iz ovog obrasca prikupljaju se i obrađuju u svrhu evidentiranja članstva Planinarskog saveza Federacije Bosne i Hercegovine. Podaci o adresi stanovanja, e-mailu i broju mobitela mogu se koristiti isključivo u svrhu informisanja članova o aktivnostima planinarskog društva/kluba. Planinarsko društvo/klub se obavezuje da će prikupljene podatke koristiti isključivo za navedene svrhe. Svojim potpisom (potvrdom ovog polja) dajem saglasnost planinarskom društvu/klubu da koristi moje osobne podatke iz ovog obrasca za navedene svrhe. Pristupanjem u planinarsko društvo/klub obavezujem se pridržavati odredbi Statuta. Izjavljujem da na planinarskim izletima, turama i pohodima i drugim aktivnostima organiziranim u planinarskom društvu/klubu učestvujem na vlastitu odgovornost.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div id="joinLimitMsg" class="joinLimitMsg">Dosegnut je dnevni limit od 2 prijave sa ovog uređaja. Pokušajte ponovo sutra, ili nas kontaktirajte direktno na <a href="mailto:pdkonjuh1951@gmail.com" class="underline">pdkonjuh1951@gmail.com</a> / +387 61 562 277.</div>
+
+        <button id="joinSubmitBtn" type="submit" class="joinSubmit">Pošalji prijavu</button>
+        <noscript>
+          <p class="joinHint">Za slanje ove forme potreban je omogućen JavaScript u vašem browseru. Ako je JavaScript onemogućen, molimo kontaktirajte nas direktno na <strong>pdkonjuh1951@gmail.com</strong> ili +387 61 562 277.</p>
+        </noscript>
+      </form>
+    </div>
+
   </div>
 </section>
-
 
 <div id="ctaVideoRoot"></div>
 
@@ -54,7 +234,88 @@
 
 <div id="siteFooterRoot"></div>
 
-
 <script src="assets/script.js" defer></script>
+
+<script>
+(function(){
+
+  var _p1 = ['pdkonjuh1951', '@', 'gmail', '.', 'com'].join('');
+  var FORM_ENDPOINT = 'https://formsubmit.co/' + _p1;
+
+  var STORAGE_KEY = 'pdkonjuhJoinLimit';
+  var DAILY_LIMIT = 2;
+
+  function todayStr(){
+    var d = new Date();
+    return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+  }
+
+  function getState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return { date: todayStr(), count: 0 };
+      var parsed = JSON.parse(raw);
+      if(parsed.date !== todayStr()) return { date: todayStr(), count: 0 };
+      if(typeof parsed.count !== 'number' || parsed.count < 0) return { date: todayStr(), count: 0 };
+      return parsed;
+    }catch(e){
+      return { date: todayStr(), count: 0 };
+    }
+  }
+
+  function setState(state){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  function showLimitReached(){
+    var btn = document.getElementById('joinSubmitBtn');
+    var msg = document.getElementById('joinLimitMsg');
+    if(!btn || !msg) return;
+    btn.disabled = true;
+    btn.textContent = 'Dnevni limit dosegnut';
+    msg.classList.add('isVisible');
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var form = document.getElementById('joinFormEl');
+    var btn = document.getElementById('joinSubmitBtn');
+    if(!form || !btn) return;
+
+    form.setAttribute('action', FORM_ENDPOINT);
+
+    var loadedAt = Date.now();
+    var MIN_FILL_TIME_MS = 3000;
+
+    form.addEventListener('submit', function(e){
+
+      var honey = document.getElementById('joinWebsite');
+      if(honey && honey.value){
+        e.preventDefault();
+        return;
+      }
+
+      if(Date.now() - loadedAt < MIN_FILL_TIME_MS){
+        e.preventDefault();
+        return;
+      }
+
+      var state = getState();
+      if(state.count >= DAILY_LIMIT){
+        e.preventDefault();
+        showLimitReached();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Slanje u toku…';
+
+      state.count += 1;
+      state.date = todayStr();
+      setState(state);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
