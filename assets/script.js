@@ -121,7 +121,7 @@
       '<div class="absolute inset-0 bg-navydeep/40"></div>' +
       '<div class="relative max-w-2xl mx-auto text-center reveal">' +
       '<h2 class="font-display text-beige text-4xl lg:text-5xl font-semibold mb-6">Neka sljedeći vikend bude dan za novi vrh i nezaboravne poglede.</h2>' +
-      '<p class="text-beige/75 mb-9">Bez obzira jeste li već planinarili ili tek razmišljate o prvom usponu, na prvoj turi bit ćete u pratnji iskusnih vodiča.</p>' +
+      '<p class="text-beige/75 mb-9">Bez obzira jeste li već planinarili ili tek razmišljate o prvom usponu, uvijek ćete biti u pratnji iskusnih vodiča.</p>' +
       '<a href="membership.html" class="btn btnPrimary">Pridruži se društvu</a>' +
       "</div></section>"
     );

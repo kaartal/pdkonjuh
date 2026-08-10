@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -17,14 +17,14 @@
       extend: {
         colors: {
           forest:'#3A2E1F', forestdeep:'#241C12', moss:'#B4622F',
-          beige:'#F1E9DC', stone:'#E2D5C0', charcoal:'#231E19',
+          beige:'#F6F3EE', stone:'#E2D5C0', charcoal:'#231E19',
           alpenglow:'#C79A3D', rust:'#8B3A2B',
           navy:'#0F5875', navydeep:'#02445E',
           brandred:'#DC292B', brandreddeep:'#A81F21',
           iceblue:'#51B1DB'
         },
         fontFamily: {
-          display:['Cormorant Garamond','serif'], sans:['Inter','system-ui','sans-serif'], mono:['IBM Plex Mono','monospace']
+          display:['Fraunces','serif'], sans:['Inter','system-ui','sans-serif'], mono:['IBM Plex Mono','monospace']
         }
       }
     }
@@ -42,7 +42,7 @@
   }
   @keyframes onBob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(4px);}}
 
-  .aboutHero{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:#2a2a2a;line-height:1.75;}
+ .aboutHero{font-family:'Open Sans',system-ui,sans-serif;background:var(--bg);color:#2a2a2a;line-height:1.75;}
   .aboutHero img{display:block;max-width:100%;}
   .aboutHero a{text-decoration:none;color:inherit;}
 
@@ -55,8 +55,8 @@
   .aboutHero .heroOv1{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(13,26,22,.3) 0%,rgba(13,26,22,.6) 60%,rgba(13,26,22,.85) 100%);}
   .aboutHero .heroOv2{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.4) 100%);}
   .aboutHero .heroContent{position:relative;z-index:3;padding:0 28px;max-width:820px;}
-  .aboutHero .hero h1{font-family:'Cormorant Garamond',serif;font-optical-sizing:auto;font-size:clamp(3rem,7.5vw,5.4rem);font-weight:600;line-height:1.05;letter-spacing:-.01em;margin-bottom:20px;text-shadow:0 4px 32px rgba(0,0,0,.3);color:#fff;animation:heroTextIn 1.6s var(--ease) both;animation-delay:.35s;}
-  .aboutHero .heroSub{font-family:'Inter',sans-serif;font-size:clamp(1.05rem,2.2vw,1.3rem);color:rgba(255,255,255,.88);font-weight:400;letter-spacing:.01em;max-width:560px;margin:0 auto 8px;line-height:1.6;animation:heroTextIn 1.6s var(--ease) both;animation-delay:.75s;}
+  .aboutHero .hero h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(3.2rem,8vw,6rem);font-weight:600;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;text-shadow:0 4px 32px rgba(0,0,0,.3);color:#fff;animation:heroTextIn 1.6s var(--ease) both;animation-delay:.35s;}
+  .aboutHero .heroSub{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(1.15rem,2.4vw,1.5rem);color:rgba(255,255,255,.9);font-weight:400;font-style:italic;letter-spacing:.01em;max-width:560px;margin:0 auto 48px;line-height:1.65;animation:heroTextIn 1.6s var(--ease) both;animation-delay:.75s;}
   @keyframes heroTextIn{
     from{opacity:0;transform:translateY(26px);}
     to{opacity:1;transform:translateY(0);}
@@ -65,19 +65,30 @@
     .aboutHero .heroBg{animation:none;}
     .aboutHero .hero h1,.aboutHero .heroSub{animation:none;opacity:1;transform:none;}
   }
+  .aboutHero .heroBadge{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;padding:7px 18px;background:rgba(255,255,255,.1);border-radius:999px;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);}
+  .aboutHero .heroBadgeDot{width:6px;height:6px;border-radius:50%;background:var(--amb);display:inline-block;}
+  .aboutHero .heroBadgeText{font-family:'Poppins',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+  .aboutHero .heroBtns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .aboutHero .btnPrimary{display:inline-flex;align-items:center;gap:8px;background:var(--ol);color:#fff;padding:13px 30px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.93rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s;}
+  .aboutHero .btnPrimary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.4);background:var(--ol2);}
+  .aboutHero .btnGhost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;padding:13px 30px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.93rem;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(6px);transition:background .25s;}
+  .aboutHero .btnGhost:hover{background:rgba(255,255,255,.22);}
   .aboutHero .scrollCue{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;color:rgba(255,255,255,.5);animation:onBob 2.6s ease-in-out infinite;}
   .aboutHero .scrollArrow{width:22px;height:28px;stroke:currentColor;}
 
   /* ---- CONTACT PAGE (PAGE-SPECIFIC, NOT SHARED) ---------------- */
 
-  .contactMap{position:relative;border-radius:1.25rem;overflow:hidden;border:1px solid var(--stone);box-shadow:0 1px 2px rgba(14,51,42,.04);margin-top:3rem;}
-  .contactMap iframe{display:block;width:100%;height:340px;border:0;}
+  .contactMap{position:relative;border-radius:1.25rem;overflow:hidden;border:1px solid var(--stone);box-shadow:0 1px 2px rgba(14,51,42,.04);margin-top:2rem;}
+  .contactMap iframe{display:block;width:100%;height:260px;border:0;}
+  @media(min-width:640px){ .contactMap iframe{height:340px;} }
   @media(min-width:768px){ .contactMap iframe{height:420px;} }
+  @media(min-width:900px){ .contactMap{margin-top:3rem;} }
 
-  .contactGrid{display:grid;grid-template-columns:1fr;gap:2.75rem;margin-top:3rem;}
-  @media(min-width:900px){ .contactGrid{grid-template-columns:minmax(260px,340px) 1fr;gap:4rem;} }
+  .contactGrid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:2rem;}
+  @media(min-width:900px){ .contactGrid{grid-template-columns:minmax(260px,340px) 1fr;gap:4rem;margin-top:3rem;} }
 
-  .contactInfoList{display:flex;flex-direction:column;gap:1.75rem;}
+  .contactInfoList{display:flex;flex-direction:column;gap:1.5rem;background:#fff;border:1px solid var(--stone);border-radius:1.25rem;padding:1.5rem;box-shadow:0 1px 2px rgba(14,51,42,.04);}
+  @media(min-width:900px){ .contactInfoList{gap:1.75rem;padding:0;background:transparent;border:none;box-shadow:none;} }
   .contactInfoItem{display:flex;align-items:flex-start;gap:1rem;}
   .contactInfoIcon{flex:none;width:48px;height:48px;border-radius:999px;background:var(--beige);display:flex;align-items:center;justify-content:center;color:var(--moss);}
   .contactInfoLabel{font-family:'Inter',sans-serif;font-weight:700;font-size:1.02rem;color:var(--charcoal);margin-bottom:.25rem;}
@@ -95,7 +106,8 @@
   .contactField:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(180,98,47,.15);}
   textarea.contactField{resize:vertical;min-height:150px;}
 
-  .contactSubmit{align-self:flex-start;display:inline-flex;align-items:center;gap:.6rem;background:var(--forest);color:#fff;padding:.95rem 2.1rem;border-radius:999px;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease);}
+  .contactSubmit{align-self:stretch;justify-content:center;display:inline-flex;align-items:center;gap:.6rem;background:var(--forest);color:#fff;padding:.95rem 2.1rem;border-radius:999px;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease);}
+  @media(min-width:640px){ .contactSubmit{align-self:flex-start;} }
   .contactSubmit:hover{background:var(--moss);transform:translateY(-2px);}
   .contactSubmit:disabled{opacity:.5;cursor:not-allowed;transform:none;background:var(--forest);}
 
@@ -108,6 +120,8 @@
      var(--charcoal) directly, so they need their own dark-mode rules here. */
   @media (prefers-color-scheme: dark){
     body.supportsDark .contactMap{border-color:rgba(246,243,238,.14);}
+    body.supportsDark .contactInfoList{background:#182B23;border-color:rgba(246,243,238,.18);}
+    @media(min-width:900px){ body.supportsDark .contactInfoList{background:transparent;border-color:transparent;} }
     body.supportsDark .contactInfoIcon{background:rgba(246,243,238,.08);}
     body.supportsDark .contactInfoLabel{color:var(--beige);}
     body.supportsDark .contactInfoValue{color:var(--beige);opacity:.72;}
@@ -141,7 +155,7 @@
 
     <div class="heroContent">
       <h1>Kontakt</h1>
-      <p class="heroSub">Pitanje, prijava za turu ili najava dolaska u dom — javite nam se.</p>
+      <p class="heroSub">Pitanje, prijava za turu ili najava dolaska u dom.</p>
     </div>
     <div class="scrollCue" aria-hidden="true">
       <svg class="scrollArrow" viewBox="0 0 24 24" fill="none"><path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -149,7 +163,7 @@
   </section>
 </div>
 
-<section id="contactSection" class="pt-16 pb-28 px-6 lg:px-10">
+<section id="contactSection" class="pt-10 pb-16 px-5 lg:pt-16 lg:pb-28 lg:px-10">
   <div class="max-w-6xl mx-auto">
 
     <div class="contactGrid">
@@ -245,6 +259,11 @@
      ne sprječava nekoga ko obriše svoje browser podatke ili
      koristi drugi uređaj/browser, ali zaustavlja slučajno ili
      ležerno spamovanje forme s istog uređaja.
+
+     VAŽNO: poruka o dosegnutom limitu i onemogućeno dugme se NE
+     prikazuju automatski pri učitavanju stranice — pojavljuju se
+     isključivo u trenutku kada korisnik pokuša poslati formu nakon
+     što je već dosegnut dnevni limit.
      ============================================================ -->
 <script>
 (function(){
@@ -272,24 +291,17 @@
     try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
   }
 
-  function applyLimitUI(){
-    var state = getState();
+  function showLimitReached(){
     var btn = document.getElementById('contactSubmitBtn');
     var msg = document.getElementById('contactLimitMsg');
     if(!btn || !msg) return;
-    if(state.count >= DAILY_LIMIT){
-      btn.disabled = true;
-      btn.textContent = 'Dnevni limit dosegnut';
-      msg.classList.add('isVisible');
-    } else {
-      btn.disabled = false;
-      btn.textContent = 'Pošalji poruku';
-      msg.classList.remove('isVisible');
-    }
+    btn.disabled = true;
+    btn.textContent = 'Dnevni limit dosegnut';
+    msg.classList.add('isVisible');
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    applyLimitUI();
+    // Namjerno: nema provjere/prikaza limita ovdje pri učitavanju stranice.
 
     var form = document.getElementById('contactFormEl');
     if(!form) return;
@@ -298,7 +310,7 @@
       var state = getState();
       if(state.count >= DAILY_LIMIT){
         e.preventDefault();
-        applyLimitUI();
+        showLimitReached();
         return;
       }
       // Poruka se šalje formsubmit.co-u; ovdje samo bilježimo pokušaj
