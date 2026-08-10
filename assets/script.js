@@ -17,10 +17,11 @@
     { key: "index", href: "index.html", label: "Početna" },
     { key: "about", href: "about.html", label: "O nama" },
     { key: "hikes", href: "hikes.html", label: "Ture" },
+        { key: "vijesti", href: "vijesti.html", label: "Vijesti" },
     { key: "plan", href: "plan.html", label: "Plan i program" },
     { key: "domovi", href: "domovi.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Galerija" },
-    { key: "vijesti", href: "vijesti.html", label: "Vijesti" },
+
     { key: "contact", href: "contact.html", label: "Kontakt" }
   ];
 
@@ -128,12 +129,12 @@
 
   function buildFooterGalleryStrip() {
     var items = [
-      ["https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop", "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop", "Kolona planinara na stazi", ""],
-      ["https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=1600&auto=format&fit=crop", "https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=687&auto=format&fit=crop", "Logorska vatra uveče na planinarskom domu", "revealDelay1"],
-      ["https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop", "https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=687&auto=format&fit=crop", "Šumska staza obasjana suncem", "revealDelay2"],
-      ["https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=1600&auto=format&fit=crop", "https://images.unsplash.com/photo-1568454537842-d933259bb258?q=80&w=687&auto=format&fit=crop", "Pogled sa vrha Maglića na Trnovačko jezero", "revealDelay3"],
-      ["https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1600&auto=format&fit=crop", "https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1170&auto=format&fit=crop", "Planinarski dom na Treskavici u magli", "revealDelay4"],
-      ["https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=1600&auto=format&fit=crop", "https://images.unsplash.com/photo-1522850067562-a4c60453058d?q=80&w=765&auto=format&fit=crop", "Detalj planinarske opreme i mape", "revealDelay5"]
+      ["assets/pictures/footer/footer1.jpg", "assets/pictures/footer/footer1.jpg", "", ""],
+      ["assets/pictures/footer/footer2.jpg", "assets/pictures/footer/footer2.jpg", "", "revealDelay1"],
+      ["assets/pictures/footer/footer3.jpg", "assets/pictures/footer/footer3.jpg", "", "revealDelay2"],
+      ["assets/pictures/footer/footer4.jpg", "assets/pictures/footer/footer4.jpg", "", "revealDelay3"],
+      ["assets/pictures/footer/footer5.jpg", "assets/pictures/footer/footer5.jpg", "", "revealDelay4"],
+      ["assets/pictures/footer/footer6.jpg", "assets/pictures/footer/footer6.jpg", "", "revealDelay5"]
     ];
     return items
       .map(function (item) {

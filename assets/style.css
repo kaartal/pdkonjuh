@@ -571,6 +571,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   background-size:cover;background-position:center 35%;background-blend-mode:soft-light;
   -webkit-background-clip:text;background-clip:text;color:transparent;
   white-space:nowrap;
+  
 }
 
 /* ---- FOOTER CURVED TOP EDGE ------------------------------------------------- */
