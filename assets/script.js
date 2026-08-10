@@ -300,13 +300,20 @@
     if (!siteHeader || !ctaVideoSection) return;
 
     siteHeader.classList.add("headerAutoHide");
+    var headerTicking = false;
     var updateHeaderVisibility = function () {
       var rectTop = ctaVideoSection.getBoundingClientRect().top;
       siteHeader.classList.toggle("isHidden", rectTop <= 0);
+      headerTicking = false;
+    };
+    var onHeaderScroll = function () {
+      if (headerTicking) return;
+      headerTicking = true;
+      requestAnimationFrame(updateHeaderVisibility);
     };
     updateHeaderVisibility();
-    window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
-    window.addEventListener("resize", updateHeaderVisibility);
+    window.addEventListener("scroll", onHeaderScroll, { passive: true });
+    window.addEventListener("resize", onHeaderScroll);
   }
 
   /* ==========================================================================
@@ -363,9 +370,21 @@
       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     document.body.appendChild(backToTop);
 
-    var toggleBackToTop = function () { backToTop.classList.toggle("isVisible", window.scrollY > 600); };
+    var backToTopTicking = false;
+    var toggleBackToTop = function () {
+      backToTop.classList.toggle("isVisible", window.scrollY > 600);
+      backToTopTicking = false;
+    };
     toggleBackToTop();
-    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (backToTopTicking) return;
+        backToTopTicking = true;
+        requestAnimationFrame(toggleBackToTop);
+      },
+      { passive: true }
+    );
     backToTop.addEventListener("click", function () {
       window.scrollTo({
         top: 0,
@@ -472,13 +491,20 @@
     var parallax = document.querySelector(".parallaxImg");
     if (!parallax || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    var parallaxTicking = false;
+    var updateParallax = function () {
+      var y = window.scrollY;
+      if (y < window.innerHeight) {
+        parallax.style.transform = "translate3d(0, " + y * 0.18 + "px, 0) scale(1.06)";
+      }
+      parallaxTicking = false;
+    };
     window.addEventListener(
       "scroll",
       function () {
-        var y = window.scrollY;
-        if (y < window.innerHeight) {
-          parallax.style.transform = "translate3d(0, " + y * 0.18 + "px, 0) scale(1.06)";
-        }
+        if (parallaxTicking) return;
+        parallaxTicking = true;
+        requestAnimationFrame(updateParallax);
       },
       { passive: true }
     );
