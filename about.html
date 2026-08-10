@@ -86,32 +86,7 @@
       .aboutSection .onReveal { opacity: 1; transform: none; transition: none; }
     }
 
-    /* ============================================================
-       HERO — puni ekran, pozadinska slika + kontura + scroll cue
-       ============================================================ */
-    .aboutSection .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; color: #fff; }
-    .aboutSection .heroBg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; animation: heroZoom 18s ease-out both; }
-    .aboutSection .heroOv1 { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(13,26,22,.28) 0%, rgba(12,24,18,.62) 58%, rgba(10,20,15,.92) 100%); }
-    .aboutSection .heroOv2 { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,.42) 100%); }
-    .aboutSection .heroContour { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; opacity: .55; }
-    .aboutSection .heroContour path { fill: none; stroke: rgba(255,255,255,.2); stroke-width: 1.1; stroke-dasharray: 2600; stroke-dashoffset: 2600; animation: heroDraw 3s var(--ease) .5s forwards; }
-    .aboutSection .heroContour path:nth-child(2) { stroke: rgba(180,208,110,.32); animation-delay: .9s; }
-    .aboutSection .heroContour path:nth-child(3) { stroke: rgba(255,255,255,.14); animation-delay: 1.3s; }
-    .aboutSection .heroContent { position: relative; z-index: 3; padding: 0 28px; max-width: 820px; }
-    .aboutSection .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(3.2rem, 8vw, 6rem); font-weight: 700; line-height: 1.04; letter-spacing: -.03em; margin-bottom: 24px; text-shadow: 0 4px 32px rgba(0,0,0,.35); color: #fff; animation: heroRise 1s var(--ease) .3s both; }
-    .aboutSection .heroSub { font-family: 'Fraunces', serif; font-size: clamp(1.1rem, 2.4vw, 1.45rem); color: rgba(255,255,255,.9); font-weight: 300; font-style: italic; max-width: 600px; margin: 0 auto; line-height: 1.6; animation: heroRise 1s var(--ease) .45s both; }
-    .aboutSection .scrollCue { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,.6); animation: heroFade .8s var(--ease) 1s both, onBob 2.4s ease-in-out 1.8s infinite; }
-    .aboutSection .scrollLine { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,.65), transparent); }
-    .aboutSection .scrollLabel { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-family: 'Poppins', sans-serif; }
-    @keyframes heroRise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-    @keyframes heroFade { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes heroDraw { to { stroke-dashoffset: 0; } }
-    @keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
-    @media (prefers-reduced-motion: reduce) {
-      .aboutSection .heroBg, .aboutSection .hero h1, .aboutSection .heroSub, .aboutSection .scrollCue { animation: none; opacity: 1; transform: translateX(-50%) none; }
-      .aboutSection .scrollCue { transform: translateX(-50%); }
-      .aboutSection .heroContour path { animation: none; stroke-dashoffset: 0; }
-    }
+  
 
     /* ============================================================
        BAZNI PANEL — tekst lijevo / medij (slika ili carousel) desno.
@@ -139,8 +114,7 @@
 
     /* Desna kolona — obična slika (koristi "Ko smo mi") */
     .aboutSection .aboutPanel .panelMedia { position: relative; grid-column: 2; grid-row: 1 / span 3; }
-    .aboutSection .aboutPanel .panelMedia img { width: 100%; height: clamp(520px, 62vh, 660px); object-fit: cover; border-radius: 28px; box-shadow: 0 50px 90px -50px rgba(0,0,0,.85); display: block; }
-
+    .aboutSection .aboutPanel .panelMedia img { width: 100%; height: clamp(520px, 62vh, 660px); object-fit: contain; display: block; }
     /* Desna kolona — CAROUSEL (Vrijednosti / Rad / Ciljevi) */
     .aboutSection .aboutPanel .carousel { position: relative; grid-column: 2; grid-row: 1 / span 3; height: clamp(520px, 62vh, 660px); border-radius: 28px; overflow: hidden; background: #0a1712; box-shadow: 0 50px 90px -50px rgba(0,0,0,.85); cursor: pointer; }
     .aboutSection .aboutPanel .cSlide { position: absolute; inset: 0; opacity: 0; transition: opacity .6s var(--ease); }
@@ -229,100 +203,85 @@
 </head>
 
 <body class="bg-beige text-charcoal font-sans supportsDark">
-  <a href="#mainContent" class="skipLink">Preskoči na sadržaj</a>
+<a href="#mainContent" class="skipLink">Preskoči na sadržaj</a>
+<div id="siteHeaderRoot"></div>
+<div id="mobileMenuRoot"></div>
 
-  <!-- ============================= HEADER (zajednički partial) ============================= -->
-  <header class="siteHeader">
-    <div class="px-5 lg:px-7 flex items-center justify-between h-16">
-      <a href="index.html" class="brandMark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path d="M2 26L11 9L16 17" stroke="#2E8B57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M11 9L16 17L20 11" stroke="#C0392B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M20 11L30 26" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <span>PD Konjuh</span>
-      </a>
-
-      <nav class="hidden lg:flex items-center gap-8 text-[1.05rem]" aria-label="Glavna navigacija">
-        <a href="index.html" class="navLink">Početna</a>
-        <a href="about.html" aria-current="page" class="navLink">O nama</a>
-        <div class="megaTrigger relative">
-          <a href="hikes.html" class="navLink">Ture</a>
-          <div class="megaPanel absolute left-1/2 -translate-x-1/2 top-full pt-5 w-[520px]">
-            <div class="bg-white rounded-2xl shadow-2xl border border-stone/60 p-6 grid grid-cols-2 gap-x-8 gap-y-3">
-              <a href="hikes.html#prenj" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Prenj</a>
-              <a href="hikes.html#cvrsnica" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Čvrsnica</a>
-              <a href="hikes.html#velez" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Velež</a>
-              <a href="hikes.html#maglic" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Maglić</a>
-              <a href="hikes.html#bjelasnica" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Bjelašnica</a>
-              <a href="hikes.html#treskavica" class="text-charcoal/80 hover:text-forest text-sm py-1 border-b border-stone/70">Treskavica</a>
-              <a href="hikes.html" class="col-span-2 mt-1 text-forest text-sm font-semibold">Sve ture →</a>
-            </div>
+<main id="mainContent">
+    <div class="aboutSection">
+      <div class="aboutHero">
+  
+        <!-- 1. HERO -->
+        <section class="hero">
+          <img class="heroBg"
+            src="assets/pictures/footer/footer1.jpg"
+        alt="Panorama planinskih vrhova pri izlasku sunca" loading="eager" fetchpriority="high">
+  
+          <div class="heroOv1" aria-hidden="true"></div>
+          <div class="heroOv2" aria-hidden="true"></div>
+  
+          <div class="heroContent">
+            <h1>O nama</h1>
+            <p class="heroSub">Sedam decenija zajedno osvajamo vrhove.</p>
           </div>
-        </div>
-        <a href="plan.html" class="navLink">Plan i program</a>
-        <a href="gallery.html" class="navLink">Galerija</a>
-        <a href="vijesti.html" class="navLink">Vijesti</a>
-        <a href="contact.html" class="navLink">Kontakt</a>
-      </nav>
+          <div class="scrollCue" aria-hidden="true">
+            <svg class="scrollArrow" viewBox="0 0 24 24" fill="none">
+              <path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </section>
+  
+      </div>
 
-      <div class="flex items-center gap-3">
-        <a href="membership.html" class="hidden sm:inline-flex navCta">Postani član</a>
-        <button id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden text-beige p-2 relative z-50" aria-label="Otvori meni">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-          </svg>
-        </button>
+<!-- 2. KO SMO MI (bazni panel, statična slika) -->
+ <section class="aboutPanel" aria-labelledby="koTitle">
+  <div class="panelGrid">
+    <div class="panelText onReveal">
+      <h2 id="koTitle" class="panelTitle">Konjuh <em>od 1951.</em></h2>
+      <div class="panelBody">
+        Planinarsko društvo „Konjuh“ Tuzla svoju priču započinje 1951. godine, kada je među zaljubljenicima u prirodu i
+        planinarstvo pokrenuta inicijativa za osnivanje organizovanog planinarskog društva u Tuzli. Inicijativni odbor
+        činili su Halid Čokić, Branko Stojanović, Mustafa Kapidžić, Čoko Jakov, Eduard Pavlović, Paša Abidinović i drugi
+        entuzijasti. Osnivačka skupština održana je u zgradi današnjeg Narodnog pozorišta u Tuzli, čime su postavljeni
+        temelji društva koje će u narednim decenijama postati važan dio planinarskog života Tuzle i šireg područja. Prvi
+        predsjednik bio je Halid Čokić, a među prvim članovima Upravnog odbora bili su Vasilije Skripta, Eduard
+        Pavlović, Čoko Jakov, Galib Kabadaić, Paša Abidinović i Mustafa Kapidžić. Prve članske karte štampane su u
+        Tuzlanskoj štampariji zahvaljujući Obradu Jakšiću, što svjedoči o entuzijazmu i zajedničkom radu kojim je
+        društvo stvarano od samog početka.
       </div>
     </div>
-  </header>
-
-  <!-- Mobilni meni (sibling headera) -->
-  <div id="mobileMenu" class="lg:hidden text-beige font-display" aria-hidden="true">
-    <nav class="mobileMenuList" aria-label="Mobilna navigacija">
-      <a href="index.html"><span class="mobileMenuLabel">Početna</span></a>
-      <a href="about.html" aria-current="page"><span class="mobileMenuLabel">O nama</span></a>
-      <a href="hikes.html"><span class="mobileMenuLabel">Ture</span></a>
-      <a href="plan.html"><span class="mobileMenuLabel">Plan i program</span></a>
-      <a href="gallery.html"><span class="mobileMenuLabel">Galerija</span></a>
-      <a href="vijesti.html"><span class="mobileMenuLabel">Vijesti</span></a>
-      <a href="membership.html"><span class="mobileMenuLabel">Članstvo</span></a>
-      <a href="contact.html"><span class="mobileMenuLabel">Kontakt</span></a>
-    </nav>
+    <div class="panelMedia onReveal d1">
+      <img src="assets/pictures/konjuh-logo.png" alt="Logo Planinarskog društva Konjuh">
+    </div>
   </div>
+</section>
+  
+<!-- MOST: sira prica o drustvu -> najava timeline-a -->
+<section class="w-full px-6 md:px-10 lg:px-16 pt-8 pb-12 md:pt-10 md:pb-16 bg-beige">
+  <div class="w-full onReveal">
+    <div class="text-charcoal/70 text-base md:text-lg leading-relaxed md:columns-2 md:gap-14 lg:gap-20 [&_p]:mb-5">
+      <p>Naziv „Konjuh“ odabran je kao simbol jedne od najljepših planina sjeveroistočne Bosne, ali i kao omaž pjesmi
+        „Konjuh planinom“, koja je kroz svoje stihove sačuvala dio historije i sjećanja na Tuzlu i njen kraj. Od prvih
+        okupljanja i izleta, društvo je postepeno gradilo svoju tradiciju, okupljajući generacije ljudi različitih
+        godina, zanimanja i iskustava, ali povezanih istom ljubavlju prema planini. Kroz planinarstvo se nisu upoznavali
+        samo novi predjeli i planinski vrhovi, već su se stvarala prijateljstva, prenosila iskustva i učilo o odgovornom
+        odnosu prema prirodi. Za članove društva planina nikada nije predstavljala samo cilj ili osvojeni vrh – ona je
+        bila prostor druženja, učenja, odmora, izazova i ličnog pomjeranja granica. Tako je kroz godine nastajala
+        zajednica u kojoj su starije generacije svoje znanje prenosile na mlađe, a svaki novi član postajao dio priče
+        koja je počela mnogo prije njegovog prvog koraka na planinskoj stazi.</p>
 
-  <!-- ============================= GLAVNI SADRŽAJ ============================= -->
-  <main id="mainContent">
-    <div class="aboutSection">
-
-      <!-- 1. HERO -->
-      <section class="hero">
-        <img class="heroBg" src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=2000&h=1300&fit=crop&auto=format" alt="Panorama planinskih vrhova pri izlasku sunca" loading="eager" fetchpriority="high">
-        <div class="heroOv1" aria-hidden="true"></div>
-        <div class="heroOv2" aria-hidden="true"></div>
-                <div class="heroContent">
-          <h1>O nama</h1>
-          <p class="heroSub">Sedam decenija zajedno osvajamo vrhove, čuvamo prirodu i stvaramo uspomene koje traju.</p>
-        </div>
-        <div class="scrollCue" aria-hidden="true"><div class="scrollLine"></div><span class="scrollLabel">Skrolaj</span></div>
-      </section>
-
-      <!-- 2. KO SMO MI (bazni panel, statična slika) -->
-      <section class="aboutPanel" aria-labelledby="koTitle">
-        <div class="panelGrid">
-          <div class="panelText onReveal">
-            <h2 id="koTitle" class="panelTitle">Ljubav prema planini koja traje <em>od 1951.</em></h2>
-            <div class="panelBody">
-              <p>Planinarsko društvo „Konjuh" jedno je od najstarijih društava u Tuzlanskom kantonu. Rođeno iz entuzijazma nekolicine zaljubljenika u planinu, danas okuplja preko dvije stotine članova svih generacija.</p>
-              <p>Kroz decenije smo prošli hiljade kilometara staza, osnovali planinarsku školu i izgradili zajednicu u kojoj se dijele iskustva, znanje i poštovanje prema prirodi.</p>
-              <p>Kod nas ima mjesta za svakog — od onih koji prave prve korake na stazi do iskusnih planinara koji godinama osvajaju najviše vrhove Bosne i Hercegovine.</p>
-            </div>
-          </div>
-          <div class="panelMedia onReveal d1">
-            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Planinari na stazi u koloni">
-          </div>
-        </div>
-      </section>
+        <p>Danas, više od sedam decenija nakon osnivanja, PD „Konjuh“ Tuzla nastavlja čuvati duh i vrijednosti koje su
+        postavili njegovi prvi članovi. Iako se način života, tehnologija i samo planinarstvo kroz godine mijenjaju,
+        suština ostaje ista – okupiti ljude, izaći iz svakodnevice, krenuti prema planini i zajedno doživjeti ono što se
+        teško može opisati riječima. Društvo nastavlja povezivati iskusne planinare i nove generacije, podsticati
+        boravak u prirodi, razvijati planinarsku kulturu i njegovati odgovornost prema prostoru koji dijelimo. Svaka
+        staza, svaki izlet i svako novo poznanstvo postaju dio zajedničkog naslijeđa, baš kao što su to prije više od
+        sedamdeset godina bili prvi sastanci, prve članske karte i prvi koraci osnivača. Historija PD „Konjuh“ zato nije
+        samo priča o prošlosti – ona je priča koja se nastavlja sa svakom novom generacijom planinara koja zakorači na
+        stazu.</p>
+    </div>
+  </div>
+</section>
 
       <!-- 3. NAŠ PUT (timeline) -->
       <section class="section aboutTimeline" aria-labelledby="tlTitle">
@@ -367,77 +326,9 @@
         </ol>
       </section>
 
-      <!-- 4. NAŠE VRIJEDNOSTI (bazni panel, carousel) -->
-      <section class="aboutPanel" aria-labelledby="avTitle">
-        <div class="panelGrid">
-          <div class="panelText onReveal">
-            <h2 id="avTitle" class="panelTitle">Na vrh ideš zbog pogleda, <em>a vraćaš se zbog sebe.</em></h2>
-            <div class="panelBody">
-              <p>Naše vrijednosti oblikuju svaki korak na stazi — zajedništvo, ljubav prema prirodi, sigurnost i odgovornost prema planini koju dijelimo. Kroz edukaciju i tradiciju prenosimo ih na nove generacije.</p>
-            </div>
-          </div>
-          <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Galerija vrijednosti">
-            <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinar na vrhu gleda dolinu"><div class="cCap"><h3>Svaki korak vodi bliže <em>slobodi</em>.</h3><p>Prenosimo ljubav prema prirodi i planinama na nove generacije.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Kolona planinara na stazi"><div class="cCap"><h3>Na vrh se ide <em>zajedno</em>.</h3><p>Grupa je uvijek jača od pojedinca, na svakoj stazi.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=1500&fit=crop&auto=format" alt="Šuma obasjana suncem"><div class="cCap"><h3>Priroda je naša <em>učionica</em>.</h3><p>Učimo da posmatramo, poštujemo i čuvamo planinu.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=1400&h=1500&fit=crop&auto=format" alt="Planinar provjerava opremu"><div class="cCap"><h3>Sigurnost je <em>iznad</em> vrha.</h3><p>Svaki uspon planiramo pažljivo i vraćamo se zajedno.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&h=1500&fit=crop&auto=format" alt="Planine u smiraj dana"><div class="cCap"><h3>Sedam decenija na <em>istoj</em> stazi.</h3><p>Tradiciju čuvamo i s ponosom nosimo dalje.</p></div></div>
-            <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
-          </div>
-          <a class="panelCta" href="membership.html">Saznaj više o nama
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" /></svg>
-          </a>
-        </div>
-      </section>
+      
 
-      <!-- 5. ONO ŠTO RADIMO (bazni panel, carousel) -->
-      <section class="aboutPanel" aria-labelledby="awTitle">
-        <div class="panelGrid">
-          <div class="panelText onReveal">
-            <h2 id="awTitle" class="panelTitle">Ono što radimo <em>kad drugi</em> još spavaju.</h2>
-            <div class="panelBody">
-              <p>Planina nas uči strpljenju, upornosti i zahvalnosti. Kroz naše aktivnosti — ture, školu, markaciju i ekološke akcije — gradimo zajednicu i stvaramo uspomene koje traju.</p>
-            </div>
-          </div>
-          <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Naše aktivnosti">
-            <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinari na vrhu u smiraj dana"><div class="cCap"><h3>Planinarske ture</h3><p>Organizujemo ture za sve uzraste i nivoe kondicije.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1400&h=1500&fit=crop&auto=format" alt="Planinarska obuka u prirodi"><div class="cCap"><h3>Planinarska škola</h3><p>Edukacija i obuka za sigurno kretanje i boravak u prirodi.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1400&h=1500&fit=crop&auto=format" alt="Obilježena planinska staza"><div class="cCap"><h3>Markacija staza</h3><p>Održavamo i označavamo staze kako bi planina bila dostupna svima.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&h=1500&fit=crop&auto=format" alt="Predavanje i edukacija članova"><div class="cCap"><h3>Edukacije</h3><p>Radionice i predavanja o prirodi i zaštiti okoliša.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=1400&h=1500&fit=crop&auto=format" alt="Ekološka akcija u prirodi"><div class="cCap"><h3>Ekološke akcije</h3><p>Čistimo staze i brinemo o očuvanju planinskih prostora.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=1400&h=1500&fit=crop&auto=format" alt="Druženje uz logorsku vatru"><div class="cCap"><h3>Druženja</h3><p>Okupljanja koja povezuju generacije ljubitelja prirode.</p></div></div>
-            <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
-          </div>
-          <a class="panelCta" href="hikes.html">Saznaj više o našim turama
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" /></svg>
-          </a>
-        </div>
-      </section>
-
-      <!-- 6. NAŠI CILJEVI (bazni panel, carousel) -->
-      <section class="aboutPanel" aria-labelledby="agTitle">
-        <div class="panelGrid">
-          <div class="panelText onReveal">
-            <h2 id="agTitle" class="panelTitle">Naši <em>ciljevi</em>.</h2>
-            <div class="panelBody">
-              <p>Vodi nas jasna namjera — razvijati planinarstvo, čuvati prirodu i graditi zajednicu koja traje. Kroz edukaciju i zajedništvo osvajamo nove vrhove i prenosimo znanje na nove generacije.</p>
-              <p>Svaki korak koji pravimo danas gradi planinarsko društvo na koje ćemo i sutra biti ponosni.</p>
-            </div>
-          </div>
-          <div class="carousel onReveal d1" aria-roledescription="carousel" aria-label="Naši ciljevi">
-            <div class="cSlide isActive"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&h=1500&fit=crop&auto=format" alt="Planinski greben u smiraj dana"><div class="cCap"><h3>Put koji <em>gradimo</em> zajedno.</h3><p>Ciljevi koji oblikuju sve što radimo — danas i sutra.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&h=1500&fit=crop&auto=format" alt="Kolona planinara na stazi"><div class="cCap"><h3>Novi vrhovi, <em>korak</em> po korak.</h3><p>Podstičemo aktivno planinarstvo širom Bosne i Hercegovine.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=1500&fit=crop&auto=format" alt="Šuma obasjana suncem"><div class="cCap"><h3>Planinu <em>ostavljamo</em> čistijom.</h3><p>Čuvamo planinske prostore i odgovoran odnos prema okolišu.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=1400&h=1500&fit=crop&auto=format" alt="Staza kroz planinsku šumu"><div class="cCap"><h3>Znanje koje <em>čuva</em> živote.</h3><p>Ulažemo u sigurnost i vještine novih generacija planinara.</p></div></div>
-            <div class="cSlide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&h=1500&fit=crop&auto=format" alt="Planine u smiraj dana"><div class="cCap"><h3>Zajedno smo <em>jači</em>.</h3><p>Gradimo društvo u kojem se dijele iskustva i prijateljstva.</p></div></div>
-            <div class="cDots" aria-hidden="true"><span class="cDot isActive"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span><span class="cDot"></span></div>
-          </div>
-          <a class="panelCta" href="membership.html">Pridruži nam se
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" /></svg>
-          </a>
-        </div>
-      </section>
-
+     
       <!-- 7. CTA (video sekcija — puni je assets/script.js) -->
       <div id="ctaVideoRoot"></div>
 
