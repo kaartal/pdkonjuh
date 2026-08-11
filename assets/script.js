@@ -463,14 +463,46 @@
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("isVisible");
             io.unobserve(entry.target);
+            // WAIT TWO FRAMES BEFORE ADDING isVisible SO THE BROWSER HAS
+            // DEFINITELY PAINTED THE INITIAL opacity:0 STATE FIRST —
+            // OTHERWISE ELEMENTS ALREADY IN VIEW ON LOAD (SHORT PAGES LIKE
+            // KONTAKT / ČLANSTVO) JUMP STRAIGHT TO VISIBLE WITH NO ANIMATION
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                entry.target.classList.add("isVisible");
+              });
+            });
           }
         });
       },
       { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
     );
-    revealEls.forEach(function (el) { io.observe(el); });
+
+    // ALSO DELAY THE INITIAL observe() CALL BY A FRAME FOR THE SAME REASON —
+    // GIVES THE BROWSER TIME TO RENDER THE STARTING STATE BEFORE THE
+    // OBSERVER CAN POSSIBLY FIRE FOR ELEMENTS ALREADY IN VIEW
+    requestAnimationFrame(function () {
+      revealEls.forEach(function (el) { io.observe(el); });
+    });
+  }
+
+  /* ==========================================================================
+     9b. HERO BACKGROUND IMAGE FADE-IN
+     Waits for the hero photo to be FULLY loaded before revealing it, so on
+     slow hosting it never pops in half-painted — it fades/unblurs in
+     smoothly on top of the dark fallback background instead.
+     ========================================================================== */
+
+  function initHeroBgFade() {
+    document.querySelectorAll(".heroBg").forEach(function (img) {
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add("heroBgLoaded");
+      } else {
+        img.addEventListener("load", function () { img.classList.add("heroBgLoaded"); });
+        img.addEventListener("error", function () { img.classList.add("heroBgLoaded"); });
+      }
+    });
   }
 
   /* ==========================================================================
@@ -820,6 +852,7 @@
     initBackToTop();
     initMagneticAndTilt();
     initScrollReveal();
+    initHeroBgFade();
     initCounters();
     initParallax();
     initLightbox();
