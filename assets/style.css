@@ -7,9 +7,9 @@
    ========================================================================== */
 
 :root{
-  --forest:#355E3B;
-  --forestDeep:#20391F;
-  --moss:#557A46;
+--forest: #b1bdb9;
+--forestDeep: #e4fcf7;
+--moss: #6F8F7A;
   --beige:#F6F3EE;
   --stone:#E7E5E2;
   --white:#FFFFFF;
@@ -503,9 +503,9 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   border-radius:0;
   box-shadow:none;
 
-  display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;
-  gap:.25rem;
-  padding:6rem 1.75rem 2rem;
+  display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
+  gap:0;
+  padding:6rem 0 0;
   overflow-y:auto;
 
   transform-origin:left center;
@@ -522,29 +522,49 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   visibility:visible;
   pointer-events:auto;
 }
+/* MENI SADA POKRIVA CIJELU ŠIRINU I VISINU EKRANA — LISTA LINKOVA (.mobileMenuList)
+   SE RASTEŽE (flex:1) DA POPUNI CIJELI PREOSTALI PROSTOR, A SVAKI LINK TAKOĐER
+   flex:1 TE SE RAVNOMJERNO DIJELI PO CIJELOJ VISINI EKRANA, RUB UZ RUB (BEZ
+   BOČNOG RAZMAKA), SA LINIJOM (border-bottom) KAO RAZDVOJNIKOM IZMEĐU LINKOVA. */
 .mobileMenuList{
   width:100%;
+  flex:1 1 auto;
   display:flex;flex-direction:column;
 }
 #mobileMenu a{
   width:100%;
+  flex:1 1 auto;
   display:flex;align-items:center;
   text-align:left;
-  font-size:1.55rem;
+  font-size:1.5rem;
   line-height:1.2;
-  padding:1.05rem 1rem;
-  border-radius:14px;
+  padding:0 1.75rem;
+  border-radius:0;
+  border-bottom:1px solid rgba(246,243,238,.14);
   opacity:0;transform:translateX(-28px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .25s var(--ease), background-color .25s var(--ease), color .25s var(--ease);
+  position:relative;
+  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .25s var(--ease), background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+#mobileMenu a:last-child{border-bottom:none;}
+/* SUPTILNA OKOMITA CRTA S LIJEVE STRANE KOJA SE "UPALI" NA HOVER/FOCUS,
+   DODATNI VIZUELNI AKCENT UZ POSTOJEĆU RAZDVOJNU LINIJU ISPOD SVAKOG LINKA */
+#mobileMenu a::before{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;
+  width:3px;
+  background:var(--iceblue);
+  transform:scaleY(0);
+  transition:transform .3s var(--ease);
 }
 .mobileMenuLabel{flex:1;}
 #mobileMenu a:hover,
 #mobileMenu a:focus-visible {
-  background:rgba(246,243,238,.08);
-  padding-left:1.25rem;
+  background:rgba(246,243,238,.07);
+  padding-left:2.15rem;
   color:var(--iceblue);
-  transform:translateX(4px);
 }
+#mobileMenu a:hover::before,
+#mobileMenu a:focus-visible::before{transform:scaleY(1);}
 #mobileMenu.isOpen a{opacity:1;transform:translateX(0);}
 #mobileMenu.isOpen a:nth-child(1){transition-delay:.08s;}
 #mobileMenu.isOpen a:nth-child(2){transition-delay:.13s;}
@@ -553,6 +573,9 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 #mobileMenu.isOpen a:nth-child(5){transition-delay:.28s;}
 #mobileMenu.isOpen a:nth-child(6){transition-delay:.33s;}
 #mobileMenu.isOpen a:nth-child(7){transition-delay:.38s;}
+#mobileMenu.isOpen a:nth-child(8){transition-delay:.43s;}
+#mobileMenu.isOpen a:nth-child(9){transition-delay:.48s;}
+#mobileMenu.isOpen a:nth-child(n+10){transition-delay:.53s;}
 @media (prefers-reduced-motion: reduce){
   #mobileMenu,#mobileMenu a,#mobileMenuScrim{transition:none;}
 }
@@ -689,6 +712,3 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   .aboutHero .btnGhost:hover{background:rgba(255,255,255,.22);}
   .aboutHero .scrollCue{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;color:rgba(255,255,255,.5);animation:onBob 2.6s ease-in-out infinite;}
   .aboutHero .scrollArrow{width:22px;height:28px;stroke:currentColor;}
-
-
-

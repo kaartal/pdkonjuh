@@ -754,6 +754,11 @@
     });
   }
 
+
+
+
+  
+
   /* ==========================================================================
      20. ABOUT PAGE — REVEAL, COUNT-UP AND SCOPED LIGHTBOX (ABOUT.HTML)
      ========================================================================== */
@@ -845,7 +850,6 @@
   function init() {
     mountSharedPartials();
     setActiveNav();
-
     initPageTransitions();
     initHeaderAutoHide();
     initMobileMenu();
