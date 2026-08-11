@@ -1,14 +1,14 @@
 /* ==========================================================================
    PLANINARSKO DRUŠTVO TRESKAVICA — SHARED STYLESHEET
-   DESIGN TOKENS: FOREST #184D3B / MOSS #557A46 / BEIGE #F6F3EE / STONE #E7E5E2
+   DESIGN TOKENS: FOREST #355E3B / MOSS #557A46 / BEIGE #F6F3EE / STONE #E7E5E2
    FUNCTIONAL ACCENTS: ALPENGLOW #C97B3D (MODERATE) / RUST #8B3A2B (HARD)
    TYPE: FRAUNCES (DISPLAY) · INTER (BODY/UI) · IBM PLEX MONO (DATA)
    SIGNATURE MOTIF: TOPOGRAPHIC CONTOUR LINES
    ========================================================================== */
 
 :root{
-  --forest:#184D3B;
-  --forestDeep:#0E332A;
+  --forest:#355E3B;
+  --forestDeep:#20391F;
   --moss:#557A46;
   --beige:#F6F3EE;
   --stone:#E7E5E2;
@@ -145,7 +145,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   }
 }
 
-/* ---- NAVBAR HIDES AS SOON AS THE CTA VIDEO SECTION IS REACHED (DESKTOP AND MOBILE) ---------- */
+/* ---- NAVBAR HIDES ON SCROLL DOWN, REAPPEARS ON SCROLL UP (DESKTOP AND MOBILE) ---------- */
 .siteHeader.headerAutoHide{
   transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
   will-change:opacity, transform;

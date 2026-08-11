@@ -87,8 +87,17 @@
   .contactGrid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:2rem;}
   @media(min-width:900px){ .contactGrid{grid-template-columns:minmax(260px,340px) 1fr;gap:4rem;margin-top:3rem;} }
 
+  /* ON MOBILE, SHOW THE FORM FIRST AND THE LOCATION/CONTACT INFO BELOW IT —
+     PEOPLE OPEN THIS PAGE TO SEND A MESSAGE, NOT TO READ THE ADDRESS FIRST */
+  @media(max-width:899px){
+    .contactForm{order:1;}
+    .contactInfoList{order:2;}
+    .contactMap{order:3;}
+  }
+
   .contactInfoList{display:flex;flex-direction:column;gap:1.5rem;background:#fff;border:1px solid var(--stone);border-radius:1.25rem;padding:1.5rem;box-shadow:0 1px 2px rgba(14,51,42,.04);}
   @media(min-width:900px){ .contactInfoList{gap:1.75rem;padding:0;background:transparent;border:none;box-shadow:none;} }
+  @media(max-width:767px){ .contactInfoList{background:transparent;border:none;box-shadow:none;padding:0;} }
   .contactInfoItem{display:flex;align-items:flex-start;gap:1rem;}
   .contactInfoIcon{flex:none;width:48px;height:48px;border-radius:999px;background:var(--beige);display:flex;align-items:center;justify-content:center;color:var(--moss);}
   .contactInfoLabel{font-family:'Inter',sans-serif;font-weight:700;font-size:1.02rem;color:var(--charcoal);margin-bottom:.25rem;}
@@ -101,9 +110,24 @@
   .contactFormRow{display:grid;grid-template-columns:1fr;gap:1.1rem;}
   @media(min-width:640px){ .contactFormRow{grid-template-columns:1fr 1fr;} }
 
-  .contactField{width:100%;padding:.95rem 1.15rem;border-radius:.85rem;border:1px solid var(--stone);background:#fff;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--charcoal);transition:border-color .25s var(--ease),box-shadow .25s var(--ease);}
-  .contactField::placeholder{color:var(--charcoal);opacity:.45;}
-  .contactField:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(180,98,47,.15);}
+  /* ELEGANT, SOFTER INPUT STYLE — MATCHES THE MEMBERSHIP FORM: A SUBTLE
+     TINTED FILL INSTEAD OF A HARD WHITE BOX, GENTLE INSET DEPTH, AND A
+     NATURAL GREEN GLOW ON FOCUS */
+  .contactField{
+    width:100%;
+    padding:1rem 1.2rem;
+    border-radius:1rem;
+    border:1.5px solid transparent;
+    background:var(--beige);
+    font-family:'Inter',sans-serif;
+    font-size:.93rem;
+    color:var(--charcoal);
+    box-shadow:inset 0 1px 2px rgba(58,46,31,.05);
+    transition:border-color .25s var(--ease),box-shadow .25s var(--ease),background-color .25s var(--ease);
+  }
+  .contactField::placeholder{color:var(--charcoal);opacity:.42;}
+  .contactField:hover{background:#fff;border-color:var(--stone);}
+  .contactField:focus{outline:none;background:#fff;border-color:var(--forest);box-shadow:0 0 0 4px rgba(53,94,59,.14);}
   textarea.contactField{resize:vertical;min-height:150px;}
 
   .contactSubmit{align-self:stretch;justify-content:center;display:inline-flex;align-items:center;gap:.6rem;background:var(--forest);color:#fff;padding:.95rem 2.1rem;border-radius:999px;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease);}
@@ -127,10 +151,14 @@
     body.supportsDark .contactInfoValue{color:var(--beige);opacity:.72;}
     body.supportsDark .contactInfoValue a{text-decoration-color:rgba(246,243,238,.3);}
     body.supportsDark .contactInfoValue a:hover{text-decoration-color:var(--iceblue);}
-    body.supportsDark .contactField{background:#182B23;color:var(--beige);border-color:rgba(246,243,238,.18);}
+    body.supportsDark .contactField{background:#0F221B;color:var(--beige);border-color:transparent;box-shadow:inset 0 1px 2px rgba(0,0,0,.2);}
     body.supportsDark .contactField::placeholder{color:var(--beige);opacity:.4;}
-    body.supportsDark .contactField:focus{border-color:var(--iceblue);box-shadow:0 0 0 3px rgba(81,177,219,.18);}
+    body.supportsDark .contactField:hover{background:#132A21;border-color:rgba(246,243,238,.18);}
+    body.supportsDark .contactField:focus{background:#132A21;border-color:var(--iceblue);box-shadow:0 0 0 4px rgba(81,177,219,.18);}
     body.supportsDark .contactLimitMsg{background:rgba(220,41,43,.12);border-color:rgba(220,41,43,.3);color:#ff8f85;}
+  }
+  @media (max-width:767px) and (prefers-color-scheme: dark){
+    body.supportsDark .contactInfoList{background:transparent;border-color:transparent;}
   }
 </style>
 </head>

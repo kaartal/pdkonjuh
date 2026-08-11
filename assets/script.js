@@ -164,24 +164,23 @@
       '<div class="grid lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] gap-12 mb-16">' +
       "<div>" +
       '<p class="font-display text-2xl font-semibold mb-4">PD Konjuh</p>' +
-      '<p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Tuzle. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine od 1951. godine.</p>' +
+      '<p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Tuzle. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine i šire od 1951. godine.</p>' +
       '<div class="flex gap-4">' +
-      '<a href="#" aria-label="Instagram" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>' +
-      '<a href="#" aria-label="Facebook" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>' +
-      '<a href="#" aria-label="Strava" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M10 3l6 12h-4l-2 6-2-6H4l6-12z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>' +
+      '<a href="https://www.instagram.com/pdkonjuh/" aria-label="Instagram" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>' +
+      '<a href="https://www.facebook.com/pdkonjuh.ba/?locale=hr_HR" aria-label="Facebook" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>' +
+      
       "</div></div>" +
       "<div>" +
-      '<p class="eyebrow text-beige/70 mb-5">Istraži</p>' +
+      '<p class="eyebrow text-beige/30 mb-5">Osnovno</p>' +
       '<ul class="space-y-3 text-sm text-beige/75">' + exploreItems + "</ul></div>" +
       "<div>" +
-      '<p class="eyebrow text-beige/50 mb-5">Društvo</p>' +
+      '<p class="eyebrow text-beige/30 mb-5">Društvo</p>' +
       '<ul class="space-y-3 text-sm text-beige/75">' +
       '<li><a href="membership.html" class="hover:text-beige">Članstvo</a></li>' +
       '<li><a href="contact.html" class="hover:text-beige">Kontakt</a></li>' +
-      '<li><a href="contact.html#hitni-brojevi" class="hover:text-beige">Hitni brojevi</a></li>' +
       "</ul></div>" +
       "<div>" +
-      '<p class="eyebrow text-beige/50 mb-5">Kontakt</p>' +
+      '<p class="eyebrow text-beige/30 mb-5">Kontakt</p>' +
       '<div class="space-y-4 text-sm text-beige/75">' +
       '<div class="flex items-start gap-3"><svg class="w-5 h-5 mt-0.5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg><span>Patriotske lige br. 4, Tuzla, Bosna i Hercegovina</span></div>' +
       '<div class="flex items-center gap-3"><svg class="w-5 h-5 text-moss" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M5 5v14h14V5M5 7l7 5 7-5"/></svg><a href="mailto:pdkonjuh1951@gmail.com" class="hover:text-beige transition-colors">pdkonjuh1951@gmail.com</a></div>' +
@@ -193,7 +192,7 @@
       '<div class="footerGiantMark reveal" aria-hidden="true"><span>PD Konjuh</span></div>' +
       '<div class="max-w-7xl mx-auto px-6 lg:px-10 pb-10">' +
       '<div class="footerBottomRow flex flex-col sm:flex-row justify-between items-center gap-3 pt-2 text-xs text-beige/45">' +
-      "<p>© 2026 PD Konjuh, Tuzla. Sva prava zadržana.</p>" +
+      "<p>© 2026 Planinarsko društvo Konjuh, Tuzla. Sva prava zadržana.</p>" +
       '<p class="footerCredit">Developed by <span>Kartal</span></p>' +
       "</div></div></footer>" +
       '<div id="lightbox" aria-hidden="true">' +
@@ -291,19 +290,37 @@
   }
 
   /* ==========================================================================
-     5. HEADER AUTO-HIDE (HIDES ONCE THE CTA VIDEO SECTION IS REACHED)
+     5. HEADER AUTO-HIDE (HIDES WHEN SCROLLING DOWN, REAPPEARS WHEN SCROLLING UP)
      ========================================================================== */
 
   function initHeaderAutoHide() {
     var siteHeader = document.querySelector(".siteHeader");
-    var ctaVideoSection = document.getElementById("ctaVideoSection");
-    if (!siteHeader || !ctaVideoSection) return;
+    if (!siteHeader) return;
 
     siteHeader.classList.add("headerAutoHide");
+
+    var lastScrollY = window.scrollY || window.pageYOffset || 0;
     var headerTicking = false;
+    var TOP_OFFSET = 80; // ALWAYS SHOW THE HEADER NEAR THE TOP OF THE PAGE
+    var DELTA = 6; // IGNORE TINY SCROLL JITTER (E.G. MOBILE BOUNCE)
+
     var updateHeaderVisibility = function () {
-      var rectTop = ctaVideoSection.getBoundingClientRect().top;
-      siteHeader.classList.toggle("isHidden", rectTop <= 0);
+      var currentY = window.scrollY || window.pageYOffset || 0;
+      var diff = currentY - lastScrollY;
+
+      if (currentY <= TOP_OFFSET) {
+        siteHeader.classList.remove("isHidden");
+        lastScrollY = currentY;
+      } else if (diff > DELTA) {
+        // SCROLLING DOWN → HIDE
+        siteHeader.classList.add("isHidden");
+        lastScrollY = currentY;
+      } else if (diff < -DELTA) {
+        // SCROLLING UP → SHOW
+        siteHeader.classList.remove("isHidden");
+        lastScrollY = currentY;
+      }
+
       headerTicking = false;
     };
     var onHeaderScroll = function () {
@@ -311,7 +328,6 @@
       headerTicking = true;
       requestAnimationFrame(updateHeaderVisibility);
     };
-    updateHeaderVisibility();
     window.addEventListener("scroll", onHeaderScroll, { passive: true });
     window.addEventListener("resize", onHeaderScroll);
   }

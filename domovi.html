@@ -46,84 +46,116 @@
 
   /* ---- PLANINARSKI DOMOVI — HOME ---------------- */
 
-/* intro: full-width lede, no sidebar/heading — just the reveal-in text */
-.domIntro{width:100%;margin-bottom:3.5rem;}
-.domIntroBody{width:100%;max-width:none;}
-.domIntroBody p{font-family:'Newsreader',serif;font-size:1.2rem;font-weight:400;font-style:italic;letter-spacing:.005em;}
+  /* intro: modern sans-serif lede instead of the old italic serif block */
+  .domIntro{width:100%;max-width:700px;margin:0 auto 4rem;text-align:center;}
+  .domIntroEyebrow{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1rem;}
+  .domIntroEyebrow::before{content:"";width:22px;height:1px;background:var(--moss);}
+  .domIntroTitle{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.6vw,2.5rem);font-weight:600;letter-spacing:-.01em;color:var(--charcoal);margin-bottom:1.15rem;}
+  .domIntroBody{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.85;color:var(--charcoal);opacity:.72;text-align:left;}
+  .domIntroBody p + p{margin-top:1rem;}
 
-.domGrid{display:grid;grid-template-columns:1fr;gap:2.5rem;max-width:1100px;width:100%;margin:0 auto;}
+  /* two photo tiles, side by side — click one to flip it and reveal details */
+  .domFlipGrid{display:grid;grid-template-columns:1fr;gap:1.5rem;max-width:1100px;width:100%;margin:0 auto;}
+  @media(min-width:720px){ .domFlipGrid{grid-template-columns:1fr 1fr;gap:2rem;} }
 
-.domCard{position:relative;background:#fff;border-radius:1.5rem;overflow:hidden;border:1px solid var(--stone);box-shadow:0 1px 2px rgba(14,51,42,.04);transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
-.domCard:hover{transform:translateY(-5px);box-shadow:0 24px 48px -26px rgba(14,51,42,.32);}
-@media(min-width:800px){
-  .domCard{display:flex;flex-direction:row;align-items:stretch;min-height:23rem;}
-  .domCard .domCardImgWrap{flex:0 0 44%;aspect-ratio:auto;}
-  .domCard .domCardBody{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0;}
-  /* SECOND HOME: MIRROR THE LAYOUT SO THE PHOTO SITS ON THE RIGHT */
-  .domCard.domCardReverse{flex-direction:row-reverse;}
-}
+  .domFlipCard{perspective:1800px;}
+  .domFlipInner{
+    position:relative;
+    width:100%;
+    aspect-ratio:3/4;
+    transform-style:preserve-3d;
+    transition:transform .7s var(--ease);
+  }
+  @media(min-width:720px){ .domFlipInner{aspect-ratio:4/5;} }
+  .domFlipCard.isFlipped .domFlipInner{transform:rotateY(180deg);}
 
-.domCardIndex{position:absolute;top:1.1rem;z-index:4;width:38px;height:38px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;left:1.1rem;}
-.domCard.domCardReverse .domCardIndex{left:auto;right:1.1rem;}
+  .domFlipFace{
+    position:absolute;inset:0;
+    border-radius:1.5rem;
+    overflow:hidden;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    box-shadow:0 1px 2px rgba(14,51,42,.05);
+  }
 
-.domCardImgWrap{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer;display:block;width:100%;}
-.domCardImgWrap img{width:100%;height:100%;object-fit:cover;display:block;}
-.domCardImgGrad{position:absolute;inset:0;background:linear-gradient(to top, rgba(14,51,42,.9) 0%, rgba(14,51,42,.22) 48%, transparent 72%);pointer-events:none;}
-.domCardImgTitle{position:absolute;left:0;right:0;bottom:0;padding:1.35rem 1.5rem;color:#fff;pointer-events:none;text-align:left;}
-.domCardImgTitle .eyebrow{color:rgba(255,255,255,.75);}
-.domCardImgTitle h3{font-family:'Fraunces', serif;font-size:2.15rem;font-weight:600;margin-top:.3rem;letter-spacing:-.01em;}
+  .domFlipFront{cursor:pointer;background:var(--charcoal);border:none;padding:0;display:block;width:100%;height:100%;text-align:left;}
+  .domFlipFront img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);}
+  .domFlipCard:hover .domFlipFront img{transform:scale(1.045);}
+  .domFlipGrad{position:absolute;inset:0;background:linear-gradient(to top, rgba(14,51,42,.92) 0%, rgba(14,51,42,.25) 46%, transparent 72%);pointer-events:none;}
+  .domFlipFrontText{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.7rem;color:#fff;pointer-events:none;}
+  .domFlipFrontText .eyebrow{color:rgba(255,255,255,.8);}
+  .domFlipFrontText h3{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:600;letter-spacing:-.01em;margin:.35rem 0 1rem;}
+  .domFlipHint{display:inline-flex;align-items:center;gap:.5rem;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:.5rem 1rem;border-radius:999px;}
 
-.domCardBody{padding:1.6rem 1.6rem 1.85rem;}
-.domCardDesc{font-family:'Newsreader',serif;color:var(--charcoal);opacity:.78;font-size:1.02rem;line-height:1.75;margin-bottom:1.5rem;}
+  .domFlipBack{
+    transform:rotateY(180deg);
+    background:#fff;
+    border:1px solid var(--stone);
+    display:flex;
+  }
+  .domFlipBackInner{padding:1.65rem 1.75rem;display:flex;flex-direction:column;height:100%;width:100%;overflow-y:auto;}
+  .domFlipBackInner h3{font-family:'Fraunces',serif;font-size:1.95rem;font-weight:600;color:var(--charcoal);margin-bottom:.75rem;}
+  .domFlipDesc{font-family:'Inter',sans-serif;font-size:.9rem;line-height:1.75;color:var(--charcoal);opacity:.76;margin-bottom:1.25rem;}
 
-/* facts as icon-badge rows instead of a boxed 3-column grid */
-.domCardFacts{display:flex;gap:1.25rem;margin:0 0 1.5rem;padding-top:1.25rem;border-top:1px solid var(--stone);}
-.domCardContactNote{font-family:'Newsreader',serif;font-style:italic;font-size:.85rem;color:var(--charcoal);opacity:.6;margin:-.75rem 0 1.35rem;}
-.domCardContactNote a{color:inherit;text-decoration:underline;text-decoration-color:var(--stone);text-underline-offset:2px;}
-.domCardContactNote a:hover{text-decoration-color:var(--moss);}
-.domCardFact{flex:1;min-width:0;display:flex;align-items:center;gap:.6rem;}
-.domCardFactIcon{flex:none;width:32px;height:32px;border-radius:.7rem;background:var(--beige);border:1px solid var(--stone);display:flex;align-items:center;justify-content:center;color:var(--moss);font-size:1.05rem;line-height:1;}
-.domCardFactText{min-width:0;display:flex;flex-direction:column;}
-.domCardFactValue{font-family:'Fraunces', serif;font-weight:700;font-size:.86rem;color:var(--charcoal);line-height:1.2;white-space:nowrap;}
-.domCardFactLabel{font-family:'Fraunces', serif;font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--charcoal);opacity:.5;}
+  .domFlipContact{font-family:'Inter',sans-serif;font-size:.81rem;color:var(--charcoal);opacity:.58;margin-bottom:1.3rem;}
+  .domFlipContact a{color:inherit;text-decoration:underline;text-decoration-color:var(--stone);text-underline-offset:2px;}
+  .domFlipContact a:hover{text-decoration-color:var(--moss);}
 
-.domCardCta{position:relative;display:inline-flex;align-items:center;gap:.7rem;background:#fff;color:var(--forest);padding:.8rem 1.5rem .8rem 1rem;border-radius:999px;border:1.5px solid var(--forest);font-family:'Inter',sans-serif;font-weight:600;font-size:.85rem;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);}
-.domCardCta .domCardCtaIcon{flex:none;width:30px;height:30px;border-radius:999px;background:var(--forest);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .25s var(--ease);}
-.domCardCta:hover,.domCardCta:focus-visible{background:var(--forest);color:#fff;transform:translateY(-2px);}
-.domCardCta:hover .domCardCtaIcon,.domCardCta:focus-visible .domCardCtaIcon{background:#fff;color:var(--forest);}
+  .domFlipActions{margin-top:auto;display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;}
+  .domFlipCta{position:relative;display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--forest);padding:.7rem 1.3rem .7rem .9rem;border-radius:999px;border:1.5px solid var(--forest);font-family:'Inter',sans-serif;font-weight:600;font-size:.81rem;transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);}
+  .domFlipCtaIcon{flex:none;width:26px;height:26px;border-radius:999px;background:var(--forest);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .25s var(--ease);}
+  .domFlipCta:hover,.domFlipCta:focus-visible{background:var(--forest);color:#fff;transform:translateY(-2px);}
+  .domFlipCta:hover .domFlipCtaIcon,.domFlipCta:focus-visible .domFlipCtaIcon{background:#fff;color:var(--forest);}
 
-.domCardCtaRow{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;}
+  .domFlipBackBtn{font-family:'Inter',sans-serif;font-weight:600;font-size:.81rem;color:var(--charcoal);opacity:.55;background:none;border:none;cursor:pointer;padding:.7rem .3rem;transition:opacity .2s;}
+  .domFlipBackBtn:hover{opacity:1;}
 
-/* ---- SCROLL-IN REVEAL FOR EACH DOM CARD (SAME LANGUAGE AS THE GALLERY GRID) ---- */
-.domReveal{
-  opacity:0;
-  transform:translate3d(0,20px,0) scale(.98);
-  filter:blur(6px);
-  transition:opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease);
-  will-change:opacity, transform, filter;
-}
-.domReveal.isVisible{
-  opacity:1;
-  transform:translate3d(0,0,0) scale(1);
-  filter:blur(0);
-}
-.domRevealDelay1{transition-delay:.15s;}
+  /* ---- SINGLE, SUBTLE ENTRANCE FOR THE WHOLE SECTION (NOT PER-CARD) ---- */
+  .domReveal{
+    opacity:0;
+    transform:translate3d(0,20px,0) scale(.98);
+    filter:blur(6px);
+    transition:opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease);
+    will-change:opacity, transform, filter;
+  }
+  .domReveal.isVisible{
+    opacity:1;
+    transform:translate3d(0,0,0) scale(1);
+    filter:blur(0);
+  }
+  .domRevealDelay1{transition-delay:.15s;}
 
-/* ---- IMAGE ONLY FADES/UNBLURS IN ONCE FULLY LOADED — NEVER PAINTS HALF-DONE ---- */
-.imgFade{
-  opacity:0;
-  filter:blur(10px);
-  transition:opacity .9s var(--ease), filter .9s var(--ease);
-}
-.imgFade.imgLoaded{
-  opacity:1;
-  filter:blur(0);
-}
-@media (prefers-reduced-motion: reduce){
-  .domReveal{opacity:1;transform:none;filter:none;transition:none;}
-  .domRevealDelay1{transition-delay:0s;}
-  .imgFade{opacity:1;filter:none;transition:none;}
-}
+  /* ---- IMAGE ONLY FADES/UNBLURS IN ONCE FULLY LOADED — NEVER PAINTS HALF-DONE ---- */
+  .imgFade{
+    opacity:0;
+    filter:blur(10px);
+    transition:opacity .9s var(--ease), filter .9s var(--ease);
+  }
+  .imgFade.imgLoaded{
+    opacity:1;
+    filter:blur(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .domReveal{opacity:1;transform:none;filter:none;transition:none;}
+    .domRevealDelay1{transition-delay:0s;}
+    .imgFade{opacity:1;filter:none;transition:none;}
+    .domFlipInner{transition:none;}
+  }
+
+  @media (prefers-color-scheme: dark){
+    body.supportsDark .domIntroTitle{color:var(--beige);}
+    body.supportsDark .domIntroBody{color:var(--beige);opacity:.72;}
+    body.supportsDark .domFlipBack{background:#182B23;border-color:rgba(246,243,238,.18);}
+    body.supportsDark .domFlipBackInner h3{color:var(--beige);}
+    body.supportsDark .domFlipDesc{color:var(--beige);opacity:.72;}
+    body.supportsDark .domFlipContact{color:var(--beige);opacity:.58;}
+    body.supportsDark .domFlipContact a{text-decoration-color:rgba(246,243,238,.3);}
+    body.supportsDark .domFlipCta{background:transparent;color:var(--iceblue);border-color:var(--iceblue);}
+    body.supportsDark .domFlipCtaIcon{background:var(--iceblue);color:#0F221B;}
+    body.supportsDark .domFlipCta:hover,body.supportsDark .domFlipCta:focus-visible{background:var(--iceblue);color:#0F221B;}
+    body.supportsDark .domFlipCta:hover .domFlipCtaIcon,body.supportsDark .domFlipCta:focus-visible .domFlipCtaIcon{background:#0F221B;color:var(--iceblue);}
+    body.supportsDark .domFlipBackBtn{color:var(--beige);}
+  }
 </style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
@@ -170,105 +202,103 @@
   <div class="max-w-6xl mx-auto">
 
     <!-- INTRO -->
-    <div class="domIntro">
-
-      <div class="domIntroBody domReveal">
-        <p class="text-charcoal/70 leading-relaxed">
-         Planinarsko društvo „Konjuh“ Tuzla brine o planinarskom domu Javorje i planinarskoj kući „Djed Stjepan“ na Vršanima. Javorje se nalazi na obroncima planine Konjuh i predstavlja jedno od važnih okupljališta planinara. Dom raspolaže prostorima za boravak, spavaonicom i bungalovima, što omogućava i višednevni boravak u prirodi. Okružen je šumom i planinskim predjelima, pogodnim za šetnju, odmor i planinarske aktivnosti. Vršani se nalaze u blizini Tuzle i predstavljaju popularno izletište među građanima i ljubiteljima prirode. Na Vršanima se nalazi planinarska kuća „Djed Stjepan“, kojom upravlja PD „Konjuh“ Tuzla. Do Vršana vode različite pješačke i planinarske staze koje prolaze kroz šumske predjele i livade. Oba objekta služe za odmor, druženje i okupljanje planinara i izletnika. Javorje je pogodno za duže boravke i istraživanje Konjuha, dok su Vršani idealni za kraće izlete i rekreaciju u prirodi. Planinarsko društvo „Konjuh“ kroz ove objekte i brojne aktivnosti doprinosi razvoju i promociji planinarstva na području Tuzle i Konjuha.
-        </p>
+    <div class="domIntro domReveal">
+      <h2 class="domIntroTitle">Dom u prirodi, korak od grada</h2>
+      <div class="domIntroBody">
+        <p>Planinarsko društvo „Konjuh“ Tuzla brine o dva doma, planinarskom domu Javorje i planinarskoj domu „Djed Stjepan“ na Vršanima. Oba su okružena šumom i planinskim predjelima, pogodna za šetnju, odmor i planinarske aktivnosti, i služe za druženje i okupljanje planinara i izletnika.</p>
+        <p>Javorje je pogodno za duže boravke i istraživanje Konjuha, dok su Vršani idealni za kraće izlete i rekreaciju u prirodi. Kroz ove objekte i brojne aktivnosti društvo doprinosi razvoju i promociji planinarstva na području Tuzle i Konjuha.</p>
       </div>
     </div>
 
-    <!-- MOUNTAIN HOMES — CARDS SIDE BY SIDE -->
-    <div class="domGrid">
+    <!-- MOUNTAIN HOMES — TWO PHOTOS SIDE BY SIDE, CLICK TO FLIP AND REVEAL DETAILS -->
+    <div class="domFlipGrid domReveal domRevealDelay1">
 
-    <!-- DOM 1 — JAVORJE (SLIKA LIJEVO) -->
-    <article class="domCard domReveal">
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/lodge/lodgejavor.jpg"
-        data-caption="Planinarski dom Javorje"
-        class="domCardImgWrap"
-        aria-label="Otvori sliku doma Javorje">
-        <img class="imgFade" src="assets/pictures/lodge/lodgejavor.jpg" alt="Planinarski dom Javorje na zapadnim obroncima Konjuha" loading="lazy">
-        <span class="domCardImgGrad" aria-hidden="true"></span>
-        <span class="domCardImgTitle">
-          <h3>Javorje</h3>
-        </span>
-      </button>
-      <div class="domCardBody">
-        <p class="domCardDesc">
-          Planinarski dom Javorje se nalazi na istočnim obroncima Konjuha na nadmorskoj visini od 1002 metara. Dobio je ime po planinskom grebenu, koji se nalazi odmah iznad njega i čiji je najviši  vrh Bandera (1207 mnv). Dom je opskrbljen kuhinjom, hranom i pićem.
-        </p>
+      <!-- DOM 1 — JAVORJE -->
+      <div class="domFlipCard" data-flip-card>
+        <div class="domFlipInner">
 
-        <div class="domCardFacts">
-          <div class="domCardFact">
-            <span class="domCardFactIcon">🏔️</span>
-            <span class="domCardFactText"><span class="domCardFactValue">1002 mnv</span><span class="domCardFactLabel">Visina</span></span>
+          <button type="button" class="domFlipFace domFlipFront" data-flip-trigger aria-label="Prikaži podatke o domu Javorje" aria-expanded="false">
+            <img class="imgFade" src="assets/pictures/lodge/lodgejavor.jpg" alt="Planinarski dom Javorje na istočnim obroncima Konjuha" loading="lazy">
+            <span class="domFlipGrad" aria-hidden="true"></span>
+            <span class="domFlipFrontText">
+              <h3>Javorje</h3>
+              <span class="domFlipHint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Saznaj više
+              </span>
+            </span>
+          </button>
+
+          <div class="domFlipFace domFlipBack">
+            <div class="domFlipBackInner">
+              <h3>Javorje</h3>
+              <p class="domFlipDesc">
+
+Planinarski dom Javorje smješten je na istočnim obroncima planine Konjuh, na nadmorskoj visini od 1.002 metra. Ime je dobio po planinskom grebenu Javorje, koji se nalazi neposredno iznad doma, a čiji je najviši vrh Bandera, visok 1.207 metara.
+
+Dom je idealno mjesto za odmor, boravak u prirodi i polazna tačka za istraživanje planine Konjuh. Gostima su na raspolaganju kuhinja, hrana i piće, kao i smještajni kapacitet od ukupno 38 ležaja. Smještaj obuhvata četiri sobe sa po četiri ležaja i jednu skupnu sobu sa 22 ležaja. U domu je obezbijeđena i voda.
+Do Planinarskog doma Javorje iz sela Stupari vodi nekoliko obilježenih planinarskih staza. Uspon traje između dva i četiri sata, u zavisnosti od odabrane staze i tempa kretanja.Planinarski dom Javorje pruža idealnu priliku da se zastane, odmori i uživa u miru planine, čistom zraku i prirodnom okruženju Konjuha.
+
+
+              </p>
+
+
+              <div class="domFlipActions">
+                <a href="https://www.google.com/maps/search/?api=1&query=Planinarski+dom+Javorje+Konjuh+Tuzla" target="_blank" rel="noopener" class="domFlipCta">
+                  <span class="domFlipCtaIcon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
+                  Pronađi na karti
+                </a>
+                <button type="button" class="domFlipBackBtn" data-flip-close>Nazad na sliku</button>
+              </div>
+            </div>
           </div>
-          <div class="domCardFact">
-            <span class="domCardFactIcon">🛏️</span>
-            <span class="domCardFactText"><span class="domCardFactValue">38</span><span class="domCardFactLabel">Ležaja</span></span>
-          </div>
-          <div class="domCardFact">
-            <span class="domCardFactIcon">⏱️</span>
-            <span class="domCardFactText"><span class="domCardFactValue">2–4h</span><span class="domCardFactLabel">Od Stuparija</span></span>
-          </div>
-        </div>
 
-        <p class="domCardContactNote">Domar: Kulović Muhidin · <a href="tel:+38762179939">062-179-939</a></p>
-
-        <div class="domCardCtaRow">
-          <a href="https://www.google.com/maps/search/?api=1&query=Planinarski+dom+Javorje+Konjuh+Tuzla" target="_blank" rel="noopener" class="domCardCta">
-            <span class="domCardCtaIcon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            Pronađi Javorje na karti
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- DOM 2 — VRŠANI (SLIKA DESNO) -->
-    <article class="domCard domReveal domRevealDelay1 domCardReverse">
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/lodge/lodgevrsani.jpg"
-        data-caption="Planinarska kuća Vršani, jugoistočno od Tuzle"
-        class="domCardImgWrap"
-        aria-label="Otvori sliku doma Vršani">
-        <img class="imgFade" src="assets/pictures/lodge/lodgevrsani.jpg" alt="Planinarska kuća Vršani, jugoistočno od Tuzle" loading="lazy">
-        <span class="domCardImgGrad" aria-hidden="true"></span>
-        <span class="domCardImgTitle">
-          <h3>Vršani</h3>
-        </span>
-      </button>
-      <div class="domCardBody">
-        <p class="domCardDesc">
-        Vršani su smješteni na cca 3,5 km jugoistočno od Tuzle. Planinarska kuća Vršani se nalazi na nadmorskoj visini od 446 metara.Planinski Dom Vršani, smješten u slikovitom selu Vršani, je šarmantna turistička atrakcija koja posjetiocima nudi miran bijeg u prirodu. Ovo prelijepo mjesto savršeno je za one koji uživaju u aktivnostima na otvorenom i zadivljujućim pejzažima. Sa svojom gostoljubivom atmosferom, Planinski Dom Vršani pruža idealan ambijent za opuštanje i istraživanje. Gosti mogu uživati u uslugama ručavanja, što im omogućava da se upuste u ukusnu lokalnu kuhinju dok uživaju u prelijepom okruženju. Bilo da tražite mirno utočište ili avanturistički dan, Planinski Dom Vršani je odlična destinacija koja prikazuje ljepotu ovog kraja.
-        </p>
-
-        <div class="domCardFacts">
-          <div class="domCardFact">
-            <span class="domCardFactIcon">🏔️</span>
-            <span class="domCardFactText"><span class="domCardFactValue">446 mnv</span><span class="domCardFactLabel">Visina</span></span>
-          </div>
-          <div class="domCardFact">
-            <span class="domCardFactIcon">🛏️</span>
-            <span class="domCardFactText"><span class="domCardFactValue">—</span><span class="domCardFactLabel">Ležaja (TBD)</span></span>
-          </div>
-          <div class="domCardFact">
-            <span class="domCardFactIcon">📍</span>
-            <span class="domCardFactText"><span class="domCardFactValue">3,5 km</span><span class="domCardFactLabel">JI od Tuzle</span></span>
-          </div>
-        </div>
-
-        <div class="domCardCtaRow">
-          <a href="https://www.google.com/maps/search/?api=1&query=Planinarska+kuca+Vrsani+Tuzla" target="_blank" rel="noopener" class="domCardCta">
-            <span class="domCardCtaIcon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
-            Pronađi Vršane na karti
-          </a>
         </div>
       </div>
-    </article>
+
+      <!-- DOM 2 — VRŠANI -->
+      <div class="domFlipCard" data-flip-card>
+        <div class="domFlipInner">
+
+          <button type="button" class="domFlipFace domFlipFront" data-flip-trigger aria-label="Prikaži podatke o domu Vršani" aria-expanded="false">
+            <img class="imgFade" src="assets/pictures/lodge/lodgevrsani.jpg" alt="Planinarska kuća Vršani, jugoistočno od Tuzle" loading="lazy">
+            <span class="domFlipGrad" aria-hidden="true"></span>
+            <span class="domFlipFrontText">
+              <h3>Vršani</h3>
+              <span class="domFlipHint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Saznaj više
+              </span>
+            </span>
+          </button>
+
+          <div class="domFlipFace domFlipBack">
+            <div class="domFlipBackInner">
+              <h3>Vršani</h3>
+              <p class="domFlipDesc">
+
+
+
+
+
+
+
+                Planinski Dom Vršani, smješten u slikovitom selu Vršani, je šarmantna turistička atrakcija koja posjetiocima nudi miran bijeg u prirodu. Ovo prelijepo mjesto savršeno je za one koji uživaju u aktivnostima na otvorenom i zadivljujućim pejzažima. Sa svojom gostoljubivom atmosferom, Planinski Dom Vršani pruža idealan ambijent za opuštanje i istraživanje. Gosti mogu uživati u uslugama ručavanja, što im omogućava da se upuste u ukusnu lokalnu kuhinju dok uživaju u prelijepom okruženju. Bilo da tražite mirno utočište ili avanturistički dan, Planinski Dom Vršani je odlična destinacija koja prikazuje ljepotu ovog kraja.
+
+              </p>
+
+              <div class="domFlipActions">
+                <a href="https://www.google.com/maps/search/?api=1&query=Planinarska+kuca+Vrsani+Tuzla" target="_blank" rel="noopener" class="domFlipCta">
+                  <span class="domFlipCtaIcon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
+                  Pronađi na karti
+                </a>
+                <button type="button" class="domFlipBackBtn" data-flip-close>Nazad na sliku</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
     </div>
 
@@ -285,7 +315,7 @@
 
 <script src="assets/script.js" defer></script>
 <script>
-  // Reveal each dom card as it scrolls into view.
+  // Reveal the intro and the photo grid as they scroll into view (once, as a whole — not per card).
   var domObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -295,6 +325,27 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.domReveal').forEach(function (el) { domObserver.observe(el); });
+
+  // Flip cards: click a photo to flip it and reveal the details on the back;
+  // click "Nazad na sliku" (or flip the same photo again) to turn it back.
+  document.querySelectorAll('[data-flip-card]').forEach(function (card) {
+    var trigger = card.querySelector('[data-flip-trigger]');
+    var closeBtn = card.querySelector('[data-flip-close]');
+
+    var setFlipped = function (flipped) {
+      card.classList.toggle('isFlipped', flipped);
+      if (trigger) trigger.setAttribute('aria-expanded', flipped ? 'true' : 'false');
+    };
+
+    if (trigger) {
+      trigger.addEventListener('click', function () {
+        setFlipped(!card.classList.contains('isFlipped'));
+      });
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () { setFlipped(false); });
+    }
+  });
 
   // Reveal each image only once it's FULLY loaded, so it never paints
   // in half-finished — it fades/unblurs in smoothly instead.
