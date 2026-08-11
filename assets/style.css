@@ -468,77 +468,98 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 /* ---- MOBILE MENU ICON MORPH ------------------------------------------------- */
 .menuIconMorph svg{transition:transform .3s var(--ease);}
 
-/* ---- MOBILE MENU: FULL-SCREEN OVERLAY (SAME SECTION-STYLE ANIMATION AS THE NAV) ---------- */
+/* ---- MOBILE MENU: LEFT-SIDE DRAWER (LINKS ENTER ONE BY ONE FROM THE LEFT) ---------- */
+/* SCRIM SITS BEHIND THE DRAWER, DIMS THE REST OF THE PAGE, LIGHT BLUR ONLY */
+#mobileMenuScrim{
+  position:fixed;z-index:44;
+  inset:0;
+  background:rgba(8,14,11,.55);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .3s var(--ease), visibility .3s;
+  pointer-events:none;
+}
+#mobileMenuScrim.isOpen{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
 #mobileMenu{
   position:fixed;z-index:45;
-  inset:0;
-  width:100%;
+  top:0;left:0;bottom:0;
+  height:100dvh;
+  width:min(82vw, 360px);
   max-width:none;
 
   background:
-    radial-gradient(120% 140% at 6% 100%, rgba(201,123,61,.22), transparent 45%),
-    rgba(10,18,15,.96);
-  backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
+    radial-gradient(140% 90% at 0% 0%, rgba(201,123,61,.18), transparent 55%),
+    rgba(10,18,15,.97);
+  backdrop-filter:blur(10px) saturate(160%);
+  -webkit-backdrop-filter:blur(10px) saturate(160%);
   border:none;
-  border-radius:0;
-  box-shadow:none;
+  border-right:1px solid rgba(246,243,238,.1);
+  border-radius:0 20px 20px 0;
+  box-shadow:18px 0 48px -12px rgba(0,0,0,.5);
 
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:.5rem;
-  padding:2rem;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;
+  gap:.25rem;
+  padding:5.5rem 1.5rem 2rem;
+  overflow-y:auto;
 
-  transform-origin:center center;
-  transform:scale(1.04);
+  transform-origin:left center;
+  transform:translateX(-100%);
   opacity:0;
   visibility:hidden;
-  transition:transform .35s var(--ease), opacity .3s var(--ease), visibility .35s;
+  transition:transform .38s var(--ease), opacity .3s var(--ease), visibility .38s;
   will-change:transform, opacity;
   pointer-events:none;
 }
 #mobileMenu.isOpen{
-  transform:scale(1);
+  transform:translateX(0);
   opacity:1;
   visibility:visible;
   pointer-events:auto;
 }
 .mobileMenuList{
   width:100%;
-  max-width:520px;
   display:flex;flex-direction:column;
 }
 #mobileMenu a{
   width:100%;
   display:flex;align-items:center;
   text-align:left;
-  font-size:1.7rem;
+  font-size:1.25rem;
   line-height:1.2;
-  padding:1.15rem .25rem;
-  opacity:0;transform:translateY(-14px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .3s var(--ease), color .3s var(--ease);
+  padding:.95rem .9rem;
+  border-radius:14px;
+  opacity:0;transform:translateX(-28px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .25s var(--ease), background-color .25s var(--ease), color .25s var(--ease);
 }
 .mobileMenuLabel{flex:1;}
 #mobileMenu a:hover,
 #mobileMenu a:focus-visible {
-  background: rgba(246, 243, 238, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding-left: 1rem;
-  color: var(--iceblue);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transform: translateX(4px);
+  background:rgba(246,243,238,.08);
+  padding-left:1.15rem;
+  color:var(--iceblue);
+  transform:translateX(4px);
 }
-#mobileMenu.isOpen a{opacity:1;transform:translateY(0);}
-#mobileMenu.isOpen a:nth-child(1){transition-delay:.1s;}
-#mobileMenu.isOpen a:nth-child(2){transition-delay:.15s;}
-#mobileMenu.isOpen a:nth-child(3){transition-delay:.2s;}
-#mobileMenu.isOpen a:nth-child(4){transition-delay:.25s;}
-#mobileMenu.isOpen a:nth-child(5){transition-delay:.3s;}
-#mobileMenu.isOpen a:nth-child(6){transition-delay:.35s;}
-#mobileMenu.isOpen a:nth-child(7){transition-delay:.4s;}
+#mobileMenu.isOpen a{opacity:1;transform:translateX(0);}
+#mobileMenu.isOpen a:nth-child(1){transition-delay:.08s;}
+#mobileMenu.isOpen a:nth-child(2){transition-delay:.13s;}
+#mobileMenu.isOpen a:nth-child(3){transition-delay:.18s;}
+#mobileMenu.isOpen a:nth-child(4){transition-delay:.23s;}
+#mobileMenu.isOpen a:nth-child(5){transition-delay:.28s;}
+#mobileMenu.isOpen a:nth-child(6){transition-delay:.33s;}
+#mobileMenu.isOpen a:nth-child(7){transition-delay:.38s;}
+@media (max-width:380px){
+  #mobileMenu{width:88vw;padding:5rem 1.1rem 1.75rem;}
+  #mobileMenu a{font-size:1.12rem;}
+}
 @media (prefers-reduced-motion: reduce){
-  #mobileMenu,#mobileMenu a{transition:none;}
+  #mobileMenu,#mobileMenu a,#mobileMenuScrim{transition:none;}
 }
 
 /* ---- WAVE DIVIDERS — SOFT, MODERN CURVE CUT INTO THE STATS BAND ---------- */

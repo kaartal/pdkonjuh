@@ -105,6 +105,7 @@
     // THE HEADER USES A TRANSFORM AND FIXED-POSITION CHILDREN OF A TRANSFORMED
     // ELEMENT ARE COMPUTED RELATIVE TO IT INSTEAD OF THE VIEWPORT
     return (
+      '<div id="mobileMenuScrim" class="lg:hidden" aria-hidden="true"></div>' +
       '<div id="mobileMenu" class="lg:hidden text-beige font-display" aria-hidden="true">' +
       '<nav class="mobileMenuList" aria-label="Mobilna navigacija">' +
       buildMobileNav() +
@@ -339,6 +340,7 @@
   function initMobileMenu() {
     var menuBtn = document.getElementById("menuToggle");
     var mobileMenu = document.getElementById("mobileMenu");
+    var scrim = document.getElementById("mobileMenuScrim");
     if (!menuBtn || !mobileMenu) return;
 
     menuBtn.classList.add("menuIconMorph");
@@ -347,6 +349,7 @@
     var setMenuState = function (open) {
       mobileMenu.classList.toggle("isOpen", open);
       mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
+      if (scrim) scrim.classList.toggle("isOpen", open);
       menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
       menuBtn.innerHTML = open ? CLOSE_ICON : HAMBURGER_ICON;
       if (open) {
@@ -369,6 +372,9 @@
     mobileMenu.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () { setMenuState(false); });
     });
+    if (scrim) {
+      scrim.addEventListener("click", function () { setMenuState(false); });
+    }
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && mobileMenu.classList.contains("isOpen")) setMenuState(false);
     });
