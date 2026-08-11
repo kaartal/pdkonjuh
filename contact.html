@@ -111,7 +111,7 @@
   @media(min-width:900px){ .contactInfoList{gap:1.75rem;padding:0;background:transparent;border:none;box-shadow:none;} }
   @media(max-width:767px){ .contactInfoList{background:transparent;border:none;box-shadow:none;padding:0;} }
   .contactInfoItem{display:flex;align-items:flex-start;gap:1rem;}
-  .contactInfoIcon{flex:none;width:48px;height:48px;border-radius:999px;background:var(--beige);display:flex;align-items:center;justify-content:center;color:var(--moss);}
+  .contactInfoIcon{flex:none;width:48px;height:48px;border-radius:999px;background:var(--beige);display:flex;align-items:center;justify-content:center;color:var(--iceblue);}
   .contactInfoLabel{font-family:'Inter',sans-serif;font-weight:700;font-size:1.02rem;color:var(--charcoal);margin-bottom:.25rem;}
   .contactInfoValue{color:var(--charcoal);opacity:.72;font-size:.95rem;line-height:1.65;}
   .contactInfoValue a{color:inherit;text-decoration:underline;text-decoration-color:var(--stone);text-underline-offset:3px;}
@@ -171,6 +171,15 @@
   }
   @media (max-width:767px) and (prefers-color-scheme: dark){
     body.supportsDark .contactInfoList{background:transparent;border-color:transparent;}
+  }
+
+  /* NA MOBITELU FORMA NEMA BIJELU KARTICU OKO SEBE, PA SU POLJA (ISTE BOJE
+     KAO POZADINA STRANICE + PROVIDNA IVICA) BILA GOTOVO NEVIDLJIVA. OVDJE IM
+     DAJEMO STALNO VIDLJIVU, SUPTILNU IVICU (ISTU BOJU KOJA SE INAČE POJAVI
+     TEK NA HOVER-U) DA SE POLJA JASNIJE ODVOJE OD POZADINE. */
+  @media(max-width:899px){
+    .contactField{border-color:var(--stone);}
+    body.supportsDark .contactField{border-color:rgba(246,243,238,.22);}
   }
 </style>
 </head>

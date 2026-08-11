@@ -115,7 +115,7 @@
     opacity:0;
     transform:translate3d(0,20px,0) scale(.98);
     filter:blur(6px);
-    transition:opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease);
+    transition:opacity 1.2s var(--ease), transform 1.2s var(--ease), filter 1.2s var(--ease);
     will-change:opacity, transform, filter;
   }
   .domReveal.isVisible{
@@ -123,7 +123,7 @@
     transform:translate3d(0,0,0) scale(1);
     filter:blur(0);
   }
-  .domRevealDelay1{transition-delay:.15s;}
+  .domRevealDelay1{transition-delay:.25s;}
 
   /* ---- IMAGE ONLY FADES/UNBLURS IN ONCE FULLY LOADED — NEVER PAINTS HALF-DONE ---- */
   .imgFade{

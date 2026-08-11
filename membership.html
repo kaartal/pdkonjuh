@@ -97,7 +97,7 @@
   .joinConsent{display:flex;flex-direction:column;gap:1rem;}
   .joinCheckRow{display:flex;align-items:flex-start;gap:.75rem;background:var(--beige);border:1.5px solid transparent;border-radius:1rem;padding:1rem 1.1rem;transition:border-color .25s var(--ease),background-color .25s var(--ease);}
   .joinCheckRow:focus-within,.joinCheckRow:hover{background:#fff;border-color:var(--stone);}
-  .joinCheckRow input[type="checkbox"]{flex:none;width:19px;height:19px;margin-top:2px;accent-color:var(--forest);cursor:pointer;}
+  .joinCheckRow input[type="checkbox"]{flex:none;width:19px;height:19px;margin-top:2px;accent-color:var(--navy);cursor:pointer;}
   .joinCheckRow label{font-family:'Inter',sans-serif;font-size:.86rem;color:var(--charcoal);line-height:1.6;cursor:pointer;}
   .joinCheckRow label strong{font-weight:700;}
 
@@ -131,6 +131,16 @@
   }
   @media (max-width:767px) and (prefers-color-scheme: dark){
     body.supportsDark .joinCard{background:transparent;border-color:transparent;}
+  }
+
+  /* NA MOBITELU KARTICA OKO FORME NESTAJE (VIDI GORE), PA SU POLJA I RED SA
+     ČEKBOKSOM (ISTE BOJE KAO POZADINA + PROVIDNA IVICA) BILA GOTOVO NEVIDLJIVA.
+     DAJEMO IM STALNO VIDLJIVU, SUPTILNU IVICU DA SE JASNIJE ODVOJE OD POZADINE. */
+  @media(max-width:767px){
+    .joinField{border-color:var(--stone);}
+    .joinCheckRow{border-color:var(--stone);}
+    body.supportsDark .joinField{border-color:rgba(246,243,238,.22);}
+    body.supportsDark .joinCheckRow{border-color:rgba(246,243,238,.22);}
   }
 </style>
 </head>
@@ -168,7 +178,7 @@
 
     <div class="joinIntro reveal">
       <h2>Članski obrazac</h2>
-      <p>Podaci koje unesete koriste se isključivo za evidentiranje članstva u Planinarskom društvu Konjuh Tuzla i za informisanje o aktivnostima društva. U slučaju dodatnih pitanja ili podataka naša administracija će vas kontaktirati</p>
+      <p>Podaci koje unesete koriste se isključivo za evidentiranje članstva u Planinarskom društvu Konjuh Tuzla i za informisanje o aktivnostima društva. U slučaju dodatnih pitanja ili podataka naša administracija će vas kontaktirati.</p>
     </div>
 
     <div class="joinCard reveal revealDelay1">
@@ -191,7 +201,7 @@
           <div class="joinFormRow">
             <div>
               <label class="joinLabel" for="joinIme">Ime i prezime <span class="req">*</span></label>
-              <input class="joinField" id="joinIme" type="text" name="Ime i prezime" placeholder="Vaše ime i prezime" required>
+              <input class="joinField" id="joinIme" type="text" name="Ime i prezime" placeholder="" required>
             </div>
             <div>
               <label class="joinLabel" for="joinDatumRodjenja">Datum rođenja <span class="req">*</span></label>
@@ -201,29 +211,29 @@
 
           <div>
             <label class="joinLabel" for="joinJmbg">Jedinstveni matični broj (JMBG) <span class="req">*</span></label>
-            <input class="joinField" id="joinJmbg" type="text" name="JMBG" placeholder="13 cifara" inputmode="numeric" pattern="\d{13}" maxlength="13" title="JMBG se sastoji od 13 cifara" required>
-            <div class="joinHint">Unesite tačno 13 cifara, bez razmaka i crtica.</div>
+            <input class="joinField" id="joinJmbg" type="text" name="JMBG" placeholder="" inputmode="numeric" pattern="\d{13}" maxlength="13" title="JMBG se sastoji od 13 cifara" required>
+
           </div>
 
           <div>
             <label class="joinLabel" for="joinAdresa">Adresa stanovanja <span class="req">*</span></label>
-            <input class="joinField" id="joinAdresa" type="text" name="Adresa stanovanja" placeholder="Ulica i broj, grad" required>
+            <input class="joinField" id="joinAdresa" type="text" name="Adresa stanovanja" placeholder="" required>
           </div>
 
           <div class="joinFormRow">
             <div>
               <label class="joinLabel" for="joinEmail">E-mail <span class="req">*</span></label>
-              <input class="joinField" id="joinEmail" type="email" name="Email" placeholder="vasa.adresa@email.com" required>
+              <input class="joinField" id="joinEmail" type="email" name="Email" placeholder="" required>
             </div>
             <div>
               <label class="joinLabel" for="joinMobitel">Broj mobitela <span class="req">*</span></label>
-              <input class="joinField" id="joinMobitel" type="tel" name="Broj mobitela" placeholder="+387 6x xxx xxx" required>
+              <input class="joinField" id="joinMobitel" type="tel" name="Broj mobitela" placeholder="" required>
             </div>
           </div>
 
           <div>
             <label class="joinLabel" for="joinZanimanje">Zanimanje/zvanje <span class="req">*</span></label>
-            <input class="joinField" id="joinZanimanje" type="text" name="Zanimanje/zvanje" placeholder="Vaše zanimanje ili zvanje" required>
+            <input class="joinField" id="joinZanimanje" type="text" name="Zanimanje/zvanje" placeholder="" required>
           </div>
         </fieldset>
 

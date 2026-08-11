@@ -52,7 +52,7 @@
     opacity:0;
     transform:scale(.92) translateY(22px);
     filter:blur(10px);
-    transition:opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease);
+    transition:opacity .95s var(--ease), transform .95s var(--ease), filter .95s var(--ease);
     will-change:opacity, transform, filter;
   }
   .galleryReveal.isVisible{
@@ -456,6 +456,40 @@
       img.addEventListener('error', function () { img.classList.add('imgLoaded'); });
     }
   });
+
+  // POKREĆE POLAGANO, POSTEPENO POJAVLJIVANJE SLIKA (.galleryReveal) KADA UĐU U
+  // VIDNO POLJE — SVAKA SLJEDEĆA SLIKA SE POJAVLJUJE MALO KASNIJE (STAGGER)
+  // TAKO DA SE CIJELA GALERIJA "SLAŽE" POLAKO, UMJESTO DA SVE ISKOČI ODJEDNOM.
+  var galleryObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('isVisible');
+        galleryObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.galleryReveal').forEach(function (el, i) {
+    el.style.transitionDelay = ((i % 8) * 0.09) + 's';
+    galleryObserver.observe(el);
+  });
+
+  // KADA SE KLIKNE "PRIKAŽI VIŠE", NOVOOTKRIVENE SLIKE (.galleryItemExtra) TREBA
+  // PONOVO POSMATRATI JER SU BILE SAKRIVENE (display:none) DOK IH JE OBSERVER
+  // PRVI PUT PROVJERAVAO, PA IH NIJE MOGAO OZNAČITI KAO VIDLJIVE.
+  var showMoreBtn = document.getElementById('galleryShowMoreButton');
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', function () {
+      setTimeout(function () {
+        document.querySelectorAll('.galleryItemExtra:not(.hidden)').forEach(function (el, i) {
+          if (!el.classList.contains('isVisible')) {
+            el.style.transitionDelay = ((i % 6) * 0.09) + 's';
+            galleryObserver.observe(el);
+          }
+        });
+      }, 0);
+    });
+  }
 </script>
 </body>
 </html>
