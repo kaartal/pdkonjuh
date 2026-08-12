@@ -1,0 +1,24 @@
+{
+  "_readme": "Ovdje se uređuje raspored tura/aktivnosti. Svaki unos: date (YYYY-MM-DD, datum POČETKA), range (opcionalno, npr. '06–09.08.'), title, leader. Dodaj novi unos kao novi objekat u niz 'events' — redoslijed nije bitan, sortira se automatski. Ovaj file koriste i plan.html (puna lista) i index.html (kartica 'Sljedeća tura' u hero sekciji).",
+  "events": [
+    { "date": "2026-08-08", "title": "Pohod na Bjelašnicu: Umoljani – Lukomir", "leader": "Rasim Muftić" },
+    { "date": "2026-08-09", "range": "06–09.08.", "title": "Uspon na vrhove zapadnih Julijskih Alpi (ITA–AUS–SLO)", "leader": "Dragan Markelić" },
+    { "date": "2026-08-15", "range": "14–16.08.", "title": "Slet planinara FBiH – Vareš", "leader": "Sabid Zekan" },
+    { "date": "2026-08-16", "title": "IV kolo orijentacije", "leader": "Dragan Markelić" },
+    { "date": "2026-08-22", "title": "Pohod na Vran: Vilinac – Veliki Vran", "leader": "Emir Ahmetović" },
+    { "date": "2026-08-29", "title": "Omladinski balkanski susreti (organizator PD „Konjuh\" Tuzla)", "leader": "Dragan Markelić" },
+    { "date": "2026-08-30", "title": "Memorijalni pohod na Durmitor", "leader": "Stevo Cembauer" },
+
+    { "date": "2026-09-04", "title": "Svečana akademija povodom 75 godina postojanja PD Konjuh Tuzla", "leader": "Sabid Zekan" },
+    { "date": "2026-09-05", "title": "Pohod na Zelengoru – Bregoč i Kozije Strane", "leader": "Emir Ahmetović" },
+    { "date": "2026-09-12", "title": "Uspon na Klekovaču i posjeta Titovoj pećini u Drvaru", "leader": "Dragan Markelić" },
+    { "date": "2026-09-13", "title": "Izlet u adrenalinski park EKO-NAHL", "leader": "Stevo Cembauer" },
+    { "date": "2026-09-19", "title": "Doček HPD Željezničar", "leader": "Stevo Cembauer" },
+    { "date": "2026-09-20", "title": "Pohod na Maglić", "leader": "Dragan Markelić" },
+    { "date": "2026-09-27", "title": "Pećina krš i Borina staza", "leader": "Rasim Muftić" },
+
+    { "date": "2026-10-03", "title": "Pohod: „Kameni spavači\" (povodom 2. oktobra – Dana oslobođenja Tuzle u II svjetskom ratu)", "leader": "Rasim Muftić" },
+    { "date": "2026-10-10", "title": "Pohod na Treskavicu – Mala Ćaba", "leader": "Emir Ahmetović" },
+    { "date": "2026-10-11", "title": "Jesen na Majevici", "leader": "Goran Hrvić" }
+  ]
+}
