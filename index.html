@@ -69,6 +69,68 @@
   gap:2rem;
   padding-right:2rem;
 }
+
+/* ============================================================
+   HERO — "Sljedeća tura" kartica
+   Popunjava se putem JS-a iz data/tours.json (najbliži
+   nadolazeći datum). Ostaje prazna/nevidljiva ako podaci ne
+   učitaju ili nema nadolazećih tura — hero ostaje čist.
+   ============================================================ */
+#heroNextTour{
+  position:absolute;
+  top:104px; right:20px;
+  z-index:5;
+  max-width:min(300px, calc(100vw - 40px));
+}
+@media(min-width:640px){ #heroNextTour{ top:118px; right:32px; } }
+@media(min-width:1024px){ #heroNextTour{ top:140px; right:56px; } }
+@media(max-width:639px){ #heroNextTour{ display:none; } }
+
+.heroNextTourInner{
+  display:block;
+  background:rgba(14,51,42,.44);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  border:1px solid rgba(246,243,238,.18);
+  border-radius:20px;
+  padding:18px 22px 20px;
+  box-shadow:0 22px 48px -22px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
+  animation:heroNextTourIn .9s var(--ease, cubic-bezier(.22,.61,.36,1)) both;
+  animation-delay:1.05s;
+  transition:transform .3s var(--ease, cubic-bezier(.22,.61,.36,1)), box-shadow .3s var(--ease, cubic-bezier(.22,.61,.36,1)), border-color .3s var(--ease, cubic-bezier(.22,.61,.36,1));
+}
+.heroNextTourInner:hover{
+  transform:translateY(-3px);
+  border-color:rgba(246,243,238,.32);
+  box-shadow:0 28px 56px -22px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08);
+}
+@keyframes heroNextTourIn{ from{ opacity:0; transform:translateY(-12px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .heroNextTourInner{ animation:none; } }
+
+.heroNextTourEyebrow{
+  display:flex; align-items:center; gap:7px;
+  font-family:'Inter',sans-serif; font-size:.66rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--iceblue,#51B1DB);
+  margin-bottom:10px;
+}
+.heroNextTourEyebrow::before{
+  content:""; width:6px; height:6px; border-radius:999px;
+  background:var(--iceblue,#51B1DB); box-shadow:0 0 0 3px rgba(81,177,219,.25); flex:none;
+}
+.heroNextTourRow{ display:flex; align-items:baseline; flex-wrap:wrap; gap:8px; }
+.heroNextTourDate{ font-family:'Fraunces',serif; font-weight:600; color:#fff; font-size:1.4rem; line-height:1.1; }
+.heroNextTourRange{
+  font-family:'IBM Plex Mono',monospace; font-size:.64rem; letter-spacing:.03em;
+  color:rgba(246,243,238,.85); background:rgba(246,243,238,.14); padding:3px 8px; border-radius:999px;
+}
+.heroNextTourTitle{ font-family:'Fraunces',serif; font-weight:600; color:#fff; font-size:1rem; line-height:1.35; margin-top:8px; }
+.heroNextTourMeta{ font-family:'Inter',sans-serif; font-size:.78rem; color:rgba(246,243,238,.72); margin-top:8px; }
+.heroNextTourLink{
+  display:inline-flex; align-items:center; gap:6px; margin-top:14px;
+  font-family:'Inter',sans-serif; font-weight:600; font-size:.8rem; color:#fff;
+}
+.heroNextTourLink svg{ transition:transform .25s var(--ease, cubic-bezier(.22,.61,.36,1)); }
+.heroNextTourInner:hover .heroNextTourLink svg{ transform:translateX(3px); }
 </style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
@@ -80,14 +142,17 @@
 
 <!-- ============================= HERO ============================= -->
 <section class="relative h-[100svh] min-h-[560px] overflow-hidden">
-  <img src="https://picsum.photos/seed/prenj-sunrise/1920/1200" 
+  <img src="assets/pictures/herosection.jpg" 
      alt="" 
      role="presentation"
      class="heroZoom parallaxImg absolute inset-0 w-full h-full object-cover">
   <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/90 via-forestdeep/25 to-forestdeep/50"></div>
 
+  <!-- Sljedeća tura — popunjava se iz data/tours.json (vidi skriptu na dnu stranice) -->
+  <div id="heroNextTour" aria-live="polite"></div>
+
   <div class="relative h-full max-w-7xl mx-auto px-6 lg:px-10 flex flex-col justify-end pb-24 lg:pb-28">
-    <p class="eyebrow text-stone mb-5 revealLeft">Tuzla · osnovano 1951.</p>
+    <!-- <p class="eyebrow text-stone mb-5 revealLeft">Tuzla · osnovano 1951.</p> -->
     <h1 class="font-display text-beige text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-7xl font-semibold max-w-3xl revealLeft revealDelay1">
       Planina se ne osvaja. Njoj se vraćaš.
     </h1>
@@ -219,28 +284,26 @@ Za prvog predsjednika Društva izabran je Halid Čokić, a među prvim članovim
         <figure class="testimonialCard bg-white rounded-2xl p-8">
           <span class="quoteMark">"</span>
           <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
-            niko nije ostao pozadi, a vodič je stalno provjeravao kako se osjećamo.
+            Divno mjesto za odmor, duše i tijela. Za pojedinca ili grupu ljudi. Preporučujem od srca.
           </blockquote>
           <figcaption class="flex items-center gap-3">
-            <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <!-- <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover"> -->
             <div>
-              <p class="font-semibold text-sm">Amina K.</p>
-              <p class="text-xs text-charcoal/50">članica od 2021.</p>
+              <p class="font-semibold text-sm">Edhem Kravić</p>
+              <!-- <p class="text-xs text-charcoal/50">članica od 2021.</p> -->
             </div>
           </figcaption>
         </figure>
         <figure class="testimonialCard bg-white rounded-2xl p-8">
           <span class="quoteMark">"</span>
           <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
-            a sad vodim jedan dio kursa iduće sezone.
+            Najbolje planinarsko društvo💪
           </blockquote>
           <figcaption class="flex items-center gap-3">
-            <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
+            <!-- <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover"> -->
             <div>
-              <p class="font-semibold text-sm">Haris D.</p>
-              <p class="text-xs text-charcoal/50">član od 2019.</p>
+              <p class="font-semibold text-sm">Asim Zulfic</p>
+              <!-- <p class="text-xs text-charcoal/50">član od 2019.</p> -->
             </div>
           </figcaption>
         </figure>
@@ -321,5 +384,57 @@ Za prvog predsjednika Društva izabran je Halid Čokić, a među prvim članovim
 
 
 <script src="assets/script.js" defer></script>
+
+<!-- ============================================================
+     HERO — "Sljedeća tura"
+     Učitava data/tours.json, pronalazi najbliži nadolazeći
+     datum i prikazuje ga kao kartu u hero sekciji. Za dodavanje /
+     izmjenu / brisanje tura uredi SAMO tours.json — ovaj script
+     ne treba dirati.
+     ============================================================ -->
+<script>
+(function(){
+  var TOURS_JSON_URL = 'data/tours.json';
+  var MON_ABBR = ['jan','feb','mar','apr','maj','jun','jul','avg','sep','okt','nov','dec'];
+
+  var el = document.getElementById('heroNextTour');
+  if(!el) return;
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function parse(d){ var p = d.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+
+  fetch(TOURS_JSON_URL, { cache: 'no-cache' })
+    .then(function(res){ if(!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+    .then(function(data){
+      var events = (data && data.events) ? data.events.slice() : [];
+      events.forEach(function(e){ e.dateObj = parse(e.date); });
+      events.sort(function(a,b){ return a.dateObj - b.dateObj; });
+
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var next = events.filter(function(e){ return e.dateObj >= today; })[0];
+      if(!next) return; // nema nadolazećih tura — kartica ostaje prazna, hero čist
+
+      var d = next.dateObj;
+      var rangeHtml = next.range ? '<span class="heroNextTourRange">' + esc(next.range) + '</span>' : '';
+
+      el.innerHTML =
+        '<a href="plan.html" class="heroNextTourInner">' +
+          '<span class="heroNextTourEyebrow">Sljedeća tura</span>' +
+          '<div class="heroNextTourRow">' +
+            '<span class="heroNextTourDate">' + d.getDate() + '. ' + MON_ABBR[d.getMonth()] + '</span>' +
+            rangeHtml +
+          '</div>' +
+          '<p class="heroNextTourTitle">' + esc(next.title) + '</p>' +
+          '<p class="heroNextTourMeta">Vodič: ' + esc(next.leader) + '</p>' +
+          '<span class="heroNextTourLink">Pogledaj plan i program' +
+            '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '</span>' +
+        '</a>';
+    })
+    .catch(function(){ /* tiho zanemari — hero ostaje čist bez kartice */ });
+})();
+</script>
+
 </body>
 </html>

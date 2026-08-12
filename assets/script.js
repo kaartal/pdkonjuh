@@ -17,7 +17,6 @@
     { key: "index", href: "index.html", label: "Početna" },
     { key: "about", href: "about.html", label: "O nama" },
     { key: "hikes", href: "hikes.html", label: "Ture" },
-        { key: "vijesti", href: "vijesti.html", label: "Vijesti" },
     { key: "plan", href: "plan.html", label: "Plan i program" },
     { key: "domovi", href: "domovi.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Galerija" },
@@ -85,9 +84,9 @@
   function buildHeader() {
     return (
       '<header class="siteHeader">' +
-      '<div class="px-5 lg:px-7 flex items-center justify-between h-16">' +
+      '<div class="px-5 lg:px-7 flex items-center justify-between h-20">' +
       '<a href="index.html" class="brandMark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight" data-nav-key="index">' +
-      BRAND_MARK_SVG +
+      '<img src="assets/pictures/konjuh-logo.png" alt="PD Konjuh logo" class="h-8 w-8 object-contain" />' +
       "<span>PD Konjuh</span></a>" +
       '<nav class="hidden lg:flex items-center gap-8 text-[1.05rem]" aria-label="Glavna navigacija">' +
       buildDesktopNav() +
@@ -150,7 +149,7 @@
   }
 
   function buildFooter() {
-    var exploreItems = ["about", "hikes", "plan", "domovi", "gallery", "vijesti"]
+    var exploreItems = ["about", "hikes", "plan", "domovi", "gallery"]
       .map(function (key) {
         var item = NAV_ITEMS.filter(function (n) { return n.key === key; })[0];
         return '<li><a href="' + item.href + '" class="hover:text-beige">' + item.label + "</a></li>";
@@ -239,6 +238,27 @@
         link.removeAttribute("aria-current");
       }
     });
+  }
+
+  /* ==========================================================================
+     3b. FAVICON (LOGO U TABU BROWSERA) — ISTI SVG KAO BRAND MARK U HEADERU.
+     Ubacuje se ovdje, u zajedničkom script.js koji se učitava na svakoj
+     stranici, pa se favicon automatski pojavljuje na SVAKOJ sekciji sajta
+     (index, o nama, ture, vijesti, plan, domovi, galerija, kontakt...).
+     ========================================================================== */
+
+  function initFavicon() {
+    // UKLONI POSTOJEĆI FAVICON (AKO GA STRANICA VEĆ IMA U <HEAD>) DA NE BUDE DUPLO
+    document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach(function (el) {
+      el.remove();
+    });
+
+    // FAVICON KAO PRAVA SLIKA LOGA (ISTA DATOTEKA KOJA SE KORISTI I U NAVBARU)
+    var link = document.createElement("link");
+    link.rel = "icon";
+    link.type = "image/png";
+    link.href = "assets/pictures/konjuh-logo.png";
+    document.head.appendChild(link);
   }
 
   /* ==========================================================================
@@ -754,11 +774,6 @@
     });
   }
 
-
-
-
-  
-
   /* ==========================================================================
      20. ABOUT PAGE — REVEAL, COUNT-UP AND SCOPED LIGHTBOX (ABOUT.HTML)
      ========================================================================== */
@@ -850,6 +865,7 @@
   function init() {
     mountSharedPartials();
     setActiveNav();
+    initFavicon();
     initPageTransitions();
     initHeaderAutoHide();
     initMobileMenu();

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan i program — PD Konjuh</title>
+<title>Plan i program — Planinarsko društvo Konjuh</title>
 <meta name="description" content="Plan i program aktivnosti Planinarskog društva Konjuh Tuzla — nadolazeći pohodi, usponi i događaji.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,50 +152,60 @@
 <!-- ============================================================
      PLAN I PROGRAM — podaci + logika (interno)
      Prikaz NADOLAZEĆIH aktivnosti za tekuću godinu.
-     Uredi niz EVENTS: date 'YYYY-MM-DD', opcionalni range, title, leader.
+     PODACI SE UČITAVAJU IZ data/tours.json — da doda/izmijeni/obriše
+     turu, uredi TAJ file (nije potrebno dirati ovaj script).
+     Format unosa: { "date":"YYYY-MM-DD", "range":"opcionalno", "title":"...", "leader":"..." }
      ============================================================ -->
 <script>
 (function(){
-  var EVENTS = [
-    { date:'2026-08-08', title:'Pohod na Bjelašnicu: Umoljani – Lukomir', leader:'Rasim Muftić' },
-    { date:'2026-08-09', range:'06–09.08.', title:'Uspon na vrhove zapadnih Julijskih Alpi (ITA–AUS–SLO)', leader:'Dragan Markelić' },
-    { date:'2026-08-15', range:'14–16.08.', title:'Slet planinara FBiH – Vareš', leader:'Sabid Zekan' },
-    { date:'2026-08-16', title:'IV kolo orijentacije', leader:'Dragan Markelić' },
-    { date:'2026-08-22', title:'Pohod na Vran: Vilinac – Veliki Vran', leader:'Emir Ahmetović' },
-    { date:'2026-08-29', title:'Omladinski balkanski susreti (organizator PD „Konjuh" Tuzla)', leader:'Dragan Markelić' },
-    { date:'2026-08-30', title:'Memorijalni pohod na Durmitor', leader:'Stevo Cembauer' },
-
-    { date:'2026-09-04', title:'Svečana akademija povodom 75 godina postojanja PD Konjuh Tuzla', leader:'Sabid Zekan' },
-    { date:'2026-09-05', title:'Pohod na Zelengoru – Bregoč i Kozije Strane', leader:'Emir Ahmetović' },
-    { date:'2026-09-12', title:'Uspon na Klekovaču i posjeta Titovoj pećini u Drvaru', leader:'Dragan Markelić' },
-    { date:'2026-09-13', title:'Izlet u adrenalinski park EKO-NAHL', leader:'Stevo Cembauer' },
-    { date:'2026-09-19', title:'Doček HPD Željezničar', leader:'Stevo Cembauer' },
-    { date:'2026-09-20', title:'Pohod na Maglić', leader:'Dragan Markelić' },
-    { date:'2026-09-27', title:'Pećina krš i Borina staza', leader:'Rasim Muftić' },
-
-    { date:'2026-10-03', title:'Pohod: „Kameni spavači" (povodom 2. oktobra – Dana oslobođenja Tuzle u II svjetskom ratu)', leader:'Rasim Muftić' },
-    { date:'2026-10-10', title:'Pohod na Treskavicu – Mala Ćaba', leader:'Emir Ahmetović' },
-    { date:'2026-10-11', title:'Jesen na Majevici', leader:'Goran Hrvić' }
-  ];
-
+  var TOURS_JSON_URL = 'data/tours.json';
   var MON_ABBR = ['jan','feb','mar','apr','maj','jun','jul','avg','sep','okt','nov','dec'];
   var STEP = 5;
 
-  function parse(d){ var p = d.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
-
-  EVENTS.forEach(function(e){ e.dateObj = parse(e.date); });
-  EVENTS.sort(function(a,b){ return a.dateObj - b.dateObj; });
-
-  var now = new Date();
-  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-  // Samo nadolazeći događaji (od danas nadalje)
-  var upcoming = EVENTS.filter(function(e){ return e.dateObj >= today; });
-
-  var shown = Math.min(STEP, upcoming.length);
+  var EVENTS = [];
+  var upcoming = [];
+  var shown = 0;
 
   var elTrack   = document.getElementById('planTrack');
   var elActions = document.getElementById('planActions');
+
+  function parse(d){ var p = d.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+
+  function showError(){
+    elTrack.innerHTML =
+      '<li class="planEmpty">' +
+        '<svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg>' +
+        '<p>Plan trenutno nije dostupan. Pokušaj ponovo malo kasnije.</p>' +
+      '</li>';
+    elActions.innerHTML = '';
+  }
+
+  function showLoading(){
+    elTrack.innerHTML = '<li class="planEmpty"><p>Učitavanje plana…</p></li>';
+  }
+
+  function init(data){
+    EVENTS = (data && data.events) ? data.events : [];
+
+    EVENTS.forEach(function(e){ e.dateObj = parse(e.date); });
+    EVENTS.sort(function(a,b){ return a.dateObj - b.dateObj; });
+
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    // Samo nadolazeći događaji (od danas nadalje)
+    upcoming = EVENTS.filter(function(e){ return e.dateObj >= today; });
+
+    shown = Math.min(STEP, upcoming.length);
+
+    render();
+  }
+
+  showLoading();
+  fetch(TOURS_JSON_URL, { cache: 'no-cache' })
+    .then(function(res){ if(!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+    .then(init)
+    .catch(function(){ showError(); });
 
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
@@ -270,11 +280,8 @@
       }
     }
   }
-
-  render();
 })();
 </script>
 
 </body>
-</html> No newline at end of file
-
+</html>

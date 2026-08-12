@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontakt — PD Konjuh</title>
+<title>Kontakt — Planinarsko društvo Konjuh</title>
 <meta name="description" content="Kontaktirajte Planinarsko društvo Konjuh Tuzla — lokacija, email, telefon, radno vrijeme i kontakt forma.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,8 +178,18 @@
      DAJEMO STALNO VIDLJIVU, SUPTILNU IVICU (ISTU BOJU KOJA SE INAČE POJAVI
      TEK NA HOVER-U) DA SE POLJA JASNIJE ODVOJE OD POZADINE. */
   @media(max-width:899px){
-    .contactField{border-color:var(--stone);}
-    body.supportsDark .contactField{border-color:rgba(246,243,238,.22);}
+    .contactField{
+      background:#fff;
+      border-color:rgba(58,46,31,.22);
+      box-shadow:0 1px 3px rgba(58,46,31,.08);
+    }
+    .contactField:hover{border-color:rgba(58,46,31,.32);}
+    body.supportsDark .contactField{
+      background:#0F221B;
+      border-color:rgba(246,243,238,.3);
+      box-shadow:0 1px 3px rgba(0,0,0,.2);
+    }
+    body.supportsDark .contactField:hover{border-color:rgba(246,243,238,.42);}
   }
 </style>
 </head>
