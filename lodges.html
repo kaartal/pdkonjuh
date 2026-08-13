@@ -32,21 +32,21 @@
 </script>
 <link rel="stylesheet" href="assets/style.css">
 
-<!-- ============================================================
-     HERO SECTION (SAME AS ON ABOUT.HTML, SCOPED UNDER .aboutHero)
-     ============================================================ -->
 <style>
+  /* ============================================================ */
+  /* HERO SECTION — SAME MARKUP/STYLES AS ABOUT.HTML, SCOPED UNDER .ABOUTHERO */
+  /* ============================================================ */
   :root{
     --g:#3A2E1F; --g2:#241C12; --ol:#B4622F; --ol2:#954E24; --bg:#F1E9DC; --amb:#C79A3D;
     --ease:cubic-bezier(.22,.61,.36,1);
   }
   @keyframes onBob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(4px);}}
 
-  
+  /* ============================================================ */
+  /* MOUNTAIN LODGES SECTION (DOMOVI — HOME) */
+  /* ============================================================ */
 
-  /* ---- PLANINARSKI DOMOVI — HOME ---------------- */
-
-  /* intro: modern sans-serif lede instead of the old italic serif block */
+  /* INTRO: MODERN SANS-SERIF LEDE INSTEAD OF THE OLD ITALIC SERIF BLOCK */
   .domIntro{width:100%;max-width:700px;margin:0 auto 4rem;text-align:center;}
   .domIntroEyebrow{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1rem;}
   .domIntroEyebrow::before{content:"";width:22px;height:1px;background:var(--moss);}
@@ -54,7 +54,7 @@
   .domIntroBody{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.85;color:var(--charcoal);opacity:.72;text-align:left;}
   .domIntroBody p + p{margin-top:1rem;}
 
-  /* two photo tiles, side by side — click one to flip it and reveal details */
+  /* TWO PHOTO TILES SIDE BY SIDE — CLICK ONE TO FLIP IT AND REVEAL DETAILS */
   .domFlipGrid{display:grid;grid-template-columns:1fr;gap:1.5rem;max-width:1100px;width:100%;margin:0 auto;}
   @media(min-width:720px){ .domFlipGrid{grid-template-columns:1fr 1fr;gap:2rem;} }
 
@@ -110,7 +110,7 @@
   .domFlipBackBtn{font-family:'Inter',sans-serif;font-weight:600;font-size:.81rem;color:var(--charcoal);opacity:.55;background:none;border:none;cursor:pointer;padding:.7rem .3rem;transition:opacity .2s;}
   .domFlipBackBtn:hover{opacity:1;}
 
-  /* ---- SINGLE, SUBTLE ENTRANCE FOR THE WHOLE SECTION (NOT PER-CARD) ---- */
+  /* SINGLE, SUBTLE ENTRANCE FOR THE WHOLE SECTION (NOT PER-CARD) */
   .domReveal{
     opacity:0;
     transform:translate3d(0,20px,0) scale(.98);
@@ -125,7 +125,7 @@
   }
   .domRevealDelay1{transition-delay:.25s;}
 
-  /* ---- IMAGE ONLY FADES/UNBLURS IN ONCE FULLY LOADED — NEVER PAINTS HALF-DONE ---- */
+  /* IMAGE ONLY FADES/UNBLURS IN ONCE FULLY LOADED — NEVER PAINTS HALF-DONE */
   .imgFade{
     opacity:0;
     filter:blur(10px);
@@ -210,10 +210,10 @@
       </div>
     </div>
 
-    <!-- MOUNTAIN HOMES — TWO PHOTOS SIDE BY SIDE, CLICK TO FLIP AND REVEAL DETAILS -->
+    <!-- MOUNTAIN LODGES — TWO PHOTOS SIDE BY SIDE, CLICK TO FLIP AND REVEAL DETAILS -->
     <div class="domFlipGrid domReveal domRevealDelay1">
 
-      <!-- DOM 1 — JAVORJE -->
+      <!-- LODGE 1 — JAVORJE -->
       <div class="domFlipCard" data-flip-card>
         <div class="domFlipInner">
 
@@ -256,7 +256,7 @@ Do Planinarskog doma Javorje iz sela Stupari vodi nekoliko obilježenih planinar
         </div>
       </div>
 
-      <!-- DOM 2 — VRŠANI -->
+      <!-- LODGE 2 — VRŠANI -->
       <div class="domFlipCard" data-flip-card>
         <div class="domFlipInner">
 
@@ -315,7 +315,8 @@ Do Planinarskog doma Javorje iz sela Stupari vodi nekoliko obilježenih planinar
 
 <script src="assets/script.js" defer></script>
 <script>
-  // Reveal the intro and the photo grid as they scroll into view (once, as a whole — not per card).
+  // REVEAL THE INTRO AND THE PHOTO GRID AS THEY SCROLL INTO VIEW
+  // (ONCE, AS A WHOLE — NOT PER CARD).
   var domObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -326,8 +327,8 @@ Do Planinarskog doma Javorje iz sela Stupari vodi nekoliko obilježenih planinar
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.domReveal').forEach(function (el) { domObserver.observe(el); });
 
-  // Flip cards: click a photo to flip it and reveal the details on the back;
-  // click "Nazad na sliku" (or flip the same photo again) to turn it back.
+  // FLIP CARDS: CLICK A PHOTO TO FLIP IT AND REVEAL THE DETAILS ON THE BACK;
+  // CLICK "NAZAD NA SLIKU" (OR FLIP THE SAME PHOTO AGAIN) TO TURN IT BACK.
   document.querySelectorAll('[data-flip-card]').forEach(function (card) {
     var trigger = card.querySelector('[data-flip-trigger]');
     var closeBtn = card.querySelector('[data-flip-close]');
@@ -347,8 +348,8 @@ Do Planinarskog doma Javorje iz sela Stupari vodi nekoliko obilježenih planinar
     }
   });
 
-  // Reveal each image only once it's FULLY loaded, so it never paints
-  // in half-finished — it fades/unblurs in smoothly instead.
+  // REVEAL EACH IMAGE ONLY ONCE FULLY LOADED, SO IT NEVER PAINTS
+  // HALF-FINISHED — IT FADES/UNBLURS IN SMOOTHLY INSTEAD.
   document.querySelectorAll('.imgFade').forEach(function (img) {
     if (img.complete && img.naturalWidth > 0) {
       img.classList.add('imgLoaded');

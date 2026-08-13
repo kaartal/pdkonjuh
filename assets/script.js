@@ -19,7 +19,7 @@
     { key: "hikes", href: "hikes.html", label: "Ture" },
 
     { key: "plan", href: "plan.html", label: "Plan i program" },
-    { key: "domovi", href: "domovi.html", label: "Planinarski domovi" },
+    { key: "domovi", href: "lodges.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Galerija" },
 
     { key: "contact", href: "contact.html", label: "Kontakt" }

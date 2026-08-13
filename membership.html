@@ -16,15 +16,24 @@
     theme: {
       extend: {
         colors: {
-          forest:'#3A2E1F', forestdeep:'#241C12', moss:'#B4622F',
-          beige:'#F6F3EE', stone:'#E2D5C0', charcoal:'#231E19',
-          alpenglow:'#C79A3D', rust:'#8B3A2B',
-          navycolor:'#0F5875', navydeep:'#02445E',
-          brandred:'#DC292B', brandreddeep:'#A81F21',
-          iceblue:'#51B1DB'
+          forest: '#3A2E1F',
+          forestdeep: '#241C12',
+          moss: '#B4622F',
+          beige: '#F6F3EE',
+          stone: '#E2D5C0',
+          charcoal: '#231E19',
+          alpenglow: '#C79A3D',
+          rust: '#8B3A2B',
+          navycolor: '#0F5875',
+          navydeep: '#02445E',
+          brandred: '#DC292B',
+          brandreddeep: '#A81F21',
+          iceblue: '#51B1DB'
         },
         fontFamily: {
-          display:['Fraunces','serif'], sans:['Inter','system-ui','sans-serif'], mono:['IBM Plex Mono','monospace']
+          display: ['Fraunces', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['IBM Plex Mono', 'monospace']
         }
       }
     }
@@ -33,137 +42,407 @@
 <link rel="stylesheet" href="assets/style.css">
 
 <style>
-  :root{
-    --g:#3A2E1F; --g2:#241C12; --ol:#B4622F; --ol2:#954E24; --bg:#F1E9DC; --amb:#C79A3D;
-    --ease:cubic-bezier(.22,.61,.36,1);
-    --forest:#3A2E1F; --moss:#B4622F; --beige:#F6F3EE; --stone:#E2D5C0; --charcoal:#231E19;
-    --rust:#8B3A2B; --iceblue:#51B1DB;
-  }
-  @keyframes onBob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(4px);}}
-
- 
-
-  
-
-  .joinIntro{max-width:760px;margin:0 auto 2.5rem;text-align:center;}
-  .joinIntro h2{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:600;color:var(--charcoal);margin-bottom:.85rem;}
-  .joinIntro p{color:var(--charcoal);opacity:.72;font-size:1rem;line-height:1.7;}
-
-  .joinCard{max-width:820px;margin:0 auto;background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 1px 2px rgba(14,51,42,.04);}
-  @media(min-width:768px){ .joinCard{padding:2.75rem;} }
-
-  /* ON MOBILE, DROP THE CARD FRAME AROUND THE FORM — ONLY THE FIELDS THEMSELVES
-     SHOULD BE VISIBLE, NO OUTER BOX/BORDER/SHADOW TAKING UP SCREEN SPACE */
-  @media(max-width:767px){
-    .joinCard{background:transparent;border:none;box-shadow:none;padding:0;border-radius:0;}
+  /* HERO SECTION */
+  :root {
+    --g: #3A2E1F;
+    --g2: #241C12;
+    --ol: #B4622F;
+    --ol2: #954E24;
+    --bg: #F1E9DC;
+    --amb: #C79A3D;
+    --ease: cubic-bezier(.22,.61,.36,1);
+    --forest: #3A2E1F;
+    --moss: #B4622F;
+    --beige: #F6F3EE;
+    --stone: #E2D5C0;
+    --charcoal: #231E19;
+    --rust: #8B3A2B;
+    --iceblue: #51B1DB;
   }
 
-  .joinForm{display:flex;flex-direction:column;gap:1.4rem;}
-  @media(max-width:767px){ .joinForm{gap:1.2rem;} }
-
-  .joinFieldset{border:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.1rem;}
-  .joinFieldsetLegend{font-family:'Inter',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-bottom:.15rem;padding:0;}
-
-  .joinFormRow{display:grid;grid-template-columns:1fr;gap:1.1rem;}
-  @media(min-width:640px){ .joinFormRow{grid-template-columns:1fr 1fr;} }
-
-  .joinLabel{font-family:'Inter',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.01em;color:var(--charcoal);opacity:.85;margin-bottom:.45rem;display:block;}
-  .joinLabel .req{color:var(--rust);opacity:1;}
-
-  /* ELEGANT, SOFTER INPUT STYLE — SUBTLE TINTED FILL INSTEAD OF A HARD WHITE
-     BOX WITH A THIN GREY LINE, GENTLE INSET DEPTH, AND A NATURAL GREEN GLOW
-     ON FOCUS INSTEAD OF A GENERIC BLUE/GREY RING */
-  .joinField{
-    width:100%;
-    padding:1rem 1.2rem;
-    border-radius:1rem;
-    border:1.5px solid transparent;
-    background:var(--beige);
-    font-family:'Inter',sans-serif;
-    font-size:.93rem;
-    color:var(--charcoal);
-    box-shadow:inset 0 1px 2px rgba(58,46,31,.05);
-    transition:border-color .25s var(--ease),box-shadow .25s var(--ease),background-color .25s var(--ease),transform .25s var(--ease);
-  }
-  .joinField::placeholder{color:var(--charcoal);opacity:.42;}
-  .joinField:hover{background:#fff;border-color:var(--stone);}
-  .joinField:focus{outline:none;background:#fff;border-color:var(--navy);box-shadow:0 0 0 4px rgba(15,88,117,.14);transform:translateY(-1px);}
-  textarea.joinField{resize:vertical;min-height:100px;}
-
-  .joinHint{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--charcoal);opacity:.55;margin-top:.35rem;}
-
-  .joinDivider{height:1px;background:var(--stone);border:none;margin:.25rem 0;}
-
-  .joinConsent{display:flex;flex-direction:column;gap:1rem;}
-  .joinCheckRow{display:flex;align-items:flex-start;gap:.75rem;background:var(--beige);border:1.5px solid transparent;border-radius:1rem;padding:1rem 1.1rem;transition:border-color .25s var(--ease),background-color .25s var(--ease);}
-  .joinCheckRow:focus-within,.joinCheckRow:hover{background:#fff;border-color:var(--stone);}
-  .joinCheckRow input[type="checkbox"]{flex:none;width:19px;height:19px;margin-top:2px;accent-color:var(--navy);cursor:pointer;}
-  .joinCheckRow label{font-family:'Inter',sans-serif;font-size:.86rem;color:var(--charcoal);line-height:1.6;cursor:pointer;}
-  .joinCheckRow label strong{font-weight:700;}
-
-  .joinSubmit{align-self:stretch;justify-content:center;display:inline-flex;align-items:center;gap:.6rem;background:var(--navy);color:#fff;padding:.95rem 2.3rem;border-radius:999px;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease);}
-  @media(min-width:640px){ .joinSubmit{align-self:flex-start;} }
-  .joinSubmit:hover{background:var(--navyDeep);transform:translateY(-2px);}
-  .joinSubmit:disabled{opacity:.5;cursor:not-allowed;transform:none;background:var(--forest);}
-
-  .joinLimitMsg{display:none;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--rust);background:rgba(139,58,43,.08);border:1px solid rgba(139,58,43,.25);border-radius:.75rem;padding:.85rem 1.1rem;}
-  .joinLimitMsg.isVisible{display:block;}
-
-  
-  .joinHoneypot{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;}
-
-  
-  @media (prefers-color-scheme: dark){
-    body.supportsDark .joinIntro h2{color:var(--beige);}
-    body.supportsDark .joinIntro p{color:var(--beige);opacity:.72;}
-    body.supportsDark .joinCard{background:#182B23;border-color:rgba(246,243,238,.18);}
-    body.supportsDark .joinLabel{color:var(--beige);}
-    body.supportsDark .joinField{background:#0B2836;color:var(--beige);border-color:transparent;box-shadow:inset 0 1px 2px rgba(0,0,0,.2);}
-    body.supportsDark .joinField::placeholder{color:var(--beige);opacity:.4;}
-    body.supportsDark .joinField:hover{background:#123244;border-color:rgba(81,177,219,.22);}
-    body.supportsDark .joinField:focus{background:#123244;border-color:var(--iceblue);box-shadow:0 0 0 4px rgba(81,177,219,.2);}
-    body.supportsDark .joinHint{color:var(--beige);opacity:.55;}
-    body.supportsDark .joinDivider{background:rgba(246,243,238,.14);}
-    body.supportsDark .joinCheckRow{background:#0B2836;border-color:transparent;}
-    body.supportsDark .joinCheckRow:hover,body.supportsDark .joinCheckRow:focus-within{background:#123244;border-color:rgba(81,177,219,.22);}
-    body.supportsDark .joinCheckRow label{color:var(--beige);}
-    body.supportsDark .joinLimitMsg{background:rgba(220,41,43,.12);border-color:rgba(220,41,43,.3);color:#ff8f85;}
-  }
-  @media (max-width:767px) and (prefers-color-scheme: dark){
-    body.supportsDark .joinCard{background:transparent;border-color:transparent;}
-  }
-
-  /* NA MOBITELU KARTICA OKO FORME NESTAJE (VIDI GORE), PA SU POLJA I RED SA
-     ČEKBOKSOM (ISTE BOJE KAO POZADINA + PROVIDNA IVICA) BILA GOTOVO NEVIDLJIVA.
-     DAJEMO IM STALNO VIDLJIVU, SUPTILNU IVICU DA SE JASNIJE ODVOJE OD POZADINE. */
-  @media(max-width:767px){
-    .joinField{
-      background:#fff;
-      border-color:rgba(58,46,31,.22);
-      box-shadow:0 1px 3px rgba(58,46,31,.08);
+  @keyframes onBob {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
     }
-    .joinField:hover{border-color:rgba(58,46,31,.32);}
-    .joinCheckRow{
-      background:#fff;
-      border-color:rgba(58,46,31,.22);
-      box-shadow:0 1px 3px rgba(58,46,31,.08);
+
+    50% {
+      transform: translateX(-50%) translateY(4px);
     }
   }
-  /* THE DARK-FIELD OVERRIDE MUST ONLY FIRE WHEN THE DEVICE IS ACTUALLY IN
-     DARK MODE — PREVIOUSLY THIS WAS OUTSIDE THE prefers-color-scheme QUERY,
-     SO body.supportsDark (ALWAYS PRESENT) FORCED THE DARK FIELD STYLE ON
-     EVERY MOBILE SCREEN REGARDLESS OF THE USER'S ACTUAL THEME. */
-  @media(max-width:767px) and (prefers-color-scheme: dark){
-    body.supportsDark .joinField{
-      background:#0B2836;
-      border-color:rgba(81,177,219,.32);
-      box-shadow:0 1px 3px rgba(0,0,0,.25);
+
+  /* MEMBERSHIP FORM */
+  .joinIntro {
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+
+  .joinIntro h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem,3.4vw,2.4rem);
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: .85rem;
+  }
+
+  .joinIntro p {
+    color: var(--charcoal);
+    opacity: .72;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .joinCard {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    box-shadow: 0 1px 2px rgba(14,51,42,.04);
+  }
+
+  @media (min-width:768px) {
+    .joinCard {
+      padding: 2.75rem;
     }
-    body.supportsDark .joinField:hover{border-color:rgba(81,177,219,.48);}
-    body.supportsDark .joinCheckRow{
-      background:#0B2836;
-      border-color:rgba(81,177,219,.32);
-      box-shadow:0 1px 3px rgba(0,0,0,.25);
+  }
+
+  @media (max-width:767px) {
+    .joinCard {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+
+  .joinForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  @media (max-width:767px) {
+    .joinForm {
+      gap: 1.2rem;
+    }
+  }
+
+  .joinFieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .joinFieldsetLegend {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: .15rem;
+    padding: 0;
+  }
+
+  .joinFormRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  @media (min-width:640px) {
+    .joinFormRow {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .joinLabel {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: .82rem;
+    letter-spacing: .01em;
+    color: var(--charcoal);
+    opacity: .85;
+    margin-bottom: .45rem;
+    display: block;
+  }
+
+  .joinLabel .req {
+    color: var(--rust);
+    opacity: 1;
+  }
+
+  .joinField {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: 1rem;
+    border: 1.5px solid transparent;
+    background: var(--beige);
+    font-family: 'Inter', sans-serif;
+    font-size: .93rem;
+    color: var(--charcoal);
+    box-shadow: inset 0 1px 2px rgba(58,46,31,.05);
+    transition: border-color .25s var(--ease), box-shadow .25s var(--ease), background-color .25s var(--ease), transform .25s var(--ease);
+  }
+
+  .joinField::placeholder {
+    color: var(--charcoal);
+    opacity: .42;
+  }
+
+  .joinField:hover {
+    background: #fff;
+    border-color: var(--stone);
+  }
+
+  .joinField:focus {
+    outline: none;
+    background: #fff;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 4px rgba(15,88,117,.14);
+    transform: translateY(-1px);
+  }
+
+  textarea.joinField {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .joinHint {
+    font-family: 'Inter', sans-serif;
+    font-size: .78rem;
+    color: var(--charcoal);
+    opacity: .55;
+    margin-top: .35rem;
+  }
+
+  .joinDivider {
+    height: 1px;
+    background: var(--stone);
+    border: none;
+    margin: .25rem 0;
+  }
+
+  /* CONSENT CHECKBOX */
+  .joinConsent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .joinCheckRow {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    background: var(--beige);
+    border: 1.5px solid transparent;
+    border-radius: 1rem;
+    padding: 1rem 1.1rem;
+    transition: border-color .25s var(--ease), background-color .25s var(--ease);
+  }
+
+  .joinCheckRow:focus-within,
+  .joinCheckRow:hover {
+    background: #fff;
+    border-color: var(--stone);
+  }
+
+  .joinCheckRow input[type="checkbox"] {
+    flex: none;
+    width: 19px;
+    height: 19px;
+    margin-top: 2px;
+    accent-color: #1F5C3D;
+    cursor: pointer;
+  }
+
+  .joinCheckRow label {
+    font-family: 'Inter', sans-serif;
+    font-size: .86rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+    cursor: pointer;
+  }
+
+  .joinCheckRow label strong {
+    font-weight: 700;
+  }
+
+  .joinSubmit {
+    align-self: stretch;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    background: var(--navy);
+    color: #fff;
+    padding: .95rem 2.3rem;
+    border-radius: 999px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: .92rem;
+    cursor: pointer;
+    transition: background .25s var(--ease), transform .25s var(--ease);
+  }
+
+  @media (min-width:640px) {
+    .joinSubmit {
+      align-self: flex-start;
+    }
+  }
+
+  .joinSubmit:hover {
+    background: var(--navyDeep);
+  }
+
+  .joinSubmit:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+    background: var(--forest);
+  }
+
+  .joinLimitMsg {
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-size: .88rem;
+    color: var(--rust);
+    background: rgba(139,58,43,.08);
+    border: 1px solid rgba(139,58,43,.25);
+    border-radius: .75rem;
+    padding: .85rem 1.1rem;
+  }
+
+  .joinLimitMsg.isVisible {
+    display: block;
+  }
+
+  .joinHoneypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* DARK MODE */
+  @media (prefers-color-scheme: dark) {
+    body.supportsDark .joinIntro h2 {
+      color: var(--beige);
+    }
+
+    body.supportsDark .joinIntro p {
+      color: var(--beige);
+      opacity: .72;
+    }
+
+    body.supportsDark .joinCard {
+      background: #182B23;
+      border-color: rgba(246,243,238,.18);
+    }
+
+    body.supportsDark .joinLabel {
+      color: var(--beige);
+    }
+
+    body.supportsDark .joinField {
+      background: #0B2836;
+      color: var(--beige);
+      border-color: transparent;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+    }
+
+    body.supportsDark .joinField::placeholder {
+      color: var(--beige);
+      opacity: .4;
+    }
+
+    body.supportsDark .joinField:hover {
+      background: #123244;
+      border-color: rgba(81,177,219,.22);
+    }
+
+    body.supportsDark .joinField:focus {
+      background: #123244;
+      border-color: var(--iceblue);
+      box-shadow: 0 0 0 4px rgba(81,177,219,.2);
+    }
+
+    body.supportsDark .joinHint {
+      color: var(--beige);
+      opacity: .55;
+    }
+
+    body.supportsDark .joinDivider {
+      background: rgba(246,243,238,.14);
+    }
+
+    body.supportsDark .joinCheckRow {
+      background: #13312b;
+      border-color: transparent;
+    }
+
+    body.supportsDark .joinCheckRow label {
+      color: var(--beige);
+    }
+
+    body.supportsDark .joinLimitMsg {
+      background: rgba(220,41,43,.12);
+      border-color: rgba(220,41,43,.3);
+      color: #ff8f85;
+    }
+  }
+
+  @media (max-width:767px) and (prefers-color-scheme: dark) {
+    body.supportsDark .joinCard {
+      background: transparent;
+      border-color: transparent;
+    }
+  }
+
+  /* MOBILE STYLES */
+  @media (max-width:767px) {
+    .joinField {
+      background: #fff;
+      border-color: rgba(58,46,31,.22);
+      box-shadow: 0 1px 3px rgba(58,46,31,.08);
+    }
+
+    .joinField:hover {
+      border-color: rgba(58,46,31,.32);
+    }
+
+    .joinCheckRow {
+      background: #fff;
+      border-color: rgba(58,46,31,.22);
+      box-shadow: 0 1px 3px rgba(58,46,31,.08);
+    }
+  }
+
+  @media (max-width:767px) and (prefers-color-scheme: dark) {
+    body.supportsDark .joinField {
+      background: #0B2836;
+      border-color: rgba(81,177,219,.32);
+      box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    }
+
+    body.supportsDark .joinField:hover {
+      border-color: rgba(81,177,219,.48);
+    }
+
+    body.supportsDark .joinCheckRow {
+      background: #0B2836;
+      border-color: rgba(81,177,219,.32);
+      box-shadow: 0 1px 3px rgba(0,0,0,.25);
     }
   }
 </style>
@@ -206,7 +485,7 @@
     </div>
 
     <div class="joinCard reveal revealDelay1">
-      
+
       <form id="joinFormEl" class="joinForm" method="POST" autocomplete="on">
         <input type="hidden" name="_subject" value="Nova prijava za članstvo — PD Konjuh">
         <input type="hidden" name="_template" value="table">
@@ -214,14 +493,12 @@
         <input type="hidden" name="_honeypot" value="_honey">
         <input type="hidden" name="Planinarsko društvo" value="PD &quot;KONJUH&quot; TUZLA">
 
-        
         <div class="joinHoneypot" aria-hidden="true">
           <label for="joinWebsite">Website</label>
           <input type="text" id="joinWebsite" name="_honey" tabindex="-1" autocomplete="off">
         </div>
 
         <fieldset class="joinFieldset">
-          <legend class="joinFieldsetLegend">Lični podaci</legend>
 
           <div class="joinFormRow">
             <div>
@@ -263,13 +540,12 @@
         </fieldset>
 
         <fieldset class="joinFieldset">
-          <legend class="joinFieldsetLegend">Interesovanja</legend>
           <label class="joinLabel" for="joinSekcije">Sekcije za koje ste zainteresovani</label>
           <textarea class="joinField" id="joinSekcije" name="Sekcije" placeholder="Ukoliko postoji više sekcija, navedite za koje ste zainteresovani (opcionalno)"></textarea>
         </fieldset>
 
         <fieldset class="joinFieldset">
-          <legend class="joinFieldsetLegend">Saglasnosti</legend>
+
           <div class="joinConsent">
             <div class="joinCheckRow">
               <input type="checkbox" id="joinPunoljetnost" name="Potvrda punoljetnosti" value="Da" required>
@@ -304,6 +580,7 @@
 
 <script src="assets/script.js" defer></script>
 
+<!-- MEMBERSHIP FORM DAILY LIMIT -->
 <script>
 (function(){
 

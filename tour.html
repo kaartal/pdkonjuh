@@ -152,13 +152,13 @@
 <!-- ============================================================
      PLAN I PROGRAM — podaci + logika (interno)
      Prikaz NADOLAZEĆIH aktivnosti za tekuću godinu.
-     PODACI SE UČITAVAJU IZ data/tours.json — da doda/izmijeni/obriše
+     PODACI SE UČITAVAJU IZ assets/data/tours.json — da doda/izmijeni/obriše
      turu, uredi TAJ file (nije potrebno dirati ovaj script).
      Format unosa: { "date":"YYYY-MM-DD", "range":"opcionalno", "title":"...", "leader":"..." }
      ============================================================ -->
 <script>
 (function(){
-  var TOURS_JSON_URL = 'data/tours.json';
+  var TOURS_JSON_URL = 'assets/data/tours.json';
   var MON_ABBR = ['jan','feb','mar','apr','maj','jun','jul','avg','sep','okt','nov','dec'];
   var STEP = 5;
 

@@ -9,8 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- FONTS FOR THE HERO SECTION (SAME AS ON ABOUT.HTML: FRAUNCES 300 + POPPINS + OPEN SANS) -->
-<!-- INCLUDES TRUE ITALIC AXIS (ital,opsz,wght) SO THE HERO SUBTITLE RENDERS WITH A REAL ITALIC CUT INSTEAD OF A FAKE-SLANTED ONE -->
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -35,19 +33,17 @@
 </script>
 <link rel="stylesheet" href="assets/style.css">
 
-<!-- ============================================================
-     HERO SECTION (SAME AS ON ABOUT.HTML, SCOPED UNDER .aboutHero)
-     ============================================================ -->
 <style>
+  /* ============================================================ */
+  /* HERO SECTION — SAME MARKUP/STYLES AS ABOUT.HTML, SCOPED UNDER .ABOUTHERO */
+  /* ============================================================ */
   :root{
     --g:#2F5D50; --g2:#1D3D34; --ol:#6B8E23; --ol2:#5a7a1c; --bg:#F5F1E8; --amb:#C97B3D;
     --ease:cubic-bezier(.22,.61,.36,1);
   }
   @keyframes onBob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(4px);}}
 
-
-
-  /* ---- MAIN GALLERY GRID: MODERN SCALE + BLUR REVEAL (STAGGERED) — GALLERY.HTML ONLY ---- */
+  /* MAIN GALLERY GRID: SCALE + BLUR REVEAL WITH STAGGER (GALLERY.HTML ONLY) */
   .galleryReveal{
     opacity:0;
     transform:scale(.92) translateY(22px);
@@ -60,13 +56,10 @@
     transform:scale(1) translateY(0);
     filter:blur(0);
   }
-  /* SUBTLE CONTINUOUS HOVER LIFT ON TOP OF THE REVEAL (DOESN'T FIGHT THE REVEAL TRANSFORM) */
+  /* SUBTLE CONTINUOUS HOVER LIFT, LAYERED ON TOP OF THE REVEAL TRANSITION */
   .galleryItem{transition:box-shadow .5s var(--ease);}
 
-  /* ---- SLOW, SMOOTH IMAGE FADE-IN — ONLY REVEALS ONCE FULLY LOADED ----
-     Prevents the "half painted, then finishes" flash on slower connections:
-     the <img> stays invisible + softly blurred + slightly zoomed until its
-     'load' event fires, then eases in over ~1.1s instead of popping in. */
+  /* IMAGE ONLY FADES/UNBLURS IN ONCE FULLY LOADED — NEVER PAINTS HALF-FINISHED */
   .imgFade{
     opacity:0;
     filter:blur(14px);
@@ -116,311 +109,196 @@
 
     <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-4 auto-rows-[170px] sm:auto-rows-[200px] gap-4 grid-flow-dense">
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery1.jpg"
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery1.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kolona planinara na stazi">
         <img src="assets/pictures/Gallery/gallery1.jpg" alt="Kolona planinara na stazi" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        </span>
+        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery2.jpg"
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery2.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Logorska vatra uveče na planinarskom domu">
         <img src="assets/pictures/Gallery/gallery2.jpg" alt="Logorska vatra uveče na planinarskom domu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <!-- <span class="block font-medium text-xs">Logorska vatra</span> -->
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery5.jpg"
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery5.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Šumska staza obasjana suncem">
         <img src="assets/pictures/Gallery/gallery5.jpg" alt="Šumska staza obasjana suncem" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery8.jpg"
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery8.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled sa vrha Maglića na Trnovačko jezero">
         <img src="assets/pictures/Gallery/gallery8.jpg" alt="Pogled sa vrha Maglića na Trnovačko jezero" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery4.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery4.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski dom na Treskavici u magli">
         <img src="assets/pictures/Gallery/gallery4.jpg" alt="Planinarski dom na Treskavici u magli" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery3.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery3.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Detalj planinarske opreme i mape">
         <img src="assets/pictures/Gallery/gallery3.jpg" alt="Detalj planinarske opreme i mape" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery6.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery6.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama planinskih vrhova pri izlasku sunca">
         <img src="assets/pictures/Gallery/gallery6.jpg" alt="Panorama planinskih vrhova pri izlasku sunca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery12.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery12.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinski pejzaž u smiraj dana">
         <img src="assets/pictures/Gallery/gallery12.jpg" alt="Planinski pejzaž u smiraj dana" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery11.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery11.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Uspon prema vrhu kroz kamenjar">
         <img src="assets/pictures/Gallery/gallery11.jpg" alt="Uspon prema vrhu kroz kamenjar" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery13.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery13.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Odmor uz izvor planinske vode">
         <img src="assets/pictures/Gallery/gallery13.jpg" alt="Odmor uz izvor planinske vode" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery9.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery9.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na dolinu s vrha">
         <img src="assets/pictures/Gallery/gallery9.jpg" alt="Pogled na dolinu s vrha" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery10.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery10.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Grupa planinara na markiranoj stazi">
         <img src="assets/pictures/Gallery/gallery10.jpg" alt="Grupa planinara na markiranoj stazi" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery14.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery14.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Jutarnja magla iznad šume">
         <img src="assets/pictures/Gallery/gallery14.jpg" alt="Jutarnja magla iznad šume" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery15.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery15.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Zalazak sunca iznad planinskog lanca">
         <img src="assets/pictures/Gallery/gallery15.jpg" alt="Zalazak sunca iznad planinskog lanca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery16.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery16.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Priprema opreme prije polaska">
         <img src="assets/pictures/Gallery/gallery16.jpg" alt="Priprema opreme prije polaska" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery17.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery17.jpg"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Snijeg na vrhu kasno u proljeće">
         <img src="assets/pictures/Gallery/gallery17.jpg" alt="Snijeg na vrhu kasno u proljeće" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery18.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery18.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Cvjetna livada na planinskom platou">
         <img src="assets/pictures/Gallery/gallery18.jpg" alt="Cvjetna livada na planinskom platou" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery25.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery25.jpg"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kamp na proplanku uz vatru">
         <img src="assets/pictures/Gallery/gallery25.jpg" alt="Kamp na proplanku uz vatru" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery19.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery19.jpg"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na jezero s vidikovca">
         <img src="assets/pictures/Gallery/gallery19.jpg" alt="Pogled na jezero s vidikovca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery20.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery20.jpg"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Strma staza kroz borovu šumu">
         <img src="assets/pictures/Gallery/gallery20.jpg" alt="Strma staza kroz borovu šumu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery21.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery21.jpg"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski štap i mapa na stijeni">
         <img src="assets/pictures/Gallery/gallery21.jpg" alt="Planinarski štap i mapa na stijeni" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery22.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery22.jpg"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Rosa na travi u ranu zoru">
         <img src="assets/pictures/Gallery/gallery22.jpg" alt="Rosa na travi u ranu zoru" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery23.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery23.jpg"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Skupina na odmorištu uz stazu">
         <img src="assets/pictures/Gallery/gallery23.jpg" alt="Skupina na odmorištu uz stazu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button"
-        data-lightbox
-        data-full="assets/pictures/Gallery/gallery24.jpg"
-
+      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery24.jpg"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama vrhova u sumrak">
         <img src="assets/pictures/Gallery/gallery24.jpg" alt="Panorama vrhova u sumrak" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-        </span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
     </div>
 
@@ -446,8 +324,8 @@
 
 <script src="assets/script.js" defer></script>
 <script>
-  // Reveal each gallery image only once it's FULLY loaded, so it never
-  // paints in half-finished — it fades/unblurs in smoothly instead.
+  // REVEAL EACH GALLERY IMAGE ONLY ONCE FULLY LOADED, SO IT NEVER PAINTS
+  // HALF-FINISHED — IT FADES/UNBLURS IN SMOOTHLY INSTEAD.
   document.querySelectorAll('.imgFade').forEach(function (img) {
     if (img.complete && img.naturalWidth > 0) {
       img.classList.add('imgLoaded');
@@ -457,9 +335,9 @@
     }
   });
 
-  // POKREĆE POLAGANO, POSTEPENO POJAVLJIVANJE SLIKA (.galleryReveal) KADA UĐU U
-  // VIDNO POLJE — SVAKA SLJEDEĆA SLIKA SE POJAVLJUJE MALO KASNIJE (STAGGER)
-  // TAKO DA SE CIJELA GALERIJA "SLAŽE" POLAKO, UMJESTO DA SVE ISKOČI ODJEDNOM.
+  // TRIGGERS A SLOW, STAGGERED FADE-IN FOR .GALLERYREVEAL ITEMS AS THEY ENTER
+  // THE VIEWPORT, SO THE WHOLE GALLERY "SETTLES" GRADUALLY INSTEAD OF POPPING
+  // IN ALL AT ONCE.
   var galleryObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -474,9 +352,9 @@
     galleryObserver.observe(el);
   });
 
-  // KADA SE KLIKNE "PRIKAŽI VIŠE", NOVOOTKRIVENE SLIKE (.galleryItemExtra) TREBA
-  // PONOVO POSMATRATI JER SU BILE SAKRIVENE (display:none) DOK IH JE OBSERVER
-  // PRVI PUT PROVJERAVAO, PA IH NIJE MOGAO OZNAČITI KAO VIDLJIVE.
+  // NEWLY REVEALED IMAGES (.GALLERYITEMEXTRA) NEED TO BE RE-OBSERVED AFTER
+  // "PRIKAŽI VIŠE" IS CLICKED, SINCE THEY WERE display:none DURING THE
+  // OBSERVER'S FIRST PASS AND COULDN'T BE FLAGGED AS VISIBLE THEN.
   var showMoreBtn = document.getElementById('galleryShowMoreButton');
   if (showMoreBtn) {
     showMoreBtn.addEventListener('click', function () {
