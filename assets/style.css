@@ -473,7 +473,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 #mobileMenuScrim{
   position:fixed;z-index:44;
   inset:0;
-  background:rgba(8,14,11,.55);
+  background:rgba(2,10,14,.5);
   backdrop-filter:blur(3px);
   -webkit-backdrop-filter:blur(3px);
   opacity:0;
@@ -494,11 +494,14 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   width:100%;
   max-width:none;
 
+  /* TRANSLUCENT NAVY-TINTED GLASS — LOW ENOUGH OPACITY FOR THE BACKDROP
+     BLUR TO ACTUALLY READ, INSTEAD OF THE PREVIOUS NEAR-OPAQUE DARK-GREEN FILL */
   background:
-    radial-gradient(140% 90% at 0% 0%, rgba(201,123,61,.18), transparent 55%),
-    rgba(10,18,15,.97);
-  backdrop-filter:blur(10px) saturate(160%);
-  -webkit-backdrop-filter:blur(10px) saturate(160%);
+    radial-gradient(120% 90% at 0% 0%, rgba(81,177,219,.16), transparent 55%),
+    radial-gradient(120% 90% at 100% 100%, rgba(220,41,43,.12), transparent 50%),
+    rgba(2,12,17,.82);
+  backdrop-filter:blur(26px) saturate(180%);
+  -webkit-backdrop-filter:blur(26px) saturate(180%);
   border:none;
   border-radius:0;
   box-shadow:none;
@@ -522,36 +525,36 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   visibility:visible;
   pointer-events:auto;
 }
-/* MENI SADA POKRIVA CIJELU ŠIRINU I VISINU EKRANA — LISTA LINKOVA (.mobileMenuList)
-   SE RASTEŽE (flex:1) DA POPUNI CIJELI PREOSTALI PROSTOR, A SVAKI LINK TAKOĐER
-   flex:1 TE SE RAVNOMJERNO DIJELI PO CIJELOJ VISINI EKRANA, RUB UZ RUB (BEZ
-   BOČNOG RAZMAKA), SA LINIJOM (border-bottom) KAO RAZDVOJNIKOM IZMEĐU LINKOVA. */
+/* MENI POKRIVA CIJELU ŠIRINU I VISINU EKRANA — LISTA LINKOVA (.mobileMenuList)
+   JE VERTIKALNO CENTRIRANA, BEZ RAZDVOJNIH LINIJA IZMEĐU STAVKI; SVAKI LINK
+   IMA VLASTITI ZAOBLJENI HOVER/FOCUS "PILL" UMJESTO RUBA UZ RUB IZGLEDA. */
 .mobileMenuList{
   width:100%;
   flex:1 1 auto;
   display:flex;flex-direction:column;
+  justify-content:center;
+  gap:.35rem;
+  padding:1rem 1.1rem 2.5rem;
 }
 #mobileMenu a{
   width:100%;
-  flex:1 1 auto;
   display:flex;align-items:center;
   text-align:left;
-  font-size:1.5rem;
+  font-size:1.45rem;
+  font-weight:500;
+  letter-spacing:-0.01em;
   line-height:1.2;
-  padding:0 1.75rem;
-  border-radius:0;
-  border-bottom:1px solid rgba(246,243,238,.14);
+  padding:1.05rem 1.15rem;
+  border-radius:1rem;
   opacity:0;transform:translateX(-28px);
   position:relative;
-  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .25s var(--ease), background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  transition:opacity .4s var(--ease), transform .4s var(--ease), padding-left .25s var(--ease), background-color .25s var(--ease), color .25s var(--ease);
 }
-#mobileMenu a:last-child{border-bottom:none;}
-/* SUPTILNA OKOMITA CRTA S LIJEVE STRANE KOJA SE "UPALI" NA HOVER/FOCUS,
-   DODATNI VIZUELNI AKCENT UZ POSTOJEĆU RAZDVOJNU LINIJU ISPOD SVAKOG LINKA */
+/* SUPTILNA OKOMITA CRTA S LIJEVE STRANE KOJA SE "UPALI" NA HOVER/FOCUS */
 #mobileMenu a::before{
   content:"";
-  position:absolute;left:0;top:0;bottom:0;
-  width:3px;
+  position:absolute;left:.35rem;top:.6rem;bottom:.6rem;
+  width:3px;border-radius:999px;
   background:var(--iceblue);
   transform:scaleY(0);
   transition:transform .3s var(--ease);
@@ -559,8 +562,8 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 .mobileMenuLabel{flex:1;}
 #mobileMenu a:hover,
 #mobileMenu a:focus-visible {
-  background:rgba(246,243,238,.07);
-  padding-left:2.15rem;
+  background:rgba(246,243,238,.09);
+  padding-left:1.6rem;
   color:var(--iceblue);
 }
 #mobileMenu a:hover::before,

@@ -83,11 +83,11 @@
     font-size:.93rem;
     color:var(--charcoal);
     box-shadow:inset 0 1px 2px rgba(58,46,31,.05);
-    transition:border-color .25s var(--ease),box-shadow .25s var(--ease),background-color .25s var(--ease);
+    transition:border-color .25s var(--ease),box-shadow .25s var(--ease),background-color .25s var(--ease),transform .25s var(--ease);
   }
   .joinField::placeholder{color:var(--charcoal);opacity:.42;}
   .joinField:hover{background:#fff;border-color:var(--stone);}
-  .joinField:focus{outline:none;background:#fff;border-color:var(--forest);box-shadow:0 0 0 4px rgba(53,94,59,.14);}
+  .joinField:focus{outline:none;background:#fff;border-color:var(--navy);box-shadow:0 0 0 4px rgba(15,88,117,.14);transform:translateY(-1px);}
   textarea.joinField{resize:vertical;min-height:100px;}
 
   .joinHint{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--charcoal);opacity:.55;margin-top:.35rem;}
@@ -118,14 +118,14 @@
     body.supportsDark .joinIntro p{color:var(--beige);opacity:.72;}
     body.supportsDark .joinCard{background:#182B23;border-color:rgba(246,243,238,.18);}
     body.supportsDark .joinLabel{color:var(--beige);}
-    body.supportsDark .joinField{background:#0F221B;color:var(--beige);border-color:transparent;box-shadow:inset 0 1px 2px rgba(0,0,0,.2);}
+    body.supportsDark .joinField{background:#0B2836;color:var(--beige);border-color:transparent;box-shadow:inset 0 1px 2px rgba(0,0,0,.2);}
     body.supportsDark .joinField::placeholder{color:var(--beige);opacity:.4;}
-    body.supportsDark .joinField:hover{background:#132A21;border-color:rgba(246,243,238,.18);}
-    body.supportsDark .joinField:focus{background:#132A21;border-color:var(--iceblue);box-shadow:0 0 0 4px rgba(81,177,219,.18);}
+    body.supportsDark .joinField:hover{background:#123244;border-color:rgba(81,177,219,.22);}
+    body.supportsDark .joinField:focus{background:#123244;border-color:var(--iceblue);box-shadow:0 0 0 4px rgba(81,177,219,.2);}
     body.supportsDark .joinHint{color:var(--beige);opacity:.55;}
     body.supportsDark .joinDivider{background:rgba(246,243,238,.14);}
-    body.supportsDark .joinCheckRow{background:#0F221B;border-color:transparent;}
-    body.supportsDark .joinCheckRow:hover,body.supportsDark .joinCheckRow:focus-within{background:#132A21;border-color:rgba(246,243,238,.18);}
+    body.supportsDark .joinCheckRow{background:#0B2836;border-color:transparent;}
+    body.supportsDark .joinCheckRow:hover,body.supportsDark .joinCheckRow:focus-within{background:#123244;border-color:rgba(81,177,219,.22);}
     body.supportsDark .joinCheckRow label{color:var(--beige);}
     body.supportsDark .joinLimitMsg{background:rgba(220,41,43,.12);border-color:rgba(220,41,43,.3);color:#ff8f85;}
   }
@@ -148,16 +148,22 @@
       border-color:rgba(58,46,31,.22);
       box-shadow:0 1px 3px rgba(58,46,31,.08);
     }
+  }
+  /* THE DARK-FIELD OVERRIDE MUST ONLY FIRE WHEN THE DEVICE IS ACTUALLY IN
+     DARK MODE — PREVIOUSLY THIS WAS OUTSIDE THE prefers-color-scheme QUERY,
+     SO body.supportsDark (ALWAYS PRESENT) FORCED THE DARK FIELD STYLE ON
+     EVERY MOBILE SCREEN REGARDLESS OF THE USER'S ACTUAL THEME. */
+  @media(max-width:767px) and (prefers-color-scheme: dark){
     body.supportsDark .joinField{
-      background:#0F221B;
-      border-color:rgba(246,243,238,.3);
-      box-shadow:0 1px 3px rgba(0,0,0,.2);
+      background:#0B2836;
+      border-color:rgba(81,177,219,.32);
+      box-shadow:0 1px 3px rgba(0,0,0,.25);
     }
-    body.supportsDark .joinField:hover{border-color:rgba(246,243,238,.42);}
+    body.supportsDark .joinField:hover{border-color:rgba(81,177,219,.48);}
     body.supportsDark .joinCheckRow{
-      background:#0F221B;
-      border-color:rgba(246,243,238,.3);
-      box-shadow:0 1px 3px rgba(0,0,0,.2);
+      background:#0B2836;
+      border-color:rgba(81,177,219,.32);
+      box-shadow:0 1px 3px rgba(0,0,0,.25);
     }
   }
 </style>
