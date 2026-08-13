@@ -96,7 +96,7 @@
 
     /* Naslov + tekst */
     .aboutSection .aboutPanel .panelTitle { font-family: 'Fraunces', serif; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(2.1rem, 4.6vw, 3.6rem); max-width: 16ch; margin: 18px 0 clamp(20px, 2.6vw, 28px); }
-    .aboutSection .aboutPanel .panelTitle em { font-style: italic; color: #B4D06E; }
+    .aboutSection .aboutPanel .panelTitle em { font-style: italic; color: #fff; }
     .aboutSection .aboutPanel .panelBody p { color: rgba(255,255,255,.72); font-size: 1.02rem; line-height: 1.8; margin-bottom: 16px; }
     .aboutSection .aboutPanel .panelBody p:last-of-type { margin-bottom: 0; }
 
@@ -114,8 +114,8 @@
       .aboutSection .aboutPanel[aria-labelledby="koTitle"] .panelGrid { grid-template-columns: 1fr; gap: 24px; }
       .aboutSection .aboutPanel .panelMedia.isLogo { grid-column: 1; }
       .aboutSection .aboutPanel .panelMedia.isLogo img { width: min(70%, 360px); margin: 0 auto; }
-      .aboutSection .aboutPanel .panelTitle { max-width: none; color: var(--g); }
-      .aboutSection .aboutPanel .panelTitle em { color: var(--ol); }
+      .aboutSection .aboutPanel .panelTitle { max-width: none; color: var(--ink); }
+      .aboutSection .aboutPanel .panelTitle em { color: var(--ink); }
       .aboutSection .aboutPanel .panelBody p { color: #5c6960; }
     }
 
@@ -129,7 +129,7 @@
     .aboutSection .bridgeRow.isReverse .bridgeCol { order: 2; }
     .aboutSection .bridgeRow.isReverse .bridgeMedia { order: 1; }
     .aboutSection .bridgeTitle { font-family: 'Fraunces', serif; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(1.9rem,4vw,3rem); margin: 0 0 18px; }
-    .aboutSection .bridgeTitle em { font-style: italic; color: #B4D06E; }
+    .aboutSection .bridgeTitle em { font-style: italic; color: #fff; }
     .aboutSection .bridgeCol p { color: rgba(255,255,255,.72); font-size: clamp(1rem,1.5vw,1.08rem); line-height: 1.85; margin: 0; }
     .aboutSection .bridgeMedia img { width: 100%; height: clamp(420px, 56vh, 620px); object-fit: cover; border-radius: 22px; box-shadow: 0 40px 80px -46px rgba(0,0,0,.7); display: block; }
     /* Retro ugođaj na prvoj MOST slici */
@@ -137,8 +137,8 @@
 
     @media (max-width: 900px) {
       .aboutSection .aboutBridge { background: var(--bg); }
-      .aboutSection .bridgeTitle { color: var(--g); }
-      .aboutSection .bridgeTitle em { color: var(--ol); }
+      .aboutSection .bridgeTitle { color: var(--ink); }
+      .aboutSection .bridgeTitle em { color: var(--ink); }
       .aboutSection .bridgeCol p { color: #5c6960; }
       .aboutSection .bridgeRow,
       .aboutSection .bridgeRow.isReverse { grid-template-columns: 1fr; gap: 20px; }
@@ -149,7 +149,7 @@
       .aboutSection .bridgeMedia img { height: clamp(240px,60vw,360px); }
     }
 
-    /* ============================================================
+/* ============================================================
        NAŠ PUT — alternating timeline (godine u krugovima na liniji).
        Desktop: tamnozelena, zig-zag.  Mobitel: bijela, jednokolonska.
        ============================================================ */
@@ -159,56 +159,37 @@
     .aboutSection .tlLead { color: rgba(255,255,255,.72); font-size: clamp(1rem, 2vw, 1.1rem); line-height: 1.65; }
 
     .aboutSection .tlTrack { list-style: none; margin: 0 auto; padding: 0 24px; max-width: 1088px; position: relative; }
-    /* Centralna vertikalna linija */
     .aboutSection .tlTrack::before { content: ""; position: absolute; top: 12px; bottom: 12px; left: 50%; transform: translateX(-50%); width: 2px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,.2) 6%, rgba(255,255,255,.2) 94%, transparent); z-index: 0; }
 
     .aboutSection .tlRow { position: relative; margin-bottom: clamp(28px, 3.5vw, 48px); }
     .aboutSection .tlRow:last-child { margin-bottom: 0; }
 
-    /* Kartica — pola širine, naizmjenično lijevo/desno */
-    .aboutSection .tlCard { position: relative; z-index: 1; width: calc(50% - 60px); padding: clamp(22px, 2.6vw, 30px); background: linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 26px 54px -34px rgba(0,0,0,.6); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+    .aboutSection .tlCard { position: relative; z-index: 1; width: calc(50% - 60px); padding: clamp(22px, 2.6vw, 30px); background: linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 26px 54px -34px rgba(0,0,0,.6); }
     .aboutSection .tlRow:nth-child(even) .tlCard { margin-left: auto; }
-    .aboutSection .tlCard:hover { transform: translateY(-4px); box-shadow: 0 40px 70px -38px rgba(0,0,0,.7); }
-
-    /* Strelica-trokut prema liniji (čist CSS trokut, bez pozadine/okvira) */
-    .aboutSection .tlCard::after { content: ""; position: absolute; top: 50%; margin-top: -9px; width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
-    .aboutSection .tlRow:nth-child(odd) .tlCard::after { right: -12px; border-left: 12px solid #16302a; }
-    .aboutSection .tlRow:nth-child(even) .tlCard::after { left: -12px; border-right: 12px solid #16302a; }
 
     .aboutSection .tlCard h3 { font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; font-size: clamp(1.2rem, 2.1vw, 1.5rem); color: #fff; margin-bottom: 10px; }
     .aboutSection .tlCard p { color: rgba(255,255,255,.7); font-size: .95rem; line-height: 1.65; }
 
-    /* Godina-krug — centriran na liniju i na sredinu svoje kartice */
-    .aboutSection .tlNode { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; background: var(--ol); color: #fff; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem; letter-spacing: -.01em; border: 4px solid var(--ink); box-shadow: 0 16px 32px -14px rgba(0,0,0,.7); transition: transform .5s var(--ease), background .5s var(--ease); }
-    .aboutSection .tlRow:hover .tlNode { transform: translate(-50%, -50%) scale(1.08); background: #7ea23a; }
+    .aboutSection .tlNode { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; background: var(--ol); color: #fff; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem; letter-spacing: -.01em; border: 4px solid var(--ink); box-shadow: 0 16px 32px -14px rgba(0,0,0,.7); }
 
-    /* MOBITEL — bijelo; linija prolazi kroz centar krugova (linija i krug dijele istu osu = 22px unutar reda) */
+    /* MOBITEL — bijelo; linija prolazi kroz centar krugova (osa = 22px unutar reda) */
     @media (max-width: 760px) {
       .aboutSection .aboutTimeline { background: var(--bg); padding-left: 18px; padding-right: 18px; }
-      .aboutSection .tlTitle { color: var(--g); }
+      .aboutSection .tlTitle { color: var(--ink); }
       .aboutSection .tlLead { color: #5c6960; }
 
-      /* track i red dijele istu lijevu ivicu (bez paddinga/margina) */
       .aboutSection .tlTrack { max-width: 100%; padding: 0; }
       .aboutSection .tlTrack::before { left: 22px; top: 14px; bottom: 14px; transform: translateX(-50%); background: linear-gradient(to bottom, transparent, rgba(29,61,52,.22) 6%, rgba(29,61,52,.22) 94%, transparent); }
 
       .aboutSection .tlRow { position: relative; margin: 0 0 20px; }
       .aboutSection .tlRow:last-child { margin-bottom: 0; }
 
-      /* kartica desno od kruga */
       .aboutSection .tlCard,
       .aboutSection .tlRow:nth-child(even) .tlCard { width: auto; margin-left: 70px; margin-right: 0; background: linear-gradient(165deg, rgba(255,255,255,.94), rgba(255,255,255,.74)); border-color: rgba(29,61,52,.1); }
       .aboutSection .tlCard h3 { color: var(--g2); }
       .aboutSection .tlCard p { color: #6b7770; }
 
-      /* strelica uvijek lijevo (bijela, ka bijeloj kartici) */
-      .aboutSection .tlCard::after,
-      .aboutSection .tlRow:nth-child(odd) .tlCard::after,
-      .aboutSection .tlRow:nth-child(even) .tlCard::after { left: -12px; right: auto; top: 50%; margin-top: -9px; width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-right: 12px solid #fff; border-left: 0; }
-
-      /* krug: centar na 22px (ista osa kao linija) */
       .aboutSection .tlNode { left: 22px; top: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; font-size: .8rem; border-width: 4px; background: var(--g); border-color: var(--bg); }
-      .aboutSection .tlRow:hover .tlNode { transform: translate(-50%, -50%) scale(1.05); }
     }
   </style>
 </head>
@@ -225,7 +206,8 @@
       <div class="aboutHero">
         <!-- 1. HERO -->
         <section class="hero">
-          <img class="heroBg" src="assets/pictures/footer/footer1.jpg" alt="Panorama planinskih vrhova pri izlasku sunca" loading="eager" fetchpriority="high">
+          <img class="heroBg" src="assets/pictures/footer/footer1.jpg"
+            alt="Panorama planinskih vrhova pri izlasku sunca" loading="eager" fetchpriority="high">
           <div class="heroOv1" aria-hidden="true"></div>
           <div class="heroOv2" aria-hidden="true"></div>
           <div class="heroContent">
@@ -234,7 +216,8 @@
           </div>
           <div class="scrollCue" aria-hidden="true">
             <svg class="scrollArrow" viewBox="0 0 24 24" fill="none">
-              <path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </div>
         </section>
@@ -246,8 +229,14 @@
           <div class="panelText onReveal">
             <h2 id="koTitle" class="panelTitle">Konjuh <em>od 1951.</em></h2>
             <div class="panelBody">
-              <p>Planinarsko društvo „Konjuh" Tuzla svoju priču započinje 1951. godine, kada je među zaljubljenicima u prirodu i planinarstvo pokrenuta inicijativa za osnivanje organizovanog planinarskog društva u Tuzli. Inicijativni odbor činili su Halid Čokić, Branko Stojanović, Mustafa Kapidžić, Čoko Jakov, Eduard Pavlović, Paša Abidinović i drugi entuzijasti.</p>
-              <p>Osnivačka skupština održana je u zgradi današnjeg Narodnog pozorišta u Tuzli, čime su postavljeni temelji društva koje će u narednim decenijama postati važan dio planinarskog života Tuzle i šireg područja. Prvi predsjednik bio je Halid Čokić, a prve članske karte štampane su u Tuzlanskoj štampariji — svjedočanstvo entuzijazma kojim je društvo stvarano od samog početka.</p>
+              <p>Planinarsko društvo „Konjuh" Tuzla svoju priču započinje 1951. godine, kada je među zaljubljenicima u
+                prirodu i planinarstvo pokrenuta inicijativa za osnivanje organizovanog planinarskog društva u Tuzli.
+                Inicijativni odbor činili su Halid Čokić, Branko Stojanović, Mustafa Kapidžić, Čoko Jakov, Eduard
+                Pavlović, Paša Abidinović i drugi entuzijasti.</p>
+              <p>Osnivačka skupština održana je u zgradi današnjeg Narodnog pozorišta u Tuzli, čime su postavljeni
+                temelji društva koje će u narednim decenijama postati važan dio planinarskog života Tuzle i šireg
+                područja. Prvi predsjednik bio je Halid Čokić, a prve članske karte štampane su u Tuzlanskoj štampariji
+                — svjedočanstvo entuzijazma kojim je društvo stvarano od samog početka.</p>
             </div>
           </div>
           <div class="panelMedia isLogo onReveal d1">
@@ -261,7 +250,12 @@
         <div class="bridgeRow onReveal">
           <div class="bridgeCol">
             <h2 class="bridgeTitle">Priča koja <em>traje.</em></h2>
-            <p>Naziv „Konjuh" odabran je kao simbol jedne od najljepših planina sjeveroistočne Bosne, ali i kao omaž pjesmi „Konjuh planinom", koja je kroz svoje stihove sačuvala dio historije i sjećanja na Tuzlu i njen kraj. Od prvih okupljanja i izleta, društvo je postepeno gradilo svoju tradiciju, okupljajući generacije ljudi različitih godina, zanimanja i iskustava, ali povezanih istom ljubavlju prema planini. Kroz planinarstvo se nisu upoznavali samo novi predjeli i vrhovi, već su se stvarala prijateljstva, prenosila iskustva i učilo o odgovornom odnosu prema prirodi.</p>
+            <p>Naziv „Konjuh" odabran je kao simbol jedne od najljepših planina sjeveroistočne Bosne, ali i kao omaž
+              pjesmi „Konjuh planinom", koja je kroz svoje stihove sačuvala dio historije i sjećanja na Tuzlu i njen
+              kraj. Od prvih okupljanja i izleta, društvo je postepeno gradilo svoju tradiciju, okupljajući generacije
+              ljudi različitih godina, zanimanja i iskustava, ali povezanih istom ljubavlju prema planini. Kroz
+              planinarstvo se nisu upoznavali samo novi predjeli i vrhovi, već su se stvarala prijateljstva, prenosila
+              iskustva i učilo o odgovornom odnosu prema prirodi.</p>
           </div>
           <div class="bridgeMedia">
             <img src="assets/pictures/Gallery/gallery1.jpg" alt="Stara fotografija članova društva na planini">
@@ -274,7 +268,11 @@
         <div class="bridgeRow isReverse onReveal">
           <div class="bridgeCol">
             <h2 class="bridgeTitle">Konjuh <em>danas.</em></h2>
-            <p>Danas, više od sedam decenija nakon osnivanja, PD „Konjuh" Tuzla nastavlja čuvati duh i vrijednosti koje su postavili njegovi prvi članovi. Iako se način života, tehnologija i samo planinarstvo kroz godine mijenjaju, suština ostaje ista — okupiti ljude, izaći iz svakodnevice i zajedno doživjeti planinu. Društvo povezuje iskusne planinare i nove generacije, razvija planinarsku kulturu i njeguje odgovornost prema prostoru koji dijelimo — priča koja se nastavlja sa svakom novom generacijom.</p>
+            <p>Danas, više od sedam decenija nakon osnivanja, PD „Konjuh" Tuzla nastavlja čuvati duh i vrijednosti koje
+              su postavili njegovi prvi članovi. Iako se način života, tehnologija i samo planinarstvo kroz godine
+              mijenjaju, suština ostaje ista — okupiti ljude, izaći iz svakodnevice i zajedno doživjeti planinu. Društvo
+              povezuje iskusne planinare i nove generacije, razvija planinarsku kulturu i njeguje odgovornost prema
+              prostoru koji dijelimo — priča koja se nastavlja sa svakom novom generacijom.</p>
           </div>
           <div class="bridgeMedia">
             <img src="assets/pictures/footer/footer1.jpg" alt="Članovi društva na savremenoj turi">
@@ -286,40 +284,67 @@
       <section class="aboutTimeline" aria-labelledby="tlTitle">
         <div class="tlHead onReveal">
           <h2 class="tlTitle" id="tlTitle">Put rasta i zajedništva</h2>
-          <p class="tlLead">Sedam decenija koraka, uspona i zajedništva — ispričano kroz prekretnice koje su oblikovale naše društvo.</p>
+          <p class="tlLead">Sedam decenija koraka, uspona i zajedništva — ispričano kroz prekretnice koje su oblikovale
+            naše društvo.</p>
         </div>
 
         <ol class="tlTrack">
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Osnivanje društva</h3><p>Grupa entuzijasta osniva Planinarsko društvo „Konjuh" s ciljem promocije planinarstva i ljepota Konjuha.</p></div>
+            <div class="tlCard">
+              <h3>Osnivanje društva</h3>
+              <p>Grupa entuzijasta osniva Planinarsko društvo „Konjuh" s ciljem promocije planinarstva i ljepota
+                Konjuha.</p>
+            </div>
             <span class="tlNode">1951</span>
           </li>
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Prvi organizovani usponi</h3><p>Organizujemo prve grupne ture i izlete, gradeći temelje buduće planinarske zajednice.</p></div>
+            <div class="tlCard">
+              <h3>Prvi organizovani usponi</h3>
+              <p>Organizujemo prve grupne ture i izlete, gradeći temelje buduće planinarske zajednice.</p>
+            </div>
             <span class="tlNode">1960</span>
           </li>
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Izgradnja planinarskog doma</h3><p>Podignut prvi planinarski dom na Konjuhu — postaje vikend okupljalište i baza za brojne avanture.</p></div>
+            <div class="tlCard">
+              <h3>Izgradnja planinarskog doma</h3>
+              <p>Podignut prvi planinarski dom na Konjuhu — postaje vikend okupljalište i baza za brojne avanture.</p>
+            </div>
             <span class="tlNode">1975</span>
           </li>
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Uređenje staza i markacija</h3><p>Pokrećemo akciju uređenja i markiranja planinarskih staza radi sigurnijeg i ljepšeg boravka u prirodi.</p></div>
+            <div class="tlCard">
+              <h3>Uređenje staza i markacija</h3>
+              <p>Pokrećemo akciju uređenja i markiranja planinarskih staza radi sigurnijeg i ljepšeg boravka u prirodi.
+              </p>
+            </div>
             <span class="tlNode">1985</span>
           </li>
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Širenje članstva i aktivnosti</h3><p>Društvo bilježi rast članstva i širi aktivnosti na edukacije, škole u prirodi i ekološke akcije.</p></div>
+            <div class="tlCard">
+              <h3>Širenje članstva i aktivnosti</h3>
+              <p>Društvo bilježi rast članstva i širi aktivnosti na edukacije, škole u prirodi i ekološke akcije.</p>
+            </div>
             <span class="tlNode">1995</span>
           </li>
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Nove staze, novi izazovi</h3><p>Otvaramo nove planinarske rute i povezujemo Konjuh s drugim planinama u Bosni i Hercegovini.</p></div>
+            <div class="tlCard">
+              <h3>Nove staze, novi izazovi</h3>
+              <p>Otvaramo nove planinarske rute i povezujemo Konjuh s drugim planinama u Bosni i Hercegovini.</p>
+            </div>
             <span class="tlNode">2005</span>
           </li>
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Zajednica koja traje</h3><p>Kroz druženja, ture i volonterski rad jačamo zajedništvo i ljubav prema planini.</p></div>
+            <div class="tlCard">
+              <h3>Zajednica koja traje</h3>
+              <p>Kroz druženja, ture i volonterski rad jačamo zajedništvo i ljubav prema planini.</p>
+            </div>
             <span class="tlNode">2015</span>
           </li>
           <li class="tlRow onReveal">
-            <div class="tlCard"><h3>Gledamo naprijed</h3><p>Nastavljamo s novim projektima, brigom o prirodi i inspiracijom za buduće generacije planinara.</p></div>
+            <div class="tlCard">
+              <h3>Gledamo naprijed</h3>
+              <p>Nastavljamo s novim projektima, brigom o prirodi i inspiracijom za buduće generacije planinara.</p>
+            </div>
             <span class="tlNode">2025</span>
           </li>
         </ol>
