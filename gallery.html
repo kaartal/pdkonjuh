@@ -73,6 +73,119 @@
     .galleryReveal{opacity:1;transform:none;filter:none;transition:none;}
     .imgFade{opacity:1;filter:none;transition:none;}
   }
+
+  /* ============================================================ */
+  /* CATEGORY FILTER BAR */
+  /* ============================================================ */
+  .categoryBar{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.6rem;
+    margin-bottom:2.5rem;
+  }
+  .categoryBtn{
+    font-family:'Inter', sans-serif;
+    font-size:.85rem;
+    font-weight:600;
+    padding:.80rem 1.50rem;
+    border-radius:999px;
+    border:1px solid rgba(24,77,59,.35);
+    background:transparent;
+    cursor:pointer;
+    transition:background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .2s var(--ease);
+  }
+  .categoryBtn:hover{
+    border-color:#184D3B;
+    transform:translateY(-1px);
+  }
+  .categoryBtn.isActive{
+    background:#184D3B;
+    border-color:#184D3B;
+    color:#F6F3EE;
+  }
+  .galleryItemHidden{
+    display:none !important;
+  }
+
+  /* ============================================================ */
+  /* LIGHTBOX WITH SWIPE / ARROW NAVIGATION */
+  /* ============================================================ */
+  .lightboxOverlay{
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:1.5rem;
+  touch-action:pan-y;
+}
+  .lightboxOverlay.isOpen{
+    display:flex;
+  }
+  .lightboxFigure{
+    position:relative;
+    max-width:min(90vw, 1100px);
+    max-height:88vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .lightboxImg{
+    max-width:100%;
+    max-height:88vh;
+    border-radius:.75rem;
+    object-fit:contain;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    opacity:0;
+    transform:scale(.97);
+    transition:opacity .25s var(--ease), transform .25s var(--ease);
+  }
+  .lightboxImg.isShown{
+    opacity:1;
+    transform:scale(1);
+  }
+  .lightboxClose,
+  .lightboxNav{
+    position:fixed;
+    background:rgba(246,243,238,.12);
+    color:#F6F3EE;
+    border:none;
+    border-radius:999px;
+    width:48px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background-color .2s var(--ease), transform .2s var(--ease);
+    z-index:10000;
+  }
+  .lightboxClose:hover,
+  .lightboxNav:hover{
+    background:rgba(246,243,238,.25);
+  }
+  .lightboxClose{
+    top:1.25rem;
+    right:1.25rem;
+  }
+  .lightboxNav{
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .lightboxNav:hover{ transform:translateY(-50%) scale(1.05); }
+  .lightboxPrev{ left:1.25rem; }
+  .lightboxNext{ right:1.25rem; }
+  .lightboxNav svg, .lightboxClose svg{ width:22px; height:22px; }
+  @media (max-width: 640px){
+    .lightboxNav{ width:40px; height:40px; }
+    .lightboxPrev{ left:.5rem; }
+    .lightboxNext{ right:.5rem; }
+    .lightboxClose{ top:.75rem; right:.75rem; width:40px; height:40px; }
+  }
 </style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
@@ -107,9 +220,17 @@
 <section id="gallerySection" class="pt-24 pb-28 px-6">
   <div class="max-w-6xl mx-auto">
 
+    <div id="categoryBar" class="categoryBar" role="tablist" aria-label="Filter galerije po kategoriji">
+      <button type="button" class="categoryBtn isActive" data-filter="sve" role="tab" aria-selected="true">Sve</button>
+      <button type="button" class="categoryBtn" data-filter="staze" role="tab" aria-selected="false">Staze</button>
+      <button type="button" class="categoryBtn" data-filter="vrhovi" role="tab" aria-selected="false">Vrhovi i pogledi</button>
+      <button type="button" class="categoryBtn" data-filter="kamp" role="tab" aria-selected="false">Kamp i dom</button>
+      <button type="button" class="categoryBtn" data-filter="priroda" role="tab" aria-selected="false">Priroda</button>
+    </div>
+
     <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-4 auto-rows-[170px] sm:auto-rows-[200px] gap-4 grid-flow-dense">
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery1.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery1.jpg" data-category="staze"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kolona planinara na stazi">
         <img src="assets/pictures/Gallery/gallery1.jpg" alt="Kolona planinara na stazi" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -117,7 +238,7 @@
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery2.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery2.jpg" data-category="kamp"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Logorska vatra uveče na planinarskom domu">
         <img src="assets/pictures/Gallery/gallery2.jpg" alt="Logorska vatra uveče na planinarskom domu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -125,7 +246,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery5.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery5.jpg" data-category="staze"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Šumska staza obasjana suncem">
         <img src="assets/pictures/Gallery/gallery5.jpg" alt="Šumska staza obasjana suncem" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -133,7 +254,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery8.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery8.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled sa vrha Maglića na Trnovačko jezero">
         <img src="assets/pictures/Gallery/gallery8.jpg" alt="Pogled sa vrha Maglića na Trnovačko jezero" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -141,7 +262,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery4.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery4.jpg" data-category="kamp"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski dom na Treskavici u magli">
         <img src="assets/pictures/Gallery/gallery4.jpg" alt="Planinarski dom na Treskavici u magli" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -149,7 +270,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery3.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery3.jpg" data-category="kamp"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Detalj planinarske opreme i mape">
         <img src="assets/pictures/Gallery/gallery3.jpg" alt="Detalj planinarske opreme i mape" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -157,7 +278,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery6.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery6.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama planinskih vrhova pri izlasku sunca">
         <img src="assets/pictures/Gallery/gallery6.jpg" alt="Panorama planinskih vrhova pri izlasku sunca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -165,7 +286,7 @@
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery12.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery12.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinski pejzaž u smiraj dana">
         <img src="assets/pictures/Gallery/gallery12.jpg" alt="Planinski pejzaž u smiraj dana" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -173,7 +294,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery11.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery11.jpg" data-category="staze"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Uspon prema vrhu kroz kamenjar">
         <img src="assets/pictures/Gallery/gallery11.jpg" alt="Uspon prema vrhu kroz kamenjar" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -181,7 +302,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery13.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery13.jpg" data-category="priroda"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Odmor uz izvor planinske vode">
         <img src="assets/pictures/Gallery/gallery13.jpg" alt="Odmor uz izvor planinske vode" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -189,7 +310,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery9.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery9.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na dolinu s vrha">
         <img src="assets/pictures/Gallery/gallery9.jpg" alt="Pogled na dolinu s vrha" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -197,7 +318,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery10.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery10.jpg" data-category="staze"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Grupa planinara na markiranoj stazi">
         <img src="assets/pictures/Gallery/gallery10.jpg" alt="Grupa planinara na markiranoj stazi" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -205,7 +326,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery14.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery14.jpg" data-category="priroda"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Jutarnja magla iznad šume">
         <img src="assets/pictures/Gallery/gallery14.jpg" alt="Jutarnja magla iznad šume" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -213,7 +334,7 @@
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery15.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery15.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Zalazak sunca iznad planinskog lanca">
         <img src="assets/pictures/Gallery/gallery15.jpg" alt="Zalazak sunca iznad planinskog lanca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -221,7 +342,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery16.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery16.jpg" data-category="kamp"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Priprema opreme prije polaska">
         <img src="assets/pictures/Gallery/gallery16.jpg" alt="Priprema opreme prije polaska" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -229,7 +350,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery17.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery17.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Snijeg na vrhu kasno u proljeće">
         <img src="assets/pictures/Gallery/gallery17.jpg" alt="Snijeg na vrhu kasno u proljeće" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -237,7 +358,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery18.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery18.jpg" data-category="priroda"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Cvjetna livada na planinskom platou">
         <img src="assets/pictures/Gallery/gallery18.jpg" alt="Cvjetna livada na planinskom platou" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -245,7 +366,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery25.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery25.jpg" data-category="kamp"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kamp na proplanku uz vatru">
         <img src="assets/pictures/Gallery/gallery25.jpg" alt="Kamp na proplanku uz vatru" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -253,7 +374,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery19.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery19.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na jezero s vidikovca">
         <img src="assets/pictures/Gallery/gallery19.jpg" alt="Pogled na jezero s vidikovca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -261,7 +382,7 @@
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery20.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery20.jpg" data-category="staze"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Strma staza kroz borovu šumu">
         <img src="assets/pictures/Gallery/gallery20.jpg" alt="Strma staza kroz borovu šumu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -269,7 +390,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery21.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery21.jpg" data-category="kamp"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski štap i mapa na stijeni">
         <img src="assets/pictures/Gallery/gallery21.jpg" alt="Planinarski štap i mapa na stijeni" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -277,7 +398,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery22.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery22.jpg" data-category="priroda"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Rosa na travi u ranu zoru">
         <img src="assets/pictures/Gallery/gallery22.jpg" alt="Rosa na travi u ranu zoru" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -285,7 +406,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery23.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery23.jpg" data-category="staze"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Skupina na odmorištu uz stazu">
         <img src="assets/pictures/Gallery/gallery23.jpg" alt="Skupina na odmorištu uz stazu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -293,7 +414,7 @@
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-lightbox data-full="assets/pictures/Gallery/gallery24.jpg"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery24.jpg" data-category="vrhovi"
         class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama vrhova u sumrak">
         <img src="assets/pictures/Gallery/gallery24.jpg" alt="Panorama vrhova u sumrak" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -321,6 +442,21 @@
 
 <div id="siteFooterRoot"></div>
 
+<!-- LIGHTBOX MARKUP: BUILT/CONTROLLED ENTIRELY BY THE SCRIPT BELOW -->
+<div id="lightboxOverlay" class="lightboxOverlay" role="dialog" aria-modal="true" aria-label="Pregled slike">
+  <button type="button" id="lightboxClose" class="lightboxClose" aria-label="Zatvori pregled">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button type="button" id="lightboxPrev" class="lightboxNav lightboxPrev" aria-label="Prethodna slika">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="lightboxFigure">
+    <img id="lightboxImg" class="lightboxImg" src="" alt="">
+  </div>
+  <button type="button" id="lightboxNext" class="lightboxNav lightboxNext" aria-label="Sljedeća slika">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</div>
 
 <script src="assets/script.js" defer></script>
 <script>
@@ -356,8 +492,10 @@
   // "PRIKAŽI VIŠE" IS CLICKED, SINCE THEY WERE display:none DURING THE
   // OBSERVER'S FIRST PASS AND COULDN'T BE FLAGGED AS VISIBLE THEN.
   var showMoreBtn = document.getElementById('galleryShowMoreButton');
+  var showMoreClicked = false;
   if (showMoreBtn) {
     showMoreBtn.addEventListener('click', function () {
+      showMoreClicked = true;
       setTimeout(function () {
         document.querySelectorAll('.galleryItemExtra:not(.hidden)').forEach(function (el, i) {
           if (!el.classList.contains('isVisible')) {
@@ -368,6 +506,166 @@
       }, 0);
     });
   }
+
+  // ============================================================
+  // KATEGORIJE — FILTRIRANJE GALERIJE PO 4 KATEGORIJE + "SVE"
+  // ============================================================
+  (function () {
+    var categoryBar = document.getElementById('categoryBar');
+    if (!categoryBar) return;
+
+    var categoryButtons = Array.prototype.slice.call(categoryBar.querySelectorAll('.categoryBtn'));
+    var allItems = Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .galleryItem'));
+    var currentFilter = 'sve';
+
+    function applyFilter(filter) {
+      currentFilter = filter;
+
+      categoryButtons.forEach(function (btn) {
+        var active = btn.dataset.filter === filter;
+        btn.classList.toggle('isActive', active);
+        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      allItems.forEach(function (item) {
+        var isExtra = item.classList.contains('galleryItemExtra');
+
+        if (filter === 'sve') {
+          // Vrati na podrazumijevano stanje: osnovne slike vidljive,
+          // "extra" slike vidljive samo ako je "Prikaži više" već kliknuto.
+          if (isExtra) {
+            item.classList.toggle('hidden', !showMoreClicked);
+          } else {
+            item.classList.remove('hidden');
+          }
+          item.classList.remove('galleryItemHidden');
+        } else {
+          var matches = item.dataset.category === filter;
+          item.classList.toggle('galleryItemHidden', !matches);
+          if (matches && !item.classList.contains('isVisible')) {
+            item.classList.add('isVisible');
+          }
+        }
+      });
+
+      // Kad je aktivan filter kategorije, dugme "Prikaži više" nema smisla
+      // jer se sve slike te kategorije već prikazuju odjednom.
+      if (showMoreBtn) {
+        showMoreBtn.style.display = (filter === 'sve') ? '' : 'none';
+      }
+    }
+
+    categoryButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyFilter(btn.dataset.filter);
+      });
+    });
+  })();
+
+  // ============================================================
+  // LIGHTBOX SA NAVIGACIJOM LIJEVO/DESNO (STRELICE, TIPKE, SWIPE)
+  // ============================================================
+  (function () {
+    var overlay = document.getElementById('lightboxOverlay');
+    var imgEl = document.getElementById('lightboxImg');
+    var closeBtn = document.getElementById('lightboxClose');
+    var prevBtn = document.getElementById('lightboxPrev');
+    var nextBtn = document.getElementById('lightboxNext');
+    if (!overlay || !imgEl) return;
+
+    var currentIndex = -1;
+    var currentSet = [];
+
+    function getVisibleTriggers() {
+      return Array.prototype.slice.call(document.querySelectorAll('#galleryGrid [data-gallery-lightbox]'))
+        .filter(function (el) {
+          return !el.classList.contains('hidden') && !el.classList.contains('galleryItemHidden');
+        });
+    }
+
+    function openAt(index) {
+      currentSet = getVisibleTriggers();
+      if (!currentSet.length) return;
+      currentIndex = ((index % currentSet.length) + currentSet.length) % currentSet.length;
+      showCurrent();
+      overlay.classList.add('isOpen');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showCurrent() {
+      var trigger = currentSet[currentIndex];
+      if (!trigger) return;
+      var full = trigger.getAttribute('data-full');
+      var altSrc = trigger.querySelector('img');
+      imgEl.classList.remove('isShown');
+      var swap = function () {
+        imgEl.src = full;
+        imgEl.alt = altSrc ? altSrc.alt : '';
+        imgEl.onload = function () { imgEl.classList.add('isShown'); };
+      };
+      swap();
+    }
+
+    function close() {
+      overlay.classList.remove('isOpen');
+      document.body.style.overflow = '';
+    }
+
+    function next() {
+      if (!currentSet.length) return;
+      currentIndex = (currentIndex + 1) % currentSet.length;
+      showCurrent();
+    }
+
+    function prev() {
+      if (!currentSet.length) return;
+      currentIndex = (currentIndex - 1 + currentSet.length) % currentSet.length;
+      showCurrent();
+    }
+
+    document.querySelectorAll('#galleryGrid [data-gallery-lightbox]').forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var visible = getVisibleTriggers();
+        var idx = visible.indexOf(trigger);
+        openAt(idx === -1 ? 0 : idx);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (nextBtn) nextBtn.addEventListener('click', next);
+    if (prevBtn) prevBtn.addEventListener('click', prev);
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) close();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!overlay.classList.contains('isOpen')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    // SWIPE LIJEVO/DESNO NA TOUCH UREĐAJIMA
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var SWIPE_THRESHOLD = 40;
+
+    overlay.addEventListener('touchstart', function (e) {
+      var t = e.changedTouches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+    }, { passive: true });
+
+    overlay.addEventListener('touchend', function (e) {
+      var t = e.changedTouches[0];
+      var dx = t.clientX - touchStartX;
+      var dy = t.clientY - touchStartY;
+      if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) { next(); } else { prev(); }
+      }
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>

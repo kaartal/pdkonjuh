@@ -17,7 +17,7 @@
     { key: "index", href: "index.html", label: "Naslovna" },
     { key: "about", href: "about.html", label: "O nama" },
     { key: "hikes", href: "hikes.html", label: "Ture" },
-
+{ key: "routes", href: "routes.html", label: "Staze" },
     { key: "plan", href: "plan.html", label: "Plan i program" },
     { key: "domovi", href: "lodges.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Galerija" },
@@ -29,6 +29,7 @@
     { href: "hikes.html#prenj", label: "Prenj" },
     { href: "hikes.html#cvrsnica", label: "Čvrsnica" },
     { href: "hikes.html#velez", label: "Velež" },
+    { href: "hikes.html#maglic", label: "Maglić" },
     { href: "hikes.html#maglic", label: "Maglić" },
     { href: "hikes.html#bjelasnica", label: "Bjelašnica" },
     { href: "hikes.html#treskavica", label: "Treskavica" }
