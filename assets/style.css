@@ -7,8 +7,8 @@
    ========================================================================== */
 
 :root{
---forest: #b1bdb9;
---forestDeep: #e4fcf7;
+--forest: #173d30;
+--forestDeep: #13312b;
 --moss: #6F8F7A;
   --beige:#F6F3EE;
   --stone:#E7E5E2;
@@ -172,10 +172,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* HEADER CTA PILL, MATCHING THE REFERENCE "CONTACT US" BUTTON */
 .navCta{
   background:var(--beige);color:var(--charcoal);
-  border-radius:999px;padding:.6rem 1.35rem;font-weight:600;font-size:.9rem;
+  border-radius:999px;padding:.7rem 1.35rem;font-weight:600;font-size:.9rem;
   transition:transform .3s var(--ease), box-shadow .3s var(--ease);
 }
-.navCta:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(0,0,0,.4);}
+.navCta:hover{box-shadow:0 10px 22px -10px rgba(71, 61, 61, 0.4);}
 
 /* MEGA MENU */
 .megaPanel{

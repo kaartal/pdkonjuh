@@ -103,7 +103,7 @@
 
   .joinSubmit{align-self:stretch;justify-content:center;display:inline-flex;align-items:center;gap:.6rem;background:var(--navy);color:#fff;padding:.95rem 2.3rem;border-radius:999px;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease);}
   @media(min-width:640px){ .joinSubmit{align-self:flex-start;} }
-  .joinSubmit:hover{background:var(--moss);transform:translateY(-2px);}
+  .joinSubmit:hover{background:var(--navyDeep);transform:translateY(-2px);}
   .joinSubmit:disabled{opacity:.5;cursor:not-allowed;transform:none;background:var(--forest);}
 
   .joinLimitMsg{display:none;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--rust);background:rgba(139,58,43,.08);border:1px solid rgba(139,58,43,.25);border-radius:.75rem;padding:.85rem 1.1rem;}
@@ -215,6 +215,7 @@
         </div>
 
         <fieldset class="joinFieldset">
+          <legend class="joinFieldsetLegend">Lični podaci</legend>
 
           <div class="joinFormRow">
             <div>
@@ -256,11 +257,13 @@
         </fieldset>
 
         <fieldset class="joinFieldset">
+          <legend class="joinFieldsetLegend">Interesovanja</legend>
           <label class="joinLabel" for="joinSekcije">Sekcije za koje ste zainteresovani</label>
           <textarea class="joinField" id="joinSekcije" name="Sekcije" placeholder="Ukoliko postoji više sekcija, navedite za koje ste zainteresovani (opcionalno)"></textarea>
         </fieldset>
 
         <fieldset class="joinFieldset">
+          <legend class="joinFieldsetLegend">Saglasnosti</legend>
           <div class="joinConsent">
             <div class="joinCheckRow">
               <input type="checkbox" id="joinPunoljetnost" name="Potvrda punoljetnosti" value="Da" required>

@@ -114,8 +114,7 @@
   .contactInfoIcon{flex:none;width:48px;height:48px;border-radius:999px;background:var(--beige);display:flex;align-items:center;justify-content:center;color:var(--iceblue);}
   .contactInfoLabel{font-family:'Inter',sans-serif;font-weight:700;font-size:1.02rem;color:var(--charcoal);margin-bottom:.25rem;}
   .contactInfoValue{color:var(--charcoal);opacity:.72;font-size:.95rem;line-height:1.65;}
-  .contactInfoValue a{color:inherit;text-decoration:underline;text-decoration-color:var(--stone);text-underline-offset:3px;}
-  .contactInfoValue a:hover{text-decoration-color:var(--moss);}
+  .contactInfoValue a:hover{text-decoration-color:white);}
 
   .contactForm{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:1.25rem;}
   @media(min-width:900px){ .contactForm{margin-bottom:2.5rem;} }
@@ -144,7 +143,7 @@
 
   .contactSubmit{align-self:stretch;justify-content:center;display:inline-flex;align-items:center;gap:.6rem;background:var(--navy);color:#fff;padding:.95rem 2.1rem;border-radius:999px;border:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease);}
   @media(min-width:640px){ .contactSubmit{align-self:flex-start;} }
-  .contactSubmit:hover{background:var(--moss);transform:translateY(-2px);}
+  .contactSubmit:hover{background:var(--navyDeep);transform:translateY(-2px);}
   .contactSubmit:disabled{opacity:.5;cursor:not-allowed;transform:none;background:var(--forest);}
 
   .contactLimitMsg{display:none;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--rust);background:rgba(139,58,43,.08);border:1px solid rgba(139,58,43,.25);border-radius:.75rem;padding:.85rem 1.1rem;margin-top:-.2rem;}
@@ -280,11 +279,23 @@
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="true">
         <div class="contactFormRow">
-          <input class="contactField" type="text" name="Ime" placeholder="Vaše ime" required>
-          <input class="contactField" type="email" name="Email" placeholder="Vaš Email" required>
+          <div>
+            <label class="sr-only" for="contactIme">Vaše ime</label>
+            <input class="contactField" type="text" id="contactIme" name="Ime" placeholder="Vaše ime" required>
+          </div>
+          <div>
+            <label class="sr-only" for="contactEmail">Vaš Email</label>
+            <input class="contactField" type="email" id="contactEmail" name="Email" placeholder="Vaš Email" required>
+          </div>
         </div>
-        <input class="contactField" type="text" name="Naslov" placeholder="Naslov" required>
-        <textarea class="contactField" name="Poruka" placeholder="Poruka" required></textarea>
+        <div>
+          <label class="sr-only" for="contactNaslov">Naslov</label>
+          <input class="contactField" type="text" id="contactNaslov" name="Naslov" placeholder="Naslov" required>
+        </div>
+        <div>
+          <label class="sr-only" for="contactPoruka">Poruka</label>
+          <textarea class="contactField" id="contactPoruka" name="Poruka" placeholder="Poruka" required></textarea>
+        </div>
         <div id="contactLimitMsg" class="contactLimitMsg">Dosegnut je dnevni limit od 2 poruke sa ovog uređaja. Pokušajte ponovo sutra, ili nas kontaktirajte direktno na <a href="mailto:pdkonjuh1951@gmail.com">pdkonjuh1951@gmail.com</a> / +387 61 562 277.</div>
         <button id="contactSubmitBtn" type="submit" class="contactSubmit">Pošalji poruku</button>
       </form>

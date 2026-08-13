@@ -14,9 +14,10 @@
   // SINGLE SOURCE OF TRUTH FOR THE MAIN NAVIGATION — REUSED FOR THE DESKTOP
   // NAV, THE MOBILE MENU AND THE FOOTER "EXPLORE" LIST
   var NAV_ITEMS = [
-    { key: "index", href: "index.html", label: "Početna" },
+    { key: "index", href: "index.html", label: "Naslovna" },
     { key: "about", href: "about.html", label: "O nama" },
     { key: "hikes", href: "hikes.html", label: "Ture" },
+
     { key: "plan", href: "plan.html", label: "Plan i program" },
     { key: "domovi", href: "domovi.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Galerija" },
@@ -86,8 +87,8 @@
       '<header class="siteHeader">' +
       '<div class="px-5 lg:px-7 flex items-center justify-between h-20">' +
       '<a href="index.html" class="brandMark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight" data-nav-key="index">' +
-      '<img src="assets/pictures/konjuh-logo.png" alt="PD Konjuh logo" class="h-8 w-8 object-contain" />' +
-      "<span>PD Konjuh</span></a>" +
+      '<img src="assets/pictures/konjuh-logo.png" alt="PD Konjuh logo" class="h-16 w-16 object-contain" />' +
+
       '<nav class="hidden lg:flex items-center gap-8 text-[1.05rem]" aria-label="Glavna navigacija">' +
       buildDesktopNav() +
       "</nav>" +
