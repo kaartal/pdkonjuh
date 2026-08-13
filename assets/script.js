@@ -66,6 +66,20 @@
     );
   }
 
+  function buildPageLoader() {
+  return (
+    '<div class="pageLoader" aria-hidden="true">' +
+    '<span class="pageLoaderText" data-text="PD Konjuh">PD Konjuh</span>' +
+    "</div>"
+  );
+}
+
+function initPageLoader() {
+  var wrapper = document.createElement("div");
+  wrapper.innerHTML = buildPageLoader();
+  document.body.appendChild(wrapper.firstElementChild);
+}
+
   function buildDesktopNav() {
     return NAV_ITEMS.map(function (item) {
       if (item.mega) return buildMegaPanel();
@@ -874,6 +888,7 @@
     initBackToTop();
     initMagneticAndTilt();
     initScrollReveal();
+    initPageLoader();
     initHeroBgFade();
     initCounters();
     initParallax();
