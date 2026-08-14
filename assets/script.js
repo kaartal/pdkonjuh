@@ -88,7 +88,7 @@
   function buildHeader() {
     return (
       '<header class="siteHeader">' +
-      '<div class="px-5 lg:px-7 flex items-center justify-between h-20">' +
+      '<div class="px-5 lg:px-7 flex items-center justify-between h-16">' +
       '<a href="index.html" class="brandMark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight" data-nav-key="index">' +
       '<img src="assets/pictures/konjuh-logo.png" alt="PD Konjuh logo" class="h-16 w-16 object-contain" />' +
 

@@ -29,7 +29,10 @@
 html{scroll-behavior:smooth;}
 /* PREVENT ANY ELEMENT (LARGE FOOTER WORDMARK, MENU, REVIEW STRIP...) FROM MAKING
    THE PAGE WIDER THAN THE VIEWPORT, WHICH WOULD ALLOW LEFT-RIGHT DRAG/SCROLL ON MOBILE */
-html,body{overflow-x:hidden;width:100%;max-width:100%;}
+html,body{
+  overflow-x:hidden;
+  width:100%;
+  max-width:100%;}
 [id]{scroll-margin-top:100px;}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
@@ -162,7 +165,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 .siteHeader .brandMark{color:var(--beige);}
 .siteHeader .navLink{color:var(--beige);}
-.navLink{position:relative;padding-bottom:4px;}
+.navLink{position:relative;}
 .navLink::after{
   content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
   background:currentColor;transition:width .3s var(--ease);
@@ -179,7 +182,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* MEGA MENU */
 .megaPanel{
-  opacity:0;visibility:hidden;transform:translateY(8px);
+  opacity:0;visibility:hidden;transform:translateY(8px); 
   transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
 }
 .megaTrigger:hover .megaPanel,
