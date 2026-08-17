@@ -55,27 +55,29 @@
 }
 </script>
 <style>
-  /* HERO */
-  .heroZoom {
-    animation: heroZoom 12s ease-out forwards;
+  /* ---- HERO SLIDESHOW: 4 SLIKE, CROSSFADE, ROTACIJA SVAKE 4S ---- */
+  .heroSlideshow{
+    position:absolute; inset:0; width:100%; height:100%;
   }
-
-  @keyframes heroZoom {
-    from {
-      transform: scale(1);
-    }
-
-    to {
-      transform: scale(1.20);
-    }
+  .heroSlide{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition: opacity 1.4s ease;
+    will-change: opacity, transform;
+    /* BLAGI KONTINUIRANI "DAH" — RADI NEZAVISNO OD SMJENE SLIDEOVA */
+    animation: heroSlideBreathe 22s ease-in-out infinite;
   }
-
-  /* TESTIMONIALS */
-  .testimonialSet {
-    display: flex;
-    flex: none;
-    gap: 2rem;
-    padding-right: 2rem;
+  .heroSlide.isActive{
+    opacity:1;
+    z-index:1;
+  }
+  @keyframes heroSlideBreathe{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .heroSlide{ transition:none; animation:none; }
   }
 </style>
 </head>
@@ -87,15 +89,17 @@
 <main id="mainContent">
 
 <section class="relative h-[100svh] min-h-[560px] overflow-hidden">
-  <img src="assets/pictures/herosection.jpg"
-     alt=""
-     role="presentation"
-     class="heroZoom parallaxImg absolute inset-0 w-full h-full object-cover">
-  <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/90 via-forestdeep/25 to-forestdeep/50"></div>
+  <div class="heroSlideshow" id="heroSlideshow" aria-hidden="true">
+    <img src="assets/pictures/herosection/herosection1.jpg" alt="" role="presentation" class="heroSlide isActive">
+    <img src="assets/pictures/herosection/herosection2.jpg" alt="" role="presentation" class="heroSlide">
+    <img src="assets/pictures/crvrsnica.jpg" alt="" role="presentation" class="heroSlide">
+    <img src="assets/pictures/bjelasnica.jpg" alt="" role="presentation" class="heroSlide">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/90 via-forestdeep/25 to-forestdeep/50" style="z-index:2;"></div>
 
   <div id="heroNextTour" aria-live="polite"></div>
 
-  <div class="relative h-full max-w-7xl mx-auto px-6 lg:px-10 flex flex-col justify-end pb-24 lg:pb-28">
+  <div class="relative h-full max-w-7xl mx-auto px-6 lg:px-10 flex flex-col justify-end pb-24 lg:pb-28" style="z-index:3;">
     <h1 class="font-display text-beige text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-7xl font-semibold max-w-3xl revealLeft revealDelay1">
       Planina se ne osvaja. Njoj se vraćaš.
     </h1>
@@ -294,6 +298,27 @@ Za prvog predsjednika Društva izabran je Halid Čokić, a među prvim članovim
 <div id="siteFooterRoot"></div>
 
 <script src="assets/script.js" defer></script>
+
+<script>
+  // ---- HERO SLIDESHOW: SMJENA SLIKA SVAKE 4 SEKUNDE (CROSSFADE) ----
+  (function () {
+    var wrap = document.getElementById("heroSlideshow");
+    if (!wrap) return;
+    var slides = wrap.querySelectorAll(".heroSlide");
+    if (slides.length < 2) return;
+
+    var current = 0;
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return; // NE ROTIRAJ AKO KORISNIK TRAŽI SMANJEN POKRET
+
+    setInterval(function () {
+      var next = (current + 1) % slides.length;
+      slides[current].classList.remove("isActive");
+      slides[next].classList.add("isActive");
+      current = next;
+    }, 4000);
+  })();
+</script>
 
 </body>
 </html>

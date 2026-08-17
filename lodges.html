@@ -10,27 +10,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 
-<!-- PRELOAD — TRAŽI OD BROWSERA DA OVE SLIKE POČNE PREUZIMATI ODMAH, PARALELNO
-     S OSTATKOM STRANICE, UMJESTO DA IH "OTKRIJE" TEK KAD DOĐE DO NJIH U HTML-U.
-     TO JE NAJVEĆI FAKTOR ZA SMANJENJE VIDLJIVOG "PRAZNOG" PERIODA NA SPORIJEM HOSTINGU. -->
-<link rel="preload" as="image" href="assets/pictures/lodge/lodgejavor.jpg" fetchpriority="high">
-<link rel="preload" as="image" href="assets/pictures/lodge/lodgevrsani.jpg" fetchpriority="high">
-
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          forest:'#3A2E1F', forestdeep:'#241C12', moss:'#B4622F',
-          beige:'#F6F3EE', stone:'#E2D5C0', charcoal:'#231E19',
-          alpenglow:'#C79A3D', rust:'#8B3A2B',
+          forest:'#184D3B', forestdeep:'#0E332A', moss:'#557A46',
+          beige:'#F6F3EE', stone:'#E7E5E2', charcoal:'#1E1E1E',
+          alpenglow:'#C97B3D', rust:'#8B3A2B',
           navy:'#0F5875', navydeep:'#02445E',
           brandred:'#DC292B', brandreddeep:'#A81F21',
           iceblue:'#51B1DB'
         },
         fontFamily: {
-          display:['Cormorant Garamond','serif'], sans:['Inter','system-ui','sans-serif'], mono:['IBM Plex Mono','monospace'], reading:['Newsreader','serif']
+          display: ['math'],
+          sans: ['math'],
+          mono: ['math']
         }
       }
     }
@@ -84,10 +80,7 @@
     box-shadow:0 1px 2px rgba(14,51,42,.05);
   }
 
-  /* PLACEHOLDER DOK SE SLIKA UČITAVA — NEUTRALNA TOPLA NIJANSA (BLIZU TONOVA
-     STVARNIH FOTOGRAFIJA) UMJESTO TAMNE, TAKO DA EVENTUALNI KRATKI ČEKANJE
-     NE UPADA U OČI KAO "PRAZAN TAMAN EKRAN" */
-  .domFlipFront{cursor:pointer;background:linear-gradient(160deg, var(--stone), #cbb99a);border:none;padding:0;display:block;width:100%;height:100%;text-align:left;}
+  .domFlipFront{cursor:pointer;background:var(--charcoal);border:none;padding:0;display:block;width:100%;height:100%;text-align:left;}
   .domFlipFront img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);}
   .domFlipCard:hover .domFlipFront img{transform:scale(1.045);}
   .domFlipGrad{position:absolute;inset:0;background:linear-gradient(to top, rgba(14,51,42,.92) 0%, rgba(14,51,42,.25) 46%, transparent 72%);pointer-events:none;}
@@ -98,7 +91,7 @@
 
   .domFlipBack{
     transform:rotateY(180deg);
-    background:#fff;
+    background:W#fff;
     border:1px solid var(--stone);
     display:flex;
   }
@@ -134,13 +127,11 @@
   }
   .domRevealDelay1{transition-delay:.25s;}
 
-  /* SLIKA — TRANZICIJA SKRAĆENA SA .9S NA .35S. UČITAVANJE SAMO PO SEBI OVIME
-     NE POSTAJE BRŽE, ALI ČIM SLIKA STIGNE, POJAVLJUJE SE GOTOVO TRENUTNO
-     UMJESTO SPOROG "RAZMAGLJIVANJA" — TAKO JE ČEKANJE MANJE PRIMJETNO. */
+  /* IMAGE ONLY FADES/UNBLURS IN ONCE FULLY LOADED — NEVER PAINTS HALF-DONE */
   .imgFade{
     opacity:0;
-    filter:blur(6px);
-    transition:opacity .35s var(--ease), filter .35s var(--ease);
+    filter:blur(10px);
+    transition:opacity .9s var(--ease), filter .9s var(--ease);
   }
   .imgFade.imgLoaded{
     opacity:1;
@@ -229,7 +220,7 @@
         <div class="domFlipInner">
 
           <button type="button" class="domFlipFace domFlipFront" data-flip-trigger aria-label="Prikaži podatke o domu Javorje" aria-expanded="false">
-            <img class="imgFade" src="assets/pictures/lodge/lodgejavor.jpg" alt="Planinarski dom Javorje na istočnim obroncima Konjuha" loading="eager" fetchpriority="high">
+            <img class="imgFade" src="assets/pictures/lodge/lodgejavor.jpg" alt="Planinarski dom Javorje na istočnim obroncima Konjuha" loading="lazy">
             <span class="domFlipGrad" aria-hidden="true"></span>
             <span class="domFlipFrontText">
               <h3>Javorje</h3>
@@ -272,7 +263,7 @@ Do Planinarskog doma Javorje iz sela Stupari vodi nekoliko obilježenih planinar
         <div class="domFlipInner">
 
           <button type="button" class="domFlipFace domFlipFront" data-flip-trigger aria-label="Prikaži podatke o domu Vršani" aria-expanded="false">
-            <img class="imgFade" src="assets/pictures/lodge/lodgevrsani.jpg" alt="Planinarska kuća Vršani, jugoistočno od Tuzle" loading="eager" fetchpriority="high">
+            <img class="imgFade" src="assets/pictures/lodge/lodgevrsani.jpg" alt="Planinarska kuća Vršani, jugoistočno od Tuzle" loading="lazy">
             <span class="domFlipGrad" aria-hidden="true"></span>
             <span class="domFlipFrontText">
               <h3>Vršani</h3>
@@ -325,6 +316,50 @@ Do Planinarskog doma Javorje iz sela Stupari vodi nekoliko obilježenih planinar
 
 
 <script src="assets/script.js" defer></script>
+<script>
+  // REVEAL THE INTRO AND THE PHOTO GRID AS THEY SCROLL INTO VIEW
+  // (ONCE, AS A WHOLE — NOT PER CARD).
+  var domObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('isVisible');
+        domObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.domReveal').forEach(function (el) { domObserver.observe(el); });
 
+  // FLIP CARDS: CLICK A PHOTO TO FLIP IT AND REVEAL THE DETAILS ON THE BACK;
+  // CLICK "NAZAD NA SLIKU" (OR FLIP THE SAME PHOTO AGAIN) TO TURN IT BACK.
+  document.querySelectorAll('[data-flip-card]').forEach(function (card) {
+    var trigger = card.querySelector('[data-flip-trigger]');
+    var closeBtn = card.querySelector('[data-flip-close]');
+
+    var setFlipped = function (flipped) {
+      card.classList.toggle('isFlipped', flipped);
+      if (trigger) trigger.setAttribute('aria-expanded', flipped ? 'true' : 'false');
+    };
+
+    if (trigger) {
+      trigger.addEventListener('click', function () {
+        setFlipped(!card.classList.contains('isFlipped'));
+      });
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () { setFlipped(false); });
+    }
+  });
+
+  // REVEAL EACH IMAGE ONLY ONCE FULLY LOADED, SO IT NEVER PAINTS
+  // HALF-FINISHED — IT FADES/UNBLURS IN SMOOTHLY INSTEAD.
+  document.querySelectorAll('.imgFade').forEach(function (img) {
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('imgLoaded');
+    } else {
+      img.addEventListener('load', function () { img.classList.add('imgLoaded'); });
+      img.addEventListener('error', function () { img.classList.add('imgLoaded'); });
+    }
+  });
+</script>
 </body>
 </html>
