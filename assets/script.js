@@ -17,12 +17,24 @@
     { key: "index", href: "index.html", label: "Naslovna" },
     { key: "about", href: "about.html", label: "O nama" },
     { key: "hikes", href: "hikes.html", label: "Ture" },
-{ key: "routes", href: "routes.html", label: "Staze" },
-    { key: "plan", href: "plan.html", label: "Plan i program" },
+// { key: "routes", href: "routes.html", label: "Staze" },
     { key: "domovi", href: "lodges.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Galerija" },
 
     { key: "contact", href: "contact.html", label: "Kontakt" }
+  ];
+
+  // SLJEDEĆI TERMINI ZA SVAKU TURU — KORISTI SE NA NASLOVNOJ (HERO "SLJEDEĆA TURA").
+  // VAŽNO: ako promijeniš/dodaš datum ovdje, promijeni ga i na odgovarajućoj
+  // kartici u hikes.html (data-date atribut + "Sljedeći termin" oznaka u kartici),
+  // da obje stranice ostanu usklađene.
+  var UPCOMING_TOURS = [
+    { id: "bjelasnica", title: "Bjelašnica", date: "2026-08-23", image: "assets/pictures/bjelasnica.jpg" },
+    { id: "prenj", title: "Prenj", date: "2026-08-30", image: "assets/pictures/prenj.jpg" },
+    { id: "velez", title: "Velež", date: "2026-09-06", image: "assets/pictures/velez.webp" },
+    { id: "cvrsnica", title: "Čvrsnica", date: "2026-09-20", image: "assets/pictures/crvrsnica.jpg" },
+    { id: "maglic", title: "Maglić", date: "2026-10-04", image: "assets/pictures/maglic.jpg" },
+    { id: "konjuh", title: "Konjuh", date: "2026-10-18", image: "assets/pictures/konjuh.webp" }
   ];
 
   var MEGA_PANEL_ITEMS = [
@@ -30,9 +42,8 @@
     { href: "hikes.html#cvrsnica", label: "Čvrsnica" },
     { href: "hikes.html#velez", label: "Velež" },
     { href: "hikes.html#maglic", label: "Maglić" },
-    { href: "hikes.html#maglic", label: "Maglić" },
     { href: "hikes.html#bjelasnica", label: "Bjelašnica" },
-    { href: "hikes.html#treskavica", label: "Treskavica" }
+    { href: "hikes.html#konjuh", label: "Konjuh" }
   ];
 
   var BRAND_MARK_SVG =
@@ -153,7 +164,7 @@
   }
 
   function buildFooter() {
-    var exploreItems = ["about", "hikes", "plan", "domovi", "gallery"]
+    var exploreItems = ["about", "hikes", "domovi", "gallery"]
       .map(function (key) {
         var item = NAV_ITEMS.filter(function (n) { return n.key === key; })[0];
         return '<li><a href="' + item.href + '" class="hover:text-beige">' + item.label + "</a></li>";
@@ -710,7 +721,94 @@
   }
 
   /* ==========================================================================
-     17. MEMBERSHIP PRICING TOGGLE (ANNUAL/MONTHLY)
+     17b. HERO — SLJEDEĆA TURA (NASLOVNA)
+     Ispisuje najbližu nadolazeću turu iz UPCOMING_TOURS (vidi vrh fajla) u
+     #heroNextTour, ako taj element postoji na stranici, i (ako postoji)
+     u glavni hero-box preko [data-hero-box] atributa — vidi initHeroBoxLink().
+     PRIKAZ JE SAMO TEKSTUALNA OBAVIJEST (bez slike) — vidi .heroNextTourCard
+     u style.css.
+     ========================================================================== */
+
+  function initHeroNextTour() {
+    var el = document.getElementById("heroNextTour");
+    var heroBox = document.querySelector("[data-hero-box]");
+    if (!el && !heroBox) return;
+
+    var MON_ABBR = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
+
+    function parseDate(d) {
+      var p = d.split("-");
+      return new Date(+p[0], +p[1] - 1, +p[2]);
+    }
+
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var next = null;
+
+    UPCOMING_TOURS.forEach(function (tour) {
+      var d = parseDate(tour.date);
+      if (d < today) return;
+      if (!next || d < next.dateObj) next = { id: tour.id, title: tour.title, dateObj: d };
+    });
+
+    if (!next) return;
+
+    var label = next.dateObj.getDate() + ". " + MON_ABBR[next.dateObj.getMonth()] + ".";
+
+    if (el) {
+      var arrowSvg =
+        '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+      el.innerHTML =
+        '<a href="hikes.html#' + next.id + '" class="heroNextTourCard">' +
+        '<span class="heroNextTourBody">' +
+        '<span class="eyebrow block">Sljedeća tura</span>' +
+        '<span class="heroNextTourTitle block">' + next.title + "</span>" +
+        '<span class="heroNextTourDate block">' + label + "</span>" +
+        '<span class="heroNextTourLink">Pogledaj turu ' + arrowSvg + "</span>" +
+        "</span>" +
+        "</a>";
+    }
+
+    // POVEŽI CIJELI HERO-BOX (GLAVNI HERO NA NASLOVNOJ) SA STRANICOM
+    // NAJBLIŽE NADOLAZEĆE TURE — VIDI initHeroBoxLink() ZA STVARNI KLIK/TIPKOVNICA HANDLER.
+    if (heroBox) {
+      heroBox.dataset.href = "hikes.html#" + next.id;
+      heroBox.classList.add("heroBoxLinked");
+      heroBox.setAttribute("role", "link");
+      heroBox.setAttribute("tabindex", "0");
+      heroBox.setAttribute("aria-label", "Otvori turu: " + next.title + ", sljedeći termin " + label);
+    }
+  }
+
+  /* ==========================================================================
+     17c. GLAVNI HERO — KLIK/TIPKOVNICA NAVIGACIJA NA [data-hero-box]
+     Cijeli hero-box je klikabilan (osim stvarnih <a>/<button> unutar njega,
+     kao npr. "Istraži ture" i kartica "Sljedeća tura", koji zadržavaju
+     svoje vlastito ponašanje). Href postavlja initHeroNextTour() gore.
+     ========================================================================== */
+
+  function initHeroBoxLink() {
+    document.querySelectorAll("[data-hero-box]").forEach(function (box) {
+      var go = function () {
+        var href = box.dataset.href;
+        if (href) location.href = href;
+      };
+      box.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest("a, button")) return;
+        go();
+      });
+      box.addEventListener("keydown", function (e) {
+        if ((e.key === "Enter" || e.key === " ") && !(e.target.closest && e.target.closest("a, button"))) {
+          e.preventDefault();
+          go();
+        }
+      });
+    });
+  }
+
+  /* ==========================================================================
+     17d. MEMBERSHIP PRICING TOGGLE (ANNUAL/MONTHLY)
      ========================================================================== */
 
   function initPlanToggle() {
@@ -884,6 +982,8 @@
     initFormFeedback();
     initGpxDownloads();
     initAccordion();
+    initHeroNextTour();
+    initHeroBoxLink();
     initPlanToggle();
     initGalleryReveal();
     initGalleryShowMore();
