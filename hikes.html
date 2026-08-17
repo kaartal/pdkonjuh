@@ -75,25 +75,58 @@
   .tourBadges{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
   .badgeNeutral{ background:rgba(85,122,70,.08); color:var(--moss); }
 
-  .tourChevron{ flex:none; }
+  .tourChevron{ flex:none; transition: transform .4s var(--ease); }
+
   .tourTrigger[aria-expanded="true"] .tourTitle{ color:var(--forest); }
 
-  .toursSection .accordionPanelInner{ max-width:none; padding: 0 18px 26px; }
-  .toursSection .accordionPanel{ border-top:1px solid var(--stone); }
+  /* ---- PANEL: MEKŠA TRANZICIJA VISINE + BLAGA POZADINA KOJA GA IZDVAJA ---- */
+  .toursSection .accordionPanel{
+    border-top:1px solid var(--stone);
+    background: rgba(24,77,59,.02);
+    transition: max-height .55s cubic-bezier(.22,1,.36,1);
+  }
+  .toursSection .accordionPanelInner{ max-width:none; padding: 26px 22px 30px; }
 
-  .tourDesc{ color:rgba(30,30,30,.75); line-height:1.75; margin: 18px 0 20px; max-width:100%; }
+  /* ---- ANIMACIJA OTVARANJA: SADRŽAJ UPLIVA ODOZGO SA BLAGIM ZAKAŠNJENJEM
+     U ODNOSU NA ŠIRENJE VISINE PANELA, PA DJELUJE SMIRENO UMJESTO NAGLO ---- */
+  .toursSection .accordionPanelInner{
+    opacity:0;
+    transform: translate3d(0,-14px,0);
+    transition: opacity .5s var(--ease) .08s, transform .5s var(--ease) .08s;
+    will-change: opacity, transform;
+  }
+  .toursSection .tourTrigger[aria-expanded="true"] + .accordionPanel .accordionPanelInner{
+    opacity:1;
+    transform: translate3d(0,0,0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .toursSection .accordionPanelInner,
+    .toursSection .accordionPanel,
+    .tourChevron{ transition:none; }
+  }
 
-  .tourMetaGrid{ display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px 24px; margin-bottom:24px; }
+  /* ---- TEKST UNUTAR PANELA — SANS-SERIF (INTER), ODVOJEN OD NASLOVA
+     KOJI OSTAJU U FRAUNCES SERIFU. TAJ KONTRAST DAJE UREĐIVAČKI IZGLED. ---- */
+  .tourDesc,
+  .tourItinerary p,
+  .tourMetaGrid dd,
+  .tourNoteBox,
+  .tourPanelActions{
+    font-family:'Inter', system-ui, sans-serif;
+  }
+
+  .tourDesc{ color:rgba(30,30,30,.75); line-height:1.8; font-size:.97rem; margin: 0 0 22px; max-width:100%; }
+
+  .tourMetaGrid{ display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 24px; margin-bottom:26px; }
   @media (max-width:560px){ .tourMetaGrid{ grid-template-columns:1fr; } }
-  /* NASLOVI U META-MREŽI — PRIRODAN TEKST (BEZ UPPERCASE/MONO), SAMO ISTAKNUT
-     BOJOM I TEŽINOM FONTA, TAKO DA IZGLEDA KAO PISANO A NE KAO UI ŠABLON */
+  /* NASLOVI U META-MREŽI — ZADRŽANI U FRAUNCES SERIFU KAO LABELE */
   .tourMetaGrid dt{ font-family:'Fraunces',serif; font-size:.82rem; font-weight:600; font-style:italic; color:var(--moss); margin-bottom:3px; }
-  .tourMetaGrid dd{ font-size:.95rem; color:var(--charcoal); margin:0; }
+  .tourMetaGrid dd{ font-size:.92rem; line-height:1.5; color:var(--charcoal); margin:0; }
 
   .tourPanelActions{ display:flex; flex-wrap:wrap; gap:12px; }
 
-  /* ---- PLAN PUTA (DAN PO DAN) ---- */
-  .tourItinerary{ margin: 4px 0 26px; padding:0; list-style:none; }
+  /* ---- PLAN PUTA (DAN PO DAN) — TIMELINE OSTAJE ISTI ---- */
+  .tourItinerary{ margin: 4px 0 28px; padding:0; list-style:none; }
   .tourItinerary li{
     position:relative; padding: 0 0 18px 26px; border-left:2px solid var(--stone);
   }
@@ -102,15 +135,15 @@
     content:""; position:absolute; left:-6px; top:2px; width:10px; height:10px; border-radius:50%;
     background:var(--forest); border:2px solid var(--beige);
   }
-  /* DATUMI U PLANU PUTA — PRIRODAN TEKST UMJESTO UPPERCASE MONOSPACE OZNAKE */
+  /* DATUMI U PLANU PUTA — FRAUNCES SERIF, KAO NASLOV STAVKE */
   .tourItineraryDay{ font-family:'Fraunces',serif; font-size:.9rem; font-weight:600; color:var(--forest); margin-bottom:4px; }
-  .tourItinerary p{ font-size:.92rem; line-height:1.65; color:rgba(30,30,30,.72); margin:0; }
+  .tourItinerary p{ font-size:.9rem; line-height:1.7; color:rgba(30,30,30,.72); margin:0; }
 
   .tourNoteBox{
     background:rgba(201,123,61,.08); border:1px solid rgba(201,123,61,.25); border-radius:12px;
-    padding:16px 18px; margin-bottom:24px; font-size:.88rem; line-height:1.65; color:rgba(30,30,30,.78);
+    padding:16px 18px; margin-bottom:24px; font-size:.87rem; line-height:1.7; color:rgba(30,30,30,.78);
   }
-  .tourNoteBox strong{ color:var(--rust); }
+  .tourNoteBox strong{ font-family:'Inter', sans-serif; color:var(--rust); }
 
   /* Prazno stanje (ako se ubuduće doda pretraga/filter) */
   .toursEmpty{ text-align:center; padding: clamp(28px,5vw,44px) 20px; color: rgba(30,30,30,.6); }
@@ -125,13 +158,16 @@
     body.supportsDark .tourTitle{ color:var(--beige); }
     body.supportsDark .tourTrigger[aria-expanded="true"] .tourTitle{ color:var(--beige); }
     body.supportsDark .tourTeaser{ color:rgba(246,243,238,.6); }
-    body.supportsDark .toursSection .accordionPanel{ border-top-color:#02445e; }
+    body.supportsDark .toursSection .accordionPanel{ border-top-color:#02445e; background:rgba(246,243,238,.03); }
     body.supportsDark .tourDesc{ color:rgba(246,243,238,.75); }
     body.supportsDark .tourMetaGrid dd{ color:var(--beige); }
     body.supportsDark .tourItinerary li{ border-left-color:rgba(246,243,238,.16); }
     body.supportsDark .tourItinerary p{ color:rgba(246,243,238,.65); }
     body.supportsDark .tourNoteBox{ background:rgba(201,123,61,.12); border-color:rgba(201,123,61,.3); color:rgba(246,243,238,.75); }
   }
+  .aboutHero .scrollCue{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;color:rgba(255,255,255,.5);animation:onBob 2.6s ease-in-out infinite;}
+  .aboutHero .scrollArrow{width:22px;height:28px;stroke:currentColor;}
+  
 </style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
@@ -141,29 +177,50 @@
 
 <main id="mainContent">
 
-<!-- HERO -->
-<div class="aboutSection">
-  <div class="aboutHero">
-    <section class="hero">
-      <img class="heroBg"
-        src="assets/pictures/footer/footer6.jpg"
-        alt="Kameni stupovi Hajdučkih vrata na Čvrsnici" loading="eager" fetchpriority="high">
 
-      <div class="heroOv1" aria-hidden="true"></div>
-      <div class="heroOv2" aria-hidden="true"></div>
 
-      <div class="heroContent">
-        <h1>Ture</h1>
-        <p class="heroSub">Odaberi turu, pogledaj detalje i pridruži nam se.</p>
-      </div>
-      <div class="scrollCue" aria-hidden="true">
-        <svg class="scrollArrow" viewBox="0 0 24 24" fill="none">
-          <path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </div>
-    </section>
-  </div>
+
+
+
+
+
+
+<div class="aboutHero">
+  <section class="hero">
+    <img
+      class="heroBg"
+      src="assets/pictures/footer/footer6.jpg"
+      alt="Planinarski dom na Konjuhu u magli"
+      loading="eager"
+      fetchpriority="high"
+    >
+    <div class="heroOv1" aria-hidden="true"></div>
+    <div class="heroOv2" aria-hidden="true"></div>
+
+    <div class="heroContent">
+      <h1>Ture</h1>
+      <p class="heroSub">Odaberi turu, pogledaj detalje i pridruži nam se.</p>
+    </div>
+    <div class="scrollCue" aria-hidden="true">
+      <svg class="scrollArrow" viewBox="0 0 24 24" fill="none"><path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- TURE -->
 <section class="toursSection">

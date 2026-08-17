@@ -251,9 +251,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
    NIJE DOSTUPNA, JS SE VRAĆA NA STARI ČISTO TEKSTUALNI PRIKAZ. */
 .heroNextTourCard{
   position:absolute;
-  top:32px; right:2rem;
+  bottom:32px; right:2rem;
   z-index:5;
-  width:280px;
+  width:300px;
   display:flex;
   flex-direction:column;
   overflow:hidden;
@@ -270,7 +270,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     inset 0 1px 0 rgba(255,255,255,.08);
   opacity:0; transform:translate3d(28px,0,0);
   animation:heroNextTourIn .9s var(--ease) both;
-  animation-delay:1.05s;
+  animation-delay:0.75s;
   transition:transform .35s var(--ease), box-shadow .35s var(--ease);
 }
 .heroNextTourCard:hover{
@@ -402,7 +402,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* ---- HERO TEXT: LEFT-TO-RIGHT ENTRANCE (SHORTER TRAVEL = SMOOTHER) ------- */
 .revealLeft{
   opacity:0;transform:translate3d(-32px,0,0);
-  transition:opacity .9s var(--ease), transform .9s var(--ease);
+  transition:opacity 1.4s var(--ease), transform 1.9s var(--ease);
   will-change:opacity, transform;
   backface-visibility:hidden;
 }
