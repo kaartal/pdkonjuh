@@ -164,7 +164,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 
 .siteHeader .brandMark{color:var(--beige);}
-.siteHeader .navLink{color:var(--beige);}
+.siteHeader .navLink{color:var(--beige); font-size:18px;}
 .navLink{position:relative;}
 .navLink::after{
   content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
@@ -243,12 +243,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .heroBoxEyebrow{color:var(--iceblue);}
 
 /* ---- HERO "SLJEDEĆA TURA" KARTICA — DIJELI SE NA INDEX.HTML I HIKES.HTML --------- */
-/* PLIVA UZ DESNU IVICU HERO SEKCIJE, ISPOD FIKSNOG HEADERA. UBACUJE JE JS
-   (initHeroNextTour U SCRIPT.JS) U #heroNextTour, PA SE NE OSLANJA NA
-   SCROLL-REVEAL SISTEM VEĆ IMA SVOJU CSS ANIMACIJU ULASKA.
-   KARTICA SADA IMA SLIKU TURE NA VRHU (AKO JE DEFINISANA U UPCOMING_TOURS
-   U script.js) SA STAKLENIM BEDŽOM "SLJEDEĆA TURA" PREKO NJE. AKO SLIKA
-   NIJE DOSTUPNA, JS SE VRAĆA NA STARI ČISTO TEKSTUALNI PRIKAZ. */
+/* NA DESKTOPU PLIVA UZ DESNU IVICU HERO SEKCIJE, ISPOD FIKSNOG HEADERA.
+   UBACUJE JE JS (initHeroNextTour U SCRIPT.JS) U #heroNextTour, PA SE NE
+   OSLANJA NA SCROLL-REVEAL SISTEM VEĆ IMA SVOJU CSS ANIMACIJU ULASKA.
+   KARTICA IMA SLIKU TURE NA VRHU (AKO JE DEFINISANA U UPCOMING_TOURS U
+   script.js) SA STAKLENIM BEDŽOM "SLJEDEĆA TURA" PREKO NJE. AKO SLIKA
+   NIJE DOSTUPNA, JS SE VRAĆA NA STARI ČISTO TEKSTUALNI PRIKAZ.
+   NA TABLETU/MOBITELU (VIDI MEDIA QUERY NIŽE) KARTICA VIŠE NIJE SKRIVENA —
+   PRELAZI IZ position:absolute U NORMALNI TOK, PREKO CIJELE ŠIRINE, ISPOD
+   HERO TEKSTA, KAKO BI OSTALA VIDLJIVA I NA MANJIM UREĐAJIMA. */
 .heroNextTourCard{
   position:absolute;
   bottom:32px; right:2rem;
@@ -319,18 +322,40 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .heroNextTourBody{ padding:16px 20px 20px; }
 .heroNextTourBody .eyebrow{ color:var(--iceblue); }
-.heroNextTourTitle{ font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem; letter-spacing:-.01em; color:var(--beige); line-height:1.15; margin:2px 0 6px; }
-.heroNextTourDate{ font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.02em; color:rgba(246,243,238,.6); margin-bottom:12px; }
-.heroNextTourLink{ display:inline-flex; align-items:center; gap:7px; font-family:'Inter',sans-serif; font-weight:600; font-size:.83rem; color:var(--iceblue); }
+.heroNextTourTitle{ font-family:'math'; font-weight:600; font-size:1.5rem; letter-spacing:-.01em; color:var(--beige); line-height:1.15; margin:2px 0 6px; }
+.heroNextTourDate{ font-family:'math'; font-size:.86rem; letter-spacing:.02em; color:rgba(246,243,238,.6); margin-bottom:12px; }
+.heroNextTourLink{ display:inline-flex; align-items:center; gap:7px; font-family:'math'; font-weight:600; font-size:.83rem; color:var(--iceblue); }
 .heroNextTourLink svg{ transition:transform .3s var(--ease); }
-.heroNextTourCard:hover .heroNextTourLink svg{ transform:translateX(3px); }
+.heroNextTourCard:hover .heroNextTourLink svg{  }
 
-@media (max-width:1024px){
-  .heroNextTourCard{ display:none; }
-}
 @media (prefers-reduced-motion: reduce){
   .heroNextTourCard{ animation:none; opacity:1; transform:none; }
 }
+
+/* ---- RESPONZIVNO: TABLET/MOBITEL — KARTICA IZLAZI IZ ABSOLUTE POZICIJE
+   I ULAZI U NORMALNI TOK, PREKO CIJELE ŠIRINE HERO KUTIJE, ISPOD TEKSTA,
+   UMJESTO DA SE POTPUNO SAKRIJE (RANIJE: display:none NA OVOM BREAKPOINTU) --- */
+@media(max-width:1024px){
+  .heroNextTourCard{
+    position:static;
+    width:100%;
+    max-width:420px;
+    margin:20px auto 0;
+    bottom:auto; right:auto;
+    animation:none;           /* NA MOBITELU/TABLETU ODMAH VIDLJIVA, BEZ SLIDE-IN KAŠNJENJA */
+    opacity:1;
+    transform:none;
+  }
+  .heroNextTourImg{ height:104px; }
+  .heroNextTourBody{ padding:14px 18px 18px; }
+  .heroNextTourTitle{ font-size:1.3rem; }
+}
+
+@media(max-width:479px){
+  .heroNextTourCard{ max-width:100%; border-radius:18px; }
+  .heroNextTourImg{ height:96px; }
+}
+
 /* ---- HIKE CARDS (UPCOMING HIKES) — FULLY STATIC, NO HOVER ANIMATION ----- */
 .hikeCard{
   border:1px solid var(--stone);
@@ -363,7 +388,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .featureCardTitle{
   position:relative;z-index:1;
-  font-family:'Fraunces',Georgia,serif;font-size:1.08rem;font-weight:600;
+  font-family:'math';font-size:1.8rem;font-weight:600;
   margin-bottom:.5rem;color:var(--beige);
 }
 .featureCardText{
@@ -372,12 +397,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 
 /* ---- CARDS / HOVER LIFT -------------------------------------------------- */
-.lift{transition:transform .45s var(--ease), box-shadow .45s var(--ease);}
+.lift{transition:transform .15s var(--ease), box-shadow .45s var(--ease);}
 .lift:hover{transform:translateY(-6px);box-shadow:0 24px 48px -22px rgba(14,51,42,.35);}
 
 .imgZoom{overflow:hidden;}
 .imgZoom img{transition:transform 1.4s var(--ease);}
-.imgZoom:hover img{transform:scale(1.14);}
+.imgZoom:hover img{transform:scale(1.44);}
 
 /* ---- SCROLL REVEAL -------------------------------------------------------- */
 .reveal{
@@ -551,10 +576,9 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 /* ---- UTILITY: EYEBROW LABEL ------------------------------------------------ */
 .eyebrow{
   font-family:'Inter',sans-serif;
-  font-size:.70rem;
+  font-size:.90rem;
   font-weight:600;
   letter-spacing:.12em;
-  text-transform:uppercase;
   color:var(--moss);
 }
 
@@ -838,7 +862,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   .aboutHero .heroBadgeDot{width:6px;height:6px;border-radius:50%;background:var(--amb);display:inline-block;}
   .aboutHero .heroBadgeText{font-family:'Fraunces', serif;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);}
   .aboutHero .heroBtns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-  .aboutHero .btnPrimary{display:inline-flex;align-items:center;gap:8px;background:var(--ol);color:#fff;padding:13px 30px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.93rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s;}
+  .aboutHero .btnPrimary{display:inline-flex;align-items:center;gap:8px;background:var(--ol);color:#fff;padding:13px 30px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.43rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s;}
   .aboutHero .btnPrimary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.4);background:var(--ol2);}
   .aboutHero .btnGhost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;padding:13px 30px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.93rem;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(6px);transition:background .25s;}
   .aboutHero .btnGhost:hover{background:rgba(255,255,255,.22);}

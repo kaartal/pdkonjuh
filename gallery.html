@@ -109,6 +109,15 @@
   .galleryItemHidden{
     display:none !important;
   }
+  /* ITEMS HELD BACK UNTIL "PRIKAŽI VIŠE" JE KLIKNUT */
+  .galleryItemMoreHidden{
+    display:none !important;
+  }
+
+  /* "PRIKAŽI VIŠE" DUGME */
+  #alpinismMoreBtn.hidden{
+    display:none !important;
+  }
 
   /* ============================================================ */
   /* LIGHTBOX WITH SWIPE / ARROW NAVIGATION */
@@ -223,213 +232,423 @@
   <div class="max-w-6xl mx-auto">
 
     <div id="categoryBar" class="categoryBar" role="tablist" aria-label="Filter galerije po kategoriji">
-      <button type="button" class="categoryBtn isActive" data-filter="javorje" role="tab" aria-selected="true">Planinarski dom Javorje</button>
-      <button type="button" class="categoryBtn" data-filter="vrsani" role="tab" aria-selected="false">Planinarski dom Vršani</button>
-      <button type="button" class="categoryBtn" data-filter="kraljica" role="tab" aria-selected="false">Planinarski dom Kraljica</button>
-      <button type="button" class="categoryBtn" data-filter="alpinizmavisokogorstvo" role="tab" aria-selected="false">Alpinizam i visokogorstvo</button>
-      <button type="button" class="categoryBtn" data-filter="orijentiring" role="tab" aria-selected="false">Orijentiring</button>
-      <button type="button" class="categoryBtn" data-filter="speologija" role="tab" aria-selected="false">Speologija</button>
-    </div>
+  <button type="button" class="categoryBtn isActive" data-filter="alpinism" role="tab" aria-selected="true">
+    Alpinizam i visokogorstvo
+  </button>
 
+  <button type="button" class="categoryBtn" data-filter="javorje" role="tab" aria-selected="false">
+    Planinarski dom Javorje
+  </button>
+
+  <button type="button" class="categoryBtn" data-filter="vrsani" role="tab" aria-selected="false">
+    Planinarski dom Vršani
+  </button>
+
+  <button type="button" class="categoryBtn" data-filter="kraljica" role="tab" aria-selected="false">
+    Planinarski dom Kraljica
+  </button>
+
+  <button type="button" class="categoryBtn" data-filter="orijentiring" role="tab" aria-selected="false">
+    Orijentiring
+  </button>
+
+  <button type="button" class="categoryBtn" data-filter="speologija" role="tab" aria-selected="false">
+    Speologija
+  </button>
+</div>
     <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-4 auto-rows-[170px] sm:auto-rows-[200px] gap-4 grid-flow-dense">
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery1.jpg" data-category="staze"
+      <!-- ===================== PLANINARSKI DOM JAVORJE ===================== -->
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje1.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kolona planinara na stazi">
-        <img src="assets/pictures/Gallery/gallery1.jpg" alt="Kolona planinara na stazi" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje1.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery2.jpg" data-category="kamp"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje2.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Logorska vatra uveče na planinarskom domu">
-        <img src="assets/pictures/Gallery/gallery2.jpg" alt="Logorska vatra uveče na planinarskom domu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje2.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery5.jpg" data-category="staze"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje3.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Šumska staza obasjana suncem">
-        <img src="assets/pictures/Gallery/gallery5.jpg" alt="Šumska staza obasjana suncem" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje3.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery8.jpg" data-category="vrhovi"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje4.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled sa vrha Maglića na Trnovačko jezero">
-        <img src="assets/pictures/Gallery/gallery8.jpg" alt="Pogled sa vrha Maglića na Trnovačko jezero" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje4.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery4.jpg" data-category="kamp"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje5.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski dom na Treskavici u magli">
-        <img src="assets/pictures/Gallery/gallery4.jpg" alt="Planinarski dom na Treskavici u magli" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje5.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery3.jpg" data-category="kamp"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje6.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Detalj planinarske opreme i mape">
-        <img src="assets/pictures/Gallery/gallery3.jpg" alt="Detalj planinarske opreme i mape" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje6.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery6.jpg" data-category="vrhovi"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje7.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama planinskih vrhova pri izlasku sunca">
-        <img src="assets/pictures/Gallery/gallery6.jpg" alt="Panorama planinskih vrhova pri izlasku sunca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje7.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery12.jpg" data-category="vrhovi"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/javorje/javorje8.jpg" data-category="javorje"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinski pejzaž u smiraj dana">
-        <img src="assets/pictures/Gallery/gallery12.jpg" alt="Planinski pejzaž u smiraj dana" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/javorje/javorje8.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery11.jpg" data-category="staze"
+      <!-- ===================== PLANINARSKI DOM VRŠANI ===================== -->
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/vrsani/lodgevrsani.jpg" data-category="vrsani"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Uspon prema vrhu kroz kamenjar">
-        <img src="assets/pictures/Gallery/gallery11.jpg" alt="Uspon prema vrhu kroz kamenjar" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/vrsani/lodgevrsani.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery13.jpg" data-category="priroda"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/vrsani/vrsani1.jpg" data-category="vrsani"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Odmor uz izvor planinske vode">
-        <img src="assets/pictures/Gallery/gallery13.jpg" alt="Odmor uz izvor planinske vode" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/vrsani/vrsani1.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery9.jpg" data-category="vrhovi"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/lodge/vrsani/vrsani2.jpg" data-category="vrsani"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na dolinu s vrha">
-        <img src="assets/pictures/Gallery/gallery9.jpg" alt="Pogled na dolinu s vrha" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/lodge/vrsani/vrsani2.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery10.jpg" data-category="staze"
+      <!-- ===================== ALPINIZAM I VISOKOGORSTVO ===================== -->
+      <!-- Prvih 20 slika (alpinism1–21, uz preskočeni alpinism8) prikazano je odmah,
+           sa različitim col-span/row-span formatima. Ostatak (alpinism22–36, uključujući
+           5 novih slika 32–36) skriven je klasom "galleryItemMoreHidden" i otkriva se
+           klikom na dugme "Prikaži više" ispod grida. -->
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism1.jpg" data-category="alpinism"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Grupa planinara na markiranoj stazi">
-        <img src="assets/pictures/Gallery/gallery10.jpg" alt="Grupa planinara na markiranoj stazi" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism1.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery14.jpg" data-category="priroda"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism2.jpg" data-category="alpinism"
         class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Jutarnja magla iznad šume">
-        <img src="assets/pictures/Gallery/gallery14.jpg" alt="Jutarnja magla iznad šume" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism2.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery15.jpg" data-category="vrhovi"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism3.jpg" data-category="alpinism"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Zalazak sunca iznad planinskog lanca">
-        <img src="assets/pictures/Gallery/gallery15.jpg" alt="Zalazak sunca iznad planinskog lanca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism3.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery16.jpg" data-category="kamp"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism4.jpg" data-category="alpinism"
         class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Priprema opreme prije polaska">
-        <img src="assets/pictures/Gallery/gallery16.jpg" alt="Priprema opreme prije polaska" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism4.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery17.jpg" data-category="vrhovi"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism5.jpg" data-category="alpinism"
         class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Snijeg na vrhu kasno u proljeće">
-        <img src="assets/pictures/Gallery/gallery17.jpg" alt="Snijeg na vrhu kasno u proljeće" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism5.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery18.jpg" data-category="priroda"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism6.jpg" data-category="alpinism"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Cvjetna livada na planinskom platou">
-        <img src="assets/pictures/Gallery/gallery18.jpg" alt="Cvjetna livada na planinskom platou" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism6.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery25.jpg" data-category="kamp"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism7.jpg" data-category="alpinism"
         class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Kamp na proplanku uz vatru">
-        <img src="assets/pictures/Gallery/gallery25.jpg" alt="Kamp na proplanku uz vatru" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism7.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery19.jpg" data-category="vrhovi"
-        class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism9.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Pogled na jezero s vidikovca">
-        <img src="assets/pictures/Gallery/gallery19.jpg" alt="Pogled na jezero s vidikovca" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism9.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery20.jpg" data-category="staze"
-        class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism10.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Strma staza kroz borovu šumu">
-        <img src="assets/pictures/Gallery/gallery20.jpg" alt="Strma staza kroz borovu šumu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism10.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery21.jpg" data-category="kamp"
-        class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism11.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Planinarski štap i mapa na stijeni">
-        <img src="assets/pictures/Gallery/gallery21.jpg" alt="Planinarski štap i mapa na stijeni" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism11.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery22.jpg" data-category="priroda"
-        class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism12.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Rosa na travi u ranu zoru">
-        <img src="assets/pictures/Gallery/gallery22.jpg" alt="Rosa na travi u ranu zoru" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism12.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery23.jpg" data-category="staze"
-        class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism13.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Skupina na odmorištu uz stazu">
-        <img src="assets/pictures/Gallery/gallery23.jpg" alt="Skupina na odmorištu uz stazu" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism13.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
       </button>
 
-      <button type="button" data-gallery-lightbox data-full="assets/pictures/Gallery/gallery24.jpg" data-category="vrhovi"
-        class="galleryItem galleryReveal galleryItemExtra hidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism14.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
         aria-label="Otvori sliku: Panorama vrhova u sumrak">
-        <img src="assets/pictures/Gallery/gallery24.jpg" alt="Panorama vrhova u sumrak" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <img src="assets/pictures/gallery/alpinism/alpinism14.jpg"  loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
         <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism15.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 15">
+        <img src="assets/pictures/gallery/alpinism/alpinism15.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism16.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 16">
+        <img src="assets/pictures/gallery/alpinism/alpinism16.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism17.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 17">
+        <img src="assets/pictures/gallery/alpinism/alpinism17.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism18.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 18">
+        <img src="assets/pictures/gallery/alpinism/alpinism18.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism19.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 19">
+        <img src="assets/pictures/gallery/alpinism/alpinism19.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism20.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 20">
+        <img src="assets/pictures/gallery/alpinism/alpinism20.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism21.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 21">
+        <img src="assets/pictures/gallery/alpinism/alpinism21.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <!-- ============ OD OVDJE NADALJE: SKRIVENO DOK SE NE KLIKNE "PRIKAŽI VIŠE" ============ -->
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism22.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 22">
+        <img src="assets/pictures/gallery/alpinism/alpinism22.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism23.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 23">
+        <img src="assets/pictures/gallery/alpinism/alpinism23.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism24.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 24">
+        <img src="assets/pictures/gallery/alpinism/alpinism24.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism25.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 25">
+        <img src="assets/pictures/gallery/alpinism/alpinism25.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism26.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 26">
+        <img src="assets/pictures/gallery/alpinism/alpinism26.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism27.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 27">
+        <img src="assets/pictures/gallery/alpinism/alpinism27.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism28.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 28">
+        <img src="assets/pictures/gallery/alpinism/alpinism28.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism29.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 29">
+        <img src="assets/pictures/gallery/alpinism/alpinism29.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism30.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 30">
+        <img src="assets/pictures/gallery/alpinism/alpinism30.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism31.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 31">
+        <img src="assets/pictures/gallery/alpinism/alpinism31.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <!-- ============ 5 NOVIH SLIKA ============ -->
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism32.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 32">
+        <img src="assets/pictures/gallery/alpinism/alpinism32.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism33.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-2 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 33">
+        <img src="assets/pictures/gallery/alpinism/alpinism33.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism34.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-2 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 34">
+        <img src="assets/pictures/gallery/alpinism/alpinism34.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism35.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-1 row-span-1 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 35">
+        <img src="assets/pictures/gallery/alpinism/alpinism35.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-3 left-3 right-3 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+      <button type="button" data-gallery-lightbox data-full="assets/pictures/gallery/alpinism/alpinism36.jpg" data-category="alpinism"
+        class="galleryItem galleryReveal galleryItemMoreHidden group relative col-span-2 row-span-2 rounded-2xl overflow-hidden"
+        aria-label="Otvori sliku: Opis slike 36">
+        <img src="assets/pictures/gallery/alpinism/alpinism36.jpg" loading="lazy" class="imgFade w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <span class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span class="absolute bottom-4 left-4 right-4 text-left text-beige opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+
+    </div>
+
+    <div id="alpinismMoreWrap" class="mt-8 flex justify-center">
+      <button type="button" id="alpinismMoreBtn" class="categoryBtn hidden">
+        Prikaži više
       </button>
     </div>
 
-    <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <button type="button" id="galleryShowMoreButton" class="inline-flex items-center gap-2 bg-forest text-beige px-6 py-3 rounded-full text-sm font-semibold hover:bg-forestdeep transition-colors">
-        Prikaži više
-      </button>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
       <a href="https://www.instagram.com/pdkonjuh/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-forest px-6 py-3 rounded-full text-sm font-semibold hover:bg-forest hover:text-beige transition-colors">
         Pogledaj na Instagramu
       </a>
@@ -491,27 +710,8 @@
     galleryObserver.observe(el);
   });
 
-  // NEWLY REVEALED IMAGES (.GALLERYITEMEXTRA) NEED TO BE RE-OBSERVED AFTER
-  // "PRIKAŽI VIŠE" IS CLICKED, SINCE THEY WERE display:none DURING THE
-  // OBSERVER'S FIRST PASS AND COULDN'T BE FLAGGED AS VISIBLE THEN.
-  var showMoreBtn = document.getElementById('galleryShowMoreButton');
-  var showMoreClicked = false;
-  if (showMoreBtn) {
-    showMoreBtn.addEventListener('click', function () {
-      showMoreClicked = true;
-      setTimeout(function () {
-        document.querySelectorAll('.galleryItemExtra:not(.hidden)').forEach(function (el, i) {
-          if (!el.classList.contains('isVisible')) {
-            el.style.transitionDelay = ((i % 6) * 0.09) + 's';
-            galleryObserver.observe(el);
-          }
-        });
-      }, 0);
-    });
-  }
-
   // ============================================================
-  // KATEGORIJE — FILTRIRANJE GALERIJE PO 4 KATEGORIJE + "SVE"
+  // KATEGORIJE — FILTRIRANJE GALERIJE PO KATEGORIJI + "SVE"
   // ============================================================
   (function () {
     var categoryBar = document.getElementById('categoryBar');
@@ -519,11 +719,35 @@
 
     var categoryButtons = Array.prototype.slice.call(categoryBar.querySelectorAll('.categoryBtn'));
     var allItems = Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .galleryItem'));
-    var currentFilter = 'sve';
+
+    // "PRIKAŽI VIŠE" ZA ALPINIZAM
+    var moreBtn = document.getElementById('alpinismMoreBtn');
+    var alpinismExpanded = false;
+
+    function updateMoreButton(filter) {
+      if (!moreBtn) return;
+      if (filter === 'alpinism' && !alpinismExpanded) {
+        moreBtn.classList.remove('hidden');
+      } else {
+        moreBtn.classList.add('hidden');
+      }
+    }
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        var hiddenItems = document.querySelectorAll('#galleryGrid .galleryItemMoreHidden');
+        hiddenItems.forEach(function (item) {
+          item.classList.remove('galleryItemMoreHidden');
+          if (!item.classList.contains('isVisible')) {
+            item.classList.add('isVisible');
+          }
+        });
+        alpinismExpanded = true;
+        moreBtn.classList.add('hidden');
+      });
+    }
 
     function applyFilter(filter) {
-      currentFilter = filter;
-
       categoryButtons.forEach(function (btn) {
         var active = btn.dataset.filter === filter;
         btn.classList.toggle('isActive', active);
@@ -531,31 +755,18 @@
       });
 
       allItems.forEach(function (item) {
-        var isExtra = item.classList.contains('galleryItemExtra');
-
         if (filter === 'sve') {
-          // Vrati na podrazumijevano stanje: osnovne slike vidljive,
-          // "extra" slike vidljive samo ako je "Prikaži više" već kliknuto.
-          if (isExtra) {
-            item.classList.toggle('hidden', !showMoreClicked);
-          } else {
-            item.classList.remove('hidden');
-          }
           item.classList.remove('galleryItemHidden');
         } else {
           var matches = item.dataset.category === filter;
           item.classList.toggle('galleryItemHidden', !matches);
-          if (matches && !item.classList.contains('isVisible')) {
+          if (matches && !item.classList.contains('isVisible') && !item.classList.contains('galleryItemMoreHidden')) {
             item.classList.add('isVisible');
           }
         }
       });
 
-      // Kad je aktivan filter kategorije, dugme "Prikaži više" nema smisla
-      // jer se sve slike te kategorije već prikazuju odjednom.
-      if (showMoreBtn) {
-        showMoreBtn.style.display = (filter === 'sve') ? '' : 'none';
-      }
+      updateMoreButton(filter);
     }
 
     categoryButtons.forEach(function (btn) {
@@ -563,6 +774,9 @@
         applyFilter(btn.dataset.filter);
       });
     });
+
+    // POČETNO STANJE (AKTIVNA KATEGORIJA JE "JAVORJE", PA JE DUGME SAKRIVENO)
+    updateMoreButton('javorje');
   })();
 
   // ============================================================
@@ -582,7 +796,7 @@
     function getVisibleTriggers() {
       return Array.prototype.slice.call(document.querySelectorAll('#galleryGrid [data-gallery-lightbox]'))
         .filter(function (el) {
-          return !el.classList.contains('hidden') && !el.classList.contains('galleryItemHidden');
+          return !el.classList.contains('galleryItemHidden') && !el.classList.contains('galleryItemMoreHidden');
         });
     }
 

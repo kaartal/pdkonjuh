@@ -18,24 +18,17 @@
     theme: {
       extend: {
         colors: {
-          forest: '#184D3B',
-          forestdeep: '#0E332A',
-          moss: '#557A46',
-          beige: '#F6F3EE',
-          stone: '#E7E5E2',
-          charcoal: '#1E1E1E',
-          alpenglow: '#C97B3D',
-          rust: '#8B3A2B',
-          navy: '#0F5875',
-          navydeep: '#02445E',
-          brandred: '#DC292B',
-          brandreddeep: '#A81F21',
-          iceblue: '#51B1DB'
+          forest:'#184D3B', forestdeep:'#0E332A', moss:'#557A46',
+          beige:'#F6F3EE', stone:'#E7E5E2', charcoal:'#1E1E1E',
+          alpenglow:'#C97B3D', rust:'#8B3A2B',
+          navy:'#0F5875', navydeep:'#02445E',
+          brandred:'#DC292B', brandreddeep:'#A81F21',
+          iceblue:'#51B1DB'
         },
         fontFamily: {
-          display: ['Fraunces', 'serif'],
-          sans: ['Inter', 'system-ui', 'sans-serif'],
-          mono: ['IBM Plex Mono', 'monospace']
+          display: ['math'],
+          sans: ['math'],
+          mono: ['math']
         }
       }
     }
@@ -91,9 +84,6 @@
 <section class="relative h-[100svh] min-h-[560px] overflow-hidden">
   <div class="heroSlideshow" id="heroSlideshow" aria-hidden="true">
     <img src="assets/pictures/herosection/herosection1.webp" alt="" role="presentation" class="heroSlide isActive">
-    <img src="assets/pictures/herosection/herosection2.jpg" alt="" role="presentation" class="heroSlide">
-    <img src="assets/pictures/crvrsnica.jpg" alt="" role="presentation" class="heroSlide">
-    <img src="assets/pictures/bjelasnica.jpg" alt="" role="presentation" class="heroSlide">
   </div>
   <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/90 via-forestdeep/25 to-forestdeep/50" style="z-index:2;"></div>
 
@@ -124,13 +114,13 @@
       </div>
     </div>
     <div class="reveal revealDelay1 order-1 lg:order-2">
-      <h2 class="font-display text-4xl lg:text-5xl font-semibold leading-tight mb-6">Historija planinarskog društva</h2>
-      <p class="text-charcoal/75 leading-relaxed mb-4">
+      <h2 class="font-display text-4xl lg:text-6xl font-semibold leading-tight mb-6">Historija planinarskog društva</h2>
+      <p class="text-charcoal/85 leading-relaxed mb-5">
        Inicijativni odbor činili su Halid Čokić, Branko Stojanović, Mustafa Kapidžić, Čoko Jakov, Eduard Pavlović, Paša Abidinović i brojni drugi zaljubljenici u prirodu i planinarstvo.
 
 Osnivačka skupština Planinarskog društva "Konjuh" održana je u zgradi današnjeg Narodnog pozorišta u Tuzli, dok su prve članske karte štampane u Tuzlanskoj štampariji zahvaljujući Obradu Jakšiću.
       </p>
-      <p class="text-charcoal/75 leading-relaxed mb-8">
+      <p class="text-charcoal/95 leading-relaxed mb-1">
         Naziv "Konjuh" odabran je kao simbol jedne od najljepših planina sjeveroistočne Bosne, ali i kao omaž legendarnoj pjesmi "Konjuh planinom", koja je kroz stihove čuvala sjećanje na bogatu historiju Tuzle i njenog kraja.
 
 Za prvog predsjednika Društva izabran je Halid Čokić, a među prvim članovima Upravnog odbora bili su Vasilije Skripta, Eduard Pavlović, Čoko Jakov, Galib Kabadaić, Paša Abidinović, Mustafa Kapidžić i drugi istaknuti ljubitelji prirode. Njihov entuzijazam postavio je temelje društva koje će u narednim decenijama okupljati generacije planinara i promovisati planinarsku kulturu u Bosni i Hercegovini.
@@ -299,26 +289,6 @@ Za prvog predsjednika Društva izabran je Halid Čokić, a među prvim članovim
 
 <script src="assets/script.js" defer></script>
 
-<script>
-  // ---- HERO SLIDESHOW: SMJENA SLIKA SVAKE 4 SEKUNDE (CROSSFADE) ----
-  (function () {
-    var wrap = document.getElementById("heroSlideshow");
-    if (!wrap) return;
-    var slides = wrap.querySelectorAll(".heroSlide");
-    if (slides.length < 2) return;
-
-    var current = 0;
-    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return; // NE ROTIRAJ AKO KORISNIK TRAŽI SMANJEN POKRET
-
-    setInterval(function () {
-      var next = (current + 1) % slides.length;
-      slides[current].classList.remove("isActive");
-      slides[next].classList.add("isActive");
-      current = next;
-    }, 4000);
-  })();
-</script>
 
 </body>
 </html>
