@@ -16,17 +16,24 @@
     theme: {
       extend: {
         colors: {
-          forest:'#184D3B', forestdeep:'#0E332A', moss:'#557A46',
-          beige:'#F6F3EE', stone:'#E7E5E2', charcoal:'#1E1E1E',
-          alpenglow:'#C97B3D', rust:'#8B3A2B',
-          navy:'#0F5875', navydeep:'#02445E',
-          brandred:'#DC292B', brandreddeep:'#A81F21',
-          iceblue:'#51B1DB'
+          forest: '#184D3B',
+          forestdeep: '#0E332A',
+          moss: '#557A46',
+          beige: '#F6F3EE',
+          stone: '#E7E5E2',
+          charcoal: '#1E1E1E',
+          alpenglow: '#C97B3D',
+          rust: '#8B3A2B',
+          navy: '#0F5875',
+          navydeep: '#02445E',
+          brandred: '#DC292B',
+          brandreddeep: '#A81F21',
+          iceblue: '#51B1DB'
         },
         fontFamily: {
-          display: ['math'],
-          sans: ['math'],
-          mono: ['math']
+          display: ['Alegreya'],
+          sans: ['Alegreya'],
+          mono: ['Alegreya']
         }
       }
     }
@@ -43,7 +50,7 @@
     --ol2: #954E24;
     --bg: #F1E9DC;
     --amb: #C79A3D;
-    --ease: cubic-bezier(.22,.61,.36,1);
+    --ease: cubic-bezier(.22, .61, .36, 1);
     --forest: #3A2E1F;
     --moss: #B4622F;
     --beige: #F6F3EE;
@@ -100,7 +107,7 @@
     object-fit: cover;
     z-index: 0;
     animation: heroBgBreathe 26s ease-in-out infinite;
-    will-change: transform,opacity,filter;
+    will-change: transform, opacity, filter;
     backface-visibility: hidden;
     opacity: 0;
     filter: blur(18px) saturate(1.05);
@@ -126,14 +133,14 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(to bottom, rgba(13,26,22,.3) 0%, rgba(13,26,22,.6) 60%, rgba(13,26,22,.85) 100%);
+    background: linear-gradient(to bottom, rgba(13, 26, 22, .3) 0%, rgba(13, 26, 22, .6) 60%, rgba(13, 26, 22, .85) 100%);
   }
 
   .aboutHero .heroOv2 {
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.4) 100%);
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, .4) 100%);
   }
 
   .aboutHero .heroContent {
@@ -146,12 +153,12 @@
   .aboutHero .hero h1 {
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
-    font-size: clamp(3.2rem,8vw,6rem);
+    font-size: clamp(3.2rem, 8vw, 6rem);
     font-weight: 600;
     line-height: 1.05;
     letter-spacing: -.02em;
     margin-bottom: 24px;
-    text-shadow: 0 4px 32px rgba(0,0,0,.3);
+    text-shadow: 0 4px 32px rgba(0, 0, 0, .3);
     color: #fff;
     animation: heroTextIn 1.6s var(--ease) both;
     animation-delay: .35s;
@@ -160,8 +167,8 @@
   .aboutHero .heroSub {
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
-    font-size: clamp(1.15rem,2.4vw,1.5rem);
-    color: rgba(255,255,255,.9);
+    font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+    color: rgba(255, 255, 255, .9);
     font-weight: 400;
     font-style: italic;
     letter-spacing: .01em;
@@ -175,12 +182,12 @@
   @keyframes heroTextIn {
     from {
       opacity: 0;
-      transform: translate3d(0,14px,0);
+      transform: translate3d(0, 14px, 0);
     }
 
     to {
       opacity: 1;
-      transform: translate3d(0,0,0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -206,9 +213,9 @@
     gap: 10px;
     margin-bottom: 28px;
     padding: 7px 18px;
-    background: rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, .1);
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.18);
+    border: 1px solid rgba(255, 255, 255, .18);
     backdrop-filter: blur(6px);
   }
 
@@ -226,7 +233,7 @@
     font-weight: 600;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.85);
+    color: rgba(255, 255, 255, .85);
   }
 
   .aboutHero .heroBtns {
@@ -252,7 +259,7 @@
 
   .aboutHero .btnPrimary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 16px 40px rgba(0,0,0,.4);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .4);
     background: var(--ol2);
   }
 
@@ -260,20 +267,20 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,255,255,.12);
+    background: rgba(255, 255, 255, .12);
     color: #fff;
     padding: 13px 30px;
     border-radius: 999px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: .93rem;
-    border: 1px solid rgba(255,255,255,.3);
+    border: 1px solid rgba(255, 255, 255, .3);
     backdrop-filter: blur(6px);
     transition: background .25s;
   }
 
   .aboutHero .btnGhost:hover {
-    background: rgba(255,255,255,.22);
+    background: rgba(255, 255, 255, .22);
   }
 
   .aboutHero .scrollCue {
@@ -285,7 +292,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgba(255,255,255,.5);
+    color: rgba(255, 255, 255, .5);
     animation: onBob 2.6s ease-in-out infinite;
   }
 
@@ -301,7 +308,7 @@
     border-radius: 1.25rem;
     overflow: hidden;
     border: 1px solid var(--stone);
-    box-shadow: 0 1px 2px rgba(14,51,42,.04);
+    box-shadow: 0 1px 2px rgba(14, 51, 42, .04);
     margin-top: 2rem;
   }
 
@@ -312,19 +319,19 @@
     border: 0;
   }
 
-  @media (min-width:640px) {
+  @media (min-width: 640px) {
     .contactMap iframe {
       height: 340px;
     }
   }
 
-  @media (min-width:768px) {
+  @media (min-width: 768px) {
     .contactMap iframe {
       height: 420px;
     }
   }
 
-  @media (min-width:900px) {
+  @media (min-width: 900px) {
     .contactMap {
       margin-top: 3rem;
     }
@@ -337,16 +344,16 @@
     margin-top: 2rem;
   }
 
-  @media (min-width:900px) {
+  @media (min-width: 900px) {
     .contactGrid {
-      grid-template-columns: minmax(260px,340px) 1fr;
+      grid-template-columns: minmax(260px, 340px) 1fr;
       gap: 4rem;
       margin-top: 3rem;
     }
   }
 
   /* MOBILE ORDER */
-  @media (max-width:899px) {
+  @media (max-width: 899px) {
     .contactForm {
       order: 1;
     }
@@ -368,10 +375,10 @@
     border: 1px solid var(--stone);
     border-radius: 1.25rem;
     padding: 1.5rem;
-    box-shadow: 0 1px 2px rgba(14,51,42,.04);
+    box-shadow: 0 1px 2px rgba(14, 51, 42, .04);
   }
 
-  @media (min-width:900px) {
+  @media (min-width: 900px) {
     .contactInfoList {
       gap: 1.75rem;
       padding: 0;
@@ -381,7 +388,7 @@
     }
   }
 
-  @media (max-width:767px) {
+  @media (max-width: 767px) {
     .contactInfoList {
       background: transparent;
       border: none;
@@ -434,7 +441,7 @@
     margin-bottom: 1.25rem;
   }
 
-  @media (min-width:900px) {
+  @media (min-width: 900px) {
     .contactForm {
       margin-bottom: 2.5rem;
     }
@@ -446,7 +453,7 @@
     gap: 1.1rem;
   }
 
-  @media (min-width:640px) {
+  @media (min-width: 640px) {
     .contactFormRow {
       grid-template-columns: 1fr 1fr;
     }
@@ -461,7 +468,7 @@
     font-family: 'Inter', sans-serif;
     font-size: .93rem;
     color: var(--charcoal);
-    box-shadow: inset 0 1px 2px rgba(58,46,31,.05);
+    box-shadow: inset 0 1px 2px rgba(58, 46, 31, .05);
     transition: border-color .25s var(--ease), box-shadow .25s var(--ease), background-color .25s var(--ease), transform .25s var(--ease);
   }
 
@@ -479,7 +486,7 @@
     outline: none;
     background: #fff;
     border-color: var(--navy);
-    box-shadow: 0 0 0 4px rgba(15,88,117,.14);
+    box-shadow: 0 0 0 4px rgba(15, 88, 117, .14);
     transform: translateY(-1px);
   }
 
@@ -506,7 +513,7 @@
     transition: background .25s var(--ease), transform .25s var(--ease);
   }
 
-  @media (min-width:640px) {
+  @media (min-width: 640px) {
     .contactSubmit {
       align-self: flex-start;
     }
@@ -528,8 +535,8 @@
     font-family: 'Inter', sans-serif;
     font-size: .88rem;
     color: var(--rust);
-    background: rgba(139,58,43,.08);
-    border: 1px solid rgba(139,58,43,.25);
+    background: rgba(139, 58, 43, .08);
+    border: 1px solid rgba(139, 58, 43, .25);
     border-radius: .75rem;
     padding: .85rem 1.1rem;
     margin-top: -.2rem;
@@ -542,15 +549,15 @@
   /* DARK MODE */
   @media (prefers-color-scheme: dark) {
     body.supportsDark .contactMap {
-      border-color: rgba(246,243,238,.14);
+      border-color: rgba(246, 243, 238, .14);
     }
 
     body.supportsDark .contactInfoList {
       background: #182B23;
-      border-color: rgba(246,243,238,.18);
+      border-color: rgba(246, 243, 238, .18);
     }
 
-    @media (min-width:900px) {
+    @media (min-width: 900px) {
       body.supportsDark .contactInfoList {
         background: transparent;
         border-color: transparent;
@@ -558,7 +565,7 @@
     }
 
     body.supportsDark .contactInfoIcon {
-      background: rgba(246,243,238,.08);
+      background: rgba(246, 243, 238, .08);
     }
 
     body.supportsDark .contactInfoLabel {
@@ -571,7 +578,7 @@
     }
 
     body.supportsDark .contactInfoValue a {
-      text-decoration-color: rgba(246,243,238,.3);
+      text-decoration-color: rgba(246, 243, 238, .3);
     }
 
     body.supportsDark .contactInfoValue a:hover {
@@ -582,7 +589,7 @@
       background: #0B2836;
       color: var(--beige);
       border-color: transparent;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, .2);
     }
 
     body.supportsDark .contactField::placeholder {
@@ -592,23 +599,23 @@
 
     body.supportsDark .contactField:hover {
       background: #123244;
-      border-color: rgba(81,177,219,.22);
+      border-color: rgba(81, 177, 219, .22);
     }
 
     body.supportsDark .contactField:focus {
       background: #123244;
       border-color: var(--iceblue);
-      box-shadow: 0 0 0 4px rgba(81,177,219,.2);
+      box-shadow: 0 0 0 4px rgba(81, 177, 219, .2);
     }
 
     body.supportsDark .contactLimitMsg {
-      background: rgba(220,41,43,.12);
-      border-color: rgba(220,41,43,.3);
+      background: rgba(220, 41, 43, .12);
+      border-color: rgba(220, 41, 43, .3);
       color: #ff8f85;
     }
   }
 
-  @media (max-width:767px) and (prefers-color-scheme: dark) {
+  @media (max-width: 767px) and (prefers-color-scheme: dark) {
     body.supportsDark .contactInfoList {
       background: transparent;
       border-color: transparent;
@@ -616,27 +623,27 @@
   }
 
   /* MOBILE STYLES */
-  @media (max-width:899px) {
+  @media (max-width: 899px) {
     .contactField {
       background: #fff;
-      border-color: rgba(58,46,31,.22);
-      box-shadow: 0 1px 3px rgba(58,46,31,.08);
+      border-color: rgba(58, 46, 31, .22);
+      box-shadow: 0 1px 3px rgba(58, 46, 31, .08);
     }
 
     .contactField:hover {
-      border-color: rgba(58,46,31,.32);
+      border-color: rgba(58, 46, 31, .32);
     }
   }
 
-  @media (max-width:899px) and (prefers-color-scheme: dark) {
+  @media (max-width: 899px) and (prefers-color-scheme: dark) {
     body.supportsDark .contactField {
       background: #0B2836;
-      border-color: rgba(81,177,219,.32);
-      box-shadow: 0 1px 3px rgba(0,0,0,.25);
+      border-color: rgba(81, 177, 219, .32);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
     }
 
     body.supportsDark .contactField:hover {
-      border-color: rgba(81,177,219,.48);
+      border-color: rgba(81, 177, 219, .48);
     }
   }
 </style>

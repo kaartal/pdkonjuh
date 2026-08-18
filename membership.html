@@ -24,9 +24,9 @@
           iceblue:'#51B1DB'
         },
         fontFamily: {
-          display: ['math'],
-          sans: ['math'],
-          mono: ['math']
+          display: ['Alegreya'],
+          sans: ['Alegreya'],
+          mono: ['Alegreya']
         }
       }
     }
@@ -142,16 +142,11 @@
     padding: 0;
   }
 
+  /* FORM ROW — FIELDS STACKED, NOT SIDE BY SIDE */
   .joinFormRow {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 1.1rem;
-  }
-
-  @media (min-width:640px) {
-    .joinFormRow {
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
   .joinLabel {

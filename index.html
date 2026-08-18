@@ -18,12 +18,19 @@
     theme: {
       extend: {
         colors: {
-          forest:'#184D3B', forestdeep:'#0E332A', moss:'#557A46',
-          beige:'#F6F3EE', stone:'#E7E5E2', charcoal:'#1E1E1E',
-          alpenglow:'#C97B3D', rust:'#8B3A2B',
-          navy:'#0F5875', navydeep:'#02445E',
-          brandred:'#DC292B', brandreddeep:'#A81F21',
-          iceblue:'#51B1DB'
+          forest: '#184D3B',
+          forestdeep: '#0E332A',
+          moss: '#557A46',
+          beige: '#F6F3EE',
+          stone: '#E7E5E2',
+          charcoal: '#1E1E1E',
+          alpenglow: '#C97B3D',
+          rust: '#8B3A2B',
+          navy: '#0F5875',
+          navydeep: '#02445E',
+          brandred: '#DC292B',
+          brandreddeep: '#A81F21',
+          iceblue: '#51B1DB'
         },
         fontFamily: {
           display: ['Alegreya'],
@@ -48,39 +55,56 @@
 }
 </script>
 <style>
-  /* ---- HERO SLIDESHOW: 4 SLIKE, CROSSFADE, ROTACIJA SVAKE 4S ----
-     SVAKI SLIDE JE SADA <picture> (NE VIŠE SAMO <img>) SA <source media="(max-width:767px)">
-     KOJI POKAZUJE NA POSEBNU MOBILNU VERZIJU SLIKE (ISTO IME + "-mobile" SUFIKS,
-     NPR. herosection1.webp -> herosection1-mobile.webp). NA DESKTOPU/TABLETU
-     (>767px) BROWSER IGNORIŠE <source> I KORISTI <img src> (DESKTOP SLIKA).
-     .heroSlide KLASA (POZICIJA/OPACITY/ANIMACIJA) SADA JE NA <picture>
-     ELEMENTU, A object-fit/COVER JE NA UNUTRAŠNJEM <img>, JER SE object-fit
-     NE PRIMJENJUJE DIREKTNO NA <picture>. */
+  /* HERO SLIDESHOW: 4 IMAGES, CROSSFADE, ROTATES EVERY 4S.
+     EACH SLIDE IS NOW A <PICTURE> (NOT JUST <IMG>) WITH A
+     <SOURCE MEDIA="(MAX-WIDTH:767PX)"> POINTING TO A SEPARATE MOBILE
+     IMAGE (SAME NAME + "-MOBILE" SUFFIX, E.G. HEROSECTION1.WEBP ->
+     HEROSECTION1-MOBILE.WEBP). ON DESKTOP/TABLET (>767PX) THE BROWSER
+     IGNORES <SOURCE> AND USES <IMG SRC> (DESKTOP IMAGE).
+     THE .HEROSLIDE CLASS (POSITION/OPACITY/ANIMATION) IS NOW ON THE
+     <PICTURE> ELEMENT, WHILE OBJECT-FIT/COVER IS ON THE INNER <IMG>,
+     SINCE OBJECT-FIT DOESN'T APPLY DIRECTLY TO <PICTURE>. */
 
-  .heroSlide{
-    position:absolute; inset:0; width:100%; height:100%;
-    display:block;
-    opacity:0;
+  .heroSlide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
     transition: opacity 1.4s ease;
     will-change: opacity, transform;
-    /* BLAGI KONTINUIRANI "DAH" — RADI NEZAVISNO OD SMJENE SLIDEOVA */
+    /* SLIGHT CONTINUOUS "BREATHING" EFFECT — RUNS INDEPENDENTLY OF SLIDE CHANGES */
     animation: heroSlideBreathe 22s ease-in-out infinite;
   }
-  .heroSlide img{
-    width:100%; height:100%;
-    object-fit:cover;
-    display:block;
+
+  .heroSlide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
-  .heroSlide.isActive{
-    opacity:1;
-    z-index:1;
+
+  .heroSlide.isActive {
+    opacity: 1;
+    z-index: 1;
   }
-  @keyframes heroSlideBreathe{
-    0%,100%{ transform:scale(1); }
-    50%{ transform:scale(1.08); }
+
+  @keyframes heroSlideBreathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.08);
+    }
   }
-  @media (prefers-reduced-motion: reduce){
-    .heroSlide{ transition:none; animation:none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .heroSlide {
+      transition: none;
+      animation: none;
+    }
   }
 </style>
 </head>
@@ -213,102 +237,6 @@
     </div>
   </div>
 </section>
-
-<!-- <section class="py-14 sm:py-20 lg:py-32 lg:px-10 bg-stone/60 overflow-hidden">
-  <div class="max-w-6xl mx-auto px-6 lg:px-0">
-    <h2 class="font-display text-4xl lg:text-5xl font-semibold max-w-xl mb-14 reveal">Šta kažu oni koji su već hodali s nama</h2>
-  </div>
-
-  <div class="testimonialMarquee">
-    <div class="testimonialTrack">
-
-      <div class="testimonialSet">
-        <figure class="testimonialCard bg-white rounded-2xl p-8">
-          <span class="quoteMark">"</span>
-          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Divno mjesto za odmor, duše i tijela. Za pojedinca ili grupu ljudi. Preporučujem od srca.
-          </blockquote>
-          <figcaption class="flex items-center gap-3">
-            <div>
-              <p class="font-semibold text-sm">Edhem Kravić</p>
-            </div>
-          </figcaption>
-        </figure>
-        <figure class="testimonialCard bg-white rounded-2xl p-8">
-          <span class="quoteMark">"</span>
-          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Najbolje planinarsko društvo💪
-          </blockquote>
-          <figcaption class="flex items-center gap-3">
-            <div>
-              <p class="font-semibold text-sm">Asim Zulfic</p>
-            </div>
-          </figcaption>
-        </figure>
-        <figure class="testimonialCard bg-white rounded-2xl p-8">
-          <span class="quoteMark">"</span>
-          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
-            kad neko pita "jesi li siguran za rutu" umjesto da samo ćuti.
-          </blockquote>
-          <figcaption class="flex items-center gap-3">
-            <img src="https://picsum.photos/seed/lejla-m/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div>
-              <p class="font-semibold text-sm">Lejla M.</p>
-              <p class="text-xs text-charcoal/50">članica od 2023.</p>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="testimonialSet" aria-hidden="true">
-        <figure class="testimonialCard bg-white rounded-2xl p-8">
-          <span class="quoteMark">"</span>
-          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Prvi put sam se popela na preko 2000 metara baš na jednoj njihovoj turi. Tempo je bio prilagođen grupi,
-            niko nije ostao pozadi, a vodič je stalno provjeravao kako se osjećamo.
-          </blockquote>
-          <figcaption class="flex items-center gap-3">
-            <img src="https://picsum.photos/seed/amina-k/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div>
-              <p class="font-semibold text-sm">Amina K.</p>
-              <p class="text-xs text-charcoal/50">članica od 2021.</p>
-            </div>
-          </figcaption>
-        </figure>
-        <figure class="testimonialCard bg-white rounded-2xl p-8">
-          <span class="quoteMark">"</span>
-          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Zimski kurs mi je promijenio način razmišljanja o opremi. Nisam znao ni kako se pravilno vezuju dereze,
-            a sad vodim jedan dio kursa iduće sezone.
-          </blockquote>
-          <figcaption class="flex items-center gap-3">
-            <img src="https://picsum.photos/seed/haris-d/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div>
-              <p class="font-semibold text-sm">Haris D.</p>
-              <p class="text-xs text-charcoal/50">član od 2019.</p>
-            </div>
-          </figcaption>
-        </figure>
-        <figure class="testimonialCard bg-white rounded-2xl p-8">
-          <span class="quoteMark">"</span>
-          <blockquote class="text-charcoal/80 leading-relaxed -mt-4 mb-6">
-            Društvo je ozbiljno kad treba, a opušteno kad može biti. To se osjeti već na prvom sastanku prije ture,
-            kad neko pita "jesi li siguran za rutu" umjesto da samo ćuti.
-          </blockquote>
-          <figcaption class="flex items-center gap-3">
-            <img src="https://picsum.photos/seed/lejla-m/80/80" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div>
-              <p class="font-semibold text-sm">Lejla M.</p>
-              <p class="text-xs text-charcoal/50">članica od 2023.</p>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-
-    </div>
-  </div>
-</section> -->
 
 <div id="ctaVideoRoot"></div>
 
