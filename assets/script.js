@@ -16,10 +16,10 @@
   var NAV_ITEMS = [
     { key: "index", href: "index.html", label: "Naslovna" },
     { key: "about", href: "about.html", label: "O nama" },
-    { key: "hikes", href: "hikes.html", label: "Ture" },
+    { key: "hikes", href: "hikes.html", label: "Pohodi" },
 // { key: "routes", href: "routes.html", label: "Staze" },
     { key: "domovi", href: "lodges.html", label: "Planinarski domovi" },
-    { key: "gallery", href: "gallery.html", label: "Galerija" },
+    { key: "gallery", href: "gallery.html", label: "Sekcije" },
 
     { key: "contact", href: "contact.html", label: "Kontakt" }
   ];
