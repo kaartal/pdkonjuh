@@ -24,7 +24,8 @@
     { key: "contact", href: "contact.html", label: "Kontakt" }
   ];
 
-  // SLJEDEĆI TERMINI ZA SVAKU TURU — KORISTI SE NA NASLOVNOJ (HERO "SLJEDEĆA TURA").
+  // SLJEDEĆI TERMINI ZA SVAKU TURU — KORISTI SE NA NASLOVNOJ (HERO "SLJEDEĆA TURA")
+  // I NA SVIM OSTALIM STRANICAMA (VIDI initGlobalNextTour NIŽE).
   // VAŽNO: ako promijeniš/dodaš datum ovdje, promijeni ga i na odgovarajućoj
   // kartici u hikes.html (data-date atribut + "Sljedeći termin" oznaka u kartici),
   // da obje stranice ostanu usklađene.
@@ -136,8 +137,8 @@
       '<div class="absolute inset-0 bg-navydeep/40"></div>' +
       '<div class="relative max-w-2xl mx-auto text-center reveal">' +
       '<h2 class="font-display text-beige text-4xl lg:text-5xl font-semibold mb-6">Neka sljedeći vikend bude dan za novi vrh i nezaboravne poglede.</h2>' +
-      '<p class="text-beige/75 mb-9">Bez obzira jeste li već planinarili ili tek razmišljate o prvom usponu, uvijek ćete biti u pratnji iskusnih vodiča.</p>' +
-      '<a href="membership.html" class="btn btnPrimary">Pridruži se društvu</a>' +
+      '<p class="text-beige/75 mb-9 text-lg lg:text-xl leading-relaxed">Bez obzira jeste li već planinarili ili tek razmišljate o prvom usponu, uvijek ćete biti u pratnji iskusnih vodiča.</p>' +
+      '<a href="membership.html" class="btn btnPrimary text-base lg:text-lg px-8 py-4">Pridruži se društvu</a>' +
       "</div></section>"
     );
   }
@@ -178,30 +179,30 @@
       '<div class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-10">' +
       '<div class="grid lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] gap-12 mb-16">' +
       "<div>" +
-      '<p class="font-display text-2xl font-semibold mb-4">PD Konjuh</p>' +
+      '<p class="font-display text-3xl lg:text-4xl font-semibold mb-4">PD Konjuh</p>' +
       '<p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Tuzle. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine i šire od 1951. godine.</p>' +
       '<div class="flex gap-4">' +
-      '<a href="https://www.instagram.com/pdkonjuh/" aria-label="Instagram" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>' +
-      '<a href="https://www.facebook.com/pdkonjuh.ba/?locale=hr_HR" aria-label="Facebook" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>' +
+      '<a href="https://www.instagram.com/pdkonjuh/" aria-label="Instagram" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>' +
+      '<a href="https://www.facebook.com/pdkonjuh.ba/?locale=hr_HR" aria-label="Facebook" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>' +
       
       "</div></div>" +
       "<div>" +
-      '<p class="eyebrow text-beige/30 mb-5">Osnovno</p>' +
-      '<ul class="space-y-3 text-sm text-beige/75">' + exploreItems + "</ul></div>" +
+      '<p class="eyebrow text-beige/30 mb-5 text-xs">Osnovno</p>' +
+      '<ul class="space-y-3 text-base text-beige/75">' + exploreItems + "</ul></div>" +
       "<div>" +
-      '<p class="eyebrow text-beige/30 mb-5">Društvo</p>' +
-      '<ul class="space-y-3 text-sm text-beige/75">' +
+      '<p class="eyebrow text-beige/30 mb-5 text-xs">Društvo</p>' +
+      '<ul class="space-y-3 text-base text-beige/75">' +
       '<li><a href="membership.html" class="hover:text-beige">Članstvo</a></li>' +
       '<li><a href="contact.html" class="hover:text-beige">Kontakt</a></li>' +
       "</ul></div>" +
       "<div>" +
-      '<p class="eyebrow text-beige/30 mb-5">Kontakt</p>' +
-      '<div class="space-y-4 text-sm text-beige/75">' +
+      '<p class="eyebrow text-beige/30 mb-5 text-xs">Kontakt</p>' +
+      '<div class="space-y-4 text-base text-beige/75">' +
       '<div class="flex items-start gap-3"><svg class="w-5 h-5 mt-0.5 text-iceblue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg><span>Patriotske lige br. 4, Tuzla, Bosna i Hercegovina</span></div>' +
       '<div class="flex items-center gap-3"><svg class="w-5 h-5 text-iceblue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M5 5v14h14V5M5 7l7 5 7-5"/></svg><a href="mailto:pdkonjuh1951@gmail.com" class="hover:text-beige transition-colors">pdkonjuh1951@gmail.com</a></div>' +
       '<div class="flex items-center gap-3"><svg class="w-5 h-5 text-iceblue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.3a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.25 1.02L8.9 9.6a16 16 0 006.5 6.5l1.3-1.3a1 1 0 011.02-.25l3.6 1.2a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.3 21 3 14.7 3 7V5z"/></svg><a href="tel:+38761562277" class="hover:text-beige transition-colors">+387 61 562 277</a></div>' +
       "</div></div></div>" +
-      '<div class="pt-4 mb-10"><p class="eyebrow text-beige/50 mb-4">Iz naše galerije</p>' +
+      '<div class="pt-4 mb-10"><p class="eyebrow text-beige/50 mb-4 text-xs">Iz naše galerije</p>' +
       '<div class="grid grid-cols-3 sm:grid-cols-6 gap-2">' + buildFooterGalleryStrip() + "</div></div>" +
       "</div>" +
       '<div class="footerGiantMark reveal" aria-hidden="true"><span>PD Konjuh</span></div>' +
@@ -721,57 +722,102 @@
   }
 
   /* ==========================================================================
-     17b. HERO — SLJEDEĆA TURA (NASLOVNA)
-     Ispisuje najbližu nadolazeću turu iz UPCOMING_TOURS (vidi vrh fajla) u
-     #heroNextTour, ako taj element postoji na stranici, i (ako postoji)
-     u glavni hero-box preko [data-hero-box] atributa — vidi initHeroBoxLink().
-     PRIKAZ JE SAMO TEKSTUALNA OBAVIJEST (bez slike) — vidi .heroNextTourCard
-     u style.css.
+     17b. HERO — SLJEDEĆA TURA (SVE STRANICE)
+     Ispisuje najbližu nadolazeću turu iz UPCOMING_TOURS (vidi vrh fajla).
+     ISTA velika kartica (slika + bedž "Sljedeća tura" + naslov + datum) se
+     sada koristi NA SVIM STRANICAMA, ne samo na naslovnoj:
+       - Ako stranica već ima element #heroNextTour (npr. index.html), kartica
+         se ubacuje tačno tamo, unutar hero sekcije.
+       - Ako stranica NEMA taj element (about.html, hikes.html, lodges.html,
+         gallery.html, contact.html, membership.html...), ensureHeroNextTourEl()
+         niže sama pronalazi hero sekciju stranice (data-hero-box, .heroSection
+         ili prvi <section> unutar <main>) i ubacuje #heroNextTour tamo, tako
+         da svaka stranica dobije IDENTIČAN prikaz kao naslovna.
+     Stari mali plutajući widget (donji lijevi ugao) je uklonjen — vidi
+     napomenu kod bivše funkcije initGlobalNextTour, niže u fajlu.
      ========================================================================== */
 
-  function initHeroNextTour() {
-    var el = document.getElementById("heroNextTour");
-    var heroBox = document.querySelector("[data-hero-box]");
-    if (!el && !heroBox) return;
-
-    var MON_ABBR = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
-
+  function nextUpcomingTour() {
     function parseDate(d) {
       var p = d.split("-");
       return new Date(+p[0], +p[1] - 1, +p[2]);
     }
-
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var next = null;
-
     UPCOMING_TOURS.forEach(function (tour) {
       var d = parseDate(tour.date);
       if (d < today) return;
-      if (!next || d < next.dateObj) next = { id: tour.id, title: tour.title, dateObj: d };
+      if (!next || d < next.dateObj) next = { id: tour.id, title: tour.title, image: tour.image, dateObj: d };
     });
+    return next;
+  }
 
+  var MON_ABBR = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
+
+  // GRADI HTML VELIKE KARTICE "SLJEDEĆA TURA" (ISTOVJETNO NA SVIM STRANICAMA)
+  function buildNextTourCardHTML(next, label) {
+    var arrowSvg =
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    return (
+      '<a href="hikes.html#' + next.id + '" class="heroNextTourCard">' +
+      (next.image
+        ? '<span class="heroNextTourImg" style="background-image:url(\'' + next.image + '\')"><span class="heroNextTourBadge">Sljedeća tura</span></span>'
+        : "") +
+      '<span class="heroNextTourBody">' +
+      '<span class="eyebrow block">Sljedeća tura</span>' +
+      '<span class="heroNextTourTitle block">' + next.title + "</span>" +
+      '<span class="heroNextTourDate block">' + label + "</span>" +
+      '<span class="heroNextTourLink">Pogledaj turu ' + arrowSvg + "</span>" +
+      "</span>" +
+      "</a>"
+    );
+  }
+
+  // OSIGURAVA DA POSTOJI #heroNextTour NA STRANICI. AKO GA STRANICA VEĆ IMA
+  // (RUČNO STAVLJEN U HTML, KAO NA index.html) — KORISTI GA. AKO GA NEMA,
+  // SAMA GA UBACUJE U HERO SEKCIJU STRANICE (NAJBOLJI DOSTUPNI KANDIDAT),
+  // TAKO DA SVAKA STRANICA DOBIJE ISTU KARTICU BEZ RUČNOG UREĐIVANJA SVAKOG HTML-A.
+  function ensureHeroNextTourEl() {
+    var el = document.getElementById("heroNextTour");
+    if (el) return el;
+
+    var target =
+      document.querySelector("[data-hero-box]") ||
+      document.querySelector(".heroSection .heroBox") ||
+      document.querySelector(".heroSection") ||
+      document.querySelector("main section") ||
+      document.querySelector("main");
+    if (!target) return null;
+
+    // KARTICA JE position:absolute — MORA JOJ SE OMOGUĆITI POZICIONI KONTEKST
+    var computedPos = window.getComputedStyle(target).position;
+    if (computedPos === "static") target.classList.add("heroNextTourAnchor");
+
+    el = document.createElement("div");
+    el.id = "heroNextTour";
+    el.setAttribute("aria-live", "polite");
+    target.appendChild(el);
+    return el;
+  }
+
+  function initHeroNextTour() {
+    var next = nextUpcomingTour();
     if (!next) return;
+
+    var el = ensureHeroNextTourEl();
+    var heroBox = document.querySelector("[data-hero-box]");
+    if (!el && !heroBox) return;
 
     var label = next.dateObj.getDate() + ". " + MON_ABBR[next.dateObj.getMonth()] + ".";
 
     if (el) {
-      var arrowSvg =
-        '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-
-      el.innerHTML =
-        '<a href="hikes.html#' + next.id + '" class="heroNextTourCard">' +
-        '<span class="heroNextTourBody">' +
-        '<span class="eyebrow block">Sljedeća tura</span>' +
-        '<span class="heroNextTourTitle block">' + next.title + "</span>" +
-        '<span class="heroNextTourDate block">' + label + "</span>" +
-        '<span class="heroNextTourLink">Pogledaj turu ' + arrowSvg + "</span>" +
-        "</span>" +
-        "</a>";
+      el.innerHTML = buildNextTourCardHTML(next, label);
     }
 
-    // POVEŽI CIJELI HERO-BOX (GLAVNI HERO NA NASLOVNOJ) SA STRANICOM
-    // NAJBLIŽE NADOLAZEĆE TURE — VIDI initHeroBoxLink() ZA STVARNI KLIK/TIPKOVNICA HANDLER.
+    // POVEŽI CIJELI HERO-BOX (GLAVNI HERO) SA STRANICOM NAJBLIŽE NADOLAZEĆE
+    // TURE — VIDI initHeroBoxLink() ZA STVARNI KLIK/TIPKOVNICA HANDLER.
     if (heroBox) {
       heroBox.dataset.href = "hikes.html#" + next.id;
       heroBox.classList.add("heroBoxLinked");
@@ -999,4 +1045,3 @@
     init();
   }
 })();
-

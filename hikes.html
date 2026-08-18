@@ -81,10 +81,13 @@
 
   .tourTrigger[aria-expanded="true"] .tourTitle{ color:var(--forest); }
 
-  /* ---- PANEL: MEKŠA TRANZICIJA VISINE + BLAGA POZADINA KOJA GA IZDVAJA ---- */
+  /* ---- PANEL: MEKŠA TRANZICIJA VISINE, PRIRODAN IZGLED BEZ RAZDVOJNE LINIJE.
+     Umjesto tvrde ivice (border-top), panel se odvaja samo blago tonom
+     pozadine i zaobljenim uglovima, tako da cijela kartica djeluje kao
+     jedna prirodna cjelina bez vidljivih linija. ---- */
   .toursSection .accordionPanel{
-    border-top:1px solid var(--stone);
-    background: rgba(24,77,59,.02);
+    background: rgba(24,77,59,.025);
+    border-radius: 0 0 18px 18px;
     transition: max-height .55s cubic-bezier(.22,1,.36,1);
   }
   .toursSection .accordionPanelInner{ max-width:none; padding: 26px 22px 30px; }
@@ -127,15 +130,15 @@
 
   .tourPanelActions{ display:flex; flex-wrap:wrap; gap:12px; }
 
-  /* ---- PLAN PUTA (DAN PO DAN) — TIMELINE OSTAJE ISTI ---- */
-  .tourItinerary{ margin: 4px 0 28px; padding:0; list-style:none; }
+  /* ---- PLAN PUTA (DAN PO DAN) — BEZ OKOMITE LINIJE, SAMO PRIRODNO
+     RAZMAKNUTE TAČKE UZ SVAKI DAN (UKLONJENA border-left LINIJA) ---- */
+  .tourItinerary{ margin: 4px 0 28px; padding:0; list-style:none; display:flex; flex-direction:column; gap:20px; }
   .tourItinerary li{
-    position:relative; padding: 0 0 18px 26px; border-left:2px solid var(--stone);
+    position:relative; padding: 0 0 0 26px;
   }
-  .tourItinerary li:last-child{ padding-bottom:0; }
   .tourItinerary li::before{
-    content:""; position:absolute; left:-6px; top:2px; width:10px; height:10px; border-radius:50%;
-    background:var(--forest); border:2px solid var(--beige);
+    content:""; position:absolute; left:0; top:3px; width:10px; height:10px; border-radius:50%;
+    background:var(--forest);
   }
   /* DATUMI U PLANU PUTA — FRAUNCES SERIF, KAO NASLOV STAVKE */
   .tourItineraryDay{ font-family:'Fraunces',serif; font-size:.9rem; font-weight:600; color:var(--forest); margin-bottom:4px; }
@@ -156,14 +159,13 @@
   @media (prefers-color-scheme: dark){
     body.supportsDark .toursHeading{ color:var(--beige); }
     body.supportsDark .toursSub{ color:rgba(246,243,238,.6); }
-    body.supportsDark .hikeCard{ background:#16261F; border-color:rgba(246,243,238,.14); }
+    body.supportsDark .hikeCard{ background:#16261F; }
     body.supportsDark .tourTitle{ color:var(--beige); }
     body.supportsDark .tourTrigger[aria-expanded="true"] .tourTitle{ color:var(--beige); }
     body.supportsDark .tourTeaser{ color:rgba(246,243,238,.6); }
-    body.supportsDark .toursSection .accordionPanel{ border-top-color:#02445e; background:rgba(246,243,238,.03); }
+    body.supportsDark .toursSection .accordionPanel{ background:rgba(246,243,238,.03); }
     body.supportsDark .tourDesc{ color:rgba(246,243,238,.75); }
     body.supportsDark .tourMetaGrid dd{ color:var(--beige); }
-    body.supportsDark .tourItinerary li{ border-left-color:rgba(246,243,238,.16); }
     body.supportsDark .tourItinerary p{ color:rgba(246,243,238,.65); }
     body.supportsDark .tourNoteBox{ background:rgba(201,123,61,.12); border-color:rgba(201,123,61,.3); color:rgba(246,243,238,.75); }
   }
@@ -191,7 +193,7 @@
   <section class="hero">
     <img
       class="heroBg"
-      src="assets/pictures/footer/footer6.jpg"
+      src="assets/pictures/herosection/hikeshero.webp"
       alt="Planinarski dom na Konjuhu u magli"
       loading="eager"
       fetchpriority="high"

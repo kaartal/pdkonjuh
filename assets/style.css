@@ -240,11 +240,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .heroBox .btn{position:relative;z-index:2;}
 .heroBox .heroNextTourCard{z-index:3;}
 
+/* FALLBACK POZICIONI KONTEKST — DODAJE GA JS (ensureHeroNextTourEl U script.js)
+   NA STRANICAMA ČIJI HERO ELEMENT NIJE POSITION:RELATIVE/ABSOLUTE/FIXED, KAKO BI
+   .heroNextTourCard (position:absolute) BILA ISPRAVNO POZICIONIRANA I TAMO. */
+.heroNextTourAnchor{position:relative;}
+
 .heroBoxEyebrow{color:var(--iceblue);}
 
-/* ---- HERO "SLJEDEĆA TURA" KARTICA — DIJELI SE NA INDEX.HTML I HIKES.HTML --------- */
+/* ---- HERO "SLJEDEĆA TURA" KARTICA — ISTA NA SVIM STRANICAMA (index.html i sve ostale) --------- */
 /* NA DESKTOPU PLIVA UZ DESNU IVICU HERO SEKCIJE, ISPOD FIKSNOG HEADERA.
-   UBACUJE JE JS (initHeroNextTour U SCRIPT.JS) U #heroNextTour, PA SE NE
+   UBACUJE JE JS (initHeroNextTour U SCRIPT.JS) U #heroNextTour — TAJ ELEMENT
+   ILI VEĆ POSTOJI U HTML-U STRANICE (KAO NA index.html) ILI GA JS SAM UBACI
+   U HERO SEKCIJU STRANICE (VIDI ensureHeroNextTourEl U script.js), PA SE NE
    OSLANJA NA SCROLL-REVEAL SISTEM VEĆ IMA SVOJU CSS ANIMACIJU ULASKA.
    KARTICA IMA SLIKU TURE NA VRHU (AKO JE DEFINISANA U UPCOMING_TOURS U
    script.js) SA STAKLENIM BEDŽOM "SLJEDEĆA TURA" PREKO NJE. AKO SLIKA
@@ -324,7 +331,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .heroNextTourBody .eyebrow{ color:var(--iceblue); }
 .heroNextTourTitle{ font-family:'math'; font-weight:600; font-size:1.5rem; letter-spacing:-.01em; color:var(--beige); line-height:1.15; margin:2px 0 6px; }
 .heroNextTourDate{ font-family:'math'; font-size:.86rem; letter-spacing:.02em; color:rgba(246,243,238,.6); margin-bottom:12px; }
-.heroNextTourLink{ display:inline-flex; align-items:center; gap:7px; font-family:'math'; font-weight:600; font-size:.83rem; color:var(--iceblue); }
+.heroNextTourLink{ display:inline-flex; align-items:center; gap:7px; font-family:'math'; font-size:.83rem; }
 .heroNextTourLink svg{ transition:transform .3s var(--ease); }
 .heroNextTourCard:hover .heroNextTourLink svg{  }
 
@@ -358,7 +365,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* ---- HIKE CARDS (UPCOMING HIKES) — FULLY STATIC, NO HOVER ANIMATION ----- */
 .hikeCard{
-  border:1px solid var(--stone);
+  box-shadow:0 20px 46px -32px rgba(24,77,59,.28);
 }
 .hikeCard .imgZoom img{transition:none;}
 .hikeCard .imgZoom:hover img{transform:none;}
@@ -789,12 +796,7 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
 .footerCurve svg{display:block;width:100%;height:auto;}
 
 /* ---- FOOTER STARFIELD (USED ON THE MAIN/LARGE FOOTER) ----------------------- */
-.footerStars{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
-.footerStars span{
-  position:absolute;width:2px;height:2px;border-radius:50%;
-  background:var(--beige);opacity:.5;
-  animation:twinkle 3.6s ease-in-out infinite;
-}
+
 @keyframes twinkle{
   0%,100%{opacity:.15;}
   50%{opacity:.75;}
@@ -868,3 +870,11 @@ input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-6p
   .aboutHero .btnGhost:hover{background:rgba(255,255,255,.22);}
   .aboutHero .scrollCue{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;color:rgba(255,255,255,.5);animation:onBob 2.6s ease-in-out infinite;}
   .aboutHero .scrollArrow{width:22px;height:28px;stroke:currentColor;}
+  /* KEYFRAME ZA scrollCue DEFINISAN OVDJE, U ZAJEDNIČKOM style.css, DA BI
+     ANIMACIJA STRELICE RADILA DOSLJEDNO NA SVAKOJ STRANICI (ranije je bila
+     definisana samo lokalno na gallery.html, pa se na hikes.html/about.html
+     strelica nije micala). */
+  @keyframes onBob{
+    0%,100%{transform:translateX(-50%) translateY(0);}
+    50%{transform:translateX(-50%) translateY(4px);}
+  }

@@ -48,18 +48,30 @@
 }
 </script>
 <style>
-  /* ---- HERO SLIDESHOW: 4 SLIKE, CROSSFADE, ROTACIJA SVAKE 4S ---- */
+  /* ---- HERO SLIDESHOW: 4 SLIKE, CROSSFADE, ROTACIJA SVAKE 4S ----
+     SVAKI SLIDE JE SADA <picture> (NE VIŠE SAMO <img>) SA <source media="(max-width:767px)">
+     KOJI POKAZUJE NA POSEBNU MOBILNU VERZIJU SLIKE (ISTO IME + "-mobile" SUFIKS,
+     NPR. herosection1.webp -> herosection1-mobile.webp). NA DESKTOPU/TABLETU
+     (>767px) BROWSER IGNORIŠE <source> I KORISTI <img src> (DESKTOP SLIKA).
+     .heroSlide KLASA (POZICIJA/OPACITY/ANIMACIJA) SADA JE NA <picture>
+     ELEMENTU, A object-fit/COVER JE NA UNUTRAŠNJEM <img>, JER SE object-fit
+     NE PRIMJENJUJE DIREKTNO NA <picture>. */
   .heroSlideshow{
     position:absolute; inset:0; width:100%; height:100%;
   }
   .heroSlide{
     position:absolute; inset:0; width:100%; height:100%;
-    object-fit:cover;
+    display:block;
     opacity:0;
     transition: opacity 1.4s ease;
     will-change: opacity, transform;
     /* BLAGI KONTINUIRANI "DAH" — RADI NEZAVISNO OD SMJENE SLIDEOVA */
     animation: heroSlideBreathe 22s ease-in-out infinite;
+  }
+  .heroSlide img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
   }
   .heroSlide.isActive{
     opacity:1;
@@ -83,7 +95,10 @@
 
 <section class="relative h-[100svh] min-h-[560px] overflow-hidden">
   <div class="heroSlideshow" id="heroSlideshow" aria-hidden="true">
-    <img src="assets/pictures/herosection/herosection1.webp" alt="" role="presentation" class="heroSlide isActive">
+    <picture class="heroSlide isActive">
+      <source media="(max-width: 767px)" srcset="assets/pictures/herosection/herosection1-mobile.webp">
+      <img src="assets/pictures/herosection/herosection.webp" alt="" role="presentation">
+    </picture>
   </div>
   <div class="absolute inset-0 bg-gradient-to-t from-forestdeep/90 via-forestdeep/25 to-forestdeep/50" style="z-index:2;"></div>
 
