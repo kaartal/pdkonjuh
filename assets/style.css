@@ -403,8 +403,8 @@ select:focus-visible {
    HERO TEXT — SEE THE MOBILE OVERRIDE FURTHER DOWN. */
 .heroNextTourCard {
   position: absolute;
-  bottom: 32px;
-  right: 2rem;
+  bottom: 37px;
+  right: -10rem;
   z-index: 5;
   width: 300px;
   display: flex;
@@ -532,43 +532,85 @@ select:focus-visible {
   }
 }
 
-/* ---- RESPONSIVE: MOBILE CARD BECOMES A SINGLE CENTERED LINK ROW,
-   PLACED BELOW THE HERO TEXT INSTEAD OF FLOATING BESIDE/OVER IT ---- */
-@media(max-width:1024px) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+
   .heroNextTourCard {
     position: static;
     display: block;
     width: 100%;
-    max-width: none;
+    max-width: 100%;
     margin: 20px 0 0;
-    bottom: auto;
-    right: auto;
-    animation: none;
-    /* VISIBLE IMMEDIATELY ON MOBILE, NO SLIDE-IN DELAY */
-    opacity: 1;
-    transform: none;
+    padding: 16px;
 
-    /* REMOVES CARD LOOK — PLAIN LINK, NOT A BOX */
-    background: none;
-    border: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-radius: 0;
+    background: #000b141f;
+    border: 1px solid rgba(61, 144, 215, 0.45);
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(61, 144, 215, 0.12);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     text-align: center;
+
+opacity: 0;
+  transform: translateX(-70px);
+  animation: heroNextTourSlideIn 1.7s ease-out forwards;
+
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
   }
 
   .heroNextTourCard:hover {
-    transform: none;
-    box-shadow: none;
+    box-shadow: 0 10px 30px rgba(61, 144, 215, 0.20);
   }
 
-  /* IMAGE AND BADGE HIDDEN IN COMPACT ROW */
+  /* ANIMACIJA SA DESNE STRANE */
+  @keyframes heroNextTourSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
   .heroNextTourImg {
     display: none;
   }
 
-  /* ONE SINGLE CENTERED ROW: TITLE, DATE, LINK — NEVER WRAPS INTO A BLOCK */
   .heroNextTourBody {
     padding: 0;
     display: flex;
@@ -580,9 +622,8 @@ select:focus-visible {
     column-gap: 8px;
   }
 
-  .heroNextTourBody>.eyebrow {
+  .heroNextTourBody > .eyebrow {
     display: none;
-    /* BADGE LABEL NOT NEEDED HERE */
   }
 
   .heroNextTourBody .heroNextTourTitle {
@@ -603,14 +644,15 @@ select:focus-visible {
   }
 }
 
-@media(max-width:479px) {
-  .heroNextTourBody {
-    font-size: .9rem;
+@media (max-width: 479px) {
+
+  .heroNextTourCard {
+    padding: 12px;
+    border-radius: 16px;
   }
 
-  /* IF THE ROW IS STILL TOO WIDE FOR VERY SMALL SCREENS, ALLOW IT TO SHRINK
-     GRACEFULLY WITH AN ELLIPSIS INSTEAD OF BREAKING INTO A BLOCK */
   .heroNextTourBody {
+    font-size: .9rem;
     max-width: 100%;
     overflow: hidden;
   }
@@ -618,8 +660,22 @@ select:focus-visible {
   .heroNextTourBody .heroNextTourTitle {
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ---- HERO TEXT: ALWAYS CENTERED, ON EVERY SCREEN SIZE ---- */
 .heroBox,
@@ -632,6 +688,9 @@ select:focus-visible {
 .heroContent .btnGroup {
   justify-content: center;
 }
+
+
+
 
 /* ---- HIKE CARDS (UPCOMING HIKES) — FULLY STATIC, NO HOVER ANIMATION ----- */
 .hikeCard {

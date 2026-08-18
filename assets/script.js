@@ -744,7 +744,7 @@
     return next;
   }
 
-  var MON_ABBR = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
+  var MON_ABBR = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"];
 
   // BUILDS THE HTML FOR THE BIG "NEXT TOUR" CARD (SAME ON EVERY PAGE)
   function buildNextTourCardHTML(next, label) {
@@ -757,10 +757,9 @@
         ? '<span class="heroNextTourImg" style="background-image:url(\'' + next.image + '\')"><span class="heroNextTourBadge">Sljedeća tura</span></span>'
         : "") +
       '<span class="heroNextTourBody">' +
-      '<span class="eyebrow block">Sljedeća tura</span>' +
+
       '<span class="heroNextTourTitle block">' + next.title + "</span>" +
       '<span class="heroNextTourDate block">' + label + "</span>" +
-      '<span class="heroNextTourLink">Pogledaj turu ' + arrowSvg + "</span>" +
       "</span>" +
       "</a>"
     );
@@ -794,29 +793,44 @@
   }
 
   function initHeroNextTour() {
-    var next = nextUpcomingTour();
-    if (!next) return;
 
-    var el = ensureHeroNextTourEl();
-    var heroBox = document.querySelector("[data-hero-box]");
-    if (!el && !heroBox) return;
+  var currentPage = window.location.pathname.split("/").pop();
 
-    var label = next.dateObj.getDate() + ". " + MON_ABBR[next.dateObj.getMonth()] + ".";
-
-    if (el) {
-      el.innerHTML = buildNextTourCardHTML(next, label);
-    }
-
-    // LINKS THE WHOLE HERO BOX TO THE CLOSEST UPCOMING TOUR PAGE —
-    // SEE initHeroBoxLink() FOR THE ACTUAL CLICK/KEYBOARD HANDLER.
-    if (heroBox) {
-      heroBox.dataset.href = "hikes.html#" + next.id;
-      heroBox.classList.add("heroBoxLinked");
-      heroBox.setAttribute("role", "link");
-      heroBox.setAttribute("tabindex", "0");
-      heroBox.setAttribute("aria-label", "Otvori turu: " + next.title + ", sljedeći termin " + label);
-    }
+  if (currentPage !== "" && currentPage !== "index.html") {
+    return;
   }
+
+  var next = nextUpcomingTour();
+  if (!next) return;
+
+  var el = ensureHeroNextTourEl();
+  var heroBox = document.querySelector("[data-hero-box]");
+  if (!el && !heroBox) return;
+
+  var label =
+    next.dateObj.getDate() +
+    ". " +
+    MON_ABBR[next.dateObj.getMonth()] +
+    ".";
+
+  if (el) {
+    el.innerHTML = buildNextTourCardHTML(next, label);
+  }
+
+  if (heroBox) {
+    heroBox.dataset.href = "hikes.html#" + next.id;
+    heroBox.classList.add("heroBoxLinked");
+    heroBox.setAttribute("role", "link");
+    heroBox.setAttribute("tabindex", "0");
+    heroBox.setAttribute(
+      "aria-label",
+      "Otvori turu: " +
+        next.title +
+        ", sljedeći termin " +
+        label
+    );
+  }
+}
 
   /* ==========================================================================
      17c. MAIN HERO — CLICK/KEYBOARD NAVIGATION ON [data-hero-box]
