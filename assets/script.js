@@ -176,8 +176,8 @@
       '<div class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-10">' +
       '<div class="grid lg:grid-cols-[1.3fr_1fr_1fr_1.2fr] gap-12 mb-16">' +
       "<div>" +
-      '<p class="font-display text-3xl lg:text-4xl font-semibold mb-4">PD Konjuh</p>' +
-      '<p class="text-beige/65 text-sm leading-relaxed max-w-xs mb-6">Planinarsko društvo iz Tuzle. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine i šire od 1951. godine.</p>' +
+      '<p class="font-display text-3xl lg:text-4xl font-semibold mb-2">PD Konjuh</p>' +
+      '<p class="text-beige/75 text-sm leading-relaxed max-w-xs mb-12">Planinarsko društvo iz Tuzle. Organizujemo ture, edukaciju i druženje na planinama Bosne i Hercegovine i šire od 1951. godine.</p>' +
       '<div class="flex gap-4">' +
       '<a href="https://www.instagram.com/pdkonjuh/" aria-label="Instagram" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>' +
       '<a href="https://www.facebook.com/pdkonjuh.ba/?locale=hr_HR" aria-label="Facebook" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-beige/25 flex items-center justify-center hover:bg-beige/10 transition-colors"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>' +

@@ -8,48 +8,45 @@
   <meta name="description"
     content="Ko smo, naš put, čime se bavimo i naši ciljevi. Upoznaj Planinarsko društvo Konjuh iz Tuzle — tradicija planinarstva od 1951. godine.">
 
-  <!-- Fontovi -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap"
-    rel="stylesheet">
-
-  <!-- Tailwind (za header/footer partiale koji dolaze iz assets/script.js) -->
+  <!-- TAILWIND (FOR HEADER/FOOTER PARTIALS LOADED FROM ASSETS/SCRIPT.JS) -->
   <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          forest:'#184D3B', forestdeep:'#0E332A', moss:'#557A46',
-          beige:'#F6F3EE', stone:'#E7E5E2', charcoal:'#1E1E1E',
-          alpenglow:'#C97B3D', rust:'#8B3A2B',
-          navy:'#0F5875', navydeep:'#02445E',
-          brandred:'#DC292B', brandreddeep:'#A81F21',
-          iceblue:'#51B1DB'
-        },
-        fontFamily: {
-          display: ['Alegreya'],
-          sans: ['Alegreya'],
-          mono: ['Alegreya']
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#184D3B',
+            forestdeep: '#0E332A',
+            moss: '#557A46',
+            beige: '#F6F3EE',
+            stone: '#E7E5E2',
+            charcoal: '#1E1E1E',
+            alpenglow: '#C97B3D',
+            rust: '#8B3A2B',
+            navy: '#0F5875',
+            navydeep: '#02445E',
+            brandred: '#DC292B',
+            brandreddeep: '#A81F21',
+            iceblue: '#51B1DB'
+          },
+          fontFamily: {
+            display: ['Alegreya'],
+            sans: ['Alegreya'],
+            mono: ['Alegreya']
+          }
         }
       }
     }
-  }
-</script>
+  </script>
 
-  <!-- Zajednički stilovi sajta -->
+  <!-- SHARED SITE STYLES -->
   <link rel="stylesheet" href="assets/style.css">
 
   <!-- ============================================================
-       "O NAMA" — svi stilovi su ograničeni na .aboutSection
+       ABOUT PAGE — ALL STYLES SCOPED UNDER .ABOUTSECTION
        ============================================================ -->
   <style>
-    /* ---- Brand tokeni + easing (samo oni koji se koriste) ---- */
+    /* BRAND TOKENS + EASING */
     :root {
       --g: #2F5D50;
       --g2: #1D3D34;
@@ -57,161 +54,564 @@
       --bg: #F5F1E8;
       --ink: #11201B;
       --ease: cubic-bezier(.22, .61, .36, 1);
-      /* Jedinstveni vertikalni razmak sekcija */
+      /* SHARED VERTICAL SECTION SPACING */
       --sectionPad: clamp(80px, 10vw, 120px);
     }
 
     /* ============================================================
-       WRAPPER + osnovni reset unutar sekcije
+       REVEAL — FADE-IN ON SCROLL (CLASS .ONREVEAL, TRIGGERED BY ASSETS/SCRIPT.JS)
        ============================================================ */
+    .aboutSection .onReveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    }
 
+    .aboutSection .onReveal.visible {
+      opacity: 1;
+      transform: none;
+    }
 
-    /* ============================================================
-       REVEAL — fade-in na scroll (klasa .onReveal; aktivira ga assets/script.js)
-       ============================================================ */
-    .aboutSection .onReveal { opacity: 0; transform: translateY(32px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-    .aboutSection .onReveal.visible { opacity: 1; transform: none; }
-    .aboutSection .onReveal.d1 { transition-delay: .08s; }
-    .aboutSection .onReveal.d2 { transition-delay: .16s; }
-    .aboutSection .onReveal.d3 { transition-delay: .24s; }
+    .aboutSection .onReveal.d1 {
+      transition-delay: .08s;
+    }
+
+    .aboutSection .onReveal.d2 {
+      transition-delay: .16s;
+    }
+
+    .aboutSection .onReveal.d3 {
+      transition-delay: .24s;
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .aboutSection .onReveal { opacity: 1; transform: none; transition: none; }
+      .aboutSection .onReveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
 
     /* ============================================================
-       JEDNAK RAZMAK — sve glavne sekcije dijele isti vertikalni padding
+       EQUAL SPACING — ALL MAIN SECTIONS SHARE THE SAME VERTICAL PADDING
        ============================================================ */
     .aboutSection .aboutPanel,
     .aboutSection .aboutBridge,
-    .aboutSection .aboutTimeline { padding-top: var(--sectionPad); padding-bottom: var(--sectionPad); }
+    .aboutSection .aboutTimeline {
+      padding-top: var(--sectionPad);
+      padding-bottom: var(--sectionPad);
+    }
 
     /* ============================================================
-       BAZNI PANEL — tekst lijevo / medij desno ("Ko smo mi" = logo).
-       Desktop: tamnozelena pozadina.  Mobitel: bijela pozadina.
+       BASE PANEL — TEXT LEFT / MEDIA RIGHT ("WHO WE ARE" = LOGO).
+       DESKTOP: DARK GREEN BACKGROUND. MOBILE: WHITE BACKGROUND.
        ============================================================ */
-    .aboutSection .aboutPanel { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
+    .aboutSection .aboutPanel {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+      color: #fff;
+    }
 
-    .aboutSection .aboutPanel .panelGrid { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0, 1fr) clamp(440px, 50vw, 720px); gap: clamp(24px, 3vw, 32px) clamp(48px, 5vw, 88px); align-items: center; }
-    .aboutSection .aboutPanel .panelText { grid-column: 1; }
+    .aboutSection .aboutPanel .panelGrid {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(440px, 50vw, 720px);
+      gap: clamp(24px, 3vw, 32px) clamp(48px, 5vw, 88px);
+      align-items: center;
+    }
 
-    /* Naslov + tekst */
-    .aboutSection .aboutPanel .panelTitle { font-family: 'Alegreya'; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(2.1rem, 4.6vw, 3.0rem); max-width: 16ch; margin: 18px 0 clamp(20px, 2.6vw, 28px); }
-    .aboutSection .aboutPanel .panelTitle em { font-style: italic; color: #fff; }
-    .aboutSection .aboutPanel .panelBody p { color: rgba(255,255,255,.72); font-size: 1.02rem; line-height: 1.8; margin-bottom: 16px; }
-    .aboutSection .aboutPanel .panelBody p:last-of-type { margin-bottom: 0; }
+    .aboutSection .aboutPanel .panelText {
+      grid-column: 1;
+    }
 
-    /* Desna kolona — logo (centriran, bez sjene/rezanja) */
-    .aboutSection .aboutPanel .panelMedia.isLogo { grid-column: 2; display: grid; place-items: center; }
-    .aboutSection .aboutPanel .panelMedia.isLogo img { width: min(100%, 520px); height: auto; max-height: clamp(420px, 56vh, 620px); object-fit: contain; margin-left: auto; }
+    /* TITLE + BODY TEXT */
+    .aboutSection .aboutPanel .panelTitle {
+      font-family: 'Alegreya';
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.06;
+      font-size: clamp(2.1rem, 4.6vw, 3.0rem);
+      max-width: 16ch;
+      margin: 18px 0 clamp(20px, 2.6vw, 28px);
+    }
 
-    /* Ko smo mi: uža desna kolona (logo ne treba 720px) da ne pluta u praznini */
-    .aboutSection .aboutPanel[aria-labelledby="koTitle"] .panelGrid { grid-template-columns: minmax(0, 1fr) clamp(320px, 34vw, 480px); }
+    .aboutSection .aboutPanel .panelTitle em {
+      font-style: italic;
+      color: #fff;
+    }
 
-    /* MOBITEL — panel: jedna kolona; tamni postaje BIJEL */
+    .aboutSection .aboutPanel .panelBody p {
+      color: rgba(255, 255, 255, .72);
+      font-size: 1.12rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .aboutSection .aboutPanel .panelBody p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* RIGHT COLUMN — LOGO (CENTERED, NO SHADOW/CROP) */
+    .aboutSection .aboutPanel .panelMedia.isLogo {
+      grid-column: 2;
+      display: grid;
+      place-items: center;
+    }
+
+    .aboutSection .aboutPanel .panelMedia.isLogo img {
+      width: min(100%, 520px);
+      height: auto;
+      max-height: clamp(420px, 56vh, 620px);
+      object-fit: contain;
+      margin-left: auto;
+    }
+
+    /* WHO WE ARE: NARROWER RIGHT COLUMN (LOGO DOESN'T NEED 720PX) SO IT DOESN'T FLOAT IN EMPTY SPACE */
+    .aboutSection .aboutPanel[aria-labelledby="koTitle"] .panelGrid {
+      grid-template-columns: minmax(0, 1fr) clamp(320px, 34vw, 480px);
+    }
+
+    /* MOBILE — PANEL: SINGLE COLUMN, DARK BACKGROUND BECOMES WHITE */
     @media (max-width: 900px) {
-      .aboutSection .aboutPanel { background: var(--bg); color: inherit; }
+      .aboutSection .aboutPanel {
+        background: var(--bg);
+        color: inherit;
+      }
+
       .aboutSection .aboutPanel .panelGrid,
-      .aboutSection .aboutPanel[aria-labelledby="koTitle"] .panelGrid { grid-template-columns: 1fr; gap: 24px; }
-      .aboutSection .aboutPanel .panelMedia.isLogo { grid-column: 1; }
-      .aboutSection .aboutPanel .panelMedia.isLogo img { width: min(70%, 360px); margin: 0 auto; }
-      .aboutSection .aboutPanel .panelTitle { max-width: none; color: var(--ink); }
-      .aboutSection .aboutPanel .panelTitle em { color: var(--ink); }
-      .aboutSection .aboutPanel .panelBody p { color: #5c6960; }
+      .aboutSection .aboutPanel[aria-labelledby="koTitle"] .panelGrid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .aboutSection .aboutPanel .panelMedia.isLogo {
+        grid-column: 1;
+      }
+
+      .aboutSection .aboutPanel .panelMedia.isLogo img {
+        width: min(70%, 360px);
+        margin: 0 auto;
+      }
+
+      .aboutSection .aboutPanel .panelTitle {
+        max-width: none;
+        color: var(--ink);
+      }
+
+      .aboutSection .aboutPanel .panelTitle em {
+        color: var(--ink);
+      }
+
+      .aboutSection .aboutPanel .panelBody p {
+        color: #5c6960;
+      }
     }
 
     /* ============================================================
-       MOST — dva odvojena bloka (tekst + slika), naizmjenično.
-       Svaki je zasebna sekcija → razmaci jednaki kao svugdje.
-       Desktop: tamnozelena.  Mobitel: bijela.
+       BRIDGE — TWO SEPARATE BLOCKS (TEXT + IMAGE), ALTERNATING.
+       EACH IS ITS OWN SECTION, SO SPACING MATCHES THE REST OF THE PAGE.
+       DESKTOP: DARK GREEN. MOBILE: WHITE.
        ============================================================ */
-    .aboutSection .aboutBridge { background: var(--ink); }
-    .aboutSection .bridgeRow { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0,1fr) clamp(360px,42vw,560px); gap: clamp(40px,5vw,72px); align-items: center; }
-    .aboutSection .bridgeRow.isReverse .bridgeCol { order: 2; }
-    .aboutSection .bridgeRow.isReverse .bridgeMedia { order: 1; }
-    .aboutSection .bridgeTitle { font-family: 'Alegreya'; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(1.9rem,4vw,3rem); margin: 0 0 18px; }
-    .aboutSection .bridgeTitle em { font-style: italic; color: #fff; }
-    .aboutSection .bridgeCol p { color: rgba(255,255,255,.72); font-size: clamp(1rem,1.5vw,1.08rem); line-height: 1.85; margin: 0; }
-    .aboutSection .bridgeMedia img { width: 100%; height: clamp(420px, 56vh, 620px); object-fit: cover; border-radius: 22px; box-shadow: 0 40px 80px -46px rgba(0,0,0,.7); display: block; }
-    /* Retro ugođaj na prvoj MOST slici */
-    .aboutSection .aboutBridge:first-of-type .bridgeMedia img { filter: sepia(.35) contrast(.95) saturate(.85); }
-
-    @media (max-width: 900px) {
-      .aboutSection .aboutBridge { background: var(--bg); }
-      .aboutSection .bridgeTitle { color: var(--ink); }
-      .aboutSection .bridgeTitle em { color: var(--ink); }
-      .aboutSection .bridgeCol p { color: #5c6960; }
-      .aboutSection .bridgeRow,
-      .aboutSection .bridgeRow.isReverse { grid-template-columns: 1fr; gap: 20px; }
-      .aboutSection .bridgeRow .bridgeCol,
-      .aboutSection .bridgeRow.isReverse .bridgeCol { order: 1; }
-      .aboutSection .bridgeRow .bridgeMedia,
-      .aboutSection .bridgeRow.isReverse .bridgeMedia { order: 2; }
-      .aboutSection .bridgeMedia img { height: clamp(240px,60vw,360px); }
+    .aboutSection .aboutBridge {
+      background: var(--ink);
     }
 
+    .aboutSection .bridgeRow {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(360px, 42vw, 560px);
+      gap: clamp(40px, 5vw, 72px);
+      align-items: center;
+    }
 
-    .aboutSection .aboutLeader { background: var(--ink); margin-top:44px;}
-.aboutSection .leaderRow { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: clamp(320px,34vw,420px) minmax(0,1fr); gap: clamp(40px,5vw,72px); align-items: center; }
-.aboutSection .leaderMedia img {   object-fit: contain; display: block; border-radius:22px; }
-.aboutSection .leaderCol .eyebrow { display: block; font-family: 'IBM Plex Mono', monospace; font-size: .8rem; letter-spacing: .12em; color: var(--ol); margin-bottom: 10px; }
-.aboutSection .leaderTitle { font-family: 'Alegreya'; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(1.9rem,4vw,3rem); margin: 0 0 18px; }
-.aboutSection .leaderTitle em { font-style: italic; color: #fff; }
-.aboutSection .leaderCol p { color: rgba(255,255,255,.72); font-size: clamp(1rem,1.5vw,1.08rem); line-height: 1.85; margin: 0 0 14px; }
-.aboutSection .leaderCol p:last-of-type { margin-bottom: 0; }
-.aboutSection .leaderName { font-family: 'Alegreya'; font-style: italic; color: #fff; font-size: 1.05rem; margin-top: 18px; }
-.aboutSection .leaderRole { display: block; color: rgba(255,255,255,.55); font-size: .85rem; margin-top: 2px; }
+    .aboutSection .bridgeRow.isReverse .bridgeCol {
+      order: 2;
+    }
 
-@media (max-width: 900px) {
-  .aboutSection .aboutLeader { background: var(--bg); }
-  .aboutSection .leaderTitle, .aboutSection .leaderTitle em { color: var(--ink); }
-  .aboutSection .leaderCol p { color: #5c6960; }
-  .aboutSection .leaderName { color: var(--ink); }
-  .aboutSection .leaderRole { color: #6b7770; }
-  .aboutSection .leaderRow { grid-template-columns: 1fr; gap: 24px; }
-  .aboutSection .leaderMedia img { height: clamp(280px,70vw,380px); }
-}
+    .aboutSection .bridgeRow.isReverse .bridgeMedia {
+      order: 1;
+    }
 
-/* ============================================================
-       NAŠ PUT — alternating timeline (godine u krugovima na liniji).
-       Desktop: tamnozelena, zig-zag.  Mobitel: bijela, jednokolonska.
+    .aboutSection .bridgeTitle {
+      font-family: 'Alegreya';
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.06;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      margin: 0 0 18px;
+    }
+
+    .aboutSection .bridgeTitle em {
+      font-style: italic;
+      color: #fff;
+    }
+
+    .aboutSection .bridgeCol p {
+      color: rgba(255, 255, 255, .72);
+      font-size: clamp(1rem, 1.5vw, 1.08rem);
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .aboutSection .bridgeMedia img {
+      width: 100%;
+      height: clamp(420px, 56vh, 620px);
+      object-fit: cover;
+      border-radius: 22px;
+      box-shadow: 0 40px 80px -46px rgba(0, 0, 0, .7);
+      display: block;
+    }
+
+    /* RETRO LOOK ON THE FIRST BRIDGE IMAGE */
+    .aboutSection .aboutBridge:first-of-type .bridgeMedia img {
+      filter: sepia(.35) contrast(.95) saturate(.85);
+    }
+
+    @media (max-width: 900px) {
+      .aboutSection .aboutBridge {
+        background: var(--bg);
+      }
+
+      .aboutSection .bridgeTitle {
+        color: var(--ink);
+      }
+
+      .aboutSection .bridgeTitle em {
+        color: var(--ink);
+      }
+
+      .aboutSection .bridgeCol p {
+        color: #5c6960;
+      }
+
+      .aboutSection .bridgeRow,
+      .aboutSection .bridgeRow.isReverse {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .aboutSection .bridgeRow .bridgeCol,
+      .aboutSection .bridgeRow.isReverse .bridgeCol {
+        order: 1;
+      }
+
+      .aboutSection .bridgeRow .bridgeMedia,
+      .aboutSection .bridgeRow.isReverse .bridgeMedia {
+        order: 2;
+      }
+
+      .aboutSection .bridgeMedia img {
+        height: clamp(240px, 60vw, 360px);
+      }
+    }
+
+    /* ============================================================
+       LEADER — PRESIDENT PHOTO + TEXT.
+       DESKTOP: FIXED-WIDTH IMAGE COLUMN NEXT TO TEXT.
+       MOBILE: SINGLE COLUMN, IMAGE AND TEXT BOTH FULL WIDTH.
        ============================================================ */
-    .aboutSection .aboutTimeline { background: var(--ink); }
-    .aboutSection .tlHead { text-align: center; max-width: 640px; margin: 0 auto clamp(52px, 6vw, 80px); }
-    .aboutSection .tlTitle { font-family: 'Alegreya'; color: #fff; font-weight: 600; letter-spacing: -.025em; line-height: 1.1; font-size: clamp(2rem, 4.4vw, 3.1rem); margin: 12px 0 16px; }
-    .aboutSection .tlLead { color: rgba(255,255,255,.72); font-size: clamp(1rem, 2vw, 1.1rem); line-height: 1.65; }
+    .aboutSection .aboutLeader {
+      background: var(--ink);
+      margin-top: 44px;
+    }
 
-    .aboutSection .tlTrack { list-style: none; margin: 0 auto; padding: 0 24px; max-width: 1088px; position: relative; }
-    .aboutSection .tlTrack::before { content: ""; position: absolute; top: 12px; bottom: 12px; left: 50%; transform: translateX(-50%); width: 2px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,.2) 6%, rgba(255,255,255,.2) 94%, transparent); z-index: 0; }
+    .aboutSection .leaderRow {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: clamp(320px, 34vw, 420px) minmax(0, 1fr);
+      gap: clamp(40px, 5vw, 72px);
+      align-items: center;
+    }
 
-    .aboutSection .tlRow { position: relative; margin-bottom: clamp(28px, 3.5vw, 48px); }
-    .aboutSection .tlRow:last-child { margin-bottom: 0; }
+    .aboutSection .leaderMedia img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 22px;
+    }
 
-    .aboutSection .tlCard { position: relative; z-index: 1; width: calc(50% - 60px); padding: clamp(22px, 2.6vw, 30px); background: linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 26px 54px -34px rgba(0,0,0,.6); }
-    .aboutSection .tlRow:nth-child(even) .tlCard { margin-left: auto; }
+    .aboutSection .leaderCol .eyebrow {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      color: var(--ol);
+      margin-bottom: 10px;
+    }
 
-    .aboutSection .tlCard h3 { font-family: 'Alegreya'; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; font-size: clamp(1.2rem, 2.1vw, 1.5rem); color: #fff; margin-bottom: 10px; }
-    .aboutSection .tlCard p { color: rgba(255,255,255,.7); font-size: .95rem; line-height: 1.65; }
+    .aboutSection .leaderTitle {
+      font-family: 'Alegreya';
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.06;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      margin: 0 0 18px;
+    }
 
-    .aboutSection .tlNode { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; background: #02445e; color: #fff; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem; letter-spacing: -.01em; border: 4px solid var(--ink); box-shadow: 0 16px 32px -14px rgba(0,0,0,.7); }
+    .aboutSection .leaderTitle em {
+      font-style: italic;
+      color: #fff;
+    }
 
-    /* MOBITEL — bijelo; linija prolazi kroz centar krugova (osa = 22px unutar reda) */
+    .aboutSection .leaderCol p {
+      color: rgba(255, 255, 255, .72);
+      font-size: clamp(1rem, 1.5vw, 1.08rem);
+      line-height: 1.85;
+      margin: 0 0 14px;
+    }
+
+    .aboutSection .leaderCol p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .aboutSection .leaderName {
+      font-family: 'Alegreya';
+      font-style: italic;
+      color: #fff;
+      font-size: 1.05rem;
+      margin-top: 18px;
+    }
+
+    .aboutSection .leaderRole {
+      display: block;
+      color: rgba(255, 255, 255, .55);
+      font-size: .85rem;
+      margin-top: 2px;
+    }
+
+    /* MOBILE — IMAGE AND TEXT COLUMN BOTH GO FULL WIDTH, STACKED */
+    @media (max-width: 900px) {
+      .aboutSection .aboutLeader {
+        background: var(--bg);
+      }
+
+      .aboutSection .leaderRow {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .aboutSection .leaderMedia {
+        width: 100%;
+      }
+
+      .aboutSection .leaderMedia img {
+        width: 100%;
+        height: clamp(240px, 70vw, 380px);
+        object-fit: cover;
+      }
+
+      .aboutSection .leaderCol {
+        width: 100%;
+      }
+
+      .aboutSection .leaderTitle,
+      .aboutSection .leaderTitle em {
+        color: var(--ink);
+      }
+
+      .aboutSection .leaderCol p {
+        color: #5c6960;
+      }
+
+      .aboutSection .leaderName {
+        color: var(--ink);
+      }
+
+      .aboutSection .leaderRole {
+        color: #6b7770;
+      }
+    }
+
+    /* ============================================================
+       ROAD SO FAR — ALTERNATING TIMELINE (YEARS IN CIRCLES ON THE LINE).
+       DESKTOP: DARK GREEN, ZIG-ZAG. MOBILE: WHITE, SINGLE COLUMN.
+       ============================================================ */
+    .aboutSection .aboutTimeline {
+      background: var(--ink);
+    }
+
+    .aboutSection .tlHead {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto clamp(52px, 6vw, 80px);
+    }
+
+    .aboutSection .tlTitle {
+      font-family: 'Alegreya';
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      font-size: clamp(2rem, 4.4vw, 3.1rem);
+      margin: 12px 0 16px;
+    }
+
+    .aboutSection .tlLead {
+      color: rgba(255, 255, 255, .72);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.65;
+    }
+
+    .aboutSection .tlTrack {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0 24px;
+      max-width: 1088px;
+      position: relative;
+    }
+
+    .aboutSection .tlTrack::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, .2) 6%, rgba(255, 255, 255, .2) 94%, transparent);
+      z-index: 0;
+    }
+
+    .aboutSection .tlRow {
+      position: relative;
+      margin-bottom: clamp(28px, 3.5vw, 48px);
+    }
+
+    .aboutSection .tlRow:last-child {
+      margin-bottom: 0;
+    }
+
+    .aboutSection .tlCard {
+      position: relative;
+      z-index: 1;
+      width: calc(50% - 60px);
+      padding: clamp(22px, 2.6vw, 30px);
+      background: linear-gradient(165deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 20px;
+      box-shadow: 0 26px 54px -34px rgba(0, 0, 0, .6);
+    }
+
+    .aboutSection .tlRow:nth-child(even) .tlCard {
+      margin-left: auto;
+    }
+
+    .aboutSection .tlCard h3 {
+      font-family: 'Alegreya';
+      font-weight: 600;
+      letter-spacing: -.015em;
+      line-height: 1.2;
+      font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .aboutSection .tlCard p {
+      color: rgba(255, 255, 255, .7);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+
+    .aboutSection .tlNode {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #02445e;
+      color: #fff;
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.02rem;
+      letter-spacing: -.01em;
+      border: 4px solid var(--ink);
+      box-shadow: 0 16px 32px -14px rgba(0, 0, 0, .7);
+    }
+
+    /* MOBILE — WHITE BACKGROUND, LINE PASSES THROUGH CENTER OF CIRCLES */
     @media (max-width: 760px) {
-      .aboutSection .aboutTimeline { background: var(--bg); padding-left: 18px; padding-right: 18px; }
-      .aboutSection .tlTitle { color: var(--ink); }
-      .aboutSection .tlLead { color: #5c6960; }
+      .aboutSection .aboutTimeline {
+        background: var(--bg);
+        padding-left: 18px;
+        padding-right: 18px;
+      }
 
-      .aboutSection .tlTrack { max-width: 100%; padding: 0; }
-      .aboutSection .tlTrack::before { left: 22px; top: 14px; bottom: 14px; transform: translateX(-50%); background: linear-gradient(to bottom, transparent, rgba(29,61,52,.22) 6%, rgba(29,61,52,.22) 94%, transparent); }
+      .aboutSection .tlTitle {
+        color: var(--ink);
+      }
 
-      .aboutSection .tlRow { position: relative; margin: 0 0 20px; }
-      .aboutSection .tlRow:last-child { margin-bottom: 0; }
+      .aboutSection .tlLead {
+        color: #5c6960;
+      }
+
+      .aboutSection .tlTrack {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .aboutSection .tlTrack::before {
+        left: 22px;
+        top: 14px;
+        bottom: 14px;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, transparent, rgba(29, 61, 52, .22) 6%, rgba(29, 61, 52, .22) 94%, transparent);
+      }
+
+      .aboutSection .tlRow {
+        position: relative;
+        margin: 0 0 20px;
+      }
+
+      .aboutSection .tlRow:last-child {
+        margin-bottom: 0;
+      }
 
       .aboutSection .tlCard,
-      .aboutSection .tlRow:nth-child(even) .tlCard { width: auto; margin-left: 70px; margin-right: 0; background: linear-gradient(165deg, rgba(255,255,255,.94), rgba(255,255,255,.74)); border-color: rgba(29,61,52,.1); }
-      .aboutSection .tlCard h3 { color: var(--g2); }
-      .aboutSection .tlCard p { color: #6b7770; }
+      .aboutSection .tlRow:nth-child(even) .tlCard {
+        width: auto;
+        margin-left: 70px;
+        margin-right: 0;
+        background: linear-gradient(165deg, rgba(255, 255, 255, .94), rgba(255, 255, 255, .74));
+        border-color: rgba(29, 61, 52, .1);
+      }
 
-      .aboutSection .tlNode { left: 22px; top: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; font-size: .8rem; border-width: 4px; background: #02445e; border-color: var(--bg); }
+      .aboutSection .tlCard h3 {
+        color: var(--g2);
+      }
+
+      .aboutSection .tlCard p {
+        color: #6b7770;
+      }
+
+      .aboutSection .tlNode {
+        left: 22px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 56px;
+        height: 56px;
+        font-size: .8rem;
+        border-width: 4px;
+        background: #02445e;
+        border-color: var(--bg);
+      }
     }
   </style>
 </head>
@@ -226,7 +626,7 @@
     <div class="aboutSection">
 
       <div class="aboutHero">
-        <!-- 1. HERO -->
+        <!-- HERO -->
         <section class="hero">
           <img class="heroBg" src="assets/pictures/herosection/abouthero.webp"
             alt="Panorama planinskih vrhova pri izlasku sunca" loading="eager" fetchpriority="high">
@@ -245,7 +645,7 @@
         </section>
       </div>
 
-      <!-- 2. KO SMO MI (bazni panel, logo desno) -->
+      <!-- WHO WE ARE (BASE PANEL, LOGO RIGHT) -->
       <section class="aboutPanel" aria-labelledby="koTitle">
         <div class="panelGrid">
           <div class="panelText onReveal">
@@ -267,7 +667,7 @@
         </div>
       </section>
 
-      <!-- MOST blok 1: historijat (tekst lijevo / retro slika desno) -->
+      <!-- BRIDGE BLOCK 1: HISTORY (TEXT LEFT / RETRO IMAGE RIGHT) -->
       <section class="aboutBridge">
         <div class="bridgeRow onReveal">
           <div class="bridgeCol">
@@ -285,7 +685,7 @@
         </div>
       </section>
 
-      <!-- MOST blok 2: "Konjuh danas" (slika lijevo / tekst desno) -->
+      <!-- BRIDGE BLOCK 2: "KONJUH TODAY" (IMAGE LEFT / TEXT RIGHT) -->
       <section class="aboutBridge">
         <div class="bridgeRow isReverse onReveal">
           <div class="bridgeCol">
@@ -302,42 +702,41 @@
         </div>
       </section>
 
-
-
+      <!-- LEADERSHIP: PRESIDENT PHOTO + TEXT -->
       <section class="aboutLeader" aria-labelledby="leaderTitle">
-  <div class="leaderRow onReveal">
-    <div class="leaderMedia">
-      <img src="assets/pictures/aboutsection/predsjednikpd.jpg" alt="Predsjednik Planinarskog društva Konjuh">
-    </div>
-    <div class="leaderCol">
-      <h2 class="leaderTitle" id="leaderTitle">Vodstvo koje <em>povezuje.</em></h2>
+        <div class="leaderRow onReveal">
+          <div class="leaderMedia">
+            <img src="assets/pictures/aboutsection/predsjednikpd.jpg" alt="Predsjednik Planinarskog društva Konjuh">
+          </div>
+          <div class="leaderCol">
+            <h2 class="leaderTitle" id="leaderTitle">Vodstvo koje <em>povezuje.</em></h2>
 
-      <p>Planinarsko društvo „KONJUH" Tuzla radi na svim segmentima planinarenja isto kao što se radilo od svog
-        osnivanja 1951. godine. Imamo preko 300 članova sa 3 planinarska doma na 3 planine: Kraljica na Ozrenu,
-        Javorje na Konjuhu i Djed Sjepan na Vršanima. Spadamo u najbolje organizovano društvo u Bosni i Hercegovini.
-        Imamo rekordan broj prijatelja i prijateljskih društava širom Balkana. Iza nas su brojni projekti koji
-        razvijaju planinarenje i planinarsku kulturu u Tuzli, Bosni i Hercegovini i Balkanu.</p>
+            <p>Planinarsko društvo „KONJUH" Tuzla radi na svim segmentima planinarenja isto kao što se radilo od svog
+              osnivanja 1951. godine. Imamo preko 300 članova sa 3 planinarska doma na 3 planine: Kraljica na Ozrenu,
+              Javorje na Konjuhu i Djed Sjepan na Vršanima. Spadamo u najbolje organizovano društvo u Bosni i Hercegovini.
+              Imamo rekordan broj prijatelja i prijateljskih društava širom Balkana. Iza nas su brojni projekti koji
+              razvijaju planinarenje i planinarsku kulturu u Tuzli, Bosni i Hercegovini i Balkanu.</p>
 
-      <p>Šta je planinarenje? Zbog čega se penjemo na vrhove? Zbog čega postojimo više od 75 godina?</p>
+            <p>Šta je planinarenje? Zbog čega se penjemo na vrhove? Zbog čega postojimo više od 75 godina?</p>
 
-      <p>Planinarenje je i kultura i sport, rekreacija i turizam, stil života, hobi, zanimanje. Od svega nabrojanog,
-        planinarska kultura je sjedinjenje čovjeka sa prirodom. Planinari kultivišu prostor kroz vrijeme. Planinari
-        obogaćuju prirodnu i kulturnu baštinu.</p>
+            <p>Planinarenje je i kultura i sport, rekreacija i turizam, stil života, hobi, zanimanje. Od svega nabrojanog,
+              planinarska kultura je sjedinjenje čovjeka sa prirodom. Planinari kultivišu prostor kroz vrijeme. Planinari
+              obogaćuju prirodnu i kulturnu baštinu.</p>
 
-      <p>Popeti se na planinski vrh znači vidjeti ono što ptice gledaju, daleko i široko i visoko, iznad i ispod
-        oblaka, po kiši i snijegu, po suncu, po noći, po magli. Planinari imaju planinarske staze i planinarske
-        domove. Planinari imaju pohode, zabave, sletove, ekspedicije. Planinari imaju planine, bezgranične prostore,
-        imaju trave i šume i divljinu i nebo i sunce.</p>
+            <p>Popeti se na planinski vrh znači vidjeti ono što ptice gledaju, daleko i široko i visoko, iznad i ispod
+              oblaka, po kiši i snijegu, po suncu, po noći, po magli. Planinari imaju planinarske staze i planinarske
+              domove. Planinari imaju pohode, zabave, sletove, ekspedicije. Planinari imaju planine, bezgranične prostore,
+              imaju trave i šume i divljinu i nebo i sunce.</p>
 
-      <p>Planinarenje je otvoreno za sve! Primamo i djecu i penzionere i radnike. Krenite sa nama bez straha i
-        predrasuda. Planina vas zove!</p>
+            <p>Planinarenje je otvoreno za sve! Primamo i djecu i penzionere i radnike. Krenite sa nama bez straha i
+              predrasuda. Planina vas zove!</p>
 
-      <p class="leaderName">Sabid Zekan<span class="leaderRole">Predsjednik PD „Konjuh" Tuzla</span></p>
-    </div>
-  </div>
-</section>
+            <p class="leaderName">Sabid Zekan<span class="leaderRole">Predsjednik PD „Konjuh" Tuzla</span></p>
+          </div>
+        </div>
+      </section>
 
-      <!-- 3. NAŠ PUT (timeline) -->
+      <!-- ROAD SO FAR (TIMELINE) -->
       <section class="aboutTimeline" aria-labelledby="tlTitle">
         <div class="tlHead onReveal">
           <h2 class="tlTitle" id="tlTitle">Put rasta i zajedništva</h2>
@@ -407,13 +806,13 @@
         </ol>
       </section>
 
-      <!-- CTA (video sekcija — puni je assets/script.js) -->
+      <!-- CTA (VIDEO SECTION — FILLED BY ASSETS/SCRIPT.JS) -->
       <div id="ctaVideoRoot"></div>
 
     </div>
   </main>
 
-  <!-- FOOTER (zajednički partial — puni ga assets/script.js) -->
+  <!-- FOOTER (SHARED PARTIAL — FILLED BY ASSETS/SCRIPT.JS) -->
   <div id="siteFooterRoot"></div>
 
   <script src="assets/script.js" defer></script>
