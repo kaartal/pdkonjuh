@@ -33,9 +33,9 @@
           iceblue:'#51B1DB'
         },
         fontFamily: {
-          display: ['math'],
-          sans: ['math'],
-          mono: ['math']
+          display: ['Alegreya'],
+          sans: ['Alegreya'],
+          mono: ['Alegreya']
         }
       }
     }
@@ -95,7 +95,7 @@
     .aboutSection .aboutPanel .panelText { grid-column: 1; }
 
     /* Naslov + tekst */
-    .aboutSection .aboutPanel .panelTitle { font-family: 'Fraunces', serif; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(2.1rem, 4.6vw, 3.6rem); max-width: 16ch; margin: 18px 0 clamp(20px, 2.6vw, 28px); }
+    .aboutSection .aboutPanel .panelTitle { font-family: 'Alegreya'; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(2.1rem, 4.6vw, 3.0rem); max-width: 16ch; margin: 18px 0 clamp(20px, 2.6vw, 28px); }
     .aboutSection .aboutPanel .panelTitle em { font-style: italic; color: #fff; }
     .aboutSection .aboutPanel .panelBody p { color: rgba(255,255,255,.72); font-size: 1.02rem; line-height: 1.8; margin-bottom: 16px; }
     .aboutSection .aboutPanel .panelBody p:last-of-type { margin-bottom: 0; }
@@ -128,7 +128,7 @@
     .aboutSection .bridgeRow { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0,1fr) clamp(360px,42vw,560px); gap: clamp(40px,5vw,72px); align-items: center; }
     .aboutSection .bridgeRow.isReverse .bridgeCol { order: 2; }
     .aboutSection .bridgeRow.isReverse .bridgeMedia { order: 1; }
-    .aboutSection .bridgeTitle { font-family: 'Fraunces', serif; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(1.9rem,4vw,3rem); margin: 0 0 18px; }
+    .aboutSection .bridgeTitle { font-family: 'Alegreya'; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(1.9rem,4vw,3rem); margin: 0 0 18px; }
     .aboutSection .bridgeTitle em { font-style: italic; color: #fff; }
     .aboutSection .bridgeCol p { color: rgba(255,255,255,.72); font-size: clamp(1rem,1.5vw,1.08rem); line-height: 1.85; margin: 0; }
     .aboutSection .bridgeMedia img { width: 100%; height: clamp(420px, 56vh, 620px); object-fit: cover; border-radius: 22px; box-shadow: 0 40px 80px -46px rgba(0,0,0,.7); display: block; }
@@ -149,13 +149,35 @@
       .aboutSection .bridgeMedia img { height: clamp(240px,60vw,360px); }
     }
 
+
+    .aboutSection .aboutLeader { background: var(--ink); margin-top:44px;}
+.aboutSection .leaderRow { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: clamp(320px,34vw,420px) minmax(0,1fr); gap: clamp(40px,5vw,72px); align-items: center; }
+.aboutSection .leaderMedia img {   object-fit: contain; display: block; border-radius:22px; }
+.aboutSection .leaderCol .eyebrow { display: block; font-family: 'IBM Plex Mono', monospace; font-size: .8rem; letter-spacing: .12em; color: var(--ol); margin-bottom: 10px; }
+.aboutSection .leaderTitle { font-family: 'Alegreya'; color: #fff; font-weight: 500; letter-spacing: -.025em; line-height: 1.06; font-size: clamp(1.9rem,4vw,3rem); margin: 0 0 18px; }
+.aboutSection .leaderTitle em { font-style: italic; color: #fff; }
+.aboutSection .leaderCol p { color: rgba(255,255,255,.72); font-size: clamp(1rem,1.5vw,1.08rem); line-height: 1.85; margin: 0 0 14px; }
+.aboutSection .leaderCol p:last-of-type { margin-bottom: 0; }
+.aboutSection .leaderName { font-family: 'Alegreya'; font-style: italic; color: #fff; font-size: 1.05rem; margin-top: 18px; }
+.aboutSection .leaderRole { display: block; color: rgba(255,255,255,.55); font-size: .85rem; margin-top: 2px; }
+
+@media (max-width: 900px) {
+  .aboutSection .aboutLeader { background: var(--bg); }
+  .aboutSection .leaderTitle, .aboutSection .leaderTitle em { color: var(--ink); }
+  .aboutSection .leaderCol p { color: #5c6960; }
+  .aboutSection .leaderName { color: var(--ink); }
+  .aboutSection .leaderRole { color: #6b7770; }
+  .aboutSection .leaderRow { grid-template-columns: 1fr; gap: 24px; }
+  .aboutSection .leaderMedia img { height: clamp(280px,70vw,380px); }
+}
+
 /* ============================================================
        NAŠ PUT — alternating timeline (godine u krugovima na liniji).
        Desktop: tamnozelena, zig-zag.  Mobitel: bijela, jednokolonska.
        ============================================================ */
     .aboutSection .aboutTimeline { background: var(--ink); }
     .aboutSection .tlHead { text-align: center; max-width: 640px; margin: 0 auto clamp(52px, 6vw, 80px); }
-    .aboutSection .tlTitle { font-family: 'Fraunces', serif; color: #fff; font-weight: 600; letter-spacing: -.025em; line-height: 1.1; font-size: clamp(2rem, 4.4vw, 3.1rem); margin: 12px 0 16px; }
+    .aboutSection .tlTitle { font-family: 'Alegreya'; color: #fff; font-weight: 600; letter-spacing: -.025em; line-height: 1.1; font-size: clamp(2rem, 4.4vw, 3.1rem); margin: 12px 0 16px; }
     .aboutSection .tlLead { color: rgba(255,255,255,.72); font-size: clamp(1rem, 2vw, 1.1rem); line-height: 1.65; }
 
     .aboutSection .tlTrack { list-style: none; margin: 0 auto; padding: 0 24px; max-width: 1088px; position: relative; }
@@ -167,10 +189,10 @@
     .aboutSection .tlCard { position: relative; z-index: 1; width: calc(50% - 60px); padding: clamp(22px, 2.6vw, 30px); background: linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 26px 54px -34px rgba(0,0,0,.6); }
     .aboutSection .tlRow:nth-child(even) .tlCard { margin-left: auto; }
 
-    .aboutSection .tlCard h3 { font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; font-size: clamp(1.2rem, 2.1vw, 1.5rem); color: #fff; margin-bottom: 10px; }
+    .aboutSection .tlCard h3 { font-family: 'Alegreya'; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; font-size: clamp(1.2rem, 2.1vw, 1.5rem); color: #fff; margin-bottom: 10px; }
     .aboutSection .tlCard p { color: rgba(255,255,255,.7); font-size: .95rem; line-height: 1.65; }
 
-    .aboutSection .tlNode { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; background: var(--ol); color: #fff; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem; letter-spacing: -.01em; border: 4px solid var(--ink); box-shadow: 0 16px 32px -14px rgba(0,0,0,.7); }
+    .aboutSection .tlNode { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; background: #02445e; color: #fff; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem; letter-spacing: -.01em; border: 4px solid var(--ink); box-shadow: 0 16px 32px -14px rgba(0,0,0,.7); }
 
     /* MOBITEL — bijelo; linija prolazi kroz centar krugova (osa = 22px unutar reda) */
     @media (max-width: 760px) {
@@ -189,7 +211,7 @@
       .aboutSection .tlCard h3 { color: var(--g2); }
       .aboutSection .tlCard p { color: #6b7770; }
 
-      .aboutSection .tlNode { left: 22px; top: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; font-size: .8rem; border-width: 4px; background: var(--g); border-color: var(--bg); }
+      .aboutSection .tlNode { left: 22px; top: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; font-size: .8rem; border-width: 4px; background: #02445e; border-color: var(--bg); }
     }
   </style>
 </head>
@@ -235,8 +257,8 @@
                 Pavlović, Paša Abidinović i drugi entuzijasti.</p>
               <p>Osnivačka skupština održana je u zgradi današnjeg Narodnog pozorišta u Tuzli, čime su postavljeni
                 temelji društva koje će u narednim decenijama postati važan dio planinarskog života Tuzle i šireg
-                područja. Prvi predsjednik bio je Halid Čokić, a prve članske karte štampane su u Tuzlanskoj štampariji
-                — svjedočanstvo entuzijazma kojim je društvo stvarano od samog početka.</p>
+                područja. Prvi predsjednik bio je Halid Čokić, a prve članske karte štampane su u Tuzlanskoj štampariji,
+                 svjedočanstvo entuzijazma kojim je društvo stvarano od samog početka.</p>
             </div>
           </div>
           <div class="panelMedia isLogo onReveal d1">
@@ -258,7 +280,7 @@
               iskustva i učilo o odgovornom odnosu prema prirodi.</p>
           </div>
           <div class="bridgeMedia">
-            <img src="assets/pictures/Gallery/gallery1.jpg" alt="Stara fotografija članova društva na planini">
+            <img src="assets/pictures/about2.jpg" alt="Stara fotografija članova društva na planini">
           </div>
         </div>
       </section>
@@ -270,9 +292,9 @@
             <h2 class="bridgeTitle">Konjuh <em>danas.</em></h2>
             <p>Danas, više od sedam decenija nakon osnivanja, PD „Konjuh" Tuzla nastavlja čuvati duh i vrijednosti koje
               su postavili njegovi prvi članovi. Iako se način života, tehnologija i samo planinarstvo kroz godine
-              mijenjaju, suština ostaje ista — okupiti ljude, izaći iz svakodnevice i zajedno doživjeti planinu. Društvo
+              mijenjaju, suština ostaje ista, okupiti ljude, izaći iz svakodnevice i zajedno doživjeti planinu. Društvo
               povezuje iskusne planinare i nove generacije, razvija planinarsku kulturu i njeguje odgovornost prema
-              prostoru koji dijelimo — priča koja se nastavlja sa svakom novom generacijom.</p>
+              prostoru koji dijelimo, priča koja se nastavlja sa svakom novom generacijom.</p>
           </div>
           <div class="bridgeMedia">
             <img src="assets/pictures/footer/footer1.jpg" alt="Članovi društva na savremenoj turi">
@@ -280,11 +302,46 @@
         </div>
       </section>
 
+
+
+      <section class="aboutLeader" aria-labelledby="leaderTitle">
+  <div class="leaderRow onReveal">
+    <div class="leaderMedia">
+      <img src="assets/pictures/aboutsection/predsjednikpd.jpg" alt="Predsjednik Planinarskog društva Konjuh">
+    </div>
+    <div class="leaderCol">
+      <h2 class="leaderTitle" id="leaderTitle">Vodstvo koje <em>povezuje.</em></h2>
+
+      <p>Planinarsko društvo „KONJUH" Tuzla radi na svim segmentima planinarenja isto kao što se radilo od svog
+        osnivanja 1951. godine. Imamo preko 300 članova sa 3 planinarska doma na 3 planine: Kraljica na Ozrenu,
+        Javorje na Konjuhu i Djed Sjepan na Vršanima. Spadamo u najbolje organizovano društvo u Bosni i Hercegovini.
+        Imamo rekordan broj prijatelja i prijateljskih društava širom Balkana. Iza nas su brojni projekti koji
+        razvijaju planinarenje i planinarsku kulturu u Tuzli, Bosni i Hercegovini i Balkanu.</p>
+
+      <p>Šta je planinarenje? Zbog čega se penjemo na vrhove? Zbog čega postojimo više od 75 godina?</p>
+
+      <p>Planinarenje je i kultura i sport, rekreacija i turizam, stil života, hobi, zanimanje. Od svega nabrojanog,
+        planinarska kultura je sjedinjenje čovjeka sa prirodom. Planinari kultivišu prostor kroz vrijeme. Planinari
+        obogaćuju prirodnu i kulturnu baštinu.</p>
+
+      <p>Popeti se na planinski vrh znači vidjeti ono što ptice gledaju, daleko i široko i visoko, iznad i ispod
+        oblaka, po kiši i snijegu, po suncu, po noći, po magli. Planinari imaju planinarske staze i planinarske
+        domove. Planinari imaju pohode, zabave, sletove, ekspedicije. Planinari imaju planine, bezgranične prostore,
+        imaju trave i šume i divljinu i nebo i sunce.</p>
+
+      <p>Planinarenje je otvoreno za sve! Primamo i djecu i penzionere i radnike. Krenite sa nama bez straha i
+        predrasuda. Planina vas zove!</p>
+
+      <p class="leaderName">Sabid Zekan<span class="leaderRole">Predsjednik PD „Konjuh" Tuzla</span></p>
+    </div>
+  </div>
+</section>
+
       <!-- 3. NAŠ PUT (timeline) -->
       <section class="aboutTimeline" aria-labelledby="tlTitle">
         <div class="tlHead onReveal">
           <h2 class="tlTitle" id="tlTitle">Put rasta i zajedništva</h2>
-          <p class="tlLead">Sedam decenija koraka, uspona i zajedništva — ispričano kroz prekretnice koje su oblikovale
+          <p class="tlLead">Sedam decenija koraka, uspona i zajedništva, ispričano kroz prekretnice koje su oblikovale
             naše društvo.</p>
         </div>
 
@@ -307,7 +364,7 @@
           <li class="tlRow onReveal">
             <div class="tlCard">
               <h3>Izgradnja planinarskog doma</h3>
-              <p>Podignut prvi planinarski dom na Konjuhu — postaje vikend okupljalište i baza za brojne avanture.</p>
+              <p>Podignut prvi planinarski dom na Konjuhu, postaje vikend okupljalište i baza za brojne avanture.</p>
             </div>
             <span class="tlNode">1975</span>
           </li>

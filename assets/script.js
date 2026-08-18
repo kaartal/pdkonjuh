@@ -24,11 +24,8 @@
     { key: "contact", href: "contact.html", label: "Kontakt" }
   ];
 
-  // SLJEDEĆI TERMINI ZA SVAKU TURU — KORISTI SE NA NASLOVNOJ (HERO "SLJEDEĆA TURA")
-  // I NA SVIM OSTALIM STRANICAMA (VIDI initGlobalNextTour NIŽE).
-  // VAŽNO: ako promijeniš/dodaš datum ovdje, promijeni ga i na odgovarajućoj
-  // kartici u hikes.html (data-date atribut + "Sljedeći termin" oznaka u kartici),
-  // da obje stranice ostanu usklađene.
+  // NEXT DATES FOR EACH TOUR, USED FOR THE HERO "NEXT TOUR" CARD ON EVERY PAGE
+  // IMPORTANT: KEEP THIS IN SYNC WITH THE MATCHING CARD DATE IN hikes.html
   var UPCOMING_TOURS = [
     { id: "bjelasnica", title: "Bjelašnica", date: "2026-08-23", image: "assets/pictures/bjelasnica.jpg" },
     { id: "prenj", title: "Prenj", date: "2026-08-30", image: "assets/pictures/prenj.jpg" },
@@ -257,19 +254,18 @@
   }
 
   /* ==========================================================================
-     3b. FAVICON (LOGO U TABU BROWSERA) — ISTI SVG KAO BRAND MARK U HEADERU.
-     Ubacuje se ovdje, u zajedničkom script.js koji se učitava na svakoj
-     stranici, pa se favicon automatski pojavljuje na SVAKOJ sekciji sajta
-     (index, o nama, ture, vijesti, plan, domovi, galerija, kontakt...).
+     3b. FAVICON — SAME SVG AS THE BRAND MARK IN THE HEADER.
+     Loaded here in the shared script.js so it appears automatically on
+     every page of the site.
      ========================================================================== */
 
   function initFavicon() {
-    // UKLONI POSTOJEĆI FAVICON (AKO GA STRANICA VEĆ IMA U <HEAD>) DA NE BUDE DUPLO
+    // REMOVE EXISTING FAVICON (IF THE PAGE ALREADY HAS ONE IN <HEAD>) TO AVOID DUPLICATES
     document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach(function (el) {
       el.remove();
     });
 
-    // FAVICON KAO PRAVA SLIKA LOGA (ISTA DATOTEKA KOJA SE KORISTI I U NAVBARU)
+    // FAVICON AS THE ACTUAL LOGO IMAGE (SAME FILE USED IN THE NAVBAR)
     var link = document.createElement("link");
     link.rel = "icon";
     link.type = "image/png";
@@ -502,8 +498,8 @@
             io.unobserve(entry.target);
             // WAIT TWO FRAMES BEFORE ADDING isVisible SO THE BROWSER HAS
             // DEFINITELY PAINTED THE INITIAL opacity:0 STATE FIRST —
-            // OTHERWISE ELEMENTS ALREADY IN VIEW ON LOAD (SHORT PAGES LIKE
-            // KONTAKT / ČLANSTVO) JUMP STRAIGHT TO VISIBLE WITH NO ANIMATION
+            // OTHERWISE ELEMENTS ALREADY IN VIEW ON LOAD (SHORT PAGES)
+            // JUMP STRAIGHT TO VISIBLE WITH NO ANIMATION
             requestAnimationFrame(function () {
               requestAnimationFrame(function () {
                 entry.target.classList.add("isVisible");
@@ -722,19 +718,14 @@
   }
 
   /* ==========================================================================
-     17b. HERO — SLJEDEĆA TURA (SVE STRANICE)
-     Ispisuje najbližu nadolazeću turu iz UPCOMING_TOURS (vidi vrh fajla).
-     ISTA velika kartica (slika + bedž "Sljedeća tura" + naslov + datum) se
-     sada koristi NA SVIM STRANICAMA, ne samo na naslovnoj:
-       - Ako stranica već ima element #heroNextTour (npr. index.html), kartica
-         se ubacuje tačno tamo, unutar hero sekcije.
-       - Ako stranica NEMA taj element (about.html, hikes.html, lodges.html,
-         gallery.html, contact.html, membership.html...), ensureHeroNextTourEl()
-         niže sama pronalazi hero sekciju stranice (data-hero-box, .heroSection
-         ili prvi <section> unutar <main>) i ubacuje #heroNextTour tamo, tako
-         da svaka stranica dobije IDENTIČAN prikaz kao naslovna.
-     Stari mali plutajući widget (donji lijevi ugao) je uklonjen — vidi
-     napomenu kod bivše funkcije initGlobalNextTour, niže u fajlu.
+     17b. HERO — NEXT TOUR (ALL PAGES)
+     Shows the closest upcoming tour from UPCOMING_TOURS (see top of file).
+     The same big card (image + badge + title + date) is used on every page:
+       - If the page already has a #heroNextTour element (e.g. index.html),
+         the card is inserted right there, inside the hero section.
+       - If the page does NOT have that element, ensureHeroNextTourEl()
+         below finds the page hero section on its own and inserts
+         #heroNextTour there, so every page gets the same display.
      ========================================================================== */
 
   function nextUpcomingTour() {
@@ -755,7 +746,7 @@
 
   var MON_ABBR = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
 
-  // GRADI HTML VELIKE KARTICE "SLJEDEĆA TURA" (ISTOVJETNO NA SVIM STRANICAMA)
+  // BUILDS THE HTML FOR THE BIG "NEXT TOUR" CARD (SAME ON EVERY PAGE)
   function buildNextTourCardHTML(next, label) {
     var arrowSvg =
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -775,10 +766,10 @@
     );
   }
 
-  // OSIGURAVA DA POSTOJI #heroNextTour NA STRANICI. AKO GA STRANICA VEĆ IMA
-  // (RUČNO STAVLJEN U HTML, KAO NA index.html) — KORISTI GA. AKO GA NEMA,
-  // SAMA GA UBACUJE U HERO SEKCIJU STRANICE (NAJBOLJI DOSTUPNI KANDIDAT),
-  // TAKO DA SVAKA STRANICA DOBIJE ISTU KARTICU BEZ RUČNOG UREĐIVANJA SVAKOG HTML-A.
+  // MAKES SURE #heroNextTour EXISTS ON THE PAGE. IF THE PAGE ALREADY HAS IT
+  // (PLACED MANUALLY IN THE HTML, AS ON index.html) — USES IT. IF NOT, IT
+  // INSERTS IT INTO THE PAGE HERO SECTION ITSELF (BEST AVAILABLE CANDIDATE),
+  // SO EVERY PAGE GETS THE SAME CARD WITHOUT MANUALLY EDITING EACH HTML FILE.
   function ensureHeroNextTourEl() {
     var el = document.getElementById("heroNextTour");
     if (el) return el;
@@ -791,7 +782,7 @@
       document.querySelector("main");
     if (!target) return null;
 
-    // KARTICA JE position:absolute — MORA JOJ SE OMOGUĆITI POZICIONI KONTEKST
+    // THE CARD IS position:absolute — THE TARGET NEEDS A POSITIONING CONTEXT
     var computedPos = window.getComputedStyle(target).position;
     if (computedPos === "static") target.classList.add("heroNextTourAnchor");
 
@@ -816,8 +807,8 @@
       el.innerHTML = buildNextTourCardHTML(next, label);
     }
 
-    // POVEŽI CIJELI HERO-BOX (GLAVNI HERO) SA STRANICOM NAJBLIŽE NADOLAZEĆE
-    // TURE — VIDI initHeroBoxLink() ZA STVARNI KLIK/TIPKOVNICA HANDLER.
+    // LINKS THE WHOLE HERO BOX TO THE CLOSEST UPCOMING TOUR PAGE —
+    // SEE initHeroBoxLink() FOR THE ACTUAL CLICK/KEYBOARD HANDLER.
     if (heroBox) {
       heroBox.dataset.href = "hikes.html#" + next.id;
       heroBox.classList.add("heroBoxLinked");
@@ -828,10 +819,10 @@
   }
 
   /* ==========================================================================
-     17c. GLAVNI HERO — KLIK/TIPKOVNICA NAVIGACIJA NA [data-hero-box]
-     Cijeli hero-box je klikabilan (osim stvarnih <a>/<button> unutar njega,
-     kao npr. "Istraži ture" i kartica "Sljedeća tura", koji zadržavaju
-     svoje vlastito ponašanje). Href postavlja initHeroNextTour() gore.
+     17c. MAIN HERO — CLICK/KEYBOARD NAVIGATION ON [data-hero-box]
+     The whole hero box is clickable (except real <a>/<button> elements
+     inside it, which keep their own behaviour). The href is set by
+     initHeroNextTour() above.
      ========================================================================== */
 
   function initHeroBoxLink() {
