@@ -27,12 +27,7 @@
   // NEXT DATES FOR EACH TOUR, USED FOR THE HERO "NEXT TOUR" CARD ON EVERY PAGE
   // IMPORTANT: KEEP THIS IN SYNC WITH THE MATCHING CARD DATE IN hikes.html
   var UPCOMING_TOURS = [
-    { id: "bjelasnica", title: "Bjelašnica", date: "2026-08-23", image: "assets/pictures/bjelasnica.jpg" },
-    { id: "prenj", title: "Prenj", date: "2026-08-30", image: "assets/pictures/prenj.jpg" },
-    { id: "velez", title: "Velež", date: "2026-09-06", image: "assets/pictures/velez.webp" },
-    { id: "cvrsnica", title: "Čvrsnica", date: "2026-09-20", image: "assets/pictures/crvrsnica.jpg" },
-    { id: "maglic", title: "Maglić", date: "2026-10-04", image: "assets/pictures/maglic.jpg" },
-    { id: "konjuh", title: "Konjuh", date: "2026-10-18", image: "assets/pictures/konjuh.webp" }
+    { id: "premuzic", title: "Premužićeva staza", date: "2026-09-10", image: "" }
   ];
 
   var MEGA_PANEL_ITEMS = [
@@ -51,10 +46,16 @@
     '<path d="M20 11L30 26" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
     "</svg>";
 
+  // BOTH STATES SHOW AN ICON *AND* A WORD ("Meni" / "Zatvori") SIDE BY SIDE —
+  // AN ICON-ONLY HAMBURGER IS NOT UNIVERSALLY RECOGNISED (ESPECIALLY BY
+  // OLDER VISITORS), SO THE LABEL REMOVES ANY GUESSWORK ABOUT WHAT THE
+  // BUTTON DOES.
   var HAMBURGER_ICON =
-    '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' +
+    '<span class="menuToggleLabel">Meni</span>';
   var CLOSE_ICON =
-    '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' +
+    '<span class="menuToggleLabel">Zatvori</span>';
 
   function buildMegaPanel() {
     var links = MEGA_PANEL_ITEMS.map(function (item) {
@@ -99,14 +100,14 @@
       '<header class="siteHeader">' +
       '<div class="px-5 lg:px-7 flex items-center justify-between h-16">' +
       '<a href="index.html" class="brandMark flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight" data-nav-key="index">' +
-      '<img src="assets/pictures/logo-konjuh.png" alt="PD Konjuh logo" class="h-16 w-16 object-contain" />' +
+      '<img src="assets/pictures/logo-konjuh.webp" alt="PD Konjuh logo" class="h-16 w-16 object-contain" />' +
 
       '<nav class="hidden lg:flex items-center gap-8 text-[1.05rem]" aria-label="Glavna navigacija">' +
       buildDesktopNav() +
       "</nav>" +
       '<div class="flex items-center gap-3">' +
       '<a href="membership.html" class="hidden sm:inline-flex navCta" data-nav-key="membership">Postani član</a>' +
-      '<button id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden text-beige p-2 relative z-50" aria-label="Otvori meni">' +
+      '<button id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" class="menuToggleBtn lg:hidden relative z-50" aria-label="Otvori meni">' +
       HAMBURGER_ICON +
       "</button></div></div></header>"
     );
@@ -142,12 +143,12 @@
 
   function buildFooterGalleryStrip() {
     var items = [
-      ["assets/pictures/footer/footer1.jpg", "assets/pictures/footer/footer1.jpg", "", ""],
-      ["assets/pictures/footer/footer2.jpg", "assets/pictures/footer/footer2.jpg", "", "revealDelay1"],
-      ["assets/pictures/footer/footer3.jpg", "assets/pictures/footer/footer3.jpg", "", "revealDelay2"],
-      ["assets/pictures/footer/footer4.jpg", "assets/pictures/footer/footer4.jpg", "", "revealDelay3"],
-      ["assets/pictures/footer/footer5.jpg", "assets/pictures/footer/footer5.jpg", "", "revealDelay4"],
-      ["assets/pictures/footer/footer6.jpg", "assets/pictures/footer/footer6.jpg", "", "revealDelay5"]
+      ["assets/pictures/footer/footer1.webp", "assets/pictures/footer/footer1.webp", "", ""],
+      ["assets/pictures/footer/footer2.webp", "assets/pictures/footer/footer2.webp", "", "revealDelay1"],
+      ["assets/pictures/footer/footer3.webp", "assets/pictures/footer/footer3.webp", "", "revealDelay2"],
+      ["assets/pictures/footer/footer4.webp", "assets/pictures/footer/footer4.webp", "", "revealDelay3"],
+      ["assets/pictures/footer/footer5.webp", "assets/pictures/footer/footer5.webp", "", "revealDelay4"],
+      ["assets/pictures/footer/footer6.webp", "assets/pictures/footer/footer6.webp", "", "revealDelay5"]
     ];
     return items
       .map(function (item) {
@@ -269,7 +270,7 @@
     var link = document.createElement("link");
     link.rel = "icon";
     link.type = "image/png";
-    link.href = "assets/pictures/konjuh-logo.png";
+    link.href = "assets/pictures/logo-konjuh.webp";
     document.head.appendChild(link);
   }
 
@@ -383,6 +384,7 @@
       mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
       if (scrim) scrim.classList.toggle("isOpen", open);
       menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      menuBtn.setAttribute("aria-label", open ? "Zatvori meni" : "Otvori meni");
       menuBtn.innerHTML = open ? CLOSE_ICON : HAMBURGER_ICON;
       if (open) {
         savedScrollY = window.scrollY;
@@ -720,7 +722,8 @@
   /* ==========================================================================
      17b. HERO — NEXT TOUR (ALL PAGES)
      Shows the closest upcoming tour from UPCOMING_TOURS (see top of file).
-     The same big card (image + badge + title + date) is used on every page:
+     The same big card (badge + title + date, no photo) is used on every
+     page:
        - If the page already has a #heroNextTour element (e.g. index.html),
          the card is inserted right there, inside the hero section.
        - If the page does NOT have that element, ensureHeroNextTourEl()
@@ -744,22 +747,22 @@
     return next;
   }
 
-  var MON_ABBR = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"];
+  var MON_ABBR = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "august", "septembar", "oktobar", "novembar", "decembar"];
 
-  // BUILDS THE HTML FOR THE BIG "NEXT TOUR" CARD (SAME ON EVERY PAGE)
+  // BUILDS THE HTML FOR THE BIG "NEXT TOUR" CARD (SAME ON EVERY PAGE).
+  // NO PHOTO — JUST A LABEL, THE TOUR NAME AND THE DATE, SET IN THE SITE'S
+  // DISPLAY FONT, PLUS A SMALL ARROW.
   function buildNextTourCardHTML(next, label) {
     var arrowSvg =
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
     return (
       '<a href="hikes.html#' + next.id + '" class="heroNextTourCard">' +
-      (next.image
-        ? '<span class="heroNextTourImg" style="background-image:url(\'' + next.image + '\')"><span class="heroNextTourBadge">Sljedeća tura</span></span>'
-        : "") +
       '<span class="heroNextTourBody">' +
-
+      '<span class="heroNextTourEyebrow block">Sljedeći pohod</span>' +
       '<span class="heroNextTourTitle block">' + next.title + "</span>" +
       '<span class="heroNextTourDate block">' + label + "</span>" +
+      '<span class="heroNextTourLink"><span class="heroNextTourLinkText">Detalji pohoda</span> ' + "</span>" +
       "</span>" +
       "</a>"
     );
