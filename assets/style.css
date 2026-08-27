@@ -1346,7 +1346,11 @@ input[type="range"]::-webkit-slider-thumb {
   justify-content: flex-start;
   gap: 0;
   padding: 6rem 0 0;
-  overflow-y: auto;
+  /* NO INTERNAL SCROLL: THE DRAWER IS A FIXED FULLSCREEN PANEL, NOT A
+     SCROLLABLE LIST — PREVENTS ANY SCROLL GESTURE WHILE THE MENU IS OPEN,
+     ON THE MENU ITSELF AS WELL AS THE PAGE BEHIND IT */
+  overflow: hidden;
+  overscroll-behavior: contain;
 
   transform-origin: left center;
   transform: translateX(-100%);

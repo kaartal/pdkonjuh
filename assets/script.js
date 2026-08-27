@@ -370,6 +370,11 @@
 
   /* ==========================================================================
      6. MOBILE MENU (FULLSCREEN OVERLAY, ICON MORPH HAMBURGER <-> CLOSE)
+     LOCKS BACKGROUND SCROLL WHILE OPEN (position:fixed ON <body> PLUS AN
+     EXPLICIT touchmove BLOCK, SINCE SOME MOBILE BROWSERS LET A TOUCH-SCROLL
+     "LEAK" THROUGH FOR A FRAME BEFORE THE FIXED POSITIONING KICKS IN). THE
+     MENU ITSELF HAS NO INTERNAL SCROLL (SEE #mobileMenu IN CSS: overflow:hidden) —
+     IT'S A FIXED FULLSCREEN PANEL, NOT A SCROLLABLE LIST.
      ========================================================================== */
 
   function initMobileMenu() {
@@ -380,6 +385,12 @@
 
     menuBtn.classList.add("menuIconMorph");
     var savedScrollY = 0;
+
+    // BLOCKS ANY TOUCH-DRIVEN SCROLL (ON THE MENU OR THE PAGE BEHIND IT)
+    // WHILE THE MENU IS OPEN
+    var preventTouchMove = function (e) {
+      e.preventDefault();
+    };
 
     var setMenuState = function (open) {
       mobileMenu.classList.toggle("isOpen", open);
@@ -393,11 +404,13 @@
         document.body.style.position = "fixed";
         document.body.style.top = "-" + savedScrollY + "px";
         document.body.style.width = "100%";
+        document.addEventListener("touchmove", preventTouchMove, { passive: false });
       } else {
         document.body.style.position = "";
         document.body.style.top = "";
         document.body.style.width = "";
         window.scrollTo(0, savedScrollY);
+        document.removeEventListener("touchmove", preventTouchMove, { passive: false });
       }
       document.body.classList.toggle("overflow-hidden", open);
     };
