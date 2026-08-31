@@ -29,6 +29,7 @@
   var UPCOMING_TOURS = [
     { id: "premuzic", title: "Premužićeva staza", date: "2026-09-10", image: "" },
     { id: "klekovaca", title: "Velika Klekovača", date: "2026-09-05", image: "" },
+{ id: "zelengora", title: "Zelengora", date: "2026-09-12", image: "" },
 
   ];
 
