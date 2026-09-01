@@ -405,7 +405,7 @@ select:focus-visible {
    an imported thumbnail. */
 .heroNextTourCard {
   position: absolute;
-  bottom: 37px;
+  bottom: 14px;
   right: -10rem;
   z-index: 5;
   width: 300px;
@@ -529,7 +529,7 @@ select:focus-visible {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
-    text-align: left;
+
 
     opacity: 0;
     transform: translateX(-70px);
@@ -572,6 +572,7 @@ select:focus-visible {
     padding: 14px 4px;
     display: flex;
     align-items: baseline;
+    justify-content: center;   
     flex-wrap: nowrap;
     overflow: hidden;
     gap: 8px;
@@ -611,9 +612,8 @@ select:focus-visible {
     color: var(--iceblue);
   }
 
-  .heroNextTourBody .heroNextTourLink {
+   .heroNextTourBody .heroNextTourLink {
     display: inline-flex;
-    margin-left: auto;
     flex: none;
     font-size: .82rem;
     white-space: nowrap;
@@ -624,21 +624,25 @@ select:focus-visible {
 
   .heroNextTourCard {
     border-radius: 14px;
+    text-align: center;
   }
 
   .heroNextTourBody {
     padding: 12px 4px;
     gap: 6px;
+    text-align: center;
   }
 
   .heroNextTourBody .heroNextTourTitle {
     font-size: .72rem;
     max-width: 38%;
+    text-align: center;
   }
 
   .heroNextTourBody .heroNextTourDate {
     font-size: .78rem;
     padding-left: 10px;
+    text-align: center;
   }
 
   .heroNextTourBody .heroNextTourLinkText {
