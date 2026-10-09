@@ -20,17 +20,17 @@
 // { key: "routes", href: "routes.html", label: "Staze" },
     { key: "domovi", href: "lodges.html", label: "Planinarski domovi" },
     { key: "gallery", href: "gallery.html", label: "Sekcije" },
-
+    
     { key: "contact", href: "contact.html", label: "Kontakt" }
   ];
 
   // NEXT DATES FOR EACH TOUR, USED FOR THE HERO "NEXT TOUR" CARD ON EVERY PAGE
   // IMPORTANT: KEEP THIS IN SYNC WITH THE MATCHING CARD DATE IN hikes.html
   var UPCOMING_TOURS = [
-    { id: "premuzic", title: "Premužićeva staza", date: "2026-09-10", image: "" },
-    { id: "klekovaca", title: "Velika Klekovača", date: "2026-09-05", image: "" },
-{ id: "zelengora", title: "Zelengora", date: "2026-09-12", image: "" },
-
+{ id: "majevica", title: "Majevica", date: "2026-09-26", image: "" },
+    { id: "stuparijavorje", title: "Starom stazom Stupari - Javorje", date: "2026-10-03", image: "" },
+{ id: "treskavica", title: "Treskavica - Mala ćaba", date: "2026-10-10", image: "" },
+{ id: "univerzitetski", title: "Univerzitetski planinarski pohod", date: "2026-10-08", image: "" },
   ];
 
   var MEGA_PANEL_ITEMS = [
@@ -210,7 +210,7 @@
       '<div class="max-w-7xl mx-auto px-6 lg:px-10 pb-10">' +
       '<div class="footerBottomRow flex flex-col sm:flex-row justify-between items-center gap-3 pt-2 text-xs text-beige/45">' +
       "<p>© 2026 Planinarsko društvo Konjuh, Tuzla. Sva prava zadržana.</p>" +
-      '<p class="footerCredit">Developed by <span>Kartal</span></p>' +
+      '\<p class="footerCredit">Developed by \<a href="https://halidkartal.dev" target="_blank" rel="noopener noreferrer" class="font-semibold hover\:text-beige transition-colors">Kartal\</a>\</p>' +
       "</div></div></footer>" +
       '<div id="lightbox" aria-hidden="true">' +
       '<button data-close aria-label="Zatvori" class="absolute top-6 right-6 text-beige/80 hover:text-beige"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>' +
