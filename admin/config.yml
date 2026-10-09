@@ -1,0 +1,57 @@
+backend:
+  name: github
+  repo: kaartal/pdkonjuh
+  branch: main
+  # Netlify OAuth provider (Site configuration > Access & security > OAuth)
+  # site_domain: pdkonjuh.ba   # odkomentarisati samo ako prijava javi "site_id" grešku
+
+locale: bs
+publish_mode: simple
+media_folder: assets/pictures/hikes
+public_folder: /assets/pictures/hikes
+site_url: https://pdkonjuh.ba
+display_url: https://pdkonjuh.ba
+
+collections:
+  - name: content
+    label: Sadržaj
+    files:
+      - name: hikes
+        label: Ture
+        file: content/hikes.json
+        fields:
+          - label: Ture
+            name: hikes
+            widget: list
+            label_singular: Tura
+            summary: "{{fields.date}} | {{fields.title}}"
+            fields:
+              - { label: ID (jedinstveno, bez razmaka, npr. maglic-2026), name: id, widget: string, pattern: ['^[a-z0-9-]+$', 'Samo mala slova, brojevi i crtice'] }
+              - { label: Naslov, name: title, widget: string }
+              - { label: Kratki opis (teaser), name: teaser, widget: text }
+              - { label: Datum početka, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", picker_utc: true, required: false, hint: "Ostavi prazno ako termin još nije poznat. Nakon ovog datuma tura se sama sakriva." }
+              - { label: Slika, name: image, widget: image, choose_url: false }
+              - { label: Opis slike (alt), name: image_alt, widget: string }
+              - { label: Težina, name: difficulty, widget: select, options: [{ label: Laka, value: laka }, { label: Srednja, value: srednja }, { label: Teška, value: teska }] }
+              - { label: Sezona, name: season, widget: select, options: [{ label: Proljeće, value: proljece }, { label: Ljeto, value: ljeto }, { label: Jesen, value: jesen }, { label: Zima, value: zima }] }
+              - { label: Trajanje, name: duration, widget: select, options: [{ label: Jednodnevna, value: jednodnevna }, { label: Višednevna, value: visednevna }] }
+              - { label: Detaljan opis, name: description, widget: text }
+              - label: Plan puta
+                name: itinerary
+                widget: list
+                required: false
+                label_singular: Stavka
+                summary: "{{fields.time}}"
+                fields:
+                  - { label: Vrijeme / dan, name: time, widget: string }
+                  - { label: Opis, name: text, widget: text }
+              - label: Detalji (polazna tačka, vođa, cijena...)
+                name: meta
+                widget: list
+                required: false
+                label_singular: Detalj
+                summary: "{{fields.label}}: {{fields.value}}"
+                fields:
+                  - { label: Naziv, name: label, widget: string }
+                  - { label: Vrijednost, name: value, widget: string }
+              - { label: Napomena, name: note, widget: text, required: false }
