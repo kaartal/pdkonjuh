@@ -2,10 +2,8 @@ backend:
   name: github
   repo: kaartal/pdkonjuh
   branch: main
-  # Netlify OAuth provider (Site configuration > Access & security > OAuth)
-  # site_domain: pdkonjuh.ba   # odkomentarisati samo ako prijava javi "site_id" grešku
+  # PRIJAVA: Sveltia CMS nudi "Sign in with token" (GitHub Personal Access Token)
 
-locale: bs
 publish_mode: simple
 media_folder: assets/pictures/hikes
 public_folder: /assets/pictures/hikes
