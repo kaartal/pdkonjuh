@@ -4,6 +4,7 @@
       "id": "stupari-javorje",
       "title": "Starom stazom Stupari–Javorje",
       "teaser": "Jednodnevni pohod u čast Dana oslobođenja Tuzle, sa zabavno-edukativnim programom i planinarskim pasuljem na domu Javorje.",
+      "date": "2026-10-03",
       "image": "/assets/pictures/hikes/Javorje-01.jpg",
       "image_alt": "Planinarski dom Javorje",
       "difficulty": "laka",
@@ -66,13 +67,13 @@
           "value": "Standardna planinarska oprema prilagođena vremenu"
         }
       ],
-      "note": "Odazivom na pohod svaki pojedinac potvrđuje da ispunjava zdravstvene i psihofizičke uslove za sigurno sudjelovanje, da prihvata program i da na turu ide na ličnu odgovornost, te da će se pridržavati plana izleta, odluka i uputa vodiča. Organizator zadržava pravo izmjene programa u slučaju nepredviđenih okolnosti. Prijave i detaljnije informacije kod vodiča Safure Siručić, 062-700-825.",
-      "date": "2026-10-03"
+      "note": "Odazivom na pohod svaki pojedinac potvrđuje da ispunjava zdravstvene i psihofizičke uslove za sigurno sudjelovanje, da prihvata program i da na turu ide na ličnu odgovornost, te da će se pridržavati plana izleta, odluka i uputa vodiča. Organizator zadržava pravo izmjene programa u slučaju nepredviđenih okolnosti. Prijave i detaljnije informacije kod vodiča Safure Siručić, 062-700-825."
     },
     {
       "id": "treskavica",
       "title": "Pohod na Treskavicu: vrh Mala ćaba, 2.086 mnv",
       "teaser": "Jednodnevni pohod na najviši vrh Treskavice, Malu ćabu (Pakliješ/Đokin toranj), planinu udaljenu tridesetak kilometara od Sarajeva.",
+      "date": "2026-10-10",
       "image": "/assets/pictures/hikes/treskavica.jpg",
       "image_alt": "Vrh Mala ćaba na Treskavici",
       "difficulty": "teska",
@@ -119,13 +120,13 @@
           "value": "Obavezne planinarske gojzerice i štapovi, odjeća i obuća prilagođena vremenskim uslovima i uslovima terena"
         }
       ],
-      "note": "Na području Treskavice, kao ratom pogođenom terenu, mogu postojati zaostala neeksplodirana minsko-eksplozivna sredstva. Kretanje je isključivo obilježenim stazama i po uputama vodiča, bez samostalnog udaljavanja od grupe. Odazivom na turu, svaki pojedinac potvrđuje da ispunjava zdravstvene i psihofizičke uslove za sigurno sudjelovanje u istoj, da prihvata ovaj program, da na turu ide na ličnu odgovornost, te da će se u skladu s planinarskom etikom pridržavati plana izleta, odluka i uputa vodiča. U zavisnosti od vremenskih uslova ili eventualno drugih situacija, organizator zadržava pravo izmjene rute, vremena povratka i dr. Prijave i informacije kod vodiča: Emir Ahmetović, 061 738 847.",
-      "date": "2026-10-10"
+      "note": "Na području Treskavice, kao ratom pogođenom terenu, mogu postojati zaostala neeksplodirana minsko-eksplozivna sredstva. Kretanje je isključivo obilježenim stazama i po uputama vodiča, bez samostalnog udaljavanja od grupe. Odazivom na turu, svaki pojedinac potvrđuje da ispunjava zdravstvene i psihofizičke uslove za sigurno sudjelovanje u istoj, da prihvata ovaj program, da na turu ide na ličnu odgovornost, te da će se u skladu s planinarskom etikom pridržavati plana izleta, odluka i uputa vodiča. U zavisnosti od vremenskih uslova ili eventualno drugih situacija, organizator zadržava pravo izmjene rute, vremena povratka i dr. Prijave i informacije kod vodiča: Emir Ahmetović, 061 738 847."
     },
     {
       "id": "univerzitetski-pohod",
       "title": "Univerzitetski planinarski pohod Stupari–Javorje",
       "teaser": "Pohod otvoren za članove i građane, sa obilaskom kolonije stećaka, izložbama i Univerzitetskim planinarskim igrama na domu Javorje.",
+      "date": "",
       "image": "/assets/pictures/hikes/universitet.jpg",
       "image_alt": "Univerzitetski planinarski pohod Stupari–Javorje",
       "difficulty": "laka",
@@ -193,6 +194,21 @@
         }
       ],
       "note": "Učešće u pohodu je dobrovoljno, a svaki učesnik učestvuje na vlastitu odgovornost. Prijave su otvorene do 8. oktobra 2026. putem e-maila cesku@untz.ba ili na broj telefona 061 738 580."
+    },
+    {
+      "id": "treskavica",
+      "title": "treskavica",
+      "teaser": "sadasdsa",
+      "date": "2026-10-09",
+      "image": "/assets/pictures/hikes/treskavica.jpg",
+      "image_alt": "sdsada",
+      "difficulty": "laka",
+      "season": "ljeto",
+      "duration": "jednodnevna",
+      "description": "dsadadsadsa",
+      "itinerary": [],
+      "meta": [],
+      "note": ""
     }
   ]
 }
