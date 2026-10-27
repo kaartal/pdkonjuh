@@ -27,10 +27,9 @@
   // NEXT DATES FOR EACH TOUR, USED FOR THE HERO "NEXT TOUR" CARD ON EVERY PAGE
   // IMPORTANT: KEEP THIS IN SYNC WITH THE MATCHING CARD DATE IN hikes.html
   var UPCOMING_TOURS = [
-{ id: "majevica", title: "Majevica", date: "2026-09-26", image: "" },
     { id: "stuparijavorje", title: "Starom stazom Stupari - Javorje", date: "2026-10-03", image: "" },
 { id: "treskavica", title: "Treskavica - Mala ćaba", date: "2026-10-10", image: "" },
-{ id: "univerzitetski", title: "Univerzitetski planinarski pohod", date: "2026-10-08", image: "" },
+{ id: "univerzitetski", title: "Univerzitetski planinarski pohod", date: "2026-10-08", image: "" }
   ];
 
   var MEGA_PANEL_ITEMS = [

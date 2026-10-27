@@ -50,14 +50,72 @@
   "@context": "https://schema.org",
   "@type": "SportsOrganization",
   "name": "Planinarsko društvo Konjuh",
-  "url": "https://pd-treskavica.example/",
+  "url": "https://pdkonjuh.ba/",
   "foundingDate": "1951",
-  "address": {"@type":"PostalAddress","addressLocality":"Tuzla","addressCountry":"BA"},
-  "sameAs": ["https://instagram.com/pdtreskavica","https://facebook.com/pdtreskavica"]
+  "address": {"@type":"PostalAddress","addressLocality":"Tuzla","addressCountry":"BA"}
 }
 </script>
 <style>
 
+  /* HERO NEWS (VIJEST), MINIMALISTIČKI */
+  .heroNews {
+    display: block;
+    max-width: 480px;
+    margin-top: 28px;
+    padding: 6px 0 6px 18px;
+    border-left: 3px solid #F6F3EE;
+    color: #F6F3EE;
+    text-decoration: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .55), 0 2px 14px rgba(0, 0, 0, .45);
+    transition: border-color .3s ease;
+  }
+
+  .heroNews:hover { border-color: #C97B3D; }
+
+  .heroNews:focus-visible {
+    outline: 2px solid #F6F3EE;
+    outline-offset: 4px;
+  }
+
+  .heroNewsEyebrow {
+    display: block;
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #F6F3EE;
+    margin-bottom: 4px;
+  }
+
+  .heroNewsTitle {
+    display: block;
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .heroNewsInfo {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: #F6F3EE;
+  }
+
+  .heroNewsGo {
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform .3s ease;
+  }
+
+  .heroNews:hover .heroNewsGo { transform: translateX(4px); }
+
+  @media (max-width: 480px) {
+    .heroNews { padding-left: 14px; }
+    .heroNewsTitle { font-size: 1.45rem; }
+    .heroNewsInfo { font-size: 1rem; }
+  }
 
   .heroSlide {
     position: absolute;
@@ -68,7 +126,7 @@
     opacity: 0;
     transition: opacity 1.4s ease;
     will-change: opacity, transform;
-    /* SLIGHT CONTINUOUS "BREATHING" EFFECT — RUNS INDEPENDENTLY OF SLIDE CHANGES */
+    /* SLIGHT CONTINUOUS "BREATHING" EFFECT, RUNS INDEPENDENTLY OF SLIDE CHANGES */
     animation: heroSlideBreathe 22s ease-in-out infinite;
   }
 
@@ -107,6 +165,8 @@
 <div id="siteHeaderRoot"></div>
 <div id="mobileMenuRoot"></div>
 
+
+
 <main id="mainContent">
 
 <section class="relative h-[100svh] min-h-[560px] overflow-hidden">
@@ -126,6 +186,15 @@
   <h1 class="font-display text-beige text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-7xl font-semibold max-w-3xl revealLeft revealDelay1">
     Planina se ne osvaja. Njoj se vraćaš.
   </h1>
+
+  <a id="heroNews" href="/assets/pictures/hikes/zavabaplaninarske.jpg" target="_blank" rel="noopener" class="heroNews revealLeft revealDelay2" data-expires="2026-12-06" aria-label="Planinarska zabava, 5. decembra 2026. Otvori plakat">
+    <span class="heroNewsEyebrow">5. dec · 75 godina društva</span>
+    <span class="heroNewsTitle">
+      Planinarska zabava
+      <svg class="heroNewsGo" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span class="heroNewsInfo">Subota u 19:30, hotel Rudar, Minero. Večera i muzika, 50 KM.</span>
+  </a>
 
   <div id="heroNextTour" aria-live="polite"></div>
   <div class="flex flex-wrap gap-4 mt-9 revealLeft revealDelay3">
@@ -241,6 +310,16 @@
 <div id="siteFooterRoot"></div>
 
 <script src="assets/script.js" defer></script>
+<script>
+  /* SKRIVA VIJEST NAKON ISTEKA DATUMA (data-expires) */
+  (function () {
+    var n = document.getElementById('heroNews');
+    if (!n) return;
+    var p = (n.getAttribute('data-expires') || '').split('-');
+    if (p.length === 3 && new Date() >= new Date(+p[0], +p[1] - 1, +p[2])) n.style.display = 'none';
+  })();
+</script>
+
 
 
 </body>
