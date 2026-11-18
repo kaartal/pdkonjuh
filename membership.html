@@ -446,6 +446,29 @@
       box-shadow: 0 1px 3px rgba(0,0,0,.25);
     }
   }
+
+  /* UPUTA ZA UČLANJENJE */
+  .joinLogo { display:block; margin:0 auto 1.5rem; width:180px; height:180px; max-width:60%; object-fit:contain; }
+  @media (min-width:768px) { .joinLogo { width:220px; height:220px; } }
+  .joinText { color:var(--charcoal); font-size:1.05rem; line-height:1.75; margin:0 0 1rem; }
+  body.supportsDark .joinText{}
+  .joinSteps { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1.75rem; }
+  .joinSteps li { display:flex; gap:1.1rem; align-items:flex-start; }
+  .joinStepNum {
+    flex:none; width:2.4rem; height:2.4rem; border-radius:999px;
+    background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:.95rem;
+  }
+  .joinSteps h3 { font-family:'Fraunces',serif; font-size:1.25rem; font-weight:600; color:var(--charcoal); margin:0 0 .35rem; }
+  .joinSteps p { color:var(--charcoal); opacity:.78; font-size:1rem; line-height:1.7; margin:0; }
+  .joinDownload { margin-top:1rem; text-decoration:none; align-self:flex-start; }
+  .joinDownload:hover { color:#fff; }
+  .joinCard .joinDivider { margin:2rem 0 1.5rem; }
+  .joinNote { font-family:'Inter',sans-serif; font-size:.88rem; line-height:1.7; color:var(--charcoal); opacity:.65; margin:0 0 .8rem; }
+  @media (prefers-color-scheme: dark) {
+    body.supportsDark .joinSteps h3, body.supportsDark .joinText { color:var(--beige); }
+    body.supportsDark .joinSteps p, body.supportsDark .joinNote { color:var(--beige); }
+  }
 </style>
 </head>
 <body class="bg-beige text-charcoal font-sans supportsDark">
@@ -468,7 +491,7 @@
     <div class="heroOv2" aria-hidden="true"></div>
 
     <div class="heroContent">
-      <h1>Prijava za članstvo</h1>
+      <h1>Učlanjenje</h1>
       <p class="heroSub">Postani član Planinarskog društva Konjuh.</p>
     </div>
     <div class="scrollCue" aria-hidden="true">
@@ -481,93 +504,48 @@
   <div class="max-w-6xl mx-auto">
 
     <div class="joinIntro reveal">
-      <h2>Članski obrazac</h2>
-      <p>Podaci koje unesete koriste se isključivo za evidentiranje članstva u Planinarskom društvu Konjuh Tuzla i za informisanje o aktivnostima društva. U slučaju dodatnih pitanja ili podataka naša administracija će vas kontaktirati.</p>
+      <img class="joinLogo" src="assets/pictures/logo-konjuh.webp" alt="Logo Planinarskog društva Konjuh Tuzla" width="220" height="220" loading="lazy">
+      <h2>Učlanjenje</h2>
     </div>
 
     <div class="joinCard reveal revealDelay1">
+      <p class="joinText">Dobro došli! Drago nam je što želite postati dio Planinarskog društva Konjuh Tuzla. Članstvo u društvu je prilika da zajedno s nama istražujete planine, učestvujete u pohodima i akcijama, upoznate nove ljude i družite se u prirodi, bez obzira da li ste iskusni planinar ili tek počinjete.</p>
+      <p class="joinText">Učlanjenje je jednostavno i svodi se na nekoliko koraka:</p>
 
-      <form id="joinFormEl" class="joinForm" method="POST" autocomplete="on">
-        <input type="hidden" name="_subject" value="Nova prijava za članstvo — PD Konjuh">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="true">
-        <input type="hidden" name="_honeypot" value="_honey">
-        <input type="hidden" name="Planinarsko društvo" value="PD &quot;KONJUH&quot; TUZLA">
-
-        <div class="joinHoneypot" aria-hidden="true">
-          <label for="joinWebsite">Website</label>
-          <input type="text" id="joinWebsite" name="_honey" tabindex="-1" autocomplete="off">
-        </div>
-
-        <fieldset class="joinFieldset">
-
-          <div class="joinFormRow">
-            <div>
-              <label class="joinLabel" for="joinIme">Ime i prezime <span class="req">*</span></label>
-              <input class="joinField" id="joinIme" type="text" name="Ime i prezime" placeholder="" required>
-            </div>
-            <div>
-              <label class="joinLabel" for="joinDatumRodjenja">Datum rođenja <span class="req">*</span></label>
-              <input class="joinField" id="joinDatumRodjenja" type="date" name="Datum rođenja" required>
-            </div>
-          </div>
-
-          <!-- <div>
-            <label class="joinLabel" for="joinJmbg">Jedinstveni matični broj (JMBG) <span class="req">*</span></label>
-            <input class="joinField" id="joinJmbg" type="text" name="JMBG" placeholder="" inputmode="numeric" pattern="\d{13}" maxlength="13" title="JMBG se sastoji od 13 cifara" required>
-
-          </div> -->
-
+      <ol class="joinSteps">
+        <li>
+          <span class="joinStepNum">1</span>
           <div>
-            <label class="joinLabel" for="joinAdresa">Adresa stanovanja <span class="req">*</span></label>
-            <input class="joinField" id="joinAdresa" type="text" name="Adresa stanovanja" placeholder="" required>
+            <h3>Preuzmite pristupnicu</h3>
+            <p>Pristupnicu možete preuzeti u PDF formatu putem dugmeta u nastavku. Pristupnicu je potrebno isprintati.</p>
           </div>
-
-          <div class="joinFormRow">
-            <div>
-              <label class="joinLabel" for="joinEmail">E-mail <span class="req">*</span></label>
-              <input class="joinField" id="joinEmail" type="email" name="Email" placeholder="" required>
-            </div>
-            <div>
-              <label class="joinLabel" for="joinMobitel">Broj mobitela <span class="req">*</span></label>
-              <input class="joinField" id="joinMobitel" type="tel" name="Broj mobitela" placeholder="" required>
-            </div>
-          </div>
-
+        </li>
+        <li>
+          <span class="joinStepNum">2</span>
           <div>
-            <label class="joinLabel" for="joinZanimanje">Zanimanje/zvanje <span class="req">*</span></label>
-            <input class="joinField" id="joinZanimanje" type="text" name="Zanimanje/zvanje" placeholder="" required>
+            <h3>Popunite i potpišite</h3>
+            <p>Čitko popunite sva tražena polja svojim ličnim podacima, a zatim pristupnicu svojeručno potpišite. Pristupnica mora biti potpisana kako bi bila važeća.</p>
           </div>
-        </fieldset>
-
-        <fieldset class="joinFieldset">
-          <label class="joinLabel" for="joinSekcije">Sekcije za koje ste zainteresovani</label>
-          <textarea class="joinField" id="joinSekcije" name="Sekcije" placeholder="Ukoliko postoji više sekcija, navedite za koje ste zainteresovani (opcionalno)"></textarea>
-        </fieldset>
-
-        <fieldset class="joinFieldset">
-
-          <div class="joinConsent">
-            <div class="joinCheckRow">
-              <input type="checkbox" id="joinPunoljetnost" name="Potvrda punoljetnosti" value="Da" required>
-              <label for="joinPunoljetnost">Potvrđujem da sam punoljetna/punoljetan osoba.</label>
-            </div>
-            <div class="joinCheckRow">
-              <input type="checkbox" id="joinSaglasnost" name="Saglasnost i izjava o odgovornosti" value="Da" required>
-              <label for="joinSaglasnost">
-                Podaci iz ovog obrasca prikupljaju se i obrađuju u svrhu evidentiranja članstva Planinarskog saveza Federacije Bosne i Hercegovine. Podaci o adresi stanovanja, e-mailu i broju mobitela mogu se koristiti isključivo u svrhu informisanja članova o aktivnostima planinarskog društva/kluba. Planinarsko društvo/klub se obavezuje da će prikupljene podatke koristiti isključivo za navedene svrhe. Svojim potpisom (potvrdom ovog polja) dajem saglasnost planinarskom društvu/klubu da koristi moje osobne podatke iz ovog obrasca za navedene svrhe. Pristupanjem u planinarsko društvo/klub obavezujem se pridržavati odredbi Statuta. Izjavljujem da na planinarskim izletima, turama i pohodima i drugim aktivnostima organiziranim u planinarskom društvu/klubu učestvujem na vlastitu odgovornost.
-              </label>
-            </div>
+        </li>
+        <li>
+          <span class="joinStepNum">3</span>
+          <div>
+            <h3>Dostavite pristupnicu</h3>
+            <p>Popunjenu i potpisanu pristupnicu donesite na adresu <strong>Patriotske lige br. 4, Tuzla, Bosna i Hercegovina</strong>, i to <strong>utorkom</strong> u terminu od <strong>19:30 do 20:30</strong>. Tada ćete se upoznati s članovima društva i dobiti sve potrebne informacije.</p>
           </div>
-        </fieldset>
+        </li>
+        <li>
+          <span class="joinStepNum">4</span>
+          <div>
+            <h3>Pridružite se pohodima</h3>
+            <p>Nakon učlanjenja možete učestvovati u planinarskim pohodima, izletima i drugim aktivnostima društva. Rado ćemo vas informisati o planiranim aktivnostima i pomoći vam oko opreme i priprema za prvi pohod.</p>
+          </div>
+        </li>
+      </ol>
 
-        <div id="joinLimitMsg" class="joinLimitMsg">Dosegnut je dnevni limit od 2 prijave sa ovog uređaja. Pokušajte ponovo sutra, ili nas kontaktirajte direktno na <a href="mailto:pdkonjuh1951@gmail.com" class="underline">pdkonjuh1951@gmail.com</a> / +387 61 562 277.</div>
-
-        <button id="joinSubmitBtn" type="submit" class="joinSubmit">Pošalji prijavu</button>
-        <noscript>
-          <p class="joinHint">Za slanje ove forme potreban je omogućen JavaScript u vašem browseru. Ako je JavaScript onemogućen, molimo kontaktirajte nas direktno na <strong>pdkonjuh1951@gmail.com</strong> ili +387 61 562 277.</p>
-        </noscript>
-      </form>
+      <a class="joinSubmit joinDownload" href="assets/documents/Clanski-obrazac-PS-FBiH.pdf" download>Preuzmi pristupnicu</a>
+      <hr class="joinDivider">
+      <p class="joinNote">Za sva pitanja javite se na <a href="mailto:pdkonjuh1951@gmail.com" class="underline">pdkonjuh1951@gmail.com</a> ili <a href="tel:+38761562277" class="underline">+387 61 562 277</a>.</p>
     </div>
 
   </div>
@@ -581,87 +559,7 @@
 
 <script src="assets/script.js" defer></script>
 
-<!-- MEMBERSHIP FORM DAILY LIMIT -->
-<script>
-(function(){
 
-  var _p1 = ['pdkonjuh1951', '@', 'gmail', '.', 'com'].join('');
-  var FORM_ENDPOINT = 'https://formsubmit.co/' + _p1;
-
-  var STORAGE_KEY = 'pdkonjuhJoinLimit';
-  var DAILY_LIMIT = 2;
-
-  function todayStr(){
-    var d = new Date();
-    return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
-  }
-
-  function getState(){
-    try{
-      var raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw) return { date: todayStr(), count: 0 };
-      var parsed = JSON.parse(raw);
-      if(parsed.date !== todayStr()) return { date: todayStr(), count: 0 };
-      if(typeof parsed.count !== 'number' || parsed.count < 0) return { date: todayStr(), count: 0 };
-      return parsed;
-    }catch(e){
-      return { date: todayStr(), count: 0 };
-    }
-  }
-
-  function setState(state){
-    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
-  }
-
-  function showLimitReached(){
-    var btn = document.getElementById('joinSubmitBtn');
-    var msg = document.getElementById('joinLimitMsg');
-    if(!btn || !msg) return;
-    btn.disabled = true;
-    btn.textContent = 'Dnevni limit dosegnut';
-    msg.classList.add('isVisible');
-  }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    var form = document.getElementById('joinFormEl');
-    var btn = document.getElementById('joinSubmitBtn');
-    if(!form || !btn) return;
-
-    form.setAttribute('action', FORM_ENDPOINT);
-
-    var loadedAt = Date.now();
-    var MIN_FILL_TIME_MS = 3000;
-
-    form.addEventListener('submit', function(e){
-
-      var honey = document.getElementById('joinWebsite');
-      if(honey && honey.value){
-        e.preventDefault();
-        return;
-      }
-
-      if(Date.now() - loadedAt < MIN_FILL_TIME_MS){
-        e.preventDefault();
-        return;
-      }
-
-      var state = getState();
-      if(state.count >= DAILY_LIMIT){
-        e.preventDefault();
-        showLimitReached();
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Slanje u toku…';
-
-      state.count += 1;
-      state.date = todayStr();
-      setState(state);
-    });
-  });
-})();
-</script>
 
 </body>
 </html>

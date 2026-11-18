@@ -29,7 +29,10 @@
   var UPCOMING_TOURS = [
     { id: "stuparijavorje", title: "Starom stazom Stupari - Javorje", date: "2026-10-03", image: "" },
 { id: "treskavica", title: "Treskavica - Mala ćaba", date: "2026-10-10", image: "" },
-{ id: "univerzitetski", title: "Univerzitetski planinarski pohod", date: "2026-10-08", image: "" }
+{ id: "univerzitetski", title: "Univerzitetski planinarski pohod", date: "2026-10-08", image: "" },
+{ id: "majevica", title: "Jesen na Majevici", date: "2026-11-04", image: "" },
+{ id: "posumljavanje", title: "Pošumljavanje na Javorju", date: "2026-11-22", image: "" },
+{ id: "vrsani", title: "Planinarski pohod na Vršane", date: "2026-11-25", image: "" }
   ];
 
   var MEGA_PANEL_ITEMS = [
